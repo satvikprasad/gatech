@@ -1,0 +1,131 @@
+\documentclass[12pt]{article}
+
+\input{header}
+
+\begin{document}
+\subsection{Green Circle}
+\begin{enumerate}
+    \item[1] Let $m = \max(a_1, \ldots, a_k).$ Then, for any integer $n \geq 1,$ we have
+    $$
+    (a_1^n + a_2^n + \ldots +a_k^n)^{1/n} = m((a_1/m)^n + \ldots + (a_k/m)^n)^{1/n}.
+    $$
+    Let us assume that we have $j \in \mathbb Z$ elements satisfying $a_i = m,$ and the remaining with $a_i < m$ since $m$ is the maximum. Then, as $n \to \infty,$ $(a_i / m)^n \to 0$ if $a_i < m,$ and $a_i /m \to 1$ otherwise.
+
+    Thus, we have
+    $$
+    \lim_{n \to \infty}(a_1^n + \ldots + a_k^n)^{1/n} = m \lim_{n \to \infty} (j)^{1/n} =  m \lim_{n \to \infty} \sqrt[n]j{} = m.
+    $$
+    since $j \geq 1.$
+
+    Thus, this limit $L = \max(a_1, \ldots, a_n).$
+
+    \item[2] Consider all continuous functions $f: \mathbb R \to \mathbb R$ with $f(2x) - f(x) = x, $ and $f(0) = 1.$ I.e.,
+    $$
+    f(x) = \dfrac{1}{2}x + f(x/2).
+    $$
+
+    Let $a_k = f(x/2^k)$ be terms of the sequence $\{a_k\}_{k \geq 0}.$ Then, we get
+    $$
+    a_n = x/2^{n + 1} + a_{n + 1}.
+    $$
+    Then, the limit of this series is 
+    $$
+    \lim_{n \to \infty}a_n =  \lim_{n \to \infty} f(x/2^n) = f(0) = 1.
+    $$
+    since $f$ is continuous.
+
+    Expanding out the recurrence, we have
+    $$
+    a_n = x/2^{n + 1} + x/2^{n + 2} + \ldots + x/2^{n + k} + a_{n + k}
+    $$
+    for all $k \geq 1.$
+
+    Taking $k \to \infty$ on both sides, we have
+    \begin{align*}
+    a_n = \lim_{k \to \infty}\dfrac{x}{2^{n + 1}}\sum_{j = 0}^{k - 1} \left(
+    \dfrac{1}{2} + 1
+    \right)^{j} + 1 &= \dfrac{x}{2^{n + 1}} \dfrac{1}{1 - 1/2} + 1 \\
+    &= \dfrac{x}{2^{n}}  +1 = f(x/2^{n})
+    \end{align*}
+
+    Letting $n = 0,$ we have $f(x) = x+ 1.$ \qed
+
+    \item[5] Using partial fractions, we can write
+    $$
+    \dfrac{1}{n(n + 1)(n+2)} = \dfrac{1}{2n} - \dfrac1{n + 1} + \dfrac{1}{2(n + 2)}.
+    $$
+    Hence, our sum becomes
+    \begin{align*}
+        S &= \sum_{n = 1}^{\infty} \dfrac{1}{2n} - \dfrac{1}{n + 1} + \dfrac{1}{2(n+2)} \\
+        &= \dfrac{1}2{}\sum_{n = 1}^{\infty} \dfrac{1}n{} + \dfrac{1}{2} \sum_{n = 3}^{\infty}\dfrac{1}{n} - \sum_{n = 2}^{\infty}\dfrac{1}{n} \\
+        &= \dfrac{1}{2} \left(
+        1 + \dfrac{1}{2}
+        \right) + \sum_{n = 3}^{\infty} \dfrac{1}n{} - \dfrac{1}2{} - \sum_{n = 3}^{\infty} \dfrac{1}{n} \\
+        &= \dfrac{1}{2}\left(1 + \dfrac{1}{2}\right) - \dfrac{1}{2} = \dfrac{1}4{}
+    \end{align*}
+\end{enumerate}
+
+\subsection{Blue Square}
+\begin{enumerate}
+    \item[8] We are given a sequence $(a_n)_{n \geq 0}$ satisfying $$
+    2a_n < a_{n -2} + a_{n - 1},
+    $$
+    meaning 
+    $$
+    2a_{n} + a_{n - 1} < 2a_{n -1} + a_{n - 2}.
+    $$
+
+    Letting $b_n = 2a_n + a_{n - 1},$ we get $b_n < b_{n - 1}.$ Since $b_n > 0,$ and $(b_n)_{n \geq 0}$ is monotonically decreasing, it must converge.
+
+    Since $a_n < 2a_n + a_{n - 1} = b_n$ ($a_n > 0$), we know as a result that $a_n$ must converge too.
+
+    \item[9] We use the substitution $x = (1-t)/(1+t),$ with differentials
+    $$
+    dx = -\dfrac{2}{(1+t)^2},
+    $$
+    yielding
+    \begin{align*}
+    I &= -2\int_{1}^{0} \dfrac{\ln(2) - \ln(1+t)}{(2 + 2t^2)} \, dt = \int_{0}^{1} \dfrac{\ln 2 - \ln(1+t)}{1 + t^2} \, dt \\
+    &= \ln 2\int_{0}^{1} \dfrac{1}{1+t^2} \, dt - I.
+    \end{align*}
+    Therefore, 
+    $$
+    I = \dfrac{\pi\ln 2}{8}.
+    $$
+\end{enumerate}
+
+\subsection{Black Diamond}
+\begin{enumerate}
+    \item[11] Consider the Maclaurin series for $e^x$ with infinite radius of convergence. Then, we have
+    $$
+        f_0(x) = \sum_{k = 0} ^{\infty} \dfrac{x^k}{k!}.
+    $$
+    Assume $f_n$ has Maclaurin series  $$
+    \sum_{k = 0}^{\infty} F_kx^{k}.
+    $$
+    with infinite radius of convergence. Then, $f_{n + 1}$ will have Maclaurin series
+    $$
+    \sum_{k = 0}^{\infty} kF_k x^{k}
+    $$
+    with infinite radius of convergence, since the derivative has an infinite radius of convergence.
+
+    Inductively, the Maclaurin series for $f_n$ satisfies 
+    $$
+    f_n(x) = \sum_{k = 0}^{\infty} \dfrac{k^{n} x^{k}}{k!},
+    $$
+    since both the base case and inductive step are satisfied. As a result, we have
+    $$
+    f_n(1) = \sum_{k = 0}^{\infty} \dfrac{k^n}{k!},
+    $$ 
+    meaning 
+    \begin{align*}
+    \sum_{n = 0}^{\infty} \dfrac{f_n(1)}{n!} &= \sum_{n = 0}^{\infty} \sum_{k = 0}^{\infty} \dfrac{k^n}{n! k!} \\
+    &= \sum_{k = 0}^{\infty} \dfrac{1}{k!}\sum_{n = 0}^{\infty} \dfrac{k^n}{n!} \\
+    &= \sum_{k = 0}^{\infty} \dfrac{e^k}{k!} = e^{e}
+    \end{align*}
+    from the Maclaurin series of $e^x.$
+\end{enumerate}
+
+\subsection{Reflection}
+Black Diamond 11 requires dealing with Maclaurin series, and requires infinite radii of convergence for all the series involved, that requires formal statement.
+\end{document}

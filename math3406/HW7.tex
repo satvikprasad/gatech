@@ -1,0 +1,217 @@
+\documentclass[12pt]{article}
+\input{header}
+
+\begin{document}
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item Let us prove the forward direction first. Consider the case where we have a subspace $U \subseteq V$ with $U^{0} = \{0\}.$ Hence, the only functional $\varphi \in V'$ is the zero map, $0.$ For the sake of contradiction, assume $U \neq V.$ Then, we have some element $u_0 \in V \setminus \{0\}.$ Hence, we can construct a linear map $\varphi$ such that 
+        $$
+        u \neq \mu u_0,\,  \forall \mu \in \mathbb F \Rightarrow  \varphi(u) = 0,
+        $$
+        and $\varphi(u_0) = \lambda$ for some scalar $\lambda \neq 0.$ This map $\varphi \in U^{0},$ but is not the zero map, meaning $U^{0} \neq \{0\}.$ Hence, by contradiction $U = V.$
+    
+        Conversely, assume we have $U = V.$ Then, for all $\varphi \in U^{0},$  $\varphi(v) = 0$ for all $v \in V,$ since $V = U.$ Therefore, the only element in $U^{0}$ is the zero map, $0$, meaning $U^{0} = \{0\}.$
+        
+        \item Assume that we have $U^{0} = V'.$ Then, assume that $U \neq \{0\},$ i.e., there is some vector $0\neq u_0 \in U.$ Then, any map $\varphi \in V'$ that satisfies $\varphi(u_0) = 0$ is not in $U^{0}.$ Since such a map always exists, $U^{0} \neq V',$ since we have some $\varphi \in V'$ and $\varphi \not \in U^{0}.$ Therefore, by contradiction, $U = \{0\}.$
+
+        Conversely, assume $U = \{0\}.$ Then, any map $\varphi \in V'$ satisfies $\varphi(0)= 0$ since $\varphi$ is linear, meaning $V \subseteq U^{0}.$ Since every element in $U^{0}$ is linear, we have $U^{0} \subseteq V,$ and hence by dual set containment $U^{0} = V'.$
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item Assume that $T: V \to W$ is injective, meaning $\dim \text{null}\, T = 0,$ or equivalently, $\dim V = \dim \text{range}\, T.$ Then, $T'(\varphi) = \varphi \circ T$ for all $\varphi \in W'.$ Then, consider any map $\psi \in V'$. Let $V$ have basis $v_1, v_2, \ldots, v_n.$ Since $T$ is injective, $T(v_1), T(v_2), \ldots, T(v_n)$ are also linearly independent, and can be extended to a basis of $W.$ Construct such a basis, 
+        $$
+        T(v_1), T(v_2), \ldots,T(v_n), w_1, \ldots, w_m
+        $$
+        for $m \geq 0.$ Then, the map $\varphi$ satisfying 
+        $$
+        \varphi(T(v_k)) = \psi (v_k)
+        $$
+        and $\varphi(w_k) = 0$ for all such valid indices $k$ satisfies $T'(\varphi) = \psi,$ meaning $T'$ is surjective.
+
+        \item Assume that $T: V \to W$ is surjective. Then, assume we have $\varphi, \psi \in W'$ such that $T(\varphi) = T(\psi),$ or equivalently, 
+        $$
+        \varphi \circ T = \psi \circ T.
+        $$
+        Hence, $$
+        \varphi(T(v)) = \psi(T(v))
+        $$
+        for all $v \in V.$ Since $T$ is surjective, $\text{range}\, T = W,$ meaning for all $w \in W$ there is some $v_0$ such that $T(v_0) = w.$ Hence, for all $w,$ $\varphi(w) = \psi(w),$ meaning $\varphi = \psi$ as required, since functionals are unique. Thus, $T'$ is injective, since $$T' \varphi = T ' \psi \Rightarrow \varphi = \psi.$$
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item We do this via double set containment. First, consider some element $\varphi \in (U + W)^{0}.$ Thus, for any $x \in V$ such that there exists $u \in U, w \in W$ with $x = u + w,$ we have $$
+        \varphi(x) = 0 = \varphi(u) + \varphi(w).
+        $$
+        Since for all $u \in U,$ $w \in W,$ $x = u + w \in (U + W)^{0},$ $\varphi(u) + \varphi(w) = 0$ for all such $u, w.$ Fixing $w = 0,$ we get $\varphi(u) = 0,$ and fixing $u = 0,$ we get $\varphi(w) = 0,$ meaning $\varphi$ must send all elements of $U$ to $0,$ and all elements of $W$ to $0.$ Hence, $\varphi$ is in both $U^{0}$ and $W^{0},$ meaning
+        $$
+            x \in U^{0} \cap W^{0},
+        $$
+        i.e., $(U + W)^{0} \subseteq U^{0} \cap W^{0}.$
+
+        Conversely, consider $\varphi \in U^{0} \cap W^{0}.$ Then, for all $u \in U$ and $w \in W,$ $\varphi(u + w) = \varphi(u) + \varphi(w) = 0.$ Hence, for all $x \in U + W, $ $\varphi (x) = 0,$ meaning $\varphi \in (U + W)^{0}.$ Thus we know $U^{0} \cap W^{0} \subseteq (U + W)^{0},$ and thus $(U + W)^{0} = U^{0} \cap W^{0}.$
+
+        \item If we have $\varphi \in U^{0} +W^{0},$ then $\varphi = t + s$ for $t \in U^{0}$ and $s \in W^{0}.$ Hence, for any $v \in U \cap W,$ $\varphi(v) = t(v) + s(v) = 0,$ i.e., $\varphi \in (U \cap W)^{0}.$ Therefore, we have $U^{0} + W^{0} \subseteq (U \cap W)^{0}.$
+
+        Notice that \begin{align*}
+        \dim(U^{0} + W^{0}) &= \dim U^{0} + \dim W^{0} - \dim U^{0} \cap W^{0} \\
+        &= 2\dim V - \dim U - \dim W-  \dim (U + W)^{0} \\
+        &= 2 \dim V - \dim U - \dim W - V + \dim (U + W) \\
+        &= \dim V - \dim U - \dim W + \dim U + \dim W - \dim U \cap W \\
+        &= \dim V - \dim U \cap W = \dim (U \cap W)^{0}.
+        \end{align*}
+
+        Since these vector spaces have the same dimension, and one is a subset of the other, we have
+        $$
+        U^{0} + W^{0} = (U \cap W)^{0}.
+        $$
+    \end{enumerate}
+
+    \item Let $V'' = (V')'.$ Consider $
+    \Lambda : V \to V''
+    $ with $(\Lambda v)(\varphi) = \varphi(v).$ 
+    \begin{enumerate}
+        \item Consider $\Lambda(u + w).$ By definition, we have $\Lambda(u + w)(\varphi) = \varphi(u + w) = \varphi(u) + \varphi(w)$ by the linearity of $\varphi.$ Since $\varphi(u) = (\Lambda u)(\varphi),$ and $\varphi(w) = (\Lambda w)(\varphi),$ we have
+        $$
+            (\Lambda(u + w))(\varphi) = (\Lambda u)(\varphi) + (\Lambda w)(\varphi) = (\Lambda u + \Lambda w)(\varphi).
+        $$
+        Since this holds for all $\varphi \in V',$ we get $\Lambda (v + w) = \Lambda v + \Lambda w.$
+
+        Similarly, consider $\Lambda(\lambda v).$ For all $\varphi, $ we have 
+        $$
+        (\Lambda(\lambda v))(\varphi) =\varphi(\lambda v) = \lambda \varphi(v) = \lambda (\Lambda v)(\varphi).
+        $$ Since $\Lambda v \in V'',$ which is linear,  we get
+        $$
+        (\Lambda(\lambda v))(\varphi) = (\lambda \Lambda v)(\varphi)
+        $$
+        for all $\varphi,$ meaning
+        $$
+        \Lambda(\lambda v) = \lambda \Lambda(v).
+        $$
+        Thus, $\Lambda$ is lienar.
+
+        \item Assume we have some $T \in \mathcal L(V).$ Then, consider $T'' \circ \Lambda.$ By definition, $T': V' \to V'$ satisfies
+        $$
+        T'(\varphi) = \varphi \circ T,
+        $$
+        and hence $T''(\psi) = \psi \circ T'.$ Then,  for any $v \in V,$
+        $$
+        (T'' \circ \Lambda)(v) = T''(\Lambda(v)) = \Lambda (v) \circ  T'.
+        $$
+        Therefore,  by the construction of $\Lambda,$ we have
+        $$
+            (\Lambda(v) \circ T')(\varphi) = \Lambda(v)(T'(\varphi)) = \Lambda(v)(\varphi \circ T) = (\varphi \circ T)(v) = \varphi(T(v)) = \Lambda(T(v)).
+        $$
+        Hence, for all $v \in V,$ we get
+        $$
+        (T'' \circ \Lambda)(v) = (\Lambda \circ T)(v),
+        $$
+        and thus $T'' \circ \Lambda = \Lambda \circ T.$
+
+        \item Let us look at the null space of $\Lambda.$ Assume for an arbitrary $v,$
+        $$
+        \Lambda(v) = 0 \in V''.
+        $$
+        Then, for all $\varphi \in V',$ we have
+        $$
+            (\Lambda(v))(\varphi) = 0 = \varphi(v),
+        $$
+        meaning $v \in \ker \varphi$ for all such $\varphi.$ Then, for the sake of contradiction assume $v \neq 0.$ Then, all linear functionals $\varphi \in V'$ must have $\varphi(v) =0.$ 
+        
+        Now, consider the case where $\dim V > 0$. Since $V$ is finite dimensional, and $\dim V \neq 0,$ extend $v$ into a  basis $v, v_1, \ldots, v_n$ with 
+        $$
+        \varphi(v) = 1, \varphi(v_k) = 0.
+        $$
+        This is a contradiction, since $\varphi(v) = 0$ for all $v \in V,$ and thus $v = 0.$ Thus, $\ker \Lambda = 0,$ and by rank-nullity,
+        $$
+            \dim V'' = \dim V= 0 + \dim \text{range} \ \Lambda = \dim \text{range} \ \Lambda.
+        $$
+        Thus, $\Lambda$ is an isomorphism.
+
+        Otherwise, if $\dim V = 0,$ then $\dim V'' = 0  = \dim \ker \Lambda + \dim \text{range}\  \Lambda.$ Since $\dim \cdot \geq 0,$ we have $\dim \text{range} \ \Lambda = 0 = \dim V,$ meaning $\Lambda$ is till an isomorphism.
+    \end{enumerate}
+
+    \item Let $\pi'$ be the dual map of $\pi.$ 
+    \begin{enumerate}
+        \item Assume that we have $\pi'(\varphi) = \pi'(\psi)$ for $\varphi, \psi \in (V/U)'.$ Hence, we have
+        $$
+        (\varphi \circ \pi)(v) = (\psi \circ \pi)(v)
+        $$
+        for all $v \in V.$ Equivalently, we get
+        $$
+        \varphi(v + U) = \psi(v + U)
+        $$
+        for all $v \in V.$ Since $\varphi = \psi$ over all of their domain $V/U,$ we get $\varphi = \psi.$
+
+        \item For an arbitrary $\varphi \in (V/U)',$ we have
+        $\pi'(\varphi) = \varphi \circ \pi.$ Hence, let us consider some $(\pi'(\varphi))(u)$ for $u \in U.$ Then, we get 
+        $$
+        (\pi'(\varphi))(u) = \varphi(\pi(u)) = \varphi(u + U) = \varphi(U) = \varphi(0 + U)= 0,
+        $$
+        since any functional $x \in \mathcal L(V/U, \mathbb F)$ must satisfy $\varphi(U) = 0.$ Hence, $\pi'(\varphi) \in U^{0}$ for any $\varphi \in (V/U)',$ and thus $\text{range}\ \pi' = U^{0}.$
+
+        \item Since $\pi'$ is injective, and $\text{range} \ \pi' = U^{0},$ then if we restrict the codomain of $\pi'$ to $U^{0},$ it must be an isomorphism between the two spaces.
+    \end{enumerate}
+\end{enumerate}
+
+\subsection{Reading}
+\begin{enumerate}
+    \item[13] \begin{enumerate}
+            \item Consider $\mathcal P(\mathbb F) / U,$ i.e., the set such that
+            $$
+            \mathcal P(\mathbb F) /U = \{r + U : r \in \mathcal P(\mathbb F)\}.
+            $$
+
+            For simplicity, first assume $\deg p > 0.$
+
+            We show that $\dim \mathcal P(\mathbb F) / U = \deg p$ by constructing an explicit basis. Construct the set 
+            $$
+            \{1 + U, z + U, z^2 + U, \ldots, z^{m - 1} + U\} \subseteq \mathcal P_{m - 1}(\mathbb R).
+            $$
+
+            We prove that this set is both linearly independent and spanning. 
+
+            \begin{itemize}
+                \item 
+            For linear independence, assume we have
+            $$
+            \lambda_0(1 + U) + \ldots + \lambda_{m - 1}(z^{m - 1} + U) = 0 + U
+            $$
+            for coefficients $\lambda_0, \ldots, \lambda_{m - 1} \in \mathbb F.$ Then, we get
+            $$
+            (\lambda_0 + \lambda_1 z + \ldots + \lambda_{m -1}z^{m-1}) + U = 0 + U.
+            $$
+            Hence, we need $\lambda_0 + \lambda_1 z + \ldots + \lambda_{m-1}z^{m-1} \in U,$ i.e., we must be able to write it as $pq$ for some $q \in \mathcal P(\mathbb F).$ Assume for the sake of contradiction that $p, q \neq 0.$ Then, this polynomial has degree $m - 1,$ and $p$ has degree $m,$ meaning $pq$ must have degree $\geq m,$ which is a contradiction. Thus, $p$ or $q$ is the zero polynomial, meaning $$\lambda_0 + \ldots + \lambda_{m-1}z^{m -1} = 0,$$ and thus the coefficients satisfy $\lambda_0 = \ldots = \lambda_{m-1} = 0.$ This means the set must be linearly independent.
+
+            \item For spanning, consider an arbitrary $x \in \mathcal P(\mathbb F) / U,$ i.e, $x = r + U$ for some $r \in \mathcal  P(\mathbb F).$ Consider cases on $\deg r$: \begin{itemize}
+                \item If $\deg r \geq m,$ using the division algorithm we can write $r = pq + r'$ for some $\deg r'< m,$ and $q \in \mathcal P(\mathbb F)$ Then, since $1, z, \ldots, z^{m-1}$ is a basis for $\mathcal P_{m-1}(\mathbb F),$ we can write
+                $$
+                r= pq + \sum_{k=0}^{m-1} \lambda_k z^{k},
+                $$
+                i.e., 
+                $$
+                x = \left(\sum_{k = 0}^{m -1} \lambda_{k} z^{k} + pq\right) + U.
+                $$
+                Since $pq \in U,$ we get $$
+                x = \sum_{k = 0}^{m-1} \lambda_k (z^{k} + U),
+                $$
+                meaning $x$ can be written as a linear combination of our proposed basis.
+
+                \item Otherwise, if $\deg r < m$ we choose $q = 0$ in the above, and still yield $$x = \sum_{k = 0}^{m-1} \lambda_k(z^{k} + U)$$ for some coefficients $\lambda_k \in \mathbb F.$
+            \end{itemize}
+
+            In either case, $x \in \text{span}(\cdot),$ for all $x \in \mathcal P(\mathbb F) / U,$ meaning the set is spanning.
+            \end{itemize}
+
+            Hence, the set $\{z^{k} + U : 0 \leq k < m, k \in \mathbb Z\}$ is a basis on $\mathcal P(\mathbb F) / U.$ Since it has size $m = \deg p,$ we conclude that
+            $$
+            \dim \mathcal P(\mathbb F) / U = \deg p.
+            $$
+
+        \item By the above, 
+        $$
+        \{z^{k} + U : 0 \leq k < m, k \in \mathbb Z\}
+        $$
+        is a basis.
+    \end{enumerate}
+\end{enumerate}
+\end{document}

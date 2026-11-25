@@ -1,0 +1,141 @@
+\documentclass[12pt]{article}
+
+\input{header}
+
+\begin{document}
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item Consider the case where we have a collection of coins $C = [4, 3, 1],$ and we have $V = 14.$ The greedy approach will select $4 \times 3$ and $1 \times 2$, i.e, $5$ coins, whereas we can choose $4 \times 2$, $3 \times 2$ to construct $V = 14$ with 4 coins, meaning the greedy approach is suboptimal.
+
+        \item \begin{enumerate}
+            \item Construct $T[i]$ where $T[i]$ is the minimum number of coins required to attain $V = i.$
+            \item We have
+            $$
+            T[j] = \min_{c \in C, \ c \leq j}(T[j - c]) + 1.
+            $$
+
+            \textbf{Proof}: the true minimal way to construct $V = j$ will contain some final chosen coin, $c.$ If the remaining coins are not minimal for $V = j - c,$ then we can construct a more minimal selection for $V = j.$ Hence, given we know $T[j -c ]$ is correct for all possible coins $c$, $T[j]$ will be correct.
+
+            \item The base case is simply $T[0] = 0,$ since there are $0$ coins required to form $V = 0$ from the set of coins (assuming coin values are all positive).
+
+            \item Cell $T[V]$ contains the solution.
+
+            \item We must perform the recursion $V$ times, and each recursion has $\mathcal O(|C|)$ iterations, meaning our algorithm runs in $\mathcal O(V|C|)$ time.
+        \end{enumerate}
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item $A = [3, 1, 1, 1, 1, 1, 1]$ with $k = 1$ can be entirely protected if we place a guard at entry $i = 4,$ but the greedy algorithm will choose at least $i = 1,$ and yield a score of only $6$ (as opposed to $9$).
+
+   \item \begin{enumerate}
+    \item Define $T[i, j]$ as the maximum score achievable with at most $i$ knights when the gallery consists only of paintings $1, \ldots, j.$
+
+    \item For $i \geq 1,$ our recurrence is given by \begin{align*}
+    T[i, j] = \begin{cases}
+    \max\left\{
+        T[i, j - 1], \
+        C[j - 3] + T[i - 1, j - 7]
+    \right\} & j \geq 7 \\[2mm]
+        \sum_{t = 1}^{j} A[t]  & 1 \leq j \leq 6
+    \end{cases}
+    \end{align*}
+    where $C[p] = \sum_{t = p - 3}^{p + 3}A[t]$ represents the sum of all paintings protected by a knight placed at index $p.$ Note that $C[p]$ is only ever used with $4 \leq p \leq n - 3,$ so the sum never leaves the array.
+
+    \paragraph{Proof} If $1 \leq j \leq 6,$ a single knight at position $\max(1, j - 3)$ protects every painting in $1, \ldots, j,$ so the score is the sum of the whole prefix.
+
+    Now let $j \geq 7,$ and consider an optimal placement of at most $i$ knights over paintings $1, \ldots, j.$ Either painting $j$ is not protected, or it is.
+
+    In the first case, no knight stands on positions $j - 3, \ldots, j,$ so the same placement is valid for paintings $1, \ldots, j - 1$ with the same score, which is at most $T[i, j - 1].$
+
+    In the second case, some knight $g$ stands on a position in $j - 3, \ldots, j.$ Moving $g$ to position $j - 3$ protects paintings $j - 6, \ldots, j,$ which is a superset of what it protected before, so the score does not decrease. Any other knight that protects a painting in $j - 6, \ldots, j$ can be moved left to position at most $j - 7$ without losing any painting with index $\leq j - 7$ that it protected. The remaining knights then form a placement of at most $i - 1$ knights over paintings $1, \ldots, j - 7.$ If this placement were not maximal, replacing it with a maximal one and keeping $g$ at position $j - 3$ would give a better placement, a contradiction. Hence the score is $C[j - 3] + T[i - 1, j - 7].$
+
+    Thus, if $T[i - 1, j - 7]$ and $T[i, j - 1]$ are correct, then $T[i, j]$ is correct.
+
+    \item Our base cases are $T[0, j] = 0$ for $0 \leq j \leq n,$ and $T[i, 0] = 0$ for $0 \leq i \leq k.$
+
+    \item Cell $T[k, n]$ contains the solution, since this is the maximum score with at most $k$ knights over all paintings $1, \ldots, n.$
+
+    \item There are $\mathcal O(nk)$ cells and each cell requires $\mathcal O(1)$ work if we pre-compute $C$ and the prefix sums of $A,$ meaning this algorithm takes $\mathcal O(nk)$ time.
+\end{enumerate} 
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item Define $T[i, j, 0]$ as the maximum achievable rating with at most $i$ dollars, where the largest episode is $j,$ and $j - 1$ is also chosen. Define $T[i, j, 1]$ as the equivalent, but where $j$ is chosen and $j - 1$ is not chosen. Define $T[i, j, 2]$ as the equivalent, but the largest episode has index $< j.$
+
+        \item Our recursion is defined as 
+        \begin{align*}
+        T[i, j, 0] &= \max(T[i - 1, j - 1, 0], T[i, j - 1, 1]) + R[j], \\
+        T[i, j, 1] &= T[i - 1, j - 1, 2] + R[j], \\ 
+        T[i, j, 2] &= \max(T[i, j - 1, 0], T[i, j - 1, 1], T[i, j -1, 2])
+        \end{align*}
+        if $i \geq 1, j \geq 2.$
+
+        Any optimal movie selection has some largest movie $j.$ Then, if $j - 1$ is also in this selection, and $j - 2$ is not, adding $j$ is free. Otherwise (whether $j - 1$ is not in the selection, or $j - 1$ is and $j - 2$ is not), adding $j$ adds $1$ to the cost of the set of movies. 
+
+        \item Our base cases are as follows: whenever $i = 0$ or $j = 0$,
+        \begin{align*}
+            T[i, j, 2] &= 0, \\
+            T[i, j, 0] = T[i, j, 1] &= -\infty.
+        \end{align*}
+        The recursion then applies for all $i \geq 1, \ j \geq 1.$
+
+        \item We have $\mathcal O(nk)$ cells that each require $\mathcal O(1)$ time to compute, meaning our algorithm runs in $\mathcal O(nk)$ time.
+\end{enumerate}
+
+\item \begin{enumerate}
+    \item \begin{enumerate}
+        \item We define $T[i]$ as the minimum total badness achievable by inserting line breaks for the substring consisting of words from $1 \ldots i.$
+
+        \item Define the recursion as 
+        $$
+            T[i] = \min_{1 \leq j \leq i}(\texttt{Badness}(j, i) + T[j - 1]),
+        $$
+        when $i \geq 1.$
+
+        This is correct because every single partitioning can be decomposed into the final partition $p$ and all previous partitions $S$. If $S$ not minimal, then taking the minimal partitioning instead of $S$ will produce a more minimal partitioning. Hence, we only need to iterate over the final partition and the optimal partition preceding (which exists in our table for smaller $i$).
+
+        \item Base case consists of $T[0] = 0.$
+
+        \item $\mathcal O(n)$ iterations, where each cell requires $\mathcal O(n)$ time to compute, yielding $\mathcal O(n^2)$ time.
+    \end{enumerate}
+
+    \item \begin{algorithm}
+        \begin{algorithmic}
+            \Procedure{ExtractIdx}{$T, n$}
+                \State $B \gets \texttt{vector}()$
+
+                \State $j \gets n$ 
+
+                \vspace{3mm}
+
+                \While{$j \geq 1$}
+                    \State $i \gets j$
+
+                    \vspace{3mm}
+                    
+                    \While{$T[j] - T[i - 1] \neq \texttt{Badness}(i, j)$} 
+                        \State $i \gets i - 1$
+                    \EndWhile
+
+                    \vspace{3mm}
+
+                    \If{$i = 1$}
+                        \State \textbf{break}
+                    \EndIf
+
+                    \vspace{3mm}
+                    
+                    \State $B.\texttt{push\_back}(i - 1)$ \Comment{Final line starts at word $i$}
+
+                    \State $j \gets i - 1$
+                \EndWhile
+
+                \vspace{3mm}
+
+                \State \Return $\texttt{reversed}(B)$
+            \EndProcedure
+        \end{algorithmic} 
+    \end{algorithm}
+\end{enumerate}
+\end{enumerate}
+\end{document}

@@ -1,0 +1,53 @@
+\documentclass[12pt]{article}
+
+\usepackage{mathtools}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\title{Homework 3}
+\author{Satvik Prasad}
+\date{}
+
+\pagestyle{fancy}
+\lhead{Satvik Prasad}
+\rhead{MATH3012}
+
+\begin{document}
+\begin{enumerate}
+\item \begin{enumerate}
+\item In this question, we assume the houses are distinguishable. We group the 6 houses that have termites in one group. Then, we have 15 total groups to arrange, and 6 houses to arrange within the `termite' group. This yields \begin{align*}
+N = 15! \cdot 6! \approx 9.4152554 \times 10^{14}.
+\end{align*}
+
+\item This is equivalent to arranging the 14 houses with no termites, and then choosing 6 out of the 15 possible positions to place the termite houses, and then arranging. This yields \begin{align*}
+N = 14! \cdot 6! \cdot {15 \choose 6} \approx 3.1415569 \times 10^{17}
+\end{align*}
+\end{enumerate}
+
+\item By subtracting the second equation from the first, the pair of these equations can be reduced into \begin{align*}
+x_4 + x_5 + x_6 + x_7 &= 6, \\
+x_1 + x_2 + x_3 &= 6.
+\end{align*}
+
+Therefore, we need to arrange 6 stars between 3 bars, and then arrange 6 stars between 2 bars. This can be done in \begin{align*}
+N = \dfrac{9!}{6! \cdot 3!} \cdot \dfrac{8!}{6! \cdot 2!} = 2352
+\end{align*}
+ways.
+
+\item Letting $x_1 = 1 + x',$ this will be the same number of integer solutions to the equation \begin{align*}
+x' + x_2 + x_3 &= 11, \text{ or} \\
+x_2 + x_3 &= 11 - x' 
+\end{align*}
+subject to $0 \leq x' \leq 4,$ $x_2 \geq 0,$ and $x_3 \geq 0.$ We enumerate over all possible values of $x'.$ For each value of $x',$ we need to distribute $11 - x'$ stars over 1 bar. Therefore, \begin{align*}
+N &= \sum_{x' =0}^{4} \dfrac{(12 - x')!}{(11-x')!} \\
+&= \sum_{x' = 0}^{4} 12 - x' \\
+&= \sum_{k = 8}^{12}k = \dfrac{20}{2} \cdot 5 = 50
+\end{align*}
+ways.
+\end{enumerate}
+\end{document}

@@ -1,0 +1,178 @@
+\documentclass[12pt]{article}
+
+\input{header}
+
+\begin{document}
+\begin{enumerate}
+    \item We know $X, Y$ are independent random variables such that $X, Y \sim \text{Exp}(\lambda).$ We want to find the joint density of $U = X, V = X + Y.$
+
+    Define the map $T: \mathbb [0, \infty)^2 \to D$ such that
+    $$
+    T(x, y) = (x, x + y),
+    $$
+    with inverse $T^{-1}: D \to [0, \infty)^2$ $$
+    T^{-1}(u, v) = (u, v - u).
+    $$
+
+    For our domain, we need $u \geq 0$ and $v \geq u,$ meaning $D = \{(u, v) : u \geq 0, v \geq u\}$ as required.
+
+    This map has Jacobian $$
+    J = \begin{vmatrix}
+        1 & 0 \\
+        -1 & 1
+    \end{vmatrix} =  1,
+    $$
+    and thus our joint density for $U, V$ satisfies
+    $$
+    f_{U, V}(u, v) = f_{X, Y}(u, v - u).
+    $$
+    the joint density for $X, Y$ is the following, since $X, Y$ independent:
+    $$
+    f_{X, Y}(x, y) = \begin{cases}
+        \lambda^2e^{-\lambda( x + y)} & x \geq 0, y \geq 0 \\
+        0 & \text{otherwise}
+    \end{cases},
+    $$
+    meaning we get 
+    $$
+    f_{U, V}(u, v) = \begin{cases}
+        \lambda^2 e^{-\lambda v} & v \geq u \geq 0,  \\
+        0 & \text{otherwise}
+    \end{cases}.
+    $$
+
+    Then, we want to find the conditional density of $U \mid V = a,$ which satisfies
+    $$
+    f_{U \mid V = a}(u) = \dfrac{f_{U, V}(u, a)}{f_V(a)}.
+    $$
+    Computing the marginals, when $v \geq 0$ we have
+    $$
+    f_V(v) = \int_{0}^{v} \lambda^2 e^{-\lambda v} \, du = v\lambda^2 e^{-\lambda v},
+    $$
+    yielding conditional density $$
+    f_{U \mid V = a}(u)  = \dfrac{\lambda^2 e^{-\lambda a}}{a \lambda^2 e^{-\lambda a}} = \dfrac{1}{a}
+    $$
+    when $0 \leq u \leq a,$ and $0$ otherwise. Therefore, $(U \mid V = a) \sim \text{Uniform}(0, a)$ as required.
+
+    \item Computing the MGF of $X \sim \text{Uniform}(a, b),$ we have
+    $$
+        M(s) = \int_{a}^{b} \dfrac{e^{st}}{b - a} \, dt = \dfrac{e^{bs} - e^{as}}{s(b- a)} = \dfrac{1}{b-a} (s^{-1}e^{bs} - s^{-1} e^{as}).
+    $$
+
+    To find the $k$-th moment, we can write $$
+    e^{bs} - e^{as} = \sum_{j = 1}^{\infty} \dfrac{b^j - a^j}{j!} s^j, 
+    $$
+    yielding
+    $$
+    M(s) = \dfrac{1}{b-a} \sum_{j = 0}^{\infty} \dfrac{b^{j + 1} -a^{j + 1}}{(j + 1)!}s^{j}.
+    $$
+    This yields $k$-th derivative
+    \begin{align*}
+    M^{(k)}(s) &= \dfrac{1}{b-a} \sum_{j = k}^{\infty} \dfrac{b^{j + 1} - a^{j + 1}}{(j+1)!} \dfrac{j!}{(j - k)!} s^{j - k} \\
+    &= \dfrac{1}{b-a} \sum_{j = 0}^{\infty} \dfrac{b^{j +k +  1} - a^{j +k +  1}}{(j+k  + 1)(j)!} s^{j},
+    \end{align*}
+    meaning $M^{(k)}(0)$ satisfies
+    $$
+    M^{(k)}(0) =  \dfrac{b^{k+1} - a^{k+1}}{(b-a)(k + 1)} = \mathbb E[X^k]
+    $$
+    as required.
+
+    \item Define $S = X_1 + \ldots + X_n$ where $N$ is an RV with PGF $G(s).$ Conditioning on $N,$ we have
+    $$
+    \mathbb P(S \leq s \mid N  = n) = \mathbb P(X_1 + X_2 + \ldots + X_n \leq s).
+    $$
+    Thus, we have $$
+    \mathbb P(S \leq s) = \sum_{n = 0}^{\infty} \mathbb P(X_1 + \ldots + X_n \leq s) \mathbb P(N = n) = \sum_{n = 0}^{\infty} \mathbb P(S_n \leq s) \mathbb P(N = n).
+    $$
+    Consider the random variable $S_n = X_1 + \ldots + X_n.$ The MGF of $S_n$ satisfies $M_n(s) = \mathbb E[e^{sS_n}] = M(s)^{n}.$
+
+    By the above, we know
+    $$
+    f_S(s) = \sum_{n = 0}^{\infty} f_{S_n}(s) \mathbb P(N = n).
+    $$
+    Computing our MGF, we have
+    \begin{align*}
+        M_S(t) &= \int_{-\infty}^{\infty} e^{st} \sum_{n = 0}^{\infty} f_{S_n}(s) \mathbb P(N = n) \, ds \\
+        &= \sum_{n = 0}^{\infty} \mathbb P(N = n)\int_{\mathbb R} e^{st} f_{S_n}(s) \, ds \\
+        &= \sum_{n = 0}^{\infty} \mathbb P(N = n) M_{S_n}(t) \\
+        &= \sum_{n = 0}^{\infty} \mathbb P(N = n) M(t)^n \\
+        &= G(M(t))
+    \end{align*}
+    as required.
+
+    \item \begin{enumerate}
+        \item  We know $\Cov{X}{Y} = \mathbb E[(X - \mu)(Y - \lambda)]$ where $\mu = \mathbb E[X]$ and $\lambda = \mathbb E[Y].$ By the linearity of expectation, 
+        $$
+        \mathbb E[X] = \sum_{k = 1}^{n} \mathbb E[X_k], \qquad \mathbb E[Y] = \sum_{k = 1}^{n} \mathbb E[Y_k].
+        $$
+
+        Substituting, we get
+        $$
+        \Cov{X}{Y} = \mathbb E[XY] - \mathbb E[X] \mathbb E[Y] = \mathbb E\left[\sum_{k = 1}^{n}\sum_{j = 1}^{n} X_i Y_j\right] - \sum_{k = 1}^{n} \sum_{j = 1}^{n} \mathbb E[X_k] \mathbb E[Y_j].
+        $$
+        Since $X_i$ and $Y_j$ are independent when $i \neq j,$ we can write 
+        \begin{align*}
+        \Cov{X}{Y} &= \sum_{k = 1}^{n} \sum_{j = 1}^{n} \mathbb E[X_i Y_j] - \mathbb E[X_k] \mathbb E[Y_j] \\
+        &= \sum_{k = 1}^{n} \mathbb E[X_k Y_k] - \mathbb E[X_k] \mathbb E[Y_k] = \sum_{k = 1}^{n}\Cov{X_k}{Y_k}
+        \end{align*}
+        as required.
+
+        \item Let $X_k$ be the number of points scored by player $A$ in game $k,$ and equivalently for $Y_k.$ Then, $X_i$ and $Y_j$ are independent whenever $i \neq j,$ meaning if $A = X_1 + \ldots + X_n$ and $B = Y_1 + \ldots + Y_n,$ we have
+        \begin{align*}
+        \Cov{A}{B} &= \sum_{i = 1}^{n} \Cov{X_i}{Y_i} \\
+        &= \sum_{i = 1}^{n} 2pq - (2p^2 + 2pq)(2q^2 + 2pq) \\
+        &= \sum_{i = 1}^{n} 2pq - 4pq = -2npq
+        \end{align*}
+        as required.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+    
+    \item Partition on $X > Y,$ yielding \begin{align*}
+    \mathbb P(\min(X, Y) + \max(X, Y) \leq k) &= \mathbb P( \min(X, Y) + \max(X, Y) \leq k \cap {X > Y})  \\
+    &+ \mathbb P( \min(X, Y) + \max(X, Y) \leq k \cap {X \leq Y}) \\
+    &= \mathbb P(Y + X\leq k \cap X > Y) + \mathbb P(X + Y \leq k \cap X \leq Y).
+    \end{align*}
+    Since these events are disjoint, we therefore know
+    \begin{align*}
+    \mathbb P(\min(X, Y) + \max(X, Y) \leq k) &= \mathbb P(X + Y \leq k \cap (X > Y \cup X \leq Y)) \\
+    &= \mathbb P(X + Y \leq k)<
+    \end{align*}
+    for all $k,$ implying $\min(X, Y) + \max(X, Y) = X + Y.$
+
+    \item Write $X, Y \sim$ Bernoulli(1/2) be independent, with $M = \max(X, Y)$ and $m = \min(X, Y),$ yielding $\Cov{M}{m} = 1/16 \neq 0 = \Cov{X}{Y}.$ Thus, this is a counterexample. 
+
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item We have $\mathbb E[X]$ satisfying \begin{align*}
+            \mathbb E[X] = \mathbb E[S|U|] &= 1/2  \cdot \mathbb E[S|U| \mid S = 1] + 1/2 \cdot \mathbb E[S|U| \mid S = -1] \\
+            &=\dfrac{1}{2} \cdot \mathbb E[|U| - |U|] = 0.
+        \end{align*}
+
+        Similarly, we have $$\mathbb E[X^2] = \mathbb E[S^2 U^2] = \mathbb E[U^2] = \Var{U} + \mathbb E[U]^2 = \Var{U} = 1,$$
+        meaning $\Var{X} = 1$ as required.
+
+        \item We have $$
+        \mathbb P(0 < X < x) = \dfrac{1}{2} \mathbb P(0 < U <x) + \dfrac{1}{2} \mathbb P(-x < U< 0),
+        $$
+        which by symmetry of the Guassian distribution, we have
+        $$
+        \mathbb P(0 < X< x) = 2 \cdot \dfrac{1}{2} \cdot \mathbb P(0 < U < x) = \mathbb P(0 < \mathcal N(0, 1)  < x).
+        $$
+
+        \item Computing $\mathbb E[XY],$ we have
+        $$
+        \mathbb E[XY] = \mathbb E[S^2 |U|||V] = \mathbb E[|U||V|] = \mathbb E[|U|] \mathbb [|V|] = \dfrac{2}{\pi}
+        $$
+        since $U, V$ independent, yielding
+        $$
+            \mathbb E[XY] = 2/\pi.
+        $$
+
+        Hence, we have $\Cov{X}{Y} = 2/\pi - (0)(0) = 2/\pi$ as required.
+
+        \item The pair $(X, Y)$ have support on $[0, \infty)^2 \cup (-\infty, 0]^2 \neq \mathbb R^2,$ meaning they cannot be jointly normal, since the joint normal distribution has support on $\mathbb R^2.$
+    \end{enumerate}
+\end{enumerate}
+\end{document}

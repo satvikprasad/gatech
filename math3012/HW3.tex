@@ -1,0 +1,77 @@
+\documentclass[12pt]{article}
+
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\title{Homework 3}
+\author{Satvik Prasad}
+\date{}
+
+\pagestyle{fancy}
+\lhead{Satvik Prasad}
+\rhead{MATH3012}
+
+\begin{document}
+\begin{enumerate}
+    \item \begin{enumerate}
+            \item The word `sociological` has $12$ characters, and character O repeats 3 times, whereas C, I, L repeat 2 times. Hence, the number of ways to arrange this is \begin{align*}
+                    N = \dfrac{12!}{3! (2!)^3} = 9979200\, \text{ways}.
+                \end{align*}
+
+            \item Treat $A$ and $G$ as a single group. Hence, we can permute this group $2!$ ways, and we're left with $11$ characters (S, O, C, I, L, GA with duplicates), with $1$ repeat of count $3$ and $3$ repeats of count $2$. Hence, the number of ways to arrange in this fashion is \begin{align*}
+                    N = \dfrac{11! \cdot 2!}{3! \cdot (2!)^3} = 1663200\, \text{ways}.
+                \end{align*}
+
+            \item This is simply the complement of (b), so $$N = 9979200 - 1663200 = 8316000$$ ways.
+        \end{enumerate}
+
+    \item \begin{enumerate}
+            \item Fix our viewpoint to view the circular table with friend $1$ always at the top. Hence, this gives us $N = 7! = 5040$ ways to arrange the table.
+
+            \item Fix someone who is not Cady or Regina to sit at the top, then arrange $6$ other units and then permute the {Cady, Regina} unit. This gives us \begin{align*}
+                    N = 6! \cdot 2! = 1440\, \text{ways}.
+                \end{align*}
+
+            \item This is simply the complement of (b), so $$N = 5040 - 1440 = 3600$$ ways.
+        \end{enumerate}
+
+    \item \textbf{Story:} Choosing $r + 1$ items from $n + 1$ items.\\ \\
+        The RHS represents the number of ways to choose $r + 1$ items from $n + 1$ items, which is achieved using the combinatorial coefficient ${n + 1 \choose r + 1}.$ \\ \\
+        Notice that every single choice of $r + 1$ items from $n + 1$ items must include at least one item from the set $\{ r + 1, \ldots, n + 1 \}$ (if we assume the contrary, the size of our selection $\leq r$ which is a contradiction). Hence, we can also choose $r + 1$ items from $n + 1$ items by choosing $r$ items from the first $i$ given $r \leq i \leq n$, and then forcing the selection of the $(i + 1)$th item. This is achieved in \begin{align*}
+            \text{LHS} = \sum_{i = r}^{n} {i \choose r} \cdot 1 = \sum_{i = r}^{n} {i \choose r}.
+        \end{align*}
+
+        Hence, because the $\text{LHS} = \text{RHS},$ \begin{align*}
+            \sum_{i = r}^{n} {i \choose r} = {n + 1 \choose r + 1}.
+        \end{align*}
+
+    \item \begin{enumerate}
+            \item Using binomial expansion, we get \begin{align*}
+                    (3x - 2y)^8 &= \sum_{k = 0}^{8} {8 \choose k} (3x)^k (-2y)^{8 - k} \\
+                                &= 256 \sum_{k = 0}^8 {8 \choose k} (-1)^k 3^k 2^{-k} x^k y^{8 - k}.
+                \end{align*}
+
+                Hence, the coefficient of $x^3 y^5$ occurs when $k = 3,$ which will be $$c_3 = -256 {8 \choose 3}\cdot 3^3 \cdot 2^{-3} = - 32 \cdot 27 \cdot {8 \choose 3} = -48384.$$
+
+            \item We want to find the coefficient of $x^3y^3z^2$ in the expansion of $(x + y + z)^8.$ Using binomial expansion, \begin{align*}
+                    (x + y + z)^8 &= \sum_{k = 0}^8 {8 \choose k} x^{8 - k} (y + z)^k \\ 
+                                  &= \sum_{k = 0}^8 {8 \choose k} x^{8 - k} \sum_{r = 0}^{k} {k \choose r} y^{r} z^{k - r} \\
+                                  &= \sum_{k = 0}^{8} \sum_{r = 0}^{k} {8 \choose k} {k \choose r} x^{8 - k} y^{r} z^{k - r}.
+                \end{align*}
+
+                Hence, $x^3y^2z^2$ will occur when \begin{align*}
+                    8 - k &= 3, \\
+                    r &= 3, \\
+                    k - r &= 2,
+                \end{align*}
+                which has a solution iff $k = 5,$ and $r = 3.$ Therefore, the coefficient of this term will be \begin{align*}
+                    c_{5, 3} = {8 \choose 5} {5 \choose 3} = 560.
+                \end{align*}
+    \end{enumerate}
+\end{enumerate}
+\end{document}

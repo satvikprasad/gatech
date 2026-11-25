@@ -1,0 +1,94 @@
+\usepackage{bbm}
+\usepackage{fancyhdr}
+\usepackage{titling}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{dsfont}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\dec}{\text{dec}}
+\newcommand{\divi}{\mathbin{\textnormal{div}}}
+\title{Homework 1}
+\author{Satvik Prasad}
+\date{}
+\newtheorem{lemma}{Lemma}[section]
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \fancyhead[L]{\theauthor}
+    \fancyhead[R]{\thedate}
+}
+\pagestyle{plain}
+\makeatletter
+\def\@maketitle{%
+  \newpage
+  \null
+  \vskip 1em%
+  \begin{center}%
+  \let \footnote \thanks
+    {\LARGE \@title \par}%
+    \vskip 1em%
+  \end{center}%
+  \par
+  \vskip 1em}
+\makeatother
+\usepackage{cmbright}
+
+\newcommand{\mat}[1]{\mathbf{#1}}
+
+% ---------- Probability theory ----------
+% Core operators (optional argument-free; use as \E{X}, \Var{X}, \Cov{X}{Y})
+\DeclareMathOperator{\EOp}{\mathbb{E}}
+\DeclareMathOperator{\VarOp}{Var}
+\DeclareMathOperator{\CovOp}{Cov}
+\DeclareMathOperator{\CorrOp}{Corr}
+
+\renewcommand{\P}[1]{\mathbb{P}\left(#1\right)}        % \P{A}
+\newcommand{\E}[1]{\EOp\left[#1\right]}                % \E{X}
+\newcommand{\Var}[1]{\VarOp\left(#1\right)}            % \Var{X}
+\newcommand{\Cov}[2]{\CovOp\left(#1,\,#2\right)}       % \Cov{X}{Y}
+\newcommand{\Corr}[2]{\CorrOp\left(#1,\,#2\right)}     % \Corr{X}{Y}
+\newcommand{\SD}[1]{\operatorname{SD}\left(#1\right)}  % \SD{X}
+
+% Subscripted versions, e.g. \Esub{\theta}{X}, \Psub{\theta}{A}
+\newcommand{\Esub}[2]{\EOp_{#1}\left[#2\right]}
+\newcommand{\Psub}[2]{\mathbb{P}_{#1}\left(#2\right)}
+
+% Conditioning, indicators, independence
+\newcommand{\given}{\,\middle|\,}                      % \E{X \given Y}
+\newcommand{\ind}[1]{\mathbbm{1}\left\{#1\right\}}     % \ind{X > 0}
+\newcommand{\indep}{\perp\!\!\!\perp}                  % X \indep Y
+\newcommand{\iid}{\overset{\text{iid}}{\sim}}          % X_i \iid \Normal(0,1)
+
+% Convergence
+\newcommand{\convp}{\xrightarrow{\;p\;}}               % in probability
+\newcommand{\convd}{\xrightarrow{\;d\;}}               % in distribution
+\newcommand{\convas}{\xrightarrow{\text{a.s.}}}        % almost surely
+\newcommand{\convLp}[1]{\xrightarrow{L^{#1}}}          % in L^p
+
+% Probability spaces
+\newcommand{\F}{\mathcal{F}}                           % sigma-algebra
+\newcommand{\B}{\mathcal{B}}                           % Borel sigma-algebra
+\newcommand{\pspace}{(\Omega, \F, \mathbb{P})}
+
+% Common distributions
+\newcommand{\Normal}{\mathcal{N}}
+\newcommand{\Bern}{\operatorname{Bernoulli}}
+\newcommand{\Bin}{\operatorname{Binomial}}
+\newcommand{\Pois}{\operatorname{Poisson}}
+\newcommand{\Unif}{\operatorname{Uniform}}
+\newcommand{\Exp}{\operatorname{Exp}}
+\newcommand{\Geom}{\operatorname{Geometric}}
+\newcommand{\Gam}{\operatorname{Gamma}}
+\newcommand{\Beta}{\operatorname{Beta}}
+
+% Number sets
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}

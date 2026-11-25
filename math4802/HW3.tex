@@ -1,0 +1,202 @@
+\documentclass[12pt]{article}
+
+\input{header}
+
+\begin{document}
+\begin{enumerate}
+    \item \textbf{1} Let $\sigma_i$ be the set of all numbers present on the $i$-th iteration of this game. Let $$K(\sigma_i) = \prod_{\sigma \in s\sigma_i} (\sigma + 1).$$
+    Then, $\sigma_{i + 1} = \{(\sigma_i)_k : k \neq t, s\} \cup \{(\sigma_{t} + 1)(\sigma_{s} + 1) - 1\}$ for some $1 \leq t, s \leq |\sigma_i|.$ Thus, 
+    $$
+    K(\sigma_{i + 1}) = (\sigma_t + 1)(\sigma_s + 1) \times \prod_{k \neq t, s} ((\sigma_{i + 1})_k + 1) = K(\sigma_i),
+    $$
+    meaning $K$ is invariant across all games.
+
+    In the final round ($n$-th), $|\sigma_n| = 1,$ meaning $K(\sigma_n) = a + 1$ where $a$ is the only remaining element. Sine $K$ is invariant, $K(\sigma_n) = K(\sigma_1)= 2^{2026},$ and hence the final element is 
+    $$
+    a = 2^{2026} - 1.
+    $$
+
+    \item \textbf{3} Let $\sigma_i$ be the $i$-th tuple of integers $a_i, b_i$ produced by this process. Consider $S_i = \gcd(a_i, b_i).$ Assume we have $S_i = \gcd(a_i, b_i)$ for some $i \geq 1.$ Then, we have two cases:
+    \begin{itemize}
+        \item If $a_i = b_i,$ then $\gcd(a_i, b_i) = a_i,$ and our process terminates, meaning $S_j = a_i = b_i$ for all $j \geq i.$
+
+        \item WLOG if $a_i > b_i,$ then $a_{i + 1} = a_i - b_i,$ and $b_{i + 1} = b_i,$ meaning $S_{i + 1} = \gcd(a_{i + 1}, b_{i + 1}) = \gcd(a_i - b_i, b_i) = \gcd(a_i, b_i) = S_i.$
+    \end{itemize}
+
+    Hence, $S_i = \gcd(a, b)$ for all $i \geq 1,$ since $S_{i + 1} = S_i$ and $S_1 = \gcd(a, b).$
+
+    Now we prove that such a process terminates. Assume for the sake of contradiction that the process never terminates, i.e., $a_i \neq b_i$ for all $i \geq 1.$ We prove via induction that $a_i, b_i \geq 1$ for all $i \geq 1.$
+
+    For our base case, $a, b \geq 1$. Assume that for $k \geq 1,$ $a_k, b_k \geq 1,$ Via our assumption, $a_k \neq b_k.$ WLOG, assume $a_k > b_k.$ Then, $a_{k + 1} = a_k - b_k \geq 1,$ and $b_{k + 1} = b_k \geq 1,$ concluding our inductive step.
+
+    Thus, $a_i, b_i \geq 1$ for all $i \geq 1$ via induction. Consider $K_i = a_i + b_i$ for any index $i.$ WLOG assume $a_i > b_i,$ yielding $K_{i + 1} = a_i.$ Since $b_i \geq 1,$ this means $K_i \geq a_i + 1 = K_{i+ 1} + 1,$ or equivalently, 
+    $$
+    K_{i + 1} \leq K_{i} - 1 \Rightarrow K_{i + 1} \leq K_1 - i = (a+b) - i
+    $$
+    for all $i \geq 1.$ However, taking $i = (a+b),$ we see $a_{a + b} + b_{a + b} = K_{a + b} \leq 0,$ which is a contradiction since $a_j, b_j$ must be positive.
+
+    Therefore, the process must terminate, meaning there must be some $a_j, b_j$ such that $a_j = b_j.$ Then, by the invariance of $S,$ we have $S_j = \gcd(a, b) = a_j,$ meaning $a_j = b_j = \gcd(a, b)$ once the process terminates.
+
+    \item \textbf{4} Let $\sigma_i$ be the $i$-th permutation of the distinct real numbers $a_1, \ldots, a_n.$ Count the quantity
+    $$
+    K(\sigma_i) = \sum_{k = 1}^{n} \underbrace{|\{(\sigma_i)_j : (\sigma_i)_j < (\sigma_i)_k,\ j < k\}|}_{K_{k}(\sigma_i)}.
+    $$
+    Assume at step $\sigma_i \to \sigma_{i + 1},$ we swap indices $r, s,$ where $r < s.$ Then, we know $(\sigma_i)_r > (\sigma_i)_s.$ For all $k < r,$ $(\sigma_{i + 1})_k = (\sigma_i)_k,$ meaning $K_{k}(\sigma_i) = K_k(\sigma_{i + 1})$ for all $k < r.$ For all $k > s,$ the set 
+    $$
+    \{(\sigma_i)_j : j < k\}
+    $$
+    remains unchanged, meaning $K_k(\sigma_{i + 1}) = K_k(\sigma_i)$ for all $k > s.$ 
+    \begin{itemize}
+    \item Consider every $(\sigma_i)_j$ for $r < j < s$ such that $(\sigma_i)_r > (\sigma_i)_j > (\sigma_i)_s.$ Then, a swap of $r, s$ will set 
+    $$
+    K_{j}(\sigma_{i + 1}) = K_{j}(\sigma_{i}) + 1.
+    $$
+
+    \item Otherwise, for $r < j < s,$ if $(\sigma_i)_{j} > (\sigma_i)_r,$ then $K_j(\sigma_{i + 1}) = K_j(\sigma_i)$ since $(\sigma_i)_s < (\sigma_i)_r.$
+    
+    \item Similarly, for $r < j < s,$ if $(\sigma_i)_{j} < (\sigma_i)_s,$ then $K_j(\sigma_{i + 1}) = K_j(\sigma_i)$ since $(\sigma_i)_s < (\sigma_i)_r.$
+   \end{itemize} 
+
+    Let $P_{r, s}(\sigma_i) = |\{(\sigma_i)_j : (\sigma_i)_s < (\sigma_i)_j < (\sigma_i)_r, \ r < j < s\}|, $ and $R_{r, s}(\sigma_i) = |\{(\sigma_i)_j : (\sigma_i)_j < (\sigma_i)_s, \ r < j < s\}|.$ Then, 
+    $$
+    K_r(\sigma_{i + 1}) = K_{s}(\sigma_{i}) - R_{r, s}(\sigma_i),
+    $$
+    and similarly, 
+    $$
+    K_s(\sigma_{i + 1}) = K_{r}(\sigma_{i}) + R_{r, s}(\sigma_i) + P_{r, s}(\sigma_i) + 1,
+    $$
+
+    Then, since $$K(\sigma_{i + 1}) = \sum_{k = 1}^{n}K_k(\sigma_{i + 1}),$$ we get $K(\sigma_{i + 1}) = K(\sigma_{i}) + \underbrace{2P_{r, s}(\sigma_i)}_{\geq 0} + 1.$ Thus, $K$ is always strictly increasing. Since at best case, element at index $i$ can be larger than $i - 1$ elements before it, 
+    $$
+    K(\sigma_i) \leq \sum_{i = 1}^{n} i -1 = \dfrac{n(n-1)}{2},
+    $$
+    meaning this process must terminate. Assume it terminates at some permutation $\sigma$ that is not completely sorted. Then, there will be a pair $r, s$ such that $\sigma_r > \sigma_s,$ meaning we can't terminate at $\sigma$ since we have a valid swap. Hence, the terminating permutation must be the fully sorted permutation.
+
+    Since elements that can be swapped must be adjacent, $P_{r, s}(\sigma_i) = 0,$ meaning $K(\sigma_{i + 1}) = K(\sigma_i) + 1 = K(a_1, \ldots, a_n) + i.$ Hence, at turn 
+    $$
+    i = \dfrac{n(n-1)}{2} - K(a_1, \ldots, a_n),
+    $$
+    we will have a sorted array, regardless of which moves are chosen.
+
+    \item \textbf{6} \begin{enumerate}
+        \item Consider the corners of any axis parallel rectangle on the grid. At move $i,$ the sign of two adjacent corners will be flipped. If the product of the signs of such a rectangle is $abcd,$ after this move it will become $(-1)^2abcd = abcd,$ meaning the product of the corners is invariant.
+
+        \item We prove both directions. Let us prove the reverse direction first. Starting from a rectangle board with all $+1$-s, every axis parallel rectangle that can be formed has corner product $1.$ If there is a rectangle on the desired final state that does not have corner product $1,$ then by the invariance of this corner product, the state can never be reached. Hence, A state is reachable only if the corner product of all such rectangles is $1.$ 
+
+        Now, let us prove the forward direction. Let us prove that starting from a state that has all such rectangles with a positive corner product, we can get back to the rectangle with only $1$-s.a
+
+        Assume we are at a position such that the top left corner is a $k \times k$ rectangle with all $1$ entries. If we represent our board with a matrix, we have 
+        $$
+        A(i, j) = 1
+        $$
+        for all $1 \leq i \leq k,$ and $1 \leq j \leq k.$ Enumerate the possibilities on $A(k + 1, 1)$:
+        \begin{itemize}
+            \item If $A( k+1, 1) = 1,$ then $A(k + 1, j) = 1$ for all $1 \leq j \leq k,$ since the rectangle $\{(1, 1), (1, k), (k +1, 1), (k + 1, k)\}$ must have a positive corner product.
+            \item If $A( k+1, 1) = -1,$ then $A(k + 1, j) = -1$ for all $1 \leq j \leq k,$ since the rectangle $\{(1, 1), (1, k), (k +1, 1), (k + 1, k)\}$ must have a positive corner product.
+        \end{itemize}
+        By symmetry, a similar argument can be made for entries $(j, k + 1)$ for $1 \leq j \leq k.$ Thus, let $A(k + 1, 1) = a$ and $A(1, k + 1) = b$. 
+        \begin{itemize}
+            \item If $a = b= 1,$ then $A(k + 1, k + 1) =1 $ by considering the rectangle $\{(1, 1), (1, k + 1), (k+ 1, 1), (k + 1, k + 1)\}.$ In this case, there is trivially a $(k + 1) \times (k + 1)$ rectangle with only $1$'s in the top left corner.
+            \item WLOG, if $a = -1, b = 1,$ then $A(k + 1, k + 1) = -1 $ by considering the rectangle $\{(1, 1), (1, k + 1), (k+ 1, 1), (k + 1, k + 1)\}.$ Then, by flipping the row $i = k+1,$ we can achieve a $(k + 1) \times (k + 1)$ rectangle with only $1$'s in the top left corner.
+        \end{itemize}    
+
+        For a base case, a $2\times 2$ rectangle can always be constructed:
+        \begin{align*}
+        &\text{No } -1\text{'s:} &
+        \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}
+        &\xrightarrow{\;\;\text{nothing}\;\;}
+        \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} \\[6pt]
+        &\text{Same row:} &
+        \begin{pmatrix} -1 & -1 \\ 1 & 1 \end{pmatrix}
+        &\xrightarrow{\;\;R_1\;\;}
+        \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix},
+        &
+        \begin{pmatrix} 1 & 1 \\ -1 & -1 \end{pmatrix}
+        &\xrightarrow{\;\;R_2\;\;}
+        \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} \\[6pt]
+        &\text{Same column:} &
+        \begin{pmatrix} -1 & 1 \\ -1 & 1 \end{pmatrix}
+        &\xrightarrow{\;\;C_1\;\;}
+        \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix},
+        &
+        \begin{pmatrix} 1 & -1 \\ 1 & -1 \end{pmatrix}
+        &\xrightarrow{\;\;C_2\;\;}
+        \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} \\[6pt]
+        &\text{Diagonal:} &
+        \begin{pmatrix} -1 & 1 \\ 1 & -1 \end{pmatrix}
+        &\xrightarrow{\;\;R_1\;\;}
+        \begin{pmatrix} 1 & -1 \\ 1 & -1 \end{pmatrix}
+        \xrightarrow{\;\;C_2\;\;}
+        \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} \\[6pt]
+        &\text{Anti-diagonal:} &
+        \begin{pmatrix} 1 & -1 \\ -1 & 1 \end{pmatrix}
+        &\xrightarrow{\;\;R_1\;\;}
+        \begin{pmatrix} -1 & 1 \\ -1 & 1 \end{pmatrix}
+        \xrightarrow{\;\;C_1\;\;}
+        \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} \\[6pt]
+        &\text{All } -1\text{'s:} &
+        \begin{pmatrix} -1 & -1 \\ -1 & -1 \end{pmatrix}
+        &\xrightarrow{\;\;R_1\;\;}
+        \begin{pmatrix} 1 & 1 \\ -1 & -1 \end{pmatrix}
+        \xrightarrow{\;\;R_2\;\;}
+        \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}
+        \end{align*}
+            \end{enumerate}
+
+            WLOG, assume $m \leq n.$ Then, we can fill the first $m$ columns with only $1$'s through this inductive process. Once this is done, assume there exists a column that has both $1$'s and $-1$'s. Then, a rectangle formed with a corner that is a $1$ and a corner that is a $-1$ and a left side in the $1$'s region has a corner product of $-1,$ which is impossible. Thus, every column must be only $1$'s and $-1$'s, in which case we just flip every $-1$ column and produce a $m \times n$ board with only $1$ entries.
+
+            Reversing this process will allow us to produce any arbitrary board configuration where all axis parallel rectangles have corner product $1$ starting from the board with all $1$'s.
+
+    \item \textbf{9} Let the weight of a pebble $(x, y)$ be $\lambda^{|x| + |y|}$ for some $\lambda \in \mathbb R^{+},$ Consider a lattice configuration with $m$ pebbles. A desirable property is for the weight to be non-decreasing, and hence we want 
+    $$
+    \lambda^{d} \leq \lambda^{d \pm 1} + \lambda^{ d \pm 1},
+    $$ 
+    since points orthogonally adjacent to $(x, y)$ have Manhattan distance $d \pm 1,$ where $d = |x| + |y|.$ In the case where $0 < \lambda < 1,$ the sufficient case is 
+    $$
+    \lambda^d \leq 2 \lambda ^{d+1} \Rightarrow \lambda \geq  \frac{1}{2}.
+    $$
+
+    Thus, let us choose weight $2^{-(|x| + |y|)}$ for pebble $(x, y).$ With such a weight, total board weights are non-decreasing.
+
+    Now, consider the maximum board weight for a configuration where every pebble has Euclidean distance greater than $5,$ i.e
+    $$
+    \sum_{(x, y) \in \mathbb Z^{2}, x^2 + y^2 > 25} 2^{-(|x| + |y|)}.
+    $$
+    The square band $d = k$ has total weight 
+    $$
+        4d\lambda^{-d} ,
+    $$
+    since there are $4d$ pebbles a Manhattan distance of $d$ away each with weight $\lambda^{-d},$ meaning the above sum is 
+    $$
+    \leq 4\sum_{d \geq 6} d 2^{-d}.
+    $$
+
+    Consider the generating function $F : (0, 1) \to \mathbb R$ such that $$
+    F(x) = \sum_{k = 0}^{\infty} x^{k} = \dfrac{1}{1-x},
+    $$
+    and differentiating yields
+    $$
+    F'(x)  = \sum_{k = 1}^{\infty} kx^{k-1} = \dfrac{1}{(1-x)^2}
+    $$
+    and thus 
+    $$
+    \sum_{k = 1}^{\infty} kx^{k} = \dfrac{x}{(1-x)^2},
+    $$
+    placing upper bound 
+    \begin{align*}
+    4\sum_{d \geq 6} d2^{-d} = 4\sum_{k = 1}^{\infty} k\left(\frac{1}{2}\right)^{k} - 4\sum_{d \leq 5} d2^{-d} &= 8 -  4\sum_{d \leq 5} d2^{-d} \\
+    &= 8 - 4(1/2 + 2/4 + 3/8 + 4/16 + 5/32) \\
+    &= 7/8,
+    \end{align*}
+    meaning the largest such board weight $W' \leq 7/8.$ However, the second board state contains two pebbles a Manhattan distance $1$ away, yielding total weight $1.$ Since weight is non-decreasing, a board weight $\leq 7/8$ is unachievable, meaning we can't have a state where all pebbles are a Euclidean distance $\geq 5$ away.
+    
+    \item \textbf{10} Let the blank square be numbered $16.$ Then, any board state can be represented as a permutation of $(1, 2, \ldots, 16).$ Any valid move takes $16$ and swaps it with one of $1, \ldots, 15.$ Let $\sigma_{i}$ be the board state at the $i$-th move. Then, since $\sigma_{i + 1}$ is produced by a transposition of $\sigma_{i},$ $\text{sgn} \sigma_{i + 1} = - \text{sgn} \sigma_{i}.$ Since our end state $\sigma'$ is a swap of $14, 15,$ and this permutation has sign $-1,$ an odd number of moves will be required to achieve this board state, and $\sigma_1 = 1.$
+
+    However, let $S_i$ represent the parity of the Manhattan distance between the position of $16$ on the $i$-th board and the bottom right corner. Since each move moves $16$ either left, right, up, or down, $S_{i + 1} = -S_i$. Initially, $S_1 = 1.$ 
+
+    Thus, $\sigma_i = S_i,$ meaning our final board state $\sigma'$ requires $S' = -1.$ However, our final board state has the empty square in the bottom right corner, implying $S' = 0,$ which is a contradiction. Thus, this board state can never be achieved.
+\end{enumerate} 
+
+\subsection{Reflection}
+For 9, I knew we'd need some upper bound on maximum weight possible when all pebbles are L2 norm $\geq 5$ away from the origin, which would require the weights of an infinite number of pebbles to converge. Hence, easy guess was something like $\lambda^{-d},$ for some real $\lambda > 1.$ But this does not guarantee monotonicity of weight. Since one pebble is replaced by 2, and both pebbles are at most $1$ Manhattan distance further away, choosing $\lambda = 1/2$ guarantees weight to be non-decreasing and bounds the weight of a desired state $< 1,$ but the initial state has weight $1.$ I guess some intuition would be removing pebbles from the $\leq 5$ inner circle requires weight to decrease in a way that is impossible.
+\end{document}

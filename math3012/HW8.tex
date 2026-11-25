@@ -1,0 +1,62 @@
+\documentclass[12pt]{article}
+
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\title{Homework 3}
+\author{Satvik Prasad}
+\date{}
+
+\pagestyle{fancy}
+\lhead{Satvik Prasad}
+\rhead{MATH3012}
+
+\begin{document}
+\begin{enumerate}
+\item We first turn the closed form of this generating function into a series. Using partial fractions, we get \begin{align*}
+    f(x) = \dfrac{27}{(2x+1)(x+2)^2} = 3 \cdot \left[\dfrac{4}{2x+1} - \dfrac{2}{x+2}- \dfrac{3}{(x+2)^2} \right]
+\end{align*}
+Notice that \begin{align*}
+    \dfrac{1}{x+2} = \dfrac{1/2}{1 + x/2} = \dfrac{1}{2}\sum_{k = 0}^{\infty} (-1)^k \dfrac{x^k}{2^k}.
+\end{align*}
+Removing the $k = 0$ case from our sum and differentiating both sides, we get \begin{align*}
+    - \dfrac{1}{(x+2)^2} = \sum_{k = 1}^\infty (-1)^k \dfrac{kx^{k-1}}{2^{k+1}} = \sum_{k = 0}^{\infty} (-1)^{k + 1} \dfrac{(k+1)x^{k}}{2^{k + 2}},
+\end{align*}
+meaning \begin{align*}
+    \dfrac{1}{(x+2)^2} = \sum_{k = 0}^{\infty} (-1)^k \dfrac{(k+1)}{2^{k + 2}} x^k.
+\end{align*}
+Thus, we can find a closed form for $f(x)$: \begin{align*}
+    f(x) &= 3\left[
+        4\sum_{k = 0}^{\infty} (-1)^k 2^k x^k - \sum_{k=0}^{\infty}(-1)^k \dfrac{1}{2^k}\cdot x^k - 3\sum_{k = 0}^{\infty} (-1)^k \dfrac{(k+1)}{2^{k+2}}x^k
+    \right] \\
+   &= \sum_{k = 0}^{\infty} \left[
+   3(-1)^k \cdot \left(2^{k + 2} - \dfrac{1}{2^k} - 3\cdot \dfrac{k + 1}{2^{k + 2}} \right)
+   \right] x^k.
+\end{align*}
+Hence, the series produced by this generating function is \begin{align*}
+    \left\{3(-1)^n \cdot \left(
+        2^{n + 2} - \dfrac{1}{2^n} - \dfrac{3(n + 1)}{2^{n + 2}}
+    \right)\right\}_{n \geq 0}.
+\end{align*}
+\qed
+
+\item The coefficient $c_p$ will be the number of solutions to the equation \begin{align*}
+    4x_1 + 5x_2 = p,
+\end{align*}
+where $x_1, x_2 \geq 0.$ There is one way to make a sum of  $0, 4, 8, \ldots,$ cents only the 4-cent coin, and there is one way to make a sum of either $0, 5, 10, \ldots,$ with only the 5-cent coin. The $p$-th convolution of this series will yield the number of ways to form a sum of $p$ with either coin. Thus, $c_p$ will be the coefficient of $x^p$ in the generating function \begin{align*}
+   f(x) &= (1 + x^4 + x^8 + \ldots )(1 + x^5 + x^{10} + \ldots)  \\
+   &= \dfrac{1}{1-x^4} \cdot \dfrac{1}{1-x^5}.
+\end{align*}
+Therefore, the ordinary generating function of $(c_p)_{p \geq 0}$ is \begin{align*}
+    f(x) = \dfrac{1}{(1-x^4)(1-x^5)}.
+\end{align*}
+\qed
+\end{enumerate}
+\end{document}

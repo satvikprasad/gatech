@@ -1,0 +1,139 @@
+\documentclass[12pt]{article}
+
+\input{header}
+
+\begin{document}
+\subsection{Writing Proofs}
+\begin{enumerate}
+    \item Assume we have some surjective linear map $T : V \to W,$ where $V$ is finite dimensional. Then, we know we can construct a basis for $V$, $\beta$, such that
+    $$
+    \beta = \{v_1, \ldots, v_n, u_1, \ldots, u_m\},
+    $$
+    and $v_1, \ldots, v_n$ is a basis for $\ker T,$ because $\ker T$ is a subspace of $V.$ Then, let $U = \text{span} \{ u_1, \ldots, u_m\},$ and 
+    define $T|_U : U \to W$ such that
+    $$
+        T|_U(u) = Tu.
+    $$
+
+    Because $T$ is surjective, for all $w \in W,$ there exists some $u \in V$ such that $Tv = w.$ We can write $v = \lambda_1 v_1 + \ldots + \lambda v_n + \mu_1 u_1 + \ldots + \mu_m u_m$ by the definition of a basis. Since $v_k \in \ker T,$
+    $$
+    T(v) = T(\underbrace{\mu_1 u_1 + \ldots + \mu_m u_m}_{u}) = w,
+    $$
+    meaning there exists a $u \in U$ such that $T|_U(u) = w,$ i.e., $T|_U$ is surjective.
+
+    Additionally, assume $T|_U(u) = 0$ for some $0 \neq 0.$ Then, $T(\lambda_1u_1 + \ldots + \lambda_m u_m) = 0$ for some non-trivial $\lambda_1, \ldots, \lambda_m,$ and this vector $u \in \ker T.$ However, it lies outside the span of $v_1, \ldots, v_n,$ and thus $u \not \in \ker T.$ Thus, we derive a contradiction, meaning $T(u) = 0$ implies $u = 0.$ Hence, $T|_U$ is injective.
+
+    Since $T|_U$ is injective and surjective, $T|_U$ is an isomorphism. \qed
+
+    \item Assume that $ST$ is invertible. Then, $ST$ is bijective. Now, we prove that $S, T$ are both bijective.
+
+    Assume that $T$ is not injective, meaning there is some $v \in V \setminus \{0\}$ such that $Tv = 0,$ meaning $(ST)v = 0,$ meaning $ST$ is not injective, yielding a contradiction. By rank-nullity, we know $\dim V = 0 + \dim \text{range} \ T,$ and hence $T$ is also surjective.
+
+    Additionally, since $ST$ is surjective, for all $w$ there exists some $v$ such that $STv =w ,$ meaning there exists some $u = Tv$ such that $Su = w,$ and hence $S$ is surjective. By rank-nullity, $S$ is also injective.
+
+    Therefore, both $S, T$ are bijective, meaning both $S, T$ have inverses.
+    
+    Then,m assume $S$ and $T$ are invertible. Then, $L = T^{-1}S^{-1}$ satisfies
+    $$
+    ST T^{-1} S^{-1} = SS^{-1} = I,
+    $$
+    and $$
+    T^{-1} S^{-1} ST = T^{-1}T + I,
+    $$
+    meaning $L$ is an inverse of $ST,$ and hence $ST$ is invertible. \qed
+
+    \item Suppose $U$ is a subspace of $V$ such that $\dim V/ U = 1.$ Then, there is some basis of $V / U$ with a single element, 
+    $$\beta = \{v_1 + U\}.$$
+    Hence, for all $v \in V,$ $v + U = \lambda v_1 + U,$ since $\beta$ is a basis. Thus, $(v - \lambda v_1) \in U,$ meaning for all $v \in V,$ there is some $u \in U$ such that $v = u + \lambda v_1$ for $u \in U.$ 
+
+    First, let us assume that such $\lambda$ are unique. Then, construct the map $\varphi : V \to \mathbb F$
+    $$
+    \varphi (v) = \lambda.
+    $$
+    Assume $\varphi(v) = 0,$ meaning $v = u$ and hence $v \in U.$ Thus, $\ker \varphi = U.$ Additionally, $$\varphi(v + w) = \varphi(u_v + \lambda_v v_1 + u_w + \lambda_w v_1) = \varphi(u_v + u_w + (\lambda_v + \lambda_w)v_1) = \lambda_v + \lambda_w$$
+    and
+    $$
+    '\varphi(\mu v) = \varphi(\mu u + \mu\lambda v_1) = \mu \lambda,
+    $$
+    meaning $\varphi \in \mathcal L(V, \mathbb F).$
+
+    Otherwise, there are two such $(u_1, \lambda_1), (u_2, \lambda_2)$ satisfying the above with $\lambda_1 \neq \lambda_2$, i.e., 
+    $$
+        v = u_1 + \lambda_1 v_1 = u_2 + \lambda_2 v_1.
+    $$
+    Then, $$v_1 = \dfrac{1}{\lambda_2 - \lambda_1}(u_1 - u_2),$$ meaning $v_1 \in U,$ $v \in U$ and thus $V = U.$
+    
+    Construct the map $\varphi : V \to \mathbb F$ such that 
+    $$
+    \varphi(v) = 0,
+    $$
+    with $\ker \varphi = V = U.$
+
+    In either case, we can construct such a $\varphi.$ \qed
+
+    \item First, let us prove the forward direction. Assume we have $T = S \circ \pi.$ Then, we know $Tv = S (v + U)$ for all $v \in V.$ Thus, for any $u \in U,$ we have 
+    $$
+    Tu = S(u + U) = S(U).
+    $$
+
+    Then, $T(\lambda u) = \lambda T(u) = \lambda S(U).$ But we have $\lambda u \in U,$a meaning $\lambda S(U) = S(U)$ for any $\lambda \in \mathbb F,$ forcing $S(U)= 0.$ Hence, for any $u \in U,$ $Tu = 0,$ meaning $u \in \ker T,$ and hence $U \subseteq \ker T.$
+
+    For the reverse direction, assume $U \subseteq \ker T.$ Assume for the sake of contradiction that 
+    $$
+    v + U = v' + u 
+    $$
+    for some $v \neq v'.$ Then, $v - v' = U \subseteq \ker T,$ meaning $T(v - v') = 0,$ and hence $T(v) = T(v').$
+
+    Thus, define $S \in \mathcal L(V/U, W)$ such that
+    $$
+    S(v + U) = T(v),
+    $$
+    since it is guaranteed to be a function, yielding $T(v) = S\pi v$ for all $v.$ Thus, if $U \subseteq \ker T,$ we have $T = S \circ \pi$ as required. \qed
+
+    \item First, let us suppose that $\ker \varphi \subseteq \ker \beta.$ Then, for any $v \in V$ with $\varphi(v) = 0,$ we have $\beta(v) = 0.$ Thus, trivially, for all $v \in \ker \varphi,$
+    \begin{align}
+        \beta(v)  = c\varphi(v) \label{null_case}
+    \end{align}
+    for any constant $c \in \mathbb F.$
+
+    % Need to prove that beta(v) varphi(w) - beta(w) varphi(v) = 0%
+    Consider the term $$
+        x = \varphi(w) v - \varphi(v) w \in V.
+    $$
+    Since $\varphi(x) = \varphi(\varphi(w)v) - \varphi(\varphi(v)w),$ applying linearity yields
+    $$
+    \varphi(x) = \varphi(w) \varphi(v) - \varphi(v) \varphi(w) = 0,
+    $$
+    meaning $x \in \ker \varphi.$ Since $\ker \varphi \subseteq \ker \beta,$ $x \in \ker \beta,$ and thus 
+    $$
+        \beta(\varphi(w)v - \varphi(v)w) = 0.
+    $$
+    Equivalently we have
+    $$
+    \varphi(w) \beta(v) = \varphi(v) \beta(w).
+    $$
+    When $v, w \not \in \ker \varphi,$ we know $\beta(v)/\varphi(v) = \beta(w)/\varphi(w)$ for all such $v, w,$ meaning
+    $$
+        \beta(v) = c\varphi(v)
+    $$
+    for some constant $c \in \mathbb F$ for all $v \not \in \ker \varphi.$ Combining this result with \eqref{null_case}, there exists some constant $c \in \mathbb F$ such that
+    $$
+    \beta = c \varphi
+    $$
+    if $\ker \varphi \subseteq \ker \beta.$
+
+    Conversely, let us suppose that we have $\varphi, \beta \in V'$ such that $\beta = c \varphi$ for some $c \in \mathbb F.$ Then, $\beta(v) = \varphi(cv)$ for all $v \in V.$ Thus, consider the case when $v \in \ker \varphi.$ Then, $\beta(v) = c\varphi(v) = c(0) = 0,$ meaning $v \in \ker \beta.$ Hence, $\ker \varphi \subseteq \ker \beta.$
+
+    Therefore, $\ker \varphi \subseteq \ker \beta$ iff $\beta = c \varphi$ for some constant $c \in \mathbb F.$ \qed
+\end{enumerate}
+
+\subsection{Evaluating Proofs}
+This proof requires $\dim V$ to be well-defined, which fails when $V$ is infinite dimensional.
+
+\subsection{Using Computers}
+\begin{center}
+    \includegraphics[width=0.9\linewidth]{math3406/Screenshot 2026-10-17 at 2.31.25 pm.png}
+\end{center}
+
+Conjecture: $\dim \mathcal E = (\dim V - \dim U) \cdot \dim W,$ since the constraint forces $T$ to send the basis elements of $U$ to $0,$ but the remaining are free.
+\end{document}

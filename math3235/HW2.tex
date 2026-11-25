@@ -1,0 +1,98 @@
+\documentclass[12pt]{article}
+\input{header}
+\begin{document}
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item If $\mathbb P(A \mid B) \leq P(A),$ then we know \begin{align*}
+            \mathbb P(A \cap B) \leq \mathbb P(A) \mathbb P(B).
+        \end{align*}
+
+        Then we know $$\mathbb P(A \mid B^c) = \dfrac{\mathbb P(A \cap B^c)}{1 - \mathbb P(B)}.$$
+        Since $(A \cap B) \cup (A \cap B^c) = A,$ we can deduce that \begin{align*}
+            \mathbb P(A \mid B^c) = \dfrac{\mathbb P(A) - \mathbb P(A \cap B)}{1 - \mathbb P(B)} \geq \dfrac{\mathbb P(A) - \mathbb P(A) \mathbb P(B)}{1 - \mathbb P(B)} = \mathbb P(A),
+        \end{align*}
+        since $\mathbb P(B) < 1.$ Therefore, this statement is true.
+
+        \item True, since $\mathbb P(A \cap B) + \mathbb P(A^c \cap B) = \mathbb P(B).$
+
+        \item False.
+
+        \item False. Their intersections with $B$ don't need to have equal probability. 
+    \end{enumerate}
+
+    \item We want to find $\mathbb P(X = B \mid Y = B),$ where $Y$ represents the observed color, and $X$ represents the true color. Using Bayes' theorem, we get 
+    \begin{align*}
+        \mathbb P(X = B \mid Y = B)  = \dfrac{\mathbb P(X = B)}{\mathbb P(Y = B)} \cdot \mathbb P(Y = B \mid X = B) &=  \dfrac{0.15}{0.15 \cdot 0.8 + 0.85 \cdot 0.2} \cdot 0.8 \\
+        &\approx 41\%.
+    \end{align*}
+
+    \item \begin{enumerate}
+        \item Using the definition of conditionality, we get \begin{align*}
+            \mathbb P(A \cap B \mid  C) = \dfrac{\mathbb P(A \cap B \cap C)}{\mathbb P(C)} = \dfrac{\mathbb P((A \cap C) \cap (B \cap C))}{\mathbb P(C)}. 
+        \end{align*}
+    However, $A \cap C$ and $B \cap C$ are not necessarily independent events given $A$ and $B$ are independent.
+
+    For example, $A = \{X_1 = H\}$ and $B = \{X_2 = H\}$ are independent for a fair coin, but conditioned on the two flips being the same face, they are no longer independent since $\mathbb P(A \cap B \mid C) = 1/2,$ while $\mathbb P(A \mid C) \mathbb P(B \mid C) = 1/4.$
+
+
+    \item In other words, we are given that \begin{align*}
+        \mathbb P(A \cap B \cap C) = \mathbb P(A \cap C) \mathbb P(B \cap C).
+    \end{align*}
+
+    Once again, consider the case where the probability of our coin being double sided is $10\%.$ Given that it is not double-sided (C), $A$ and $B$ are independent, however in the usual sense $A$ and $B$ are not independent, since there is a chance that the coin is biased.
+    \end{enumerate}
+
+    \item For the following questions, let $B$ be the event you have the black plague, and $T$ represent the test outcome. 
+    \begin{enumerate}
+    \item Using Bayes', \begin{align*}
+        \mathbb P(B \mid T) = \dfrac{\underbrace{0.98}_{\mathbb P(T \mid B)} \cdot \underbrace{0.01}_{\mathbb P(B)}}{\underbrace{0.01 \cdot 0.98 + 0.99 \cdot 0.02}_{\mathbb P(T)}} \approx 33\%
+    \end{align*}
+
+    \item Using Bayes', \begin{align*}
+        \mathbb P(B \mid T) = \dfrac{0.98^2 \cdot 0.01}{0.01 \cdot 0.98^2 + 0.99 \cdot 0.02^2} \approx 96\%.
+    \end{align*}
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item At position $k,$ you have $1/2$ probability to move right, or move left. Let $X_k = \{\text{position $0$ before position $n$ starting at $k$}\}.$ Let $H$ represent the current roll being a heads, and $T$ the converse. Hence, since \begin{align*}
+            X_k = \underbrace{(X_{k + 1} \cap H) \cup (X_{k -1 } \cap T)}_{\text{disjoint}}.
+        \end{align*}
+        Thus, \begin{align*}
+            p_k = \mathbb P(X_k) = \mathbb P(X_{k + 1} \cap H) + \mathbb P(X_{k-1} \cap T).
+        \end{align*}
+        $X_j$ depends only on future coin flips, which are independent of the current coin flip, so we can say \begin{align*}
+            p_k &= \mathbb P(H) \cdot \mathbb P(X_{k + 1}) + \mathbb P(T) \cdot \mathbb P(X_{k -1}) \\
+            &= \dfrac{1}{2} \mathbb P(X_{k + 1}) + \dfrac{1}{2} \mathbb P(X_{k -1}) \\
+            &= \dfrac{1}{2} p_{k + 1} + \dfrac{1}{2} p_{k -1 }
+        \end{align*}
+        as required.
+
+        \item $p_0$ should take value $1,$ since you are already at position $0.$ Similarly, $p_n$ should take value $0,$ since you are already at position $n.$ Then, flattening the recurrence, we get \begin{align*}
+            p_{n - 1}  &= \dfrac{1}{2}p_{n - 2}, \\
+            p_{n - 2}  &= \dfrac{2}{3}p_{n - 3}, \\
+            p_{n - 3} &= \dfrac{3}{4} p_{n - 4},  \\
+            &\ldots 
+        \end{align*}
+        Thus, the sequence \begin{align*}
+            \{p_k\}_{0 \leq k \leq n} = \left\{1, \dfrac{n - 1}{n}, \dfrac{n -2}{n}, \ldots, \dfrac{1}{n}, 0\right\}
+        \end{align*}
+        satisfies this recurrence.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item The parallel circuit only requires at least one component to operate, meaning the probability is $$1 - \left(\frac{1}{2}\right)^N.$$
+        
+        \item Requires all of the components to function, yielding $$\left(\frac{1}{2}\right)^N.$$
+
+        \item The probability of the first component functioning and the entire circuit functioning is just the probability of the first component functioning, meaning $$p  =\dfrac{2^{N-1}}{2^N - 1}.$$
+        
+        \item Let $A = \{\text{first component functioning}\}$, $B = \{\text{entire circuit functioning}\}$, $C=\{\text{entire circuit functioning}\}$ Since $P(A \cap B) = \mathbb P(C),$ we know $$p = 1.$$
+    \end{enumerate}
+
+    For large $N,$ (a) goes to $1,$ (b) goes to $0,$ (c) tends to $\dfrac{1}{2},$ and (d) is always $1.$
+
+    \item We know that $\mathbb P(A \cap B) = 1/4 = \mathbb P(A) \mathbb P(B),$ $\mathbb P(B \cap C) = \mathbb P(\text{both even}) = 1/4 = \mathbb P(B) \mathbb P(C),$ and $\mathbb P(A \cap C) = \mathbb P(\text{both odd}) = 1/4 = \mathbb P(A) \mathbb P(C),$ meaning all $A, B, C$ are pairwise independent.
+
+    However, $\mathbb P(A \cap B \cap C) = 0 \neq 1/8 = \mathbb P(A) \mathbb P(B) \mathbb P(C),$ meaning the events aren't all independent.
+\end{enumerate}
+\end{document}

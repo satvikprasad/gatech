@@ -1,0 +1,159 @@
+\documentclass[12pt]{article}
+
+\input{header}
+
+\begin{document}
+\subsection{Green Circle}
+\begin{enumerate}
+    \item[3] Model $X, Y \sim \text{Unif}(0, 60).$ Then, we need the probability that $|X - Y| < 5.$ Partitioning on $Y \geq X,$ and applying symmetry of $X, Y,$ we have
+    \begin{align*}
+    p &= \mathbb P(X \leq Y < 5 + X)  + \mathbb P(Y \leq X < 5 + Y)\\
+    &= 2\mathbb P(X \le Y \leq 5 + X).
+    \end{align*}
+    We know
+    \begin{align*}
+    \mathbb P(X \leq Y \leq 5 + X) &= \mathbb P(X \leq Y \leq 5 + X \mid  X \leq 55) \cdot \dfrac{11}{12} + \dfrac{1}{12} \cdot \mathbb P(X \leq Y \leq 5 + X \mid X \geq 55) \\
+    &= \dfrac{11}{144} + \dfrac{1}{12} \int_{55}^{60} \dfrac{60-x}{60} \cdot \dfrac{1}{5} \, dx \\
+    &= 23/288,
+    \end{align*}
+    meaning $ = 23/144$ as required.
+
+    \item[4] 
+    Notice that the random variable $X_{n, m}$ representing the number of empty boxes with $n$ balls satisfies $$
+    X_{n, m} = X_{1} + X_2 + \ldots + X_{m},
+    $$
+    where $X_j$ is the indicator random variable describing whether box $j$ is empty or not. Since expectation is linear, we get 
+    $$
+    \mathbb E[X_{n, m}] = \mathbb E[X_1] + \ldots + \mathbb E[X_m] = m \cdot \left (
+        \dfrac{(m-1)^n}{m^n}
+    \right) = m\left(1 - \dfrac{1}{m}\right)^{n}
+    $$
+    as required.
+
+    \item[5] Let $X_1, X_2, \ldots$ represent RVs for the sum of the pair of dice. Let $K = \text{inf}_k\{X_k = 7\},$ and $S = \text{inf}_{k}\{X_k = 8\}.$ Let $p = \mathbb P(X_1 = 7 \cup X_1 = 8).$ Then, we know 
+    $$
+        \mathbb P\{K < S\} = \mathbb P\{ K < S \mid X_1 \neq 7 \cap X_1  \neq 8\}(1-p) + \mathbb P(K < S \mid  X_1 = 7 \cup X_1 = 8) \cdot p.
+    $$
+    Given $X_1 \neq  7$ and $X_1 \neq 8,$ the event $K < S$ is invariant, and hence
+    $$
+    \mathbb P\{K < S\} = (1-p)\mathbb P\{K < S\} + \mathbb P(X_1 = 7),
+    $$
+    simplifying to 
+    $$
+    \mathbb P\{K < S\} = \dfrac{\mathbb P(X_1 = 7)}{p} = \dfrac{\mathbb P(X_1 = 7)}{\mathbb P(X_1 = 7  \cup X_1 = 8)}.
+    $$
+    Since $X_1 = 7$ and $X_1 = 8$ are disjoint events, we get 
+    $$
+    \mathbb P\{K < S\} = \dfrac{\mathbb P(X = 7)}{\mathbb P(X = 7 ) + \mathbb P(X = 8)}
+    $$
+    where $X$ is an RV for the value of the sum of a single roll.
+
+    Ordering the dice, there are $6$ outcomes where $X = 7,$ meaning $$\mathbb P(X = 7) = 6/36 = 1 / 6,$$ and similarly $\mathbb P(X = 8) = 5/36.$ Therefore, $\mathbb P \{K < S\} = 6/11.$
+\end{enumerate}
+
+\subsection{Blue Square}
+\begin{enumerate}
+    \item[7] We choose three random points independently and uniformly on a circle, and want to determine the probability that there is some semi-circle containing them.
+
+    Let the points we sample be $\mathrm A, \mathrm B, \Gamma \sim \text{Uniform}(0, 2 \pi).$ Fixing $\mathrm A = a$ and $\mathrm B = b > a,$ the points are not within some semi-circle if $\Gamma$ lies outside the arc subtended by $[b - \pi, a + \pi].$
+
+    Since $\mathrm A, \mathrm B, \Gamma$ are independent and uniform, by symmetry fix the first point to subtend angle $0$ from the origin. Then, if $0 \leq \mathrm B \leq \pi,$ we don't produce a semi-circle if $\pi < \Gamma < \mathrm B + \pi.$ Otherwise, if $\pi < B < 2\pi,$ we don't produce a semi-circle if $\mathrm B - \pi < \Gamma < \pi.$
+
+    Hence, we have
+    \begin{align*}
+    p' &= \int_{0}^{\pi} \int_{\pi}^{b + \pi} \dfrac{1}{4\pi^2} \, d\gamma \, db + \int_{\pi}^{2\pi} \int_{b- \pi}^{\pi} \dfrac{1}{4\pi^2} \, d\gamma \, db \\
+    &= \dfrac{1}{4\pi^2} \left(\pi^2\right) = \dfrac{1}{4}.
+    \end{align*}
+
+    Therefore, taking the complement we get $3/4$ as required.
+
+    \item[8] Let $X_1, X_2$ be the lengths of the first two sticks, where $X_1$ is the first break, with the third length defined by $1 - (X_1 + X_2).$ We determine the probability densities of $X_1, X_2$ by noting that if our cuts are $A, B \sim \text{Uniform}(0, 1),$ $X_1 = \min(A, B)$ and $X_2 \sim \max(A, B) - X_1.$ 
+
+    We want to determine the joint distributions of $X_1, X_2, $ so let us find 
+    $$
+    F(x_1, x_2) = \mathbb P(X_1 \leq x_1 \cap X_2 \leq x_2).
+    $$
+    Partition on $A < B,$ since the two cases are symmetrical. In the case $A \leq B,$ we get event $$
+        Z =  \{A \leq x_1 \}\cap  \{A \leq B \leq A + x_2 \}.
+    $$
+    For support, we need $a \leq 1 - x_2$ and $a \leq x_1, $ so split on cases. If \begin{itemize}
+        \item $x_1 \leq 1 - x_2,$ then we have $$
+        F(x_1, x_2) = 2 \int_{0}^{x_1} \int_{a}^{a + x_2} \, db \, da = 2x_1 x_2
+        $$
+        \item $x_1 > 1 - x_2,$ we have \begin{align*}
+        F(x_1, x_2) &= 2 \int_{0}^{1-x_2} \int_{a}^{a+x_2} \,d b \, da + 2 \int_{1-x_2}^{x_1} \int_{a}^{1} \, db \, da \\
+        &= 2x_2(1-x_2) + 2 \int_{1-x_2}^{x_1} 1 - a \, da \\
+        &= x_2^2 - (1-x_1)^2.
+        \end{align*}
+    \end{itemize}
+
+    Therefore, joint density $f(x, y) = 2$ on $x_1 + x_2 \leq 1,$ 0 elsewhere. Finally, we need $X_1, X_2, 1 - (X_1 + X_2)$ to satisfy the $\Delta$-inequality, meaning $(x_1, x_2) \in \{(x_1, x_2) : 0 < x_1 < 1/2, \ 1/2 - x_1 < x_2 < 1/2\},$ yielding probability
+    $$
+        p = \int_{0}^{1/2} \int_{1/2-x_1}^{1/2} 2 \, dx_2\, dx_1 = \int_{0}^{1/2} 2x_1 \, dx_1 = 1/4
+    $$
+    as required.
+    
+    \item[9] Let $E_n$ be the expected number of records for a permutation of $1, 2, \ldots, n,$ such that $E_n = \mathbb E[X_n],$ where $X_n$ is an RV for the number of records in a permutation of $n.$
+
+    The number of records from position $1$ to $n - 1$ is independent of the value of the final number, so let us partition on the event that item $n$ is a record. Let $B$ be the event that $A_n > \max(A_1, \ldots, A_{n - 1})$
+
+    Hence, we have
+    $$
+    \mathbb E[X_n] = \mathbb E[X_n \mid B] \mathbb P(B) + \mathbb E[X_n \mid  B^c] (1 - \mathbb P(B)).
+    $$
+    We know $X_n \mid B = 1 + X_{n - 1},$ and $X_n \mid B^c = X_{n - 1}.$ Hence, we have
+    $$
+    E_n = (1 + E_{n-1}) p  + E_{n - 1}(1-p) = p + E_{n-1},
+    $$
+    where $p = \mathbb P(B).$ For $A_n > \max(A_1, \ldots, A_{n - 1}),$ $A_n = n,$ otherwise $n$ will preceed $A_n < n.$ The probability of this is $1/n$ since all permutations are equally likely, meaning we have
+    $$
+    E_n = \dfrac{1}{n} + E_{n-1}.
+    $$
+    Since we know $E_1 = 1,$ we get $$E_n = \sum_{k = 1}^{n}\dfrac{1}{k} = H_n,$$
+    which is the $n$-th harmonic number.
+\end{enumerate}
+
+\subsection{Black Diamond}
+\begin{enumerate}
+    \item[12] Consider the event $[X /Y] = 2k,$ for some integer $k.$ Obviously, we need $k \geq 0$. Then, we need
+    $$
+    2k - \dfrac{1}{2}\leq X/Y < 2k + \dfrac{1}{2},
+    $$
+    or equivalently, 
+    $$
+        Z_k = \{(2k - 1/2)Y \leq X \leq (2k + 1/2) Y \} .
+    $$
+
+    The joint distribution of $(X, Y)$ is simply $f(x,y) = 1$ supported on $[0, 1]^2.$ For the above to have non-zero measure, we need $$
+    Y \leq \dfrac{2}{4k - 1}.
+    $$
+    We have truncation above $$Y > \dfrac{2}{4k + 1},$$ and truncation below when $k = 0,$ so treat this case separately.
+
+    For $k \geq 1,$ our probability becomes
+    $$
+    p_k = \int_{0}^{2/(4k + 1)} \int_{(2k-1/2)y}^{(2k + 1/2)y} \, dx \, dy + \int_{2/(4k+1)}^{2/(4k-1)} \int_{(2k - 1/2)y}^{1} \,dx \, dy = \dfrac{1}{4k - 1} - \dfrac{1}{4k + 1}.
+    $$
+
+    When $k = 0,$ we get $Z_0 = \{0 \leq X \leq Y/2\},$ producing
+    $$
+    p_0 = \int_{0}^{1} \int_{0}^{y/2} \, dx \, dy = \dfrac{1}{4}.
+    $$
+    Summing over all disjoint cases for $k,$ we get
+    $$
+    p = \dfrac{1}{4} + \sum_{k = 1}^{\infty} \dfrac{1}{4k - 1} - \dfrac{1}{4k + 1}.
+    $$
+    Converting this to an integral, we have
+    \begin{align*}
+   p &= \dfrac{1}{4}  + \sum_{k = 1}^{\infty} \int_{0}^{1} t^{4k - 2} - t^{4k} \, dt \\
+    &= 4^{-1} + \int_{0}^{1} \sum_{k = 1}^{\infty} t^{4k - 2} - t^{4k} \, dt \\
+    &= 4^{-1} + \int_{0}^{1} \dfrac{t^2}{1-t^4} - \dfrac{t^4}{1-t^4}\, dt \\
+    &= 4^{-1} + \int_{0}^{1} \dfrac{t^2}{1+t^2}\, dt \\
+    &= 4^{-1} + \int_{0}^{1} 1- \dfrac{1}{1 + t^2}\, dt \\
+    &= 4^{-1} + 1 - \dfrac{\pi}{4} \\
+    &= \dfrac{5 - \pi}{4} 
+    \end{align*}
+    as required.
+\end{enumerate}
+\subsection{Reflection}
+Stalled on 8) since was using marginals without independence, realized this and ended up having to derive the joint distributions and then integrating over that instead. Also cool that triangle inequality is both necessary and sufficient to produce triangle with given side lengths.
+\end{document}

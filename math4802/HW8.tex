@@ -1,0 +1,261 @@
+\documentclass[12pt]{article}
+
+\input{header}
+
+\begin{document}
+\subsection{Green Circle}
+\begin{enumerate}
+    \item[1] Let $n = 3k + r$ for some integer $k \geq 0,$ and integer $r \in \{0, 1, 2\}.$ Then, we know
+    $$
+    2^{n} - 1 \equiv 2^{3k + r} -1  \pmod 7.
+    $$
+    Factoring, we get 
+    $$
+    2^{n} -1 \equiv 8^{k} \cdot 2^{r} -1 \pmod 7 \equiv 2^{r} - 1 \pmod 7.
+    $$
+    Hence, this is only $\equiv 0 \pmod 7$ if and only if $r = 0,$ meaning $7 \mid 2^{n} - 1$ if and only if $n \equiv 0 \pmod 3.$ Thus, $n \in \{3, 6, 9, \ldots\}$ are the positive integers for which $7 \mid 2^{n} - 1.$
+
+    Similarly, for $2^n + 1$ we get
+    $$
+    2^{n} + 1  \equiv 2^{r} + 1 \pmod 7,
+    $$
+    which is never $\equiv 0 \pmod 7$ for any $r \in \{0, 1, 2\}.$ Hence, $7$ never divides $2^{n} + 1$ for all positive integers $n.$
+
+    \item[3] Define $n_0$ as the following:
+    $$
+    n_0 = \prod_{k = 1}^{10^{6} - 1} k.
+    $$
+    Then, the $10^6$ consecutive integers
+    $$
+    \{n_0, n_0 + 1, \ldots, n_0 + 10^{6} - 1\}
+    $$
+    are all composite, since the $k$-th entry (for $k > 1$) can be written as
+    $$
+    n_0 + k - 1 = \underbrace{(k-1)}_{> 0} \underbrace{\prod_{i \in \{1, 2, \ldots, 10^6\} \setminus\{k - 1\}} i}_{\in \mathbb N},
+    $$
+    and $n_0$ is trivially composite.
+
+    Thus, there are a million consecutive composite integers.
+
+    \item[4] Take $\gcd(3n + 1, 2n + 1).$ By the Euclidean algorithm, this is equivalent to $$
+    G = \gcd(2n + 1, 3n + 1 \bmod 2n+ 1).
+    $$
+    Writing $3n + 1 = (2n + 1) + n,$ we can see $0 \leq n < 2n + 1,$ meaning $n$ is in residual range, and hence $3n + 1 \bmod 2n + 1 = n.$ Thus, we get
+    $$
+    G = \gcd(2n + 1, n) = 1
+    $$
+    as required. Therefore, $\gcd(2n + 1, 3n + 1) = 1,$ meaning $2n + 1, 3n + 1$ are coprime.
+\end{enumerate}
+
+\subsection{Blue Square}
+\begin{enumerate}
+    \item[7] Any such number $a$ can be written in the form
+    $$
+    a = 1 + 10^2 + \ldots + 10^{2k}
+    $$
+    for some integer $k \geq 0.$
+
+    Thus, we can write
+    $$
+        a = \dfrac{(10^2)^{k} - 1}{10^{2} - 1} = \dfrac{(10^k - 1)(10^k + 1)}{99} = \dfrac{(1 + 10 + \ldots + 10^{k})(10^{k} + 1)}{11}.
+    $$
+    Since $k \geq 1$ (otherwise we have $a = 1$), we can write
+    $$
+    10^k + 1 = (11 - 1)^k + 1 = \sum_{r = 1}^{k} 11^{r} {k \choose r} = 11 \sum_{r = 0}^{k -1 } 11^{r}{k \choose r + 1},
+    $$
+    and hence
+    $$
+    a = \left (\sum_{r = 0}^{k} 10^r \right)\left(\sum_{r = 0}^{k-1} 11^r {k \choose r + 1}\right).
+    $$
+    If $k \geq 2,$ then both terms are $> 1,$ meaning $a$ is guaranteed to be composite. Hence, we must have $k =1,$ in which case $a = 101,$ which is a prime number.
+
+    Thus, the only such prime is $101.$
+
+    \item[8] Take cases on the parity of $n.$ If $n = 2k$ for some integer $k,$ we have
+    $$
+    n^4 + 4^n = 2^4 k^4 + 4^{2k} = 2(8k^4 + 2 \cdot 4^{2k - 1}).
+    $$
+    Since $n > 1,$ $k \geq 1,$ meaning the inner term is an integer, with $$
+    8k^4 + 2 \cdot 4^{2k-1} \geq 8 + 2 \cdot 4^{2k-1} \geq 16,
+    $$
+    meaning we can write $n^4 + 4^n$ as the product of $2$ and some other factor $ > 1.$ Hence, $n^4 + 4^n$ is composite.
+
+    Alternatively, $n = 2k + 1.$  Then, we have
+    \begin{align*}
+    n^4 + 4^n = (2k+1)^4 + 4^{2k + 1} &= (2k + 1)^4 + 2^{4k + 2} \\
+    &= (2k+1)^4 + 4 (2^k)^4.
+    \end{align*}
+
+    We know 
+    $$
+    a^4 + 4b^4 = (a^2  + 2b^2)^2 -  4a^2b^2 = (a^2 + 2b^2 - 2ab)(a^2 + 2b^2 + 2ab),
+    $$
+    meaning we can write
+    $$
+    n^4 + 4^n = (a^2 + 2b^2 - 2ab)(a^2 + 2b^2 + 2ab)
+    $$
+    where $a, b$ are integers, and $a\geq 3,$ $b \geq 2.$ Then, 
+    $$
+    a^2 + 2b^2 + 2ab \geq 9 +32 + 24 = 65,
+    $$
+    and $$
+    a^2 + 2b^2 - 2ab = (a+b)^2 + b^2 \geq 29.
+    $$
+    Hence, $n^4 + 4^n$ can be decomposed into a product of two factors of which neither are $1$, and hence $n^4 + 4n$ is composite in either case.
+ 
+    \item[9] The Euler totient of $p^2$ is 
+    $$
+    \phi(p^2) = p^2 \left(1 - 1/p\right) = p(1-p),
+    $$
+    meaning for coprime $a, p^2$, we get
+    $$
+    a^{p^2 - p} \equiv 1 \pmod {p^2}.
+    $$
+    Equivalently, 
+    $$
+    a \cdot a^{p^2 - p - 1} \equiv 1\pmod {p^2},
+    $$
+    meaning if $\gcd(a, p) = 1,$ $a^{p^2 - p - 1}$ is the modular inverse of $a.$ Also, note that for $\gcd(a, p) = 1.$
+
+    By the definition of the binomial coefficient,
+    $$
+    {2p \choose p} = \dfrac{2p(2p-1) \cdot \ldots \cdot  (p + 1)}{p \cdot \ldots \cdot 1} = \dfrac{2(2p - 1) \cdot \ldots \cdot (p + 1)}{(p- 1) \cdot \ldots \cdot 1}.
+    $$
+    Taking both sides mod $p^2,$ we have
+    $$
+        {2p \choose p} \equiv \dfrac{2(2p-1) \cdot \ldots \cdot (p + 1)}{(p-1) \cdot \ldots \cdot 1} \pmod {p^2}.
+    $$
+
+    Notice that if $a / b = c$ for integers $a, b, c$ then $a = bc.$ Under some modulo $n,$ we get 
+    $$
+    a \equiv bc \pmod n,
+    $$
+    and if $b^{-1}$ is the modular inverse of $b,$ then 
+    $$
+    ab^{-1} \equiv c \equiv a /b \pmod n.
+    $$
+    Hence, we know 
+    \begin{align*}
+    {2p \choose p} &\equiv 2(2p-1) \cdot  \ldots \cdot (p + 1) \cdot \prod_{k = 1}^{p-1} k^{p^2 - p - 1} \pmod {p^2} \\
+    &\equiv 2 \prod_{k = 1}^{p-1} (k+p)k^{p^2 - p - 1} \pmod {p^2} \\
+    &\equiv 2 \prod_{k = 1}^{p-1} k^{p^2 - p} + pk^{p^2 -p - 1} \pmod {p^2} \\
+    &\equiv 2 \prod_{k = 1}^{p-1}1 + pk^{p^2 -p - 1} \pmod {p^2}.
+    \end{align*}
+    Since under modulo $p^2$, any terms that have a $p^2$ factor are congruent to $0$, we know
+    \begin{align*}
+    \kappa :=\prod_{k = 1}^{p - 1}(1 + pk^{-1}) \equiv \sum_{S \subseteq \{1, \ldots, p-1\}} \prod_{k \in S} pk^{-1} &\equiv \sum_{S \subseteq \{1, \ldots, p-1\}, |S| \leq  1} \prod_{k \in S} pk^{-1} \pmod{p^2} \\
+    &\equiv 1 + \sum_{k = 1}^{p-1} pk^{-1} =  1 + p^{p-1} \sum_{k = 1}^{p -1} k. \pmod{p^2}
+    \end{align*}
+    When $p > 2,$ $p^2 \mid p^{p-1},$ and we trivially have $\kappa \equiv 1 \pmod {p^2}.$ Otherwise, when $p = 2$ we have $\kappa \equiv 3 \pmod {p^{2}}.$
+
+    Thus, when $p > 2$ we know
+    $$
+    {2p \choose p} \equiv 2 \kappa \equiv 2 \pmod {p^2},
+    $$
+    and otherwise $$
+    {2p \choose p } \equiv 2 \kappa \equiv 2 \cdot 3 \equiv 6   \equiv 2 \pmod{\underbrace{p^2}_{4}}.
+    $$
+
+    Therefore, in all cases we have
+    $$
+    {2p \choose p} \equiv 2 \pmod{p^2}
+    $$
+    for every prime $p;$
+\end{enumerate}
+
+\subsection{Black Diamond}
+\begin{enumerate}
+    \item[11] We prove that for any $n > 1,$ $n \nmid 2^{n} - 1.$ Assume for the sake of contradiction that there is some $n > 1$ with $n \mid 2^{n} - 1.$ Consider the smallest prime factor $p$ of $n.$ Then, we have
+    $$
+    2^{n} - 1 = 2^{pM} - 1.
+    $$
+    By Fermat's little theorem,
+    $$
+    2^n - 1 \equiv (2^{p})^M - 1 \equiv 2^M - 1 \pmod p.
+    $$
+    Additionally, since $p \mid n,$ and $n \mid 2^{n} -1,$ we know $2^{n} -1 \equiv 0 \pmod p,$ and thus $$
+    2^{M} - 1 \equiv 0 \pmod {p} \Rightarrow 2^{M} \equiv 1 \pmod p.
+    $$
+    
+    By Fermat's little theorem, we also know
+    $$
+    2^{p-1} \equiv 1 \pmod p.
+    $$
+    Therefore, $$2^{\gcd(M, p - 1)} \equiv 1 \pmod p,$$ since we can write $\gcd(M, p - 1)$ with Bezout coefficients. Since $p$ is the smallest prime factor of $M,$ no prime factor of $p - 1$ can be common with factors of $M,$ and hence $\gcd(M, p - 1) = 1.$ Hence, we get $2 \equiv 1 \pmod p,$ which is a contradiction for all prime $p.$
+
+    Thus, $n \nmid 2^{n} -1 $ by contradiction.
+
+    \item[12] Since $a - b \in \mathbb Z,$ we know $a = b + M$ for some integer $M \in \mathbb Z.$ Additionally, we have
+    $$
+    a^2 - b^2 = (a-b)(a + b) = M(a + b) \in \mathbb Z,
+    $$
+    or equivalently, 
+    $$
+    M(2b + M) = N
+    $$
+    for some integer $N,$ yielding $$
+    b = \dfrac{N - M^2}{2M},\ a = \dfrac{N + M^2}{2M}
+    $$
+    for arbitrary integers $N, M \in \mathbb Z.$ Hence, $a, b$ are rational, meaning there exists a common denominator $d \in \mathbb Z$ such that
+    $a = x/d,\ b = y/d$ for integers $x, y,$ with $\gcd(x, y,d) = 1.$
+
+    Then, since $a^k - b^k \in \mathbb Z$ for all integers $k,$ we know
+    $$
+    d^k \mid x^k - y^k
+    $$
+    for all integers $k.$
+
+    Consider some arbitrary prime factor $p \mid d.$ Then, we need the multiplicity of $p$ in $x^k - y^k$ to be $k$ for all integers $k.$ Factoring, we get
+    $$
+    x^k -y^k = (x-y)(x^{k - 1} + x^{k-2}y + \ldots + y^{k-1}).
+    $$
+
+    Since $x \equiv y,$ assume $x = y + p^s t$ for some integer $s$ and $p \nmid t.$ Then, $$x^k - y^k = (y + p^st)^k - y^k = \sum_{j = 1}^{k}{k \choose j}p^{sj}t^j y^{k -j}.$$
+    When $k = p,$ we have
+    \begin{align*}
+    x^p - y^p = \sum_{j = 1}^{p}{p \choose j} p^{sj} t^j y^{p -j} &= p^{s} \sum_{j = 0}^{p - 1}{p \choose j + 1} p^{sj} t^{j + 1} y^{p-j - 1} \\
+    &= p^{s+1} \sum_{j = 0}^{p-1} \dfrac{1}p{}{p \choose j + 1} p^{sj} t^{j + 1} y^{p -j - 1}.
+    \end{align*}
+    Since ${p \choose j + 1} / p \in \mathbb Z$ for all $0 \leq j \leq p - 1,$ clearly $p^{s + 1} \mid x^p - y^p.$ Additionally, we know
+    $$
+    x^p -y^p = p^{s + 1} \left (
+    ty^{p-1} + \sum_{j = 1}^{p-1} \dfrac{1}{p}{p \choose j + 1} p^{sj} t^{j + 1} y^{p -j - 1}
+    \right).
+    $$
+    Taking the second term modulo $p,$ we know
+    $$
+        ty^{p-1} + \sum_{j = 1}^{p-1} \dfrac{1}{p} {p \choose j + 1} p^{sj} t^{j + 1} y^{p -j - 1} \equiv ty^{p - 1}  \not \equiv 0 \pmod{p}
+    $$
+    since $p \nmid t$ and $\gcd(y, d) = 1.$ Thus, the multiplicity of $p$ in $x^p - y^p, $ $\kappa(x^p - y^p),$ is $s + 1,$ where $s = \kappa(x - y)$ is the multiplicity of $p$ in $x - y.$
+
+    Recursively applying this rule with $x \to x^{p^{r - 1}}, y \to y^{p^{r - 1}}$, we know 
+    $$
+    x^{p^r} - y^{p^r} = (x^{p ^{r-1}})^{p} -(y^{p^{r}})^{p},
+    $$
+    meaning
+    $$
+    \kappa(x^{p^r} - y^{p^r}) = \kappa(x^{p^{r-1}} - y^{p^{r-1}}) + 1,
+    $$
+    and inductively,
+    $$
+\kappa(x^{p^r} - y^{p^r}) = \kappa(x - y) + r.
+    $$
+
+    Since for all $k = p^r,$ $d^{p^r} \mid x^{p^r} - y^{p^r},$ we know
+    $$
+    p^r \cdot \kappa(d) \leq \kappa(x^{p^r} - y^{p^r}) = \kappa(x - y) + r = s + r
+    $$
+    for some integer $s,$ and all integers $r.$ Rearranging, we get 
+    $$
+    r \leq \log_{p}\dfrac{s + r}{\kappa(d)},
+    $$
+    which cannot hold for all integers $r$, deriving a contradiction.
+
+    Thus, no such $p \mid d$ can exist, i.e., $d = 1,$ meaning $a = x, b = y$ are integers.
+\end{enumerate}
+
+\subsection{Reflection}
+For (12), it was incredibly tricky deriving some algebraic result for $a$, $b$ in terms of $N, M,$ so decided to prove that $a, b$ are rational instead. Then, since they're rational we can write them with a common denominator and $\gcd(\cdot, \cdot, \cdot) = 1,$ which seemed to suggest that the term $x^k - y^k$ (an integer) had to have factors of shared denominator $d$ scale exponentially, which could only occur if both $x$ and $y$ had that same denominator factor.
+
+Nice to work with primes, so considered some prime factor of $d$ (notice that we RTP that $d = 1$, i.e, no such prime factor exists). Then, could prove that $d^k$ has prime factors scale exponentially, but $x^k - y^k$ only scales linearly under our assumption that neither $y$ nor $x$ contain prime factor $p.$
+\end{document}
