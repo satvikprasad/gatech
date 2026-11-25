@@ -3,99 +3,179 @@
 \begin{document}
 
 \begin{enumerate}
-    \item \begin{enumerate}
-        \item D reduces to all of \{C, F, E, G\}, meaning if D is NP-hard \{C, D, E, F, G\} must be NP-hard.
+  \item
+    \begin{enumerate}
+      \item D reduces to all of \{C, F, E, G\}, meaning if D is
+        NP-hard \{C, D, E, F, G\} must be NP-hard.
 
-        \item If $P \neq NP,$ then no NP-hard problem can be in P, otherwise all of NP is in P. Thus, \{A, B, H\} can be in P.
+      \item If $P \neq NP,$ then no NP-hard problem can be in P,
+        otherwise all of NP is in P. Thus, \{A, B, H\} can be in P.
     \end{enumerate}
 
-    \item \begin{enumerate}
-        \item To prove B is NP-complete, we need to prove it is NP-hard since B is already in NP. Hence, we need to show that all of NP reduces to B. We can do this by showing A reduces to B, since A is already NP-hard.
+  \item
+    \begin{enumerate}
+      \item To prove B is NP-complete, we need to prove it is NP-hard
+        since B is already in NP. Hence, we need to show that all of
+        NP reduces to B. We can do this by showing A reduces to B,
+        since A is already NP-hard.
 
-        \item If the reductions don't have a polynomial time complexity, then the statement $A \to B$ in $\omega(\text{poly}(n))$ doesn't necessarily imply $A$ is in P if B is in P, since the reduction itself takes longer than polynomial time.
+      \item If the reductions don't have a polynomial time
+        complexity, then the statement $A \to B$ in
+        $\omega(\text{poly}(n))$ doesn't necessarily imply $A$ is in
+        P if B is in P, since the reduction itself takes longer than
+        polynomial time.
 
-        \item For there to be a reduction $A \to B,$ we want to be able to identify all solutions of $A$ by solving $B.$ Hence, if there is a YES-instance of inputA, running our algorithm on $B$ should produce a YES-instance of inputB, meaning all YES-instances on A are YES-instances on B. Conversely, we don't want to mis-identify any non-solutions, meaning if we get a YES-instance on inputB, it better be a YES-instance on inputA. Hence, we need a YES-instance on inputA iff we have a YES-instance on inputB.
+      \item For there to be a reduction $A \to B,$ we want to be able
+        to identify all solutions of $A$ by solving $B.$ Hence, if
+        there is a YES-instance of inputA, running our algorithm on
+        $B$ should produce a YES-instance of inputB, meaning all
+        YES-instances on A are YES-instances on B. Conversely, we
+        don't want to mis-identify any non-solutions, meaning if we
+        get a YES-instance on inputB, it better be a YES-instance on
+        inputA. Hence, we need a YES-instance on inputA iff we have a
+        YES-instance on inputB.
     \end{enumerate}
 
-    \item The decision "is there a path of length $\geq k$" is monotonic (non-decreasing) on $k.$ That is, if there is a path of length $\geq k,$ there is a path of length $\geq r$ for $r < k.$ Similarly, if there is no path of length $\geq k,$ there is no path for length $r > k,$ meaning there is some decision boundary.
+  \item The decision "is there a path of length $\geq k$" is
+    monotonic (non-decreasing) on $k.$ That is, if there is a path of
+    length $\geq k,$ there is a path of length $\geq r$ for $r < k.$
+    Similarly, if there is no path of length $\geq k,$ there is no
+    path for length $r > k,$ meaning there is some decision boundary.
 
     \begin{itemize}
-        \item Assume we have $\texttt{DecideLongestPath}(G, k)$ that runs in $T(|V|, |E|)$ time. Then, we can binary search on $k,$ with the update rule $r \gets \texttt{mid} - 1$ if NO, and $l \gets \texttt{mid} + 1$ if YES. The final answer will be $k_\text{longest} = l - 1$. 
-        
-        Our initial range on $k$ is $[0, |V| - 1],$ since any path with $> n -1$ edges must be incident on $> n$ vertices, and we cannot re-visit vertices. Since this requires $O( \log |V|)$ iterations of $\texttt{DecideLongestPath},$ this algorithm runs in 
+      \item Assume we have $\texttt{DecideLongestPath}(G, k)$ that
+        runs in $T(|V|, |E|)$ time. Then, we can binary search on
+        $k,$ with the update rule $r \gets \texttt{mid} - 1$ if NO,
+        and $l \gets \texttt{mid} + 1$ if YES. The final answer will
+        be $k_\text{longest} = l - 1$.
+
+        Our initial range on $k$ is $[0, |V| - 1],$ since any path
+        with $> n -1$ edges must be incident on $> n$ vertices, and
+        we cannot re-visit vertices. Since this requires $O( \log
+        |V|)$ iterations of $\texttt{DecideLongestPath},$ this algorithm runs in
         $$
-            \mathcal O(T(|V|, |E|) \cdot \log |V|)
+        \mathcal O(T(|V|, |E|) \cdot \log |V|)
         $$
         time.
 
-        \item First, we run the above algorithm to determine the length of the longest path, call this $L.$ Then, we can iterate through every edge of the graph, remove it from $G,$ and run $\texttt{DecideLongestPath}.$ If the result $= L,$ we know there is a longest path that does not take the edge, and we can remove this. We continue this process until we have $L$ edges left, at which point we can BFS from a vertex along this path to reach an endpoint, and BFS from there.
+      \item First, we run the above algorithm to determine the length
+        of the longest path, call this $L.$ Then, we can iterate
+        through every edge of the graph, remove it from $G,$ and run
+        $\texttt{DecideLongestPath}.$ If the result $= L,$ we know
+        there is a longest path that does not take the edge, and we
+        can remove this. We continue this process until we have $L$
+        edges left, at which point we can BFS from a vertex along
+        this path to reach an endpoint, and BFS from there.
 
-        \paragraph{Justification} We prove that every edge only needs to be iterated a single time. Consider a step of the iteration over edge $e.$ We have two cases:
+        \paragraph{Justification} We prove that every edge only needs
+        to be iterated a single time. Consider a step of the
+        iteration over edge $e.$ We have two cases:
         \begin{itemize}
-            \item Edge $e$ is not taken on any longest path in this graph, or there are multiple such longest paths. In this case, we permanently remove $e$ from $G,$ and it won't recur in our iteration.
+          \item Edge $e$ is not taken on any longest path in this
+            graph, or there are multiple such longest paths. In this
+            case, we permanently remove $e$ from $G,$ and it won't
+            recur in our iteration.
 
-            \item There is a single longest path in what remains of $G$ (after modifications), and edge $e$ is along this path. In this case, we know we must keep $e$ since it is along our only remaining longest path (that we wish to detect), and we don't need to iterate over it again.
+          \item There is a single longest path in what remains of $G$
+            (after modifications), and edge $e$ is along this path.
+            In this case, we know we must keep $e$ since it is along
+            our only remaining longest path (that we wish to detect),
+            and we don't need to iterate over it again.
         \end{itemize}
 
-        Hence, we can find the longest path in 
+        Hence, we can find the longest path in
         $$
-        \mathcal O(T(|V|, |E|) \cdot \log |V| + T(|V|, |E|) \cdot |E| + |V| + |E|) = \mathcal O(T(|V|, |E|) \cdot (|E| + \log |E|))
+        \mathcal O(T(|V|, |E|) \cdot \log |V| + T(|V|, |E|) \cdot |E|
+        + |V| + |E|) = \mathcal O(T(|V|, |E|) \cdot (|E| + \log |E|))
         $$
-        time since $\mathcal O(\log |V|) = \mathcal O(\log |E|),$ and $\mathcal O(|V|) = \mathcal O(|E|)$ as required.
+        time since $\mathcal O(\log |V|) = \mathcal O(\log |E|),$ and
+        $\mathcal O(|V|) = \mathcal O(|E|)$ as required.
     \end{itemize}
 
-    \item \paragraph{The bounded spanning tree problem (BST) is in NP}
+  \item \paragraph{The bounded spanning tree problem (BST) is in NP}
     \begin{algorithm}
-        \caption{Verify spanning-tree}
-        \begin{algorithmic}
-            \Procedure{VerifySpanningTree}{$G, k, T$}
-                \For{$v \in G$}
-                    \If{$v \not \in T$} \Comment{Check if spanning, $\mathcal O(|V|^2)$ naive}
-                        \State \Return \texttt{false}
-                    \EndIf
-                \EndFor
+      \caption{Verify spanning-tree}
+      \begin{algorithmic}
+        \Procedure{VerifySpanningTree}{$G, k, T$}
+        \For{$v \in G$}
+        \If{$v \not \in T$} \Comment{Check if spanning, $\mathcal
+        O(|V|^2)$ naive}
+        \State \Return \texttt{false}
+        \EndIf
+        \EndFor
 
-                \vspace{3mm}
+        \vspace{3mm}
 
-                \State $\texttt{visited},\, \texttt{has\_cycle} \gets \texttt{dfs}(T)$ \Comment{Check if tree, $\mathcal O(|V| + |E|)$}
-                \If{$\texttt{has\_cycle} \lor (\texttt{visited} \neq V(T))$}
-                    \State \Return \texttt{false}
-                \EndIf
+        \State $\texttt{visited},\, \texttt{has\_cycle} \gets
+        \texttt{dfs}(T)$ \Comment{Check if tree, $\mathcal O(|V| + |E|)$}
+        \If{$\texttt{has\_cycle} \lor (\texttt{visited} \neq V(T))$}
+        \State \Return \texttt{false}
+        \EndIf
 
-                \vspace{3mm}
-            
-                \For{$v \in T$} \Comment{Check if $\deg$ valid, $\mathcal O(|V|)$}
-                    \If{$\deg v > k$}
-                        \State \Return \texttt{false}
-                    \EndIf
-                \EndFor
+        \vspace{3mm}
 
-                \State \Return \texttt{true}
-            \EndProcedure
-        \end{algorithmic}
+        \For{$v \in T$} \Comment{Check if $\deg$ valid, $\mathcal O(|V|)$}
+        \If{$\deg v > k$}
+        \State \Return \texttt{false}
+        \EndIf
+        \EndFor
+
+        \State \Return \texttt{true}
+        \EndProcedure
+      \end{algorithmic}
     \end{algorithm}
-    Such an algorithm verifies that the tree is an spanning tree, and has bounded degree in polynomial time, meaning BST $\in$ NP.
+    Such an algorithm verifies that the tree is an spanning tree, and
+    has bounded degree in polynomial time, meaning BST $\in$ NP.
 
-    \paragraph{BST is NP hard} We reduce HamPath to BST. Notice that any tree $T$ where every vertex $v$ has degree $\leq 2$ must be a path:
+    \paragraph{BST is NP hard} We reduce HamPath to BST. Notice that
+    any tree $T$ where every vertex $v$ has degree $\leq 2$ must be a path:
     \begin{itemize}
-        \item There is a vertex $v \in T$ with degree $0.$ Since this is a tree, there are no other vertices in the tree (otherwise this vertex would be disconnected and $T$ no longer a tree), and the tree is a lone vertex. In this case, $T$ is a path.
+      \item There is a vertex $v \in T$ with degree $0.$ Since this
+        is a tree, there are no other vertices in the tree (otherwise
+        this vertex would be disconnected and $T$ no longer a tree),
+        and the tree is a lone vertex. In this case, $T$ is a path.
 
-        \item $T$ is not a lone vertex. Then, $T$ has vertices with degree $1$ or $2.$ We continue via induction.
+      \item $T$ is not a lone vertex. Then, $T$ has vertices with
+        degree $1$ or $2.$ We continue via induction.
 
-        Assume all trees $T$ with $n = k \geq 2$ vertices and all vertices with degree $\leq 2$  are paths. Then, consider an arbitrary tree $T$ with $k + 1$ vertices and degree $2.$ 
-        
-        There must be a vertex in $T$ with degree $1.$ Otherwise, we can construct a cycle by starting at some start vertex, and taking the vertex that we are not incident from. Since there are $k + 1$ vertices this process must eventually repeat a vertex, at which point we have a cycle.
+        Assume all trees $T$ with $n = k \geq 2$ vertices and all
+        vertices with degree $\leq 2$  are paths. Then, consider an
+        arbitrary tree $T$ with $k + 1$ vertices and degree $2.$
 
-        Hence, take this vertex $u$ with degree $1$ and remove it. We are left with a graph with $\geq 2$ vertices with degree $2,$ meaning it is a path. The vertex incident from $u$, $u^\star,$ previously had degree $2$ (otherwise if it had degree $1$, would be $P_2$), and hence by our inductive hypothesis $T \setminus \{u\}$ is a path with endpoint $u^\star.$ Then, $T$ adds edge $\{u, u^\star\},$ and since $u^\star$ was an endpoint, $T$ is still a path, concluding the inductive step.
+        There must be a vertex in $T$ with degree $1.$ Otherwise, we
+        can construct a cycle by starting at some start vertex, and
+        taking the vertex that we are not incident from. Since there
+        are $k + 1$ vertices this process must eventually repeat a
+        vertex, at which point we have a cycle.
 
-        For our base case, the only tree with $2$ vertices is $P_2,$ which is a path
+        Hence, take this vertex $u$ with degree $1$ and remove it. We
+        are left with a graph with $\geq 2$ vertices with degree $2,$
+        meaning it is a path. The vertex incident from $u$,
+        $u^\star,$ previously had degree $2$ (otherwise if it had
+        degree $1$, would be $P_2$), and hence by our inductive
+        hypothesis $T \setminus \{u\}$ is a path with endpoint
+        $u^\star.$ Then, $T$ adds edge $\{u, u^\star\},$ and since
+        $u^\star$ was an endpoint, $T$ is still a path, concluding
+        the inductive step.
+
+        For our base case, the only tree with $2$ vertices is $P_2,$
+        which is a path
     \end{itemize}
 
-    In all cases, $T$ with degree bounded by 2 is a path. Hence, if $T$ is spanning and degree bounded by 2, $T$ is a path incident on all vertices, meaning $T$ is a Hamiltonian path. Conversely, if $P$ is a Hamiltonian path, every vertex must have degree $\leq 2,$ and the path must be spanning, meaning $P$ is also a spanning tree with degree $\leq 2.$
+    In all cases, $T$ with degree bounded by 2 is a path. Hence, if
+    $T$ is spanning and degree bounded by 2, $T$ is a path incident
+    on all vertices, meaning $T$ is a Hamiltonian path. Conversely,
+    if $P$ is a Hamiltonian path, every vertex must have degree $\leq
+    2,$ and the path must be spanning, meaning $P$ is also a spanning
+    tree with degree $\leq 2.$
 
-    Thus, if Hamiltonian path exists in $G,$ then a spanning tree with degree $k\leq 2$ also exists, and vice versa.
+    Thus, if Hamiltonian path exists in $G,$ then a spanning tree
+    with degree $k\leq 2$ also exists, and vice versa.
 
-    Therefore, we can solve HamPath by simply running BST on our graph $G$ with $k = 2.$ The reduction is $\mathcal O(|V|, |E|).$ By definition, since HamPath is NP-hard, and it reduces to BST, all problems in NP must reduce to BST, meaning BST is NP-hard.
+    Therefore, we can solve HamPath by simply running BST on our
+    graph $G$ with $k = 2.$ The reduction is $\mathcal O(|V|, |E|).$
+    By definition, since HamPath is NP-hard, and it reduces to BST,
+    all problems in NP must reduce to BST, meaning BST is NP-hard.
 
     Hence, BST is NP-hard and in NP, i.e., BST is NP complete.
 \end{enumerate}

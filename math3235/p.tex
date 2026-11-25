@@ -4,45 +4,55 @@
 
 \begin{document}
 \begin{enumerate}
-    \item The quantity $C = (A \cup B)  \cap (A \cap B)^C  = (A \cup B) \cap (A^C \cup B^C).$ Thus, we get 
+  \item The quantity $C = (A \cup B)  \cap (A \cap B)^C  = (A \cup B)
+    \cap (A^C \cup B^C).$ Thus, we get
     \begin{align*}
-    C &= (A \cap A^C) \cup (A \cap B^C) \cup (B \cap B^C)  \cup (B \cap A^c) \\
-    &= (A \cap B^C) \cup (B \cap A^C).
+      C &= (A \cap A^C) \cup (A \cap B^C) \cup (B \cap B^C)  \cup (B
+      \cap A^c) \\
+      &= (A \cap B^C) \cup (B \cap A^C).
     \end{align*}
 
-    Since these are disjoint, we use the definition of a probability measure to derive
+    Since these are disjoint, we use the definition of a probability
+    measure to derive
     $$
     \mathbb P(C) = \mathbb P(A \cap B^C) + \mathbb P(B \cap A^C).
     $$
 
-    Writing $A\cap B^C = \Omega - (A^C \cup B) = \Omega - (A^C \cup (A \cap B)),$ which ivnolves disjoint unions. Hence, 
+    Writing $A\cap B^C = \Omega - (A^C \cup B) = \Omega - (A^C \cup
+    (A \cap B)),$ which ivnolves disjoint unions. Hence,
     $$
-    \mathbb P(A \cap B^C) = 1 - \mathbb P(A^C) - \mathbb P(A \cap B) = \mathbb P(A) - \mathbb P(A \cap B).
+    \mathbb P(A \cap B^C) = 1 - \mathbb P(A^C) - \mathbb P(A \cap B)
+    = \mathbb P(A) - \mathbb P(A \cap B).
     $$
 
-    \item Choose 10 people to be white in $20 \choose 10$ ways, and then permute between these people in $10!$ ways, yielding $20!/101!$
+  \item Choose 10 people to be white in $20 \choose 10$ ways, and
+    then permute between these people in $10!$ ways, yielding $20!/101!$
 
-    \item We have $\mathbb P(A \mid B, E) = \dfrac{\mathbb P(A \cap B \cap E)}{\mathbb P(B \cap E)},$ and $$
-    \mathbb P(B \mid A, E) = \dfrac{\mathbb P(A \cap B \cap E)}{\mathbb P(A \cap E)},
+  \item We have $\mathbb P(A \mid B, E) = \dfrac{\mathbb P(A \cap B
+    \cap E)}{\mathbb P(B \cap E)},$ and $$
+    \mathbb P(B \mid A, E) = \dfrac{\mathbb P(A \cap B \cap
+    E)}{\mathbb P(A \cap E)},
     $$
-    meaning 
+    meaning
     $$
-        \mathbb P(A \mid B, E) \mathbb P(B \cap E) = \mathbb P(B \mid A, E) \mathbb P(A \cap E).
+    \mathbb P(A \mid B, E) \mathbb P(B \cap E) = \mathbb P(B \mid A,
+    E) \mathbb P(A \cap E).
     $$
-    Since $\mathbb P(B \cap  E) = \mathbb P(B \mid E) \mathbb P(E),$ and 
+    Since $\mathbb P(B \cap  E) = \mathbb P(B \mid E) \mathbb P(E),$ and
     $$$$
 
-    \item Since $B_1, B_2, \ldots$ is a partitioning of $\Omega,$ then we have 
+  \item Since $B_1, B_2, \ldots$ is a partitioning of $\Omega,$ then we have
     $$
     A = \bigcup_{i} (A \cap B_i) <
     $$
     where we have a disdjoint union.
 
-    Thus, 
+    Thus,
     \begin{align*}
-    \mathbb P(A \mid E) &= \sum_{i} \mathbb P(A \cap B_i \mid E) \\
-    &= \sum_{i} \dfrac{\mathbb P(A \cap B_i \cap E)}{\mathbb P(E)} \\ \\
-    &= \sum_{i} \dfrac{\mathbb P(A \cap (B_i \cap E))}{\mathbb P(B_i \cap E)} \dfrac{\mathbb P(B_i \cap E)}{\mathbb P(E)}
+      \mathbb P(A \mid E) &= \sum_{i} \mathbb P(A \cap B_i \mid E) \\
+      &= \sum_{i} \dfrac{\mathbb P(A \cap B_i \cap E)}{\mathbb P(E)} \\ \\
+      &= \sum_{i} \dfrac{\mathbb P(A \cap (B_i \cap E))}{\mathbb
+      P(B_i \cap E)} \dfrac{\mathbb P(B_i \cap E)}{\mathbb P(E)}
     \end{align*}
 \end{enumerate}
 \end{document}

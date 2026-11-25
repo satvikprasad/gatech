@@ -2,109 +2,211 @@
 \input{header}
 \begin{document}
 \begin{enumerate}
-    \item  \begin{enumerate}
-    \item We have $v_i, w_i$ binary strings of length $d.$ Consider some $v_i, w_j.$ Consider any index $k$ for which $(v_i)_k = 1.$ Assume for the sake of contradiction that $(w_j)_k = 1.$ Then, since every term in the dot product $v_i \cdot w_j$ is $\geq 0,$ and we have a term $(v_i)_k(w_i)_k = 1,$ the dot product $v_i \cdot w_j \geq 1 > 0,$ meaning $v_i, w_j$ are not orthogonal.
+  \item
+    \begin{enumerate}
+      \item We have $v_i, w_i$ binary strings of length $d.$ Consider
+        some $v_i, w_j.$ Consider any index $k$ for which $(v_i)_k =
+        1.$ Assume for the sake of contradiction that $(w_j)_k = 1.$
+        Then, since every term in the dot product $v_i \cdot w_j$ is
+        $\geq 0,$ and we have a term $(v_i)_k(w_i)_k = 1,$ the dot
+        product $v_i \cdot w_j \geq 1 > 0,$ meaning $v_i, w_j$ are
+        not orthogonal.
 
-    Hence, we need $(w_i)_k = 0$ for all such $k$. This is also sufficient, since the dot product will be $0.$ Then, to determine if $v_i$ is orthogonal to any of $w_1, w_2, \ldots, w_n.$ construct the regular expression $s_i$, defined by 
-    $$
-        (s_i)[k] = \begin{cases}
-        \cdot &  (v_i)_k = 0 \\
-        0 & (v_i)_k = 1
+        Hence, we need $(w_i)_k = 0$ for all such $k$. This is also
+        sufficient, since the dot product will be $0.$ Then, to
+        determine if $v_i$ is orthogonal to any of $w_1, w_2, \ldots,
+        w_n.$ construct the regular expression $s_i$, defined by
+        $$
+        (s_i)[k] =
+        \begin{cases}
+          \cdot &  (v_i)_k = 0 \\
+          0 & (v_i)_k = 1
         \end{cases}.
-    $$
-    Such a regular expression will match string $w_j$ if and only if $w_j \perp v_i.$ Thus, we can use match string $s_i$ against string $[w_1 ; w_2 ; \ldots ;w_n]$ where $;$ denotes concatentation seperated by some placeholder character $\star \not \in \{0, 1\}$ that ensures we never match on a crossing boundary of two different $w_i, w_j.$ This works since there is a match if and only if some $ w_j \perp v_i.$
+        $$
+        Such a regular expression will match string $w_j$ if and only
+        if $w_j \perp v_i.$ Thus, we can use match string $s_i$
+        against string $[w_1 ; w_2 ; \ldots ;w_n]$ where $;$ denotes
+        concatentation seperated by some placeholder character $\star
+        \not \in \{0, 1\}$ that ensures we never match on a crossing
+        boundary of two different $w_i, w_j.$ This works since there
+        is a match if and only if some $ w_j \perp v_i.$
 
-    Then, we can construct the regular expression
-    $$
-    s = ((0|1)*\star)*((s_1) | (s_2) | \ldots | (s_n))
-    $$
-    of length $nd + (n-1 )$ that will match if and only if there is some $i, j$ such that $v_i \perp w_j.$  More concretely, if we have a match then at least one of the matching groups had a match, which reduces to our previous case. Conversely, if there is some orthogonal pair, then one of our matching groups will match.
+        Then, we can construct the regular expression
+        $$
+        s = ((0|1)*\star)*((s_1) | (s_2) | \ldots | (s_n))
+        $$
+        of length $nd + (n-1 )$ that will match if and only if there
+        is some $i, j$ such that $v_i \perp w_j.$  More concretely,
+        if we have a match then at least one of the matching groups
+        had a match, which reduces to our previous case. Conversely,
+        if there is some orthogonal pair, then one of our matching
+        groups will match.
 
-    Thus, we can determine if there is an orthogonal pair by checking if there is a match between a string of length $(n + 1)d - 1$ and a match string of length $n(d+ 3) + 11.$ Constructing both strings can be done in $\mathcal O(nd)$ time, and matching can be done in $\mathcal O(T((n+1)d - 1, (n+1)d - 1))$ time. Since $T$ is an asymptotic complexity, 
-    $$
-    T((n+1)d - 1, (n+1)d  -1) = T(nd, nd),
-    $$
-    meaning we can solve OV in $$
+        Thus, we can determine if there is an orthogonal pair by
+        checking if there is a match between a string of length $(n +
+        1)d - 1$ and a match string of length $n(d+ 3) + 11.$
+        Constructing both strings can be done in $\mathcal O(nd)$
+        time, and matching can be done in $\mathcal O(T((n+1)d - 1,
+        (n+1)d - 1))$ time. Since $T$ is an asymptotic complexity,
+        $$
+        T((n+1)d - 1, (n+1)d  -1) = T(nd, nd),
+        $$
+        meaning we can solve OV in $$
         \mathcal O(T(nd, nd) + nd)
-    $$
-    time. 
+        $$
+        time.
 
-    \item Let us assume the OV conjecture is true. Then, there is no algorithm for the OV problem with time complexity
-    $$
-    \mathcal O(n^{2 - \epsilon} \text{poly}(d))
-    $$
-    for any $\epsilon > 0.$
-    However, we can solve OV in $\mathcal O(T(nd, nd) + nd)$ time, meaning $$
-    \mathcal O(T(nd, nd) + nd) = \Omega(n^{2-\epsilon} \text{poly}(d))
-    $$
-    for any $\epsilon > 0,$ since otherwise the OV conjecture would be false. 
+      \item Let us assume the OV conjecture is true. Then, there is
+        no algorithm for the OV problem with time complexity
+        $$
+        \mathcal O(n^{2 - \epsilon} \text{poly}(d))
+        $$
+        for any $\epsilon > 0.$
+        However, we can solve OV in $\mathcal O(T(nd, nd) + nd)$
+        time, meaning $$
+        \mathcal O(T(nd, nd) + nd) = \Omega(n^{2-\epsilon} \text{poly}(d))
+        $$
+        for any $\epsilon > 0,$ since otherwise the OV conjecture
+        would be false.
 
-    Look at the cases $0 < \epsilon < 1.$  Then, since $nd = O(n^{2-\epsilon}\text{poly}(d)),$ we need
-    $$
-    T(nd, nd) = \Omega(n^{2 - \epsilon}\text{poly}(d))
-    $$
-    for any $0 < \epsilon < 1.$ Thus, we cannot have $$
-    T(n, m) = \mathcal O (n^{0.99}m)\ \lor \ T(n, m) = \mathcal O(nm^{0.99}),
-    $$
-    since then $T(nd, nd) =\mathcal O( n^{1.99}d^{1.99}) = o(n^{2 - 0.01} \text{poly}(d)),$ which is a contradiction of the OV conjecture. I.e., OV conjecture reduces to regex.
+        Look at the cases $0 < \epsilon < 1.$  Then, since $nd =
+        O(n^{2-\epsilon}\text{poly}(d)),$ we need
+        $$
+        T(nd, nd) = \Omega(n^{2 - \epsilon}\text{poly}(d))
+        $$
+        for any $0 < \epsilon < 1.$ Thus, we cannot have $$
+        T(n, m) = \mathcal O (n^{0.99}m)\ \lor \ T(n, m) = \mathcal
+        O(nm^{0.99}),
+        $$
+        since then $T(nd, nd) =\mathcal O( n^{1.99}d^{1.99}) = o(n^{2
+        - 0.01} \text{poly}(d)),$ which is a contradiction of the OV
+        conjecture. I.e., OV conjecture reduces to regex.
     \end{enumerate}
 
-    \item \begin{enumerate}
-        \item Assume there is an APSP algorithm that on $n$-node graphs in $T(n)$ time. Then, consider $n \times n$ matrices $\mat A, \mat B.$
+  \item
+    \begin{enumerate}
+      \item Assume there is an APSP algorithm that on $n$-node graphs
+        in $T(n)$ time. Then, consider $n \times n$ matrices $\mat A, \mat B.$
 
-        Construct graph $G$ with vertices $a_1, \ldots, a_n, b_1, \ldots, b_n, c_1, \ldots, c_n.$ Additionally, construct edge set
+        Construct graph $G$ with vertices $a_1, \ldots, a_n, b_1,
+        \ldots, b_n, c_1, \ldots, c_n.$ Additionally, construct edge set
         $$
         E =\{
-            (a_i, b_j, \mat A_{ij}): 1 \leq i, j \leq n
+          (a_i, b_j, \mat A_{ij}): 1 \leq i, j \leq n
         \}  \cup \{
-        (b_i, c_j, \mat B_{ij}) : 1 \leq i, j \leq n
+          (b_i, c_j, \mat B_{ij}) : 1 \leq i, j \leq n
         \}.
         $$
 
-        Then, run APSP on this graph $G$ in $T(3n) = \mathcal O(T(n))$ time. Look at shortest paths $a_i \to c_j$ for all $(i, j).$ 
-        
-        Any path from $a_i \to c_j$ must take some intermediate vertex $b_k.$ Hence, the shortest path has weight
-        $$
-        \min(w(a_i, k) + w(k, c_j)) = \min_{1 \leq k \leq n}(\mat A_{ik} + \mat B_{kj}) = (\mat A \star \mat B)_{ij}.
-        $$
-        Hence, we can fill the $n^2$ entries of $(\mat A \star \mat B)_{ij}$ by looking at the shortest paths from $a_i$ to $c_j$ for any valid $i, j.$ This requires $\mathcal O(T(n) + n^2)$ time. Since $T(n) \geq n^2,$ we have a $\mathcal O(T(n))$ time algorithm to compute the $(\min, +)$ product.
+        Then, run APSP on this graph $G$ in $T(3n) = \mathcal
+        O(T(n))$ time. Look at shortest paths $a_i \to c_j$ for all $(i, j).$
 
-        \item Assume we have some $(\min, +)$ product algorithm in $T(n)$ time. Then, consider adjacency matrix $\mat A$ for our graph $G$ that we desire to run APSP on. First, notice that for a graph $G$, the shortest path from vertex $v_i$ to vertex $v_j$ will never be forced to contain a loop $(v, v, c)$ unless $c < 0,$ in which case APSP is not well-defined. Thus, force $\mat A_{ii} = 0$ for all vertices $v_i.$
+        Any path from $a_i \to c_j$ must take some intermediate
+        vertex $b_k.$ Hence, the shortest path has weight
+        $$
+        \min(w(a_i, k) + w(k, c_j)) = \min_{1 \leq k \leq n}(\mat
+        A_{ik} + \mat B_{kj}) = (\mat A \star \mat B)_{ij}.
+        $$
+        Hence, we can fill the $n^2$ entries of $(\mat A \star \mat
+        B)_{ij}$ by looking at the shortest paths from $a_i$ to $c_j$
+        for any valid $i, j.$ This requires $\mathcal O(T(n) + n^2)$
+        time. Since $T(n) \geq n^2,$ we have a $\mathcal O(T(n))$
+        time algorithm to compute the $(\min, +)$ product.
 
-        Assume that we have matrix $\mat M$ containing APSP for all paths of length $\leq k.$ Consider $\mat M' = \mat M \star \mat M.$ Any shortest path $p$ of length $L \leq 2k$ from vertex $v_i$ to vertex $v_j$ has some $L/2$-th intermediate vertex $u.$ Additionally, since $L/2 \leq k,$ the length of the chosen paths $p_1  :v_i \to u$ and $p_2 : u \to v_j$ must be $\leq k/2.$ If $p_1$ or $p_2$ are not their respective minimal paths of length $\leq k$ then $p$ cannot be the shortest path, meaning $p_1$ and $p_2$ must correspond to some entries $\mat M_{ik}$ and $\mat M_{kj}.$ Thus, the shortest path $p$ of length $L \leq 2k$ from any two vertices $v_i$ to $v_j$ has weight
-        $$
-            \min_{1 \leq k \leq n} \mat M_{ik} + \mat M_{kj} = (\mat M \star \mat M)_{ij},
-        $$
-        meaning $\mat M \star \mat M$ contains APSP for all paths of length $\leq 2k.$
+      \item Assume we have some $(\min, +)$ product algorithm in
+        $T(n)$ time. Then, consider adjacency matrix $\mat A$ for our
+        graph $G$ that we desire to run APSP on. First, notice that
+        for a graph $G$, the shortest path from vertex $v_i$ to
+        vertex $v_j$ will never be forced to contain a loop $(v, v,
+        c)$ unless $c < 0,$ in which case APSP is not well-defined.
+        Thus, force $\mat A_{ii} = 0$ for all vertices $v_i.$
 
-        In our graph $G,$ the maximum length of a shortest path is $n - 1,$ since otherwise the path will re-visit vertices and we can eliminate a cycle (that must have positive weight by well-definedness) and yield a shorter path. By the above, $$\underbrace{\mat A \star \mat A \star \ldots \star \mat A}_{\times n - 1}$$ is the APSP matrix. Defining $\mat C_1 = \mat A$ and $\mat C_k = \mat C_{k - 1} \times \mat C_{k - 1}$ for $k \geq 2,$ we will have $\mat C_{\lceil \log n \rceil}$ containing APSPs between vertices in $G.$ Since we can compute each product in $T(n)$ time, and we have $\log n$ such products, we can hence solve APSP in 
+        Assume that we have matrix $\mat M$ containing APSP for all
+        paths of length $\leq k.$ Consider $\mat M' = \mat M \star
+        \mat M.$ Any shortest path $p$ of length $L \leq 2k$ from
+        vertex $v_i$ to vertex $v_j$ has some $L/2$-th intermediate
+        vertex $u.$ Additionally, since $L/2 \leq k,$ the length of
+        the chosen paths $p_1  :v_i \to u$ and $p_2 : u \to v_j$ must
+        be $\leq k/2.$ If $p_1$ or $p_2$ are not their respective
+        minimal paths of length $\leq k$ then $p$ cannot be the
+        shortest path, meaning $p_1$ and $p_2$ must correspond to
+        some entries $\mat M_{ik}$ and $\mat M_{kj}.$ Thus, the
+        shortest path $p$ of length $L \leq 2k$ from any two vertices
+        $v_i$ to $v_j$ has weight
         $$
-            \mathcal O(T(n) \log n)
+        \min_{1 \leq k \leq n} \mat M_{ik} + \mat M_{kj} = (\mat M
+        \star \mat M)_{ij},
+        $$
+        meaning $\mat M \star \mat M$ contains APSP for all paths of
+        length $\leq 2k.$
+
+        In our graph $G,$ the maximum length of a shortest path is $n
+        - 1,$ since otherwise the path will re-visit vertices and we
+        can eliminate a cycle (that must have positive weight by
+        well-definedness) and yield a shorter path. By the above,
+        $$\underbrace{\mat A \star \mat A \star \ldots \star \mat
+        A}_{\times n - 1}$$ is the APSP matrix. Defining $\mat C_1 =
+        \mat A$ and $\mat C_k = \mat C_{k - 1} \times \mat C_{k - 1}$
+        for $k \geq 2,$ we will have $\mat C_{\lceil \log n \rceil}$
+        containing APSPs between vertices in $G.$ Since we can
+        compute each product in $T(n)$ time, and we have $\log n$
+        such products, we can hence solve APSP in
+        $$
+        \mathcal O(T(n) \log n)
         $$
         time.
     \end{enumerate}
 
-    \item \begin{enumerate}
-        \item Assume we have a $T(|V|, |E|)$ runtime algorithm for ST-diameter. Then, let us solve OV on $v_1, \ldots, v_n, w_1, \ldots, w_n$ with the following.
+  \item
+    \begin{enumerate}
+      \item Assume we have a $T(|V|, |E|)$ runtime algorithm for
+        ST-diameter. Then, let us solve OV on $v_1, \ldots, v_n, w_1,
+        \ldots, w_n$ with the following.
 
-        As discussed above, for $v_i \perp w_j,$ we need $(w_j)_k = 0$ for all $k$ with $(v_i)_k = 1.$ Construct an equivalent graph with vertices $\bar v_1, \ldots, \bar v_n, \bar w_1, \ldots, \bar w_n, D_1, \ldots, D_d$ with edges 
+        As discussed above, for $v_i \perp w_j,$ we need $(w_j)_k =
+        0$ for all $k$ with $(v_i)_k = 1.$ Construct an equivalent
+        graph with vertices $\bar v_1, \ldots, \bar v_n, \bar w_1,
+        \ldots, \bar w_n, D_1, \ldots, D_d$ with edges
         $$
         E = \{(v_i, D_k) : (v_i)_k = 1\}  \cup \{(D_k, w_j) : ( w_j)_k = 1\}.
         $$
 
-        Then, set $S = \{\bar v_1, \ldots, \bar v_n\}$ and $T = \{\bar w_1, \ldots, \bar w_n\},$ and run ST-diameter with $k = 2.$ Then, if there exists such a pair $\bar v_i, \bar w_j,$ there can be no intermediate vertex $D_k$ with both $(\bar v_i, D_k) \in E$ and $(D_k, \bar w_j) \in E,$ since otherwise there is a path of length $2$ between them through $D_k.$ Hence, for all indices $k,$ either $(v_i)_k = 0$ or $(w_i)_k = 0,$ meaning $v_i \perp w_j.$
+        Then, set $S = \{\bar v_1, \ldots, \bar v_n\}$ and $T =
+        \{\bar w_1, \ldots, \bar w_n\},$ and run ST-diameter with $k
+        = 2.$ Then, if there exists such a pair $\bar v_i, \bar w_j,$
+        there can be no intermediate vertex $D_k$ with both $(\bar
+        v_i, D_k) \in E$ and $(D_k, \bar w_j) \in E,$ since otherwise
+        there is a path of length $2$ between them through $D_k.$
+        Hence, for all indices $k,$ either $(v_i)_k = 0$ or $(w_i)_k
+        = 0,$ meaning $v_i \perp w_j.$
 
-        Conversely, if $v_i \perp w_j,$ then there can be no such index $k,$ and hence there is no path with length $2$ from $v_i \to w_j.$ Any path from $v_i \to w_j$ is either length $2$ or length $\infty.$ Hence, there is an orthogonal pair $v_i \perp w_j$ iff the ST-diameter has some shortest path of length $> k.$
+        Conversely, if $v_i \perp w_j,$ then there can be no such
+        index $k,$ and hence there is no path with length $2$ from
+        $v_i \to w_j.$ Any path from $v_i \to w_j$ is either length
+        $2$ or length $\infty.$ Hence, there is an orthogonal pair
+        $v_i \perp w_j$ iff the ST-diameter has some shortest path of
+        length $> k.$
 
-        Graph $G$ has $2n + d= \mathcal O(n + d)$ vertices, and $\mathcal O(nd)$ edges. Thus, we can solve OV in $T(\mathcal O(n + d), \mathcal O(nd)) = \mathcal O(T(n, n d))$ time.
+        Graph $G$ has $2n + d= \mathcal O(n + d)$ vertices, and
+        $\mathcal O(nd)$ edges. Thus, we can solve OV in $T(\mathcal
+        O(n + d), \mathcal O(nd)) = \mathcal O(T(n, n d))$ time.
 
-        \item If we believe the OV conjecture, then if we can solve ST-diameter in such a time, we can solve OV in $\mathcal O(n^{2 - 0.001}d )$ time, which violates the OV conjecture.
-    \end{enumerate} 
+      \item If we believe the OV conjecture, then if we can solve
+        ST-diameter in such a time, we can solve OV in $\mathcal
+        O(n^{2 - 0.001}d )$ time, which violates the OV conjecture.
+    \end{enumerate}
 
-    \item \begin{enumerate}
-        \item The output of $\textrm{ReduceAToB}$ has size at most $T(n),$ since each step we can write at most on element. Thus, the worst possible time complexity is $F(T(n)).$
+  \item
+    \begin{enumerate}
+      \item The output of $\textrm{ReduceAToB}$ has size at most
+        $T(n),$ since each step we can write at most on element.
+        Thus, the worst possible time complexity is $F(T(n)).$
 
-        \item Under these assumptions, we have $T(n) = \mathcal O(n^c)$ and $F(n) = \mathcal O(n^d)$ for suitable constants $c, d.$ Thus, $F(T(n)) = \mathcal O(\mathcal O(n^c)^d) = \mathcal O(n^{cd}),$ which is also polynomial time, meaning we can solve $A$ in polynomial time.
+      \item Under these assumptions, we have $T(n) = \mathcal O(n^c)$
+        and $F(n) = \mathcal O(n^d)$ for suitable constants $c, d.$
+        Thus, $F(T(n)) = \mathcal O(\mathcal O(n^c)^d) = \mathcal
+        O(n^{cd}),$ which is also polynomial time, meaning we can
+        solve $A$ in polynomial time.
     \end{enumerate}
 \end{enumerate}
 \end{document}

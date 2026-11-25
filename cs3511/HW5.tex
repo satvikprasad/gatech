@@ -4,135 +4,187 @@
 
 \begin{document}
 \begin{enumerate}
-    \item We have some weighted digraph $G$ such that every shortest path from $s$ has at most $k$ edges. We can continuously relax edges, until we reach an iteration where no edge is relaxed.
+  \item We have some weighted digraph $G$ such that every shortest
+    path from $s$ has at most $k$ edges. We can continuously relax
+    edges, until we reach an iteration where no edge is relaxed.
 
     \begin{algorithm}
-        \begin{algorithmic}
-            \Procedure{ShortestKPath}{$G, s$}
-                \State $\texttt{dist} := \texttt{map}(\infty)$ \Comment{Map where every vertex has default entry $\infty$}
-                \State $\texttt{dist}[s] \gets 0$
-                \State $\texttt{changed} \gets \texttt{true}$
+      \begin{algorithmic}
+        \Procedure{ShortestKPath}{$G, s$}
+        \State $\texttt{dist} := \texttt{map}(\infty)$ \Comment{Map
+        where every vertex has default entry $\infty$}
+        \State $\texttt{dist}[s] \gets 0$
+        \State $\texttt{changed} \gets \texttt{true}$
 
-                \vspace{3mm}
+        \vspace{3mm}
 
-                \While{\texttt{changed}} 
-                    \State $\texttt{changed} \gets \texttt{false}$
+        \While{\texttt{changed}}
+        \State $\texttt{changed} \gets \texttt{false}$
 
-                    \vspace{3mm}
-                        
-                    \For{$(u, v) \in \mathbb E(G)$}
-                        \If{$\texttt{dist[u]} + c(u, v) < \texttt{dist}[v]$}
-                            \State $\texttt{dist}[v] \gets \texttt{dist}[u] + c(u, v)$
-                            \State $\texttt{changed} \gets \texttt{true}$
-                        \EndIf
-                    \EndFor
-                \EndWhile
+        \vspace{3mm}
 
-                \vspace{3mm}
+        \For{$(u, v) \in \mathbb E(G)$}
+        \If{$\texttt{dist[u]} + c(u, v) < \texttt{dist}[v]$}
+        \State $\texttt{dist}[v] \gets \texttt{dist}[u] + c(u, v)$
+        \State $\texttt{changed} \gets \texttt{true}$
+        \EndIf
+        \EndFor
+        \EndWhile
 
-                \State \Return \texttt{dist}
-            \EndProcedure
-        \end{algorithmic}
+        \vspace{3mm}
+
+        \State \Return \texttt{dist}
+        \EndProcedure
+      \end{algorithmic}
     \end{algorithm}
 
-    Now, we prove that such an algorithm is $\mathcal O(k |E|).$ Every iteration, we relax $\mathcal O(|E|)$ edges, so it suffices to prove that we have at most $k$ iterations. We prove this via induction.
+    Now, we prove that such an algorithm is $\mathcal O(k |E|).$
+    Every iteration, we relax $\mathcal O(|E|)$ edges, so it suffices
+    to prove that we have at most $k$ iterations. We prove this via induction.
 
-    Let us assume that at iteration $j \in \mathbb Z_{\geq 0},$ $\texttt {dist}[v] = \text{dist}(s, v)$ for all vertices $v$ whose shortest path has $\leq j$ edges. 
-    
-    Then, consider any vertex $w$ whose shortest $s-w$ path has $\leq j + 1$ edges. Then, let $w'$ be the predecessor of $w$ in this path. If the $s-w'$ path is not the shortest possible path, then the $s-w$ path is not the shortest (we can form one shorter), so $s-w'$ path must be the shortest path, and take $j$ edges. Hence, $\texttt{dist}[w'] = \text{dist}(s, w'),$ meaning our update rule will eventually relax $\texttt{dist}[w]$ to $\text{dist}(s, w') + c(w', w) = \text{dist}(s, w),$ since the $s-w$ path is minimal.
+    Let us assume that at iteration $j \in \mathbb Z_{\geq 0},$
+    $\texttt {dist}[v] = \text{dist}(s, v)$ for all vertices $v$
+    whose shortest path has $\leq j$ edges.
 
-    On iteration $0,$ all vertices with shortest path with $0$ edges from $s$ (i.e., only $s$) have their distance correctly set (to $0$). Hence, at iteration $j,$ the $\texttt{dist}$ map is correct up to vertices with shortest path at most $j$ length, for all $j \geq 0.$
+    Then, consider any vertex $w$ whose shortest $s-w$ path has $\leq
+    j + 1$ edges. Then, let $w'$ be the predecessor of $w$ in this
+    path. If the $s-w'$ path is not the shortest possible path, then
+    the $s-w$ path is not the shortest (we can form one shorter), so
+    $s-w'$ path must be the shortest path, and take $j$ edges. Hence,
+    $\texttt{dist}[w'] = \text{dist}(s, w'),$ meaning our update rule
+    will eventually relax $\texttt{dist}[w]$ to $\text{dist}(s, w') +
+    c(w', w) = \text{dist}(s, w),$ since the $s-w$ path is minimal.
 
-    Since we terminate the loop when our relaxation never changes edge weights, we terminate at iteration $i,$ where $i$ is the smallest edge length such that there are no shortest paths from $s$ to any vertex $v$ of length $i.$ Thus, $i \leq k + 1,$ meaning we have $\mathcal O(k)$ iterations.
+    On iteration $0,$ all vertices with shortest path with $0$ edges
+    from $s$ (i.e., only $s$) have their distance correctly set (to
+    $0$). Hence, at iteration $j,$ the $\texttt{dist}$ map is correct
+    up to vertices with shortest path at most $j$ length, for all $j \geq 0.$
+
+    Since we terminate the loop when our relaxation never changes
+    edge weights, we terminate at iteration $i,$ where $i$ is the
+    smallest edge length such that there are no shortest paths from
+    $s$ to any vertex $v$ of length $i.$ Thus, $i \leq k + 1,$
+    meaning we have $\mathcal O(k)$ iterations.
 
     Thus, the algorithm is correct and runs in $\mathcal O(k |E|)$ time.
 
     \newpage
 
-    \item We can use dynamic programming but also store this new auxiliary table, given some digraph $G.$
+  \item We can use dynamic programming but also store this new
+    auxiliary table, given some digraph $G.$
 
     \begin{algorithm}
-        \caption{Modified Floyd Warshall}
-        \begin{algorithmic}
-            \Procedure{ModifiedFloydWarshall}{$G$}
-                \State $\texttt{dist}[i][j] = 0$ when $i = j$ and $\infty$ otherwise
-                \State $\texttt{le}[i][j] = \texttt{nil}$ for all $i, j$
-                \State $n = |V(G)|$
+      \caption{Modified Floyd Warshall}
+      \begin{algorithmic}
+        \Procedure{ModifiedFloydWarshall}{$G$}
+        \State $\texttt{dist}[i][j] = 0$ when $i = j$ and $\infty$ otherwise
+        \State $\texttt{le}[i][j] = \texttt{nil}$ for all $i, j$
+        \State $n = |V(G)|$
 
-                \vspace{3mm}
+        \vspace{3mm}
 
-                \For{$i \in 2 \ldots n$}
-                    \For{$s \in 1 \ldots i - 1$}
-                    \Comment{Find shortest path to and from $i$}
-                        \For{$t \in 1 \ldots i - 1$}
-                            \If{$\texttt{dist[s][t]} + c(t, i) < \texttt{dist}[s][i]$}
-                                \State $\texttt{dist}[s][i] \gets \texttt{dist}[s][t] + c(t, i)$
-                                \State $\texttt{le}[s][i] \gets (t, i)$
-                            \EndIf
+        \For{$i \in 2 \ldots n$}
+        \For{$s \in 1 \ldots i - 1$}
+        \Comment{Find shortest path to and from $i$}
+        \For{$t \in 1 \ldots i - 1$}
+        \If{$\texttt{dist[s][t]} + c(t, i) < \texttt{dist}[s][i]$}
+        \State $\texttt{dist}[s][i] \gets \texttt{dist}[s][t] + c(t, i)$
+        \State $\texttt{le}[s][i] \gets (t, i)$
+        \EndIf
 
-                            \vspace{3mm}
-                            
-                            \If{$\texttt{dist[t][s]} + c(i, t) < \texttt{dist}[i][s]$}
-                                \State $\texttt{dist}[i][s] \gets \texttt{dist}[t][s] + c(i, t)$
-                                \State $\texttt{le}[i][s] \gets \texttt{le}[t][s]$
-                            \EndIf
-                        \EndFor
+        \vspace{3mm}
 
-                        \vspace{3mm}
-                    \EndFor
-                    
-                    \vspace{3mm}
+        \If{$\texttt{dist[t][s]} + c(i, t) < \texttt{dist}[i][s]$}
+        \State $\texttt{dist}[i][s] \gets \texttt{dist}[t][s] + c(i, t)$
+        \State $\texttt{le}[i][s] \gets \texttt{le}[t][s]$
+        \EndIf
+        \EndFor
 
-                    \For{$s \in 1 \ldots i - 1$}
-                    \Comment{Relax using intermediate as $i$}
-                        \For{$t \in 1 \ldots i - 1$}
-                            \If{$\texttt{dist}[s][i] + \texttt{dist}[i][t] < \texttt{dist}[s][t]$}
-                                \State $\texttt{dist}[s][t] \gets \texttt{dist}[s][i] + \texttt{dist}[i][t]$
-                                \State $\texttt{le}[s][t] = \texttt{le}[i][t]$
-                            \EndIf
-                        \EndFor
-                    \EndFor
-                \EndFor
+        \vspace{3mm}
+        \EndFor
 
-                \vspace{3mm}
+        \vspace{3mm}
 
-                \State \Return \texttt{dist}, \texttt{le}
-            \EndProcedure
-        \end{algorithmic}
+        \For{$s \in 1 \ldots i - 1$}
+        \Comment{Relax using intermediate as $i$}
+        \For{$t \in 1 \ldots i - 1$}
+        \If{$\texttt{dist}[s][i] + \texttt{dist}[i][t] < \texttt{dist}[s][t]$}
+        \State $\texttt{dist}[s][t] \gets \texttt{dist}[s][i] +
+        \texttt{dist}[i][t]$
+        \State $\texttt{le}[s][t] = \texttt{le}[i][t]$
+        \EndIf
+        \EndFor
+        \EndFor
+        \EndFor
+
+        \vspace{3mm}
+
+        \State \Return \texttt{dist}, \texttt{le}
+        \EndProcedure
+      \end{algorithmic}
     \end{algorithm}
 
     \newpage
 
-    \item We biject this scenario to a graph problem. Assume we are given $n, m$ and $I[1\ldots m],$ $J[1 \ldots m]$ and $C[1 \ldots m].$ Construct digraph $G$ with vertices $1, 2, \ldots, n,$ and weighted edge $(i, j)$ if and only if there is some index $k$ such that $I[k] = i, J[k] = j,$ with weight $C[k].$ Equivalently, 
+  \item We biject this scenario to a graph problem. Assume we are
+    given $n, m$ and $I[1\ldots m],$ $J[1 \ldots m]$ and $C[1 \ldots
+    m].$ Construct digraph $G$ with vertices $1, 2, \ldots, n,$ and
+    weighted edge $(i, j)$ if and only if there is some index $k$
+    such that $I[k] = i, J[k] = j,$ with weight $C[k].$ Equivalently,
     $$
     E(G) = \{(I[k], J[k], C[k]) : 1 \leq k \leq m\}.
     $$
 
-    We prove that the set of equations has a solution if and only if the graph has no negative weight cycle.
+    We prove that the set of equations has a solution if and only if
+    the graph has no negative weight cycle.
 
-    \textbf{Forward}: Assume the graph has a negative edge cycle. Let a traversal of this cycle be $i_1, i_2, \ldots, i_k$ for $1 \leq k \leq n,$ with edge weights $c_{i_1}, \ldots, c_{i_k}.$ Assuming the set of equations has a solution, then, this cycle corresponds to the equations
+    \textbf{Forward}: Assume the graph has a negative edge cycle. Let
+    a traversal of this cycle be $i_1, i_2, \ldots, i_k$ for $1 \leq
+    k \leq n,$ with edge weights $c_{i_1}, \ldots, c_{i_k}.$ Assuming
+    the set of equations has a solution, then, this cycle corresponds
+    to the equations
     \begin{align*}
-    x_{i_1} &\leq  x_{i_2} + c_{i_1} \\
-    x_{i_2} &\leq  x_{i_3} + c_{i_2} \\
-            &\vdots \\
-    x_{i_k} &\leq  x_{i_1} + c_{i_k},
+      x_{i_1} &\leq  x_{i_2} + c_{i_1} \\
+      x_{i_2} &\leq  x_{i_3} + c_{i_2} \\
+      &\vdots \\
+      x_{i_k} &\leq  x_{i_1} + c_{i_k},
     \end{align*}
     and after summing all equations we get
     $$
-        x_{i_1} + \ldots + x_{i_k} \leq x_{i_1} + \ldots + x_{i_k } + \sum_{j = 1}^{k} c_{i_j} \Rightarrow \sum_{j = 1}^{k}c_{i_j} \geq 0,
+    x_{i_1} + \ldots + x_{i_k} \leq x_{i_1} + \ldots + x_{i_k } +
+    \sum_{j = 1}^{k} c_{i_j} \Rightarrow \sum_{j = 1}^{k}c_{i_j} \geq 0,
     $$
-    which is the weight of our cycle. However, the cycle has a negative weight, meaning this is a contradiction. Thus, our graph having a negative weight cycle implies our set of equations has no solution. By contraposition, if our set of equations has a solution, there is no negative weight cycle.
+    which is the weight of our cycle. However, the cycle has a
+    negative weight, meaning this is a contradiction. Thus, our graph
+    having a negative weight cycle implies our set of equations has
+    no solution. By contraposition, if our set of equations has a
+    solution, there is no negative weight cycle.
 
-    \textbf{Reverse:} Assume that the graph has no negative weight cycle. Then, root the graph at vertex $1,$ and set $x_1 = 0,$ and let $x_j = \text{dist}(j, 1),$ where $\text{dist}(i , j)$ is the shortest path distance from $i$ to $j.$ Since there are no negative weight cycles, such a shortest path distance is guaranteed to exist.
+    \textbf{Reverse:} Assume that the graph has no negative weight
+    cycle. Then, root the graph at vertex $1,$ and set $x_1 = 0,$ and
+    let $x_j = \text{dist}(j, 1),$ where $\text{dist}(i , j)$ is the
+    shortest path distance from $i$ to $j.$ Since there are no
+    negative weight cycles, such a shortest path distance is
+    guaranteed to exist.
 
-    Then, consider any path from $i \to j,$ and their corresponding inequality $$x_i \leq x_j + c(i \to j).$$ Assume this inequality is violated for an arbitrary pair $i, j.$
+    Then, consider any path from $i \to j,$ and their corresponding
+    inequality $$x_i \leq x_j + c(i \to j).$$ Assume this inequality
+    is violated for an arbitrary pair $i, j.$
 
     Since $x_i = \text{dist}(i, 1)$ and $x_j = \text{dist}(j, 1),$ we get
     $$
     \text{dist}(i, 1) > \text{dist}(j, 1) + c(i \to j)
     $$
-    However, note that $\text{dist}(j, 1) + c(i \to j)$ is the weight of a path from $i \to 1$ through $j$ that is more minimal than $\text{dist}(i, 1).$ This is a contradiction, meaning the inequality holds for all possible pairs $i, j,$ and thus we have a valid solution.
+    However, note that $\text{dist}(j, 1) + c(i \to j)$ is the weight
+    of a path from $i \to 1$ through $j$ that is more minimal than
+    $\text{dist}(i, 1).$ This is a contradiction, meaning the
+    inequality holds for all possible pairs $i, j,$ and thus we have
+    a valid solution.
 
-    Therefore, there is a solution if and only if the associated digraph has no negative weight cycle. Thus, a valid solution can run Bellman-Ford on digraph $G,$ and if we abort due to relaxations carrying on past the $n$-th iteration, we return $\texttt{NO},$ and return $\texttt{YES}$ otherwise.
+    Therefore, there is a solution if and only if the associated
+    digraph has no negative weight cycle. Thus, a valid solution can
+    run Bellman-Ford on digraph $G,$ and if we abort due to
+    relaxations carrying on past the $n$-th iteration, we return
+    $\texttt{NO},$ and return $\texttt{YES}$ otherwise.
 \end{enumerate}
 \end{document}

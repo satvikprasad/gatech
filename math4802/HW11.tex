@@ -8,56 +8,70 @@
 \begin{document}
 \subsection{Green Circle}
 \begin{enumerate}
-    \item Assume that $A^3 = 0$ for some real square matrix. Then, $I - A^3 = I.$ Equivalently, factorizing yields
+  \item Assume that $A^3 = 0$ for some real square matrix. Then, $I -
+    A^3 = I.$ Equivalently, factorizing yields
     $$
     (I - A)(A^2 + A + I) = I,
     $$
     meaning $A^2 + A + I$ is a right inverse of $I - A.$
 
-    Therefore, since $A$ is square we know $A^2 + A + I$ must also be a left inverse of $I - A,$ meaning $I - A$ is invertible.
-    
-    \item[4] Assume we have $A, B \in \mathbb R^{n \times n}$ satisfying $$
+    Therefore, since $A$ is square we know $A^2 + A + I$ must also be
+    a left inverse of $I - A,$ meaning $I - A$ is invertible.
+
+  \item[4] Assume we have $A, B \in \mathbb R^{n \times n}$ satisfying $$
     \tr{A A^T + B B^T} = \tr{AB + A^T B^T}.
     $$
 
-    Then, we know \begin{align*}
-        \tr({A A^T + B B^T - AB - A^T B^T})  = 0.
+    Then, we know
+    \begin{align*}
+      \tr({A A^T + B B^T - AB - A^T B^T})  = 0.
     \end{align*}
 
-    Equivalently, we get 
+    Equivalently, we get
     $$
     \tr({A(A^T - B) + (B - A^T)B^T}) = 0.
     $$
-    Since $\tr AB = \tr BA,$ we can commute inside the trace operator, meaning we have
+    Since $\tr AB = \tr BA,$ we can commute inside the trace
+    operator, meaning we have
     $$
     \tr((A - B^T)(A^T - B)) = 0.
     $$
     Let $C = A- B^T.$ We want to prove that $C = 0,$ given $\tr C C^T = 0.$
 
-    Letting $C = \begin{pmatrix}
-        v_1 & v_2 & \ldots & v_n
+    Letting $C =
+    \begin{pmatrix}
+      v_1 & v_2 & \ldots & v_n
     \end{pmatrix}$
-    for $v_i \in \mathbb R^{n},$ we know the diagonal entries of $C C^T$ are $||v_i||^2.$ Hence, $$\tr C C^T = \sum_{i = 0}^{n} ||v_i||^2 = 0.$$
-    Since each term is $\geq 0,$ this forces $||v_i|| = 0,$ which requires $v_i = 0$ for all $1 \leq i \leq n,$ meaning $C = 0.$ Thus, we have $A - B^T = 0,$ meaning $A = B^T.$
+    for $v_i \in \mathbb R^{n},$ we know the diagonal entries of $C
+    C^T$ are $||v_i||^2.$ Hence, $$\tr C C^T = \sum_{i = 0}^{n} ||v_i||^2 = 0.$$
+    Since each term is $\geq 0,$ this forces $||v_i|| = 0,$ which
+    requires $v_i = 0$ for all $1 \leq i \leq n,$ meaning $C = 0.$
+    Thus, we have $A - B^T = 0,$ meaning $A = B^T.$
 
-    \item[5] Since very single column of $A$ has column-sum $m,$ we can know the following: $$
+  \item[5] Since very single column of $A$ has column-sum $m,$ we can
+    know the following: $$
     A_{nj} = m - \sum_{i = 1}^{n -1 } A_{ij}
-    $$ 
-    for all $1 \leq j \leq n.$ Consider the map $T : \mathbb R^{n \times n} \to \mathbb R^{n \times n}$  given by 
     $$
-    T = \begin{pmatrix}
-        1 & 0 & \ldots & 0 & 0 \\  
-        0 & 1 & \ddots & 0 & 0 \\
-        0 & 0 & \ldots & 1 & 0 \\
-        1 & 1 & \ldots & 1 & 1
+    for all $1 \leq j \leq n.$ Consider the map $T : \mathbb R^{n
+    \times n} \to \mathbb R^{n \times n}$  given by
+    $$
+    T =
+    \begin{pmatrix}
+      1 & 0 & \ldots & 0 & 0 \\
+      0 & 1 & \ddots & 0 & 0 \\
+      0 & 0 & \ldots & 1 & 0 \\
+      1 & 1 & \ldots & 1 & 1
     \end{pmatrix}
     $$
     since $\det T = 1$ (lower triangular), we know $$
     \det A = \det TA = \det A^\star,
     $$
-    where $A^\star_{i \cdot} = A_{i \cdot}$ for all $1 \leq i < n,$ and $A^\star_{nj} = m$ for all $1 \leq j \leq n.$ Then, we have
+    where $A^\star_{i \cdot} = A_{i \cdot}$ for all $1 \leq i < n,$
+    and $A^\star_{nj} = m$ for all $1 \leq j \leq n.$ Then, we have
     $$
-    \det A^\star = \sum_{\sigma \in S_n} \text{sign}(\sigma) \prod_{i = 1}^{n} A^\star_{i \sigma(i)} = m \sum_{\sigma \in S_n} \text{sign}(\sigma) \prod_{i = 1 }^{n - 1} A_{i \sigma(i)}.
+    \det A^\star = \sum_{\sigma \in S_n} \text{sign}(\sigma) \prod_{i
+    = 1}^{n} A^\star_{i \sigma(i)} = m \sum_{\sigma \in S_n}
+    \text{sign}(\sigma) \prod_{i = 1 }^{n - 1} A_{i \sigma(i)}.
     $$
     Since $A$ has integer entries, we can conclude that $$
     \det A =\det A^\star \equiv 0 \pmod {m},
@@ -67,18 +81,27 @@
 
 \subsection{Blue Square}
 \begin{enumerate}
-    \item[6] Equivalently, we have $I + A^2 = 0,$ where $I$ is the $n \times n$ identity matrix. Let us analyze the eigenvalues of $A.$ For some arbitrary vector $v \neq 0,$ $$
+  \item[6] Equivalently, we have $I + A^2 = 0,$ where $I$ is the $n
+    \times n$ identity matrix. Let us analyze the eigenvalues of $A.$
+    For some arbitrary vector $v \neq 0,$ $$
     Av =  \lambda v \Rightarrow A^2v = \lambda ^2 Iv =  -Iv,
     $$
-    meaning $(\lambda^2 + 1)I v = 0,$ or equivalently, $\lambda = \pm i.$ Therefore, $A$ has two eigenvalues, $i$ and $-i.$ 
+    meaning $(\lambda^2 + 1)I v = 0,$ or equivalently, $\lambda = \pm
+    i.$ Therefore, $A$ has two eigenvalues, $i$ and $-i.$
 
-    Hence, the characteristic polynomial $p \in \mathbb R[\lambda]$ produced by $\det (A - \lambda I) = 0$ only has roots $i$ and $-i,$ and satisfies $$p(0) = 0.$$ By Vieta's, $\alpha i - \beta i = (\alpha - \beta)i$  must be in $\mathbb R,$ meaning $\alpha = \beta.$ Hence, we can write the characteristic polynomial in the form
+    Hence, the characteristic polynomial $p \in \mathbb R[\lambda]$
+    produced by $\det (A - \lambda I) = 0$ only has roots $i$ and
+    $-i,$ and satisfies $$p(0) = 0.$$ By Vieta's, $\alpha i - \beta i
+    = (\alpha - \beta)i$  must be in $\mathbb R,$ meaning $\alpha =
+    \beta.$ Hence, we can write the characteristic polynomial in the form
     $$
-    p(\lambda) = c(\lambda - i)^{\alpha}(\lambda + i)^{\alpha}= c(\lambda^2 + 1)^{\alpha},
+    p(\lambda) = c(\lambda - i)^{\alpha}(\lambda + i)^{\alpha}=
+    c(\lambda^2 + 1)^{\alpha},
     $$
-    and thus $p(0) = c.$ Since the characteristic polynomial is always monic, we know $c = 1,$ and thus $\det A = p(0) = 1.$
+    and thus $p(0) = c.$ Since the characteristic polynomial is
+    always monic, we know $c = 1,$ and thus $\det A = p(0) = 1.$
 
-    \item[8] We have square matrices $A, B.$ We proceed by showing that 
+  \item[8] We have square matrices $A, B.$ We proceed by showing that
     $$
     \dim \ker (I - AB) > 0 \Leftrightarrow \dim \ker (I - BA) > 0.
     $$
@@ -88,20 +111,25 @@
     v - ABv = 0 \Rightarrow ABv = v.
     $$
 
-    Multiplying both sides by $B$, we get $BABv = Bv,$ meaning $BAu = u,$ where $u = Bv.$ Therefore, 
+    Multiplying both sides by $B$, we get $BABv = Bv,$ meaning $BAu =
+    u,$ where $u = Bv.$ Therefore,
     $$
     (I - BA) u = 0.
     $$
-    If $v \in \ker B,$ then $v - ABv = v = 0,$ implying $v = 0.$ Therefore, $\ker B = \{0\}.$ Since $v \neq 0,$ $u = Bv \neq 0,$ meaning $\dim \ker (I - BA) > 0.$
+    If $v \in \ker B,$ then $v - ABv = v = 0,$ implying $v = 0.$
+    Therefore, $\ker B = \{0\}.$ Since $v \neq 0,$ $u = Bv \neq 0,$
+    meaning $\dim \ker (I - BA) > 0.$
 
-    Conversely, if $\dim \ker (I - BA) > 0,$ then there is some $v \neq 0$ such that
+    Conversely, if $\dim \ker (I - BA) > 0,$ then there is some $v
+    \neq 0$ such that
     $$
     v - BAv = 0 \Rightarrow BAv = v.
     $$
     Then, multiplying both sides by $A,$ we get $$
     AB(Av) =Av \Rightarrow AB u = u,
     $$
-    where $u = Bv.$ By a similar argument, $\ker A = \{0\},$ meaning $u \neq 0,$ and hence $\dim \ker (I - AB) > 0.$
+    where $u = Bv.$ By a similar argument, $\ker A = \{0\},$ meaning
+    $u \neq 0,$ and hence $\dim \ker (I - AB) > 0.$
 
     By contraposition,
     $$
@@ -109,67 +137,80 @@
     $$
     meaning $I - AB$ is invertible iff $I - BA$ is invertible.
 
-    \item[9] We have real numbers $a, b$ such that $D_n(a, b)$ be the matrix with diagonal entries $a$ and all other entries $b.$ When $b = 0,$ we know $D_{n}(a, b) = a^{n}.$
+  \item[9] We have real numbers $a, b$ such that $D_n(a, b)$ be the
+    matrix with diagonal entries $a$ and all other entries $b.$ When
+    $b = 0,$ we know $D_{n}(a, b) = a^{n}.$
 
     Define the matrix $T \in \mathbb R^{n \times n}$ such that
     $$
-    T = \begin{pmatrix}
-        \frac{a + (n-2)b} {b} & -1 & \ldots & -1  & -1 \\
-        0 & 1 &  \ldots & 0 & 0 \\
-        \vdots & \vdots & \ddots &\vdots  & \vdots \\ 
-        0 & 0 & \ldots & 1 & 1 \\
-        0 & 0 & \ldots & 0 & 1 \\
+    T =
+    \begin{pmatrix}
+      \frac{a + (n-2)b} {b} & -1 & \ldots & -1  & -1 \\
+      0 & 1 &  \ldots & 0 & 0 \\
+      \vdots & \vdots & \ddots &\vdots  & \vdots \\
+      0 & 0 & \ldots & 1 & 1 \\
+      0 & 0 & \ldots & 0 & 1 \\
     \end{pmatrix},
     $$
-    where $\det T = (a + (n-2)b) / b$ since $T$ is upper-triangular. Then $T D_n(a, b)$ satisfies
+    where $\det T = (a + (n-2)b) / b$ since $T$ is upper-triangular.
+    Then $T D_n(a, b)$ satisfies
     \begin{align*}
-    TD_{n}(a, b)_{1 \cdot }&= \dfrac{a + (n-2)b}{b} \begin{pmatrix}
+      TD_{n}(a, b)_{1 \cdot }&= \dfrac{a + (n-2)b}{b}
+      \begin{pmatrix}
         a \\
-        b \\ 
-        \vdots \\
-        b 
-    \end{pmatrix}  - \begin{pmatrix}
         b \\
-        a  \\ 
         \vdots \\
         b
-    \end{pmatrix} - \ldots - \begin{pmatrix}
+      \end{pmatrix}  -
+      \begin{pmatrix}
+        b \\
+        a  \\
+        \vdots \\
+        b
+      \end{pmatrix} - \ldots -
+      \begin{pmatrix}
         b \\
         b \\
         \vdots \\
         a
-    \end{pmatrix} \\
-    &= \left[\dfrac{a^2}{b} + (n-2)a - (n-1)b\right]\begin{pmatrix}
+      \end{pmatrix} \\
+      &= \left[\dfrac{a^2}{b} + (n-2)a - (n-1)b\right]
+      \begin{pmatrix}
         1 \\
         0 \\
         \vdots \\
         0
-    \end{pmatrix}
+      \end{pmatrix}
     \end{align*}
 
     Therefore, applying cofactor expansion yields
     $$
-    \det T D_{n}(a, b) = \left[\dfrac{a^2}{b} + (n-2)a - (n-1)b\right]  \det  D_{n-1}(a, b),
+    \det T D_{n}(a, b) = \left[\dfrac{a^2}{b} + (n-2)a -
+    (n-1)b\right]  \det  D_{n-1}(a, b),
     $$
     where $D_1(a, b) = a.$ By the properties of the determinant, we get
     $$
-    \det D_{n}(a, b) = \dfrac{1}{a + (n-2)b} \left[a^2 + (n-2)ab - (n-1)b^2\right] \det D_{n-1}(a, b).
+    \det D_{n}(a, b) = \dfrac{1}{a + (n-2)b} \left[a^2 + (n-2)ab -
+    (n-1)b^2\right] \det D_{n-1}(a, b).
     $$
 
     Now, let us prove by induction that $$
     \det D_n(a, b) = (a-b)^{n-1}(a + (n-1)b) := K(n).
     $$
 
-    For $n = 1,$ $D_n(a, b) = a,$ and $K(1) = a$ as required. Assume for $n = k \geq 1,$ we know $$
-        \det D_k(a, b) = K(k) = (a-b)^{k-1}(a + (k-1)b).
+    For $n = 1,$ $D_n(a, b) = a,$ and $K(1) = a$ as required. Assume
+    for $n = k \geq 1,$ we know $$
+    \det D_k(a, b) = K(k) = (a-b)^{k-1}(a + (k-1)b).
     $$
-    Then, $D_{k + 1}(a, b)$ satisfies \begin{align*}
-            \det D_{k+1}(a, b) &= \left[a - \dfrac{kb^2}{a + (k-1)b} \right] (a-b)^{k-1} (a + (k-1)b) \\
-            &=\left[a(a + (k -1)b) - kb^2\right] (a-b)^{k-1} \\
-            &= (a^2 - kb^2 + (k-1)ab) (a-b)^{k-1} \\
-            &= (a^2 - ab + kab - kb^2) (a-b)^{k-1} \\
-            &= (a(a- b) + kb(a - b)) (a-b)^{k-1} \\
-            &= (a-b)^k (a + (k + 1 -1)b) = K(k + 1)
+    Then, $D_{k + 1}(a, b)$ satisfies
+    \begin{align*}
+      \det D_{k+1}(a, b) &= \left[a - \dfrac{kb^2}{a + (k-1)b}
+      \right] (a-b)^{k-1} (a + (k-1)b) \\
+      &=\left[a(a + (k -1)b) - kb^2\right] (a-b)^{k-1} \\
+      &= (a^2 - kb^2 + (k-1)ab) (a-b)^{k-1} \\
+      &= (a^2 - ab + kab - kb^2) (a-b)^{k-1} \\
+      &= (a(a- b) + kb(a - b)) (a-b)^{k-1} \\
+      &= (a-b)^k (a + (k + 1 -1)b) = K(k + 1)
     \end{align*}
     as required.
 
@@ -182,26 +223,30 @@
 
 \subsection{Black Diamond}
 \begin{enumerate}
-    \item[12] Define $\sin A$ such that
+  \item[12] Define $\sin A$ such that
     $$
     \sin A = \sum_{k = 0}^{\infty} \dfrac{(-1)^{k}}{(2k+1)!} A^{2k + 1}.
     $$
     We want to prove that there is no such matrix for which $$
-    \sin A = \begin{pmatrix}
-    1 & 2027 \\
-    0 & 1
+    \sin A =
+    \begin{pmatrix}
+      1 & 2027 \\
+      0 & 1
     \end{pmatrix}.
     $$
 
-    For the sake of contradiction, assume the contrary, i.e., there is some $A$ such that $\sin A = \square$.
+    For the sake of contradiction, assume the contrary, i.e., there
+    is some $A$ such that $\sin A = \square$.
 
-    If $A$ has an eigenvalue $\lambda,$ $Av = \lambda v$ for some non-zero $v.$ Then,
+    If $A$ has an eigenvalue $\lambda,$ $Av = \lambda v$ for some
+    non-zero $v.$ Then,
     $$
     (\sin A ) v = \sin(\lambda)v,
     $$
     meaning $\sin \lambda $ is an eigenvalue of $\sin A.$
-    
-    Assume $\sin A$ has some eigenvalue $\mu \in \mathbb R.$ Then, for some $v \neq 0,$ $$
+
+    Assume $\sin A$ has some eigenvalue $\mu \in \mathbb R.$ Then,
+    for some $v \neq 0,$ $$
     \sum_{k = 0}^{\infty} \dfrac{(-1)^k}{(2k+1)!} A^{2k+1} v = \mu.
     $$
 
@@ -209,83 +254,130 @@
     \dim \ker \left(\sin A- \mu I\right) > 0.
     $$
 
-    For some $v \in \ker (\sin A - I),$ we know $$(\sin A)  \cdot A v = A \cdot  (\sin A) v = A (0) = 0,$$
-    meaning $Av  \in \ker(\sin A - \mu I),$ and hence $\ker (\sin A - \mu I)$ is invariant under $A.$ Then, consider some $u \in \ker (\sin A - \mu I)$ that is non-zero. This means
+    For some $v \in \ker (\sin A - I),$ we know $$(\sin A)  \cdot A v
+    = A \cdot  (\sin A) v = A (0) = 0,$$
+    meaning $Av  \in \ker(\sin A - \mu I),$ and hence $\ker (\sin A -
+    \mu I)$ is invariant under $A.$ Then, consider some $u \in \ker
+    (\sin A - \mu I)$ that is non-zero. This means
     $$
-        (\sin A ) \cdot u = \mu  u.
+    (\sin A ) \cdot u = \mu  u.
     $$
 
-    Since $\dim \ker (\sin A - \mu I) >0,$ this subspace is either $1$-dimensional, or $2$-dimensional.
+    Since $\dim \ker (\sin A - \mu I) >0,$ this subspace is either
+    $1$-dimensional, or $2$-dimensional.
 
     \begin{enumerate}
-        \item If $1$-dimensional, then $Au = \lambda u$ for some scalar $\lambda.$ Substituting, this yields $\sin \lambda \cdot u = \mu u,$ meaning $\mu = \sin \lambda.$ Hence, there is some eigenvalue $\lambda$ of $A$ such that $\sin \lambda = \mu.$
+      \item If $1$-dimensional, then $Au = \lambda u$ for some scalar
+        $\lambda.$ Substituting, this yields $\sin \lambda \cdot u =
+        \mu u,$ meaning $\mu = \sin \lambda.$ Hence, there is some
+        eigenvalue $\lambda$ of $A$ such that $\sin \lambda = \mu.$
 
-        \item Otherwise, $\text{range}(\sin A - \mu I) = \{0\}$ by rank-nullity, meaning $\sin A = \mu I.$ However, our specific $\sin A$ is not a scalar multiple of the identity, meaning this is false.
+      \item Otherwise, $\text{range}(\sin A - \mu I) = \{0\}$ by
+        rank-nullity, meaning $\sin A = \mu I.$ However, our specific
+        $\sin A$ is not a scalar multiple of the identity, meaning
+        this is false.
     \end{enumerate}
 
     Therefore, any eigenvalue $\lambda$ of $A$ must satisfy $\sin \lambda = 1.$
 
     Now, consider
     $$
-        \cos A : = \sum_{k = 0}^{\infty} \dfrac{(-1)^k}{(2k)!} A^{2k}.
+    \cos A : = \sum_{k = 0}^{\infty} \dfrac{(-1)^k}{(2k)!} A^{2k}.
     $$
-    If $A$ has an eigenvalue $\lambda,$ then $\cos A$ has eigenvalues $\cos \lambda$ by a similar argument to the above. Hence, $0$ is an eigenvalue of $\cos A.$
+    If $A$ has an eigenvalue $\lambda,$ then $\cos A$ has eigenvalues
+    $\cos \lambda$ by a similar argument to the above. Hence, $0$ is
+    an eigenvalue of $\cos A.$
 
-    If $\mu$ is an eigenvalue of $\cos A,$ then there must be some eigenvalue $\lambda$ of $A$ such that $\cos \lambda  = \mu$ by an equivalent approach over $\cos \cdot.$ Since all eigenvalues of $A$ satisfy $\sin \lambda = 1,$ all eigenvalues of $A$ must satisfy $\cos \lambda = 0,$ meaning $0$ is the only eigenvalue of $\cos A.$
+    If $\mu$ is an eigenvalue of $\cos A,$ then there must be some
+    eigenvalue $\lambda$ of $A$ such that $\cos \lambda  = \mu$ by an
+    equivalent approach over $\cos \cdot.$ Since all eigenvalues of
+    $A$ satisfy $\sin \lambda = 1,$ all eigenvalues of $A$ must
+    satisfy $\cos \lambda = 0,$ meaning $0$ is the only eigenvalue of $\cos A.$
 
-    Hence, the characteristic polynomial of $\cos A$ is $p(\mu) = \mu^2,$ meaning by Cayley-Hamilton, $(\cos A)^2 = 0.$
+    Hence, the characteristic polynomial of $\cos A$ is $p(\mu) =
+    \mu^2,$ meaning by Cayley-Hamilton, $(\cos A)^2 = 0.$
 
     Looking at $(\sin A^2 + \cos A)^2,$ we have
     \begin{align*}
-    (\sin A)^2 + (\cos A)^2 &= \sum_{k = 0}^{\infty} \sum_{j = 0}^{\infty} \left(\dfrac{(-1)^{k +j}}{(2k)! (2j)!} A^{2(k  + j)} + \dfrac{(-1)^{k + j}}{(2k+1)! (2j + 1)!} A^{2(k + j + 1)} \right) \\
-    &= \sum_{i = 0}^{\infty} \sum_{j = 0}^{i} \dfrac{(-1)^i}{(2(i - j))!(2j)!} A^{2i} + \sum_{i = 1}^{\infty} \sum_{j = 0}^{i - 1} \dfrac{(-1)^{i - 1}}{((2(i - 1 - j) + 1)!)(2j+1)!} A^{2i} \\
-    &= I + \sum_{i = 1}^{\infty} \left(\dfrac{(-1)^i}{(2i)!} + \sum_{j = 0}^{i - 1} \left\{\dfrac{(-1)^i}{(2(i-j))! (2j)!} + \dfrac{(-1)^{i - 1}}{(2(i - 1 - j) + 1)!(2j+1)!}\right\} \right)A^{2i} \\
-    &= I + \sum_{i = 1}^{\infty} \left(\dfrac{(-1)^i}{(2i)!} + \sum_{j = 0}^{i - 1} \left\{\dfrac{(-1)^i(2j+1) + (-1)^{i-1}(2(i -j))}{(2(i -j))!(2j + 1)!}\right\} \right)A^{2i} \\    
-    &= I + \sum_{i = 1}^{\infty} \left(\dfrac{(-1)^i}{(2i)!} + \sum_{j = 0}^{i - 1} \left\{\dfrac{(-1)^{i - 1}[2i - 4j - 1]}{(2(i -j))!(2j + 1)!}\right\} \right)A^{2i} \\
-    &= I + \sum_{i = 1}^{\infty} \left(\dfrac{(-1)^i}{(2i)!} + \sum_{j = 0}^{i - 1} (-1)^{i - 1} \dfrac{2i - 4j - 1}{(2i+1)!}{2i + 1 \choose 2j + 1} \right)A^{2i}.
+      (\sin A)^2 + (\cos A)^2 &= \sum_{k = 0}^{\infty} \sum_{j =
+      0}^{\infty} \left(\dfrac{(-1)^{k +j}}{(2k)! (2j)!} A^{2(k  +
+      j)} + \dfrac{(-1)^{k + j}}{(2k+1)! (2j + 1)!} A^{2(k + j + 1)} \right) \\
+      &= \sum_{i = 0}^{\infty} \sum_{j = 0}^{i} \dfrac{(-1)^i}{(2(i -
+      j))!(2j)!} A^{2i} + \sum_{i = 1}^{\infty} \sum_{j = 0}^{i - 1}
+      \dfrac{(-1)^{i - 1}}{((2(i - 1 - j) + 1)!)(2j+1)!} A^{2i} \\
+      &= I + \sum_{i = 1}^{\infty} \left(\dfrac{(-1)^i}{(2i)!} +
+        \sum_{j = 0}^{i - 1} \left\{\dfrac{(-1)^i}{(2(i-j))! (2j)!} +
+      \dfrac{(-1)^{i - 1}}{(2(i - 1 - j) + 1)!(2j+1)!}\right\} \right)A^{2i} \\
+      &= I + \sum_{i = 1}^{\infty} \left(\dfrac{(-1)^i}{(2i)!} +
+        \sum_{j = 0}^{i - 1} \left\{\dfrac{(-1)^i(2j+1) +
+      (-1)^{i-1}(2(i -j))}{(2(i -j))!(2j + 1)!}\right\} \right)A^{2i} \\
+      &= I + \sum_{i = 1}^{\infty} \left(\dfrac{(-1)^i}{(2i)!} +
+        \sum_{j = 0}^{i - 1} \left\{\dfrac{(-1)^{i - 1}[2i - 4j -
+      1]}{(2(i -j))!(2j + 1)!}\right\} \right)A^{2i} \\
+      &= I + \sum_{i = 1}^{\infty} \left(\dfrac{(-1)^i}{(2i)!} +
+        \sum_{j = 0}^{i - 1} (-1)^{i - 1} \dfrac{2i - 4j -
+      1}{(2i+1)!}{2i + 1 \choose 2j + 1} \right)A^{2i}.
     \end{align*}
 
-    Since the binomial coefficient is symmetric, \begin{align*}
-    &\sin(A)^2 + \cos(A)^2 \\&= I + \sum_{i = 1}^{\infty} \left(\dfrac{(-1)^i}{(2i)!} + \dfrac{1}{(2i + 1)!}\sum_{j = 0}^{i - 1} (-1)^{i - 1} (2i - 2j - (2j + 1)){2i + 1 \choose 2j + 1} \right)A^{2i}.\\
-    &= I + \sum_{i = 1}^{\infty} \left(\dfrac{(-1)^i}{(2i)!} + \dfrac{(-1)^{i - 1}}{(2i + 1)!}\left\{\sum_{j = 0}^{i - 1}(2i - 2j){2i + 1 \choose 2j + 1}  - \sum_{j = 0}^{i - 1} (2i - 2j - 1){2i + 1 \choose 2j + 2}\right\}\right)A^{2i}.
+    Since the binomial coefficient is symmetric,
+    \begin{align*}
+      &\sin(A)^2 + \cos(A)^2 \\&= I + \sum_{i = 1}^{\infty}
+      \left(\dfrac{(-1)^i}{(2i)!} + \dfrac{1}{(2i + 1)!}\sum_{j =
+        0}^{i - 1} (-1)^{i - 1} (2i - 2j - (2j + 1)){2i + 1 \choose 2j
+      + 1} \right)A^{2i}.\\
+      &= I + \sum_{i = 1}^{\infty} \left(\dfrac{(-1)^i}{(2i)!} +
+        \dfrac{(-1)^{i - 1}}{(2i + 1)!}\left\{\sum_{j = 0}^{i - 1}(2i -
+          2j){2i + 1 \choose 2j + 1}  - \sum_{j = 0}^{i - 1} (2i - 2j -
+      1){2i + 1 \choose 2j + 2}\right\}\right)A^{2i}.
     \end{align*}
-    Since $(n-r){n \choose r} = n {n -1 \choose r},$ we get \begin{align*}
-    &\sin (A)^2 + \cos (A)^2 \\
-    &= I + \sum_{i = 1}^{\infty} \left(\dfrac{(-1)^i}{(2i)!} + \dfrac{(-1)^{i - 1}}{(2i + 1)!}\left\{\sum_{j = 0}^{i - 1}(2i + 1){2i\choose 2j + 1}  - \sum_{j = 0}^{i - 1} (2i + 1){2i \choose 2j + 2}\right\}\right)A^{2i} \\
-    &= I + \sum_{i=1}^{\infty}
-\left(
-  \dfrac{(-1)^i}{(2i)!}
-  + \dfrac{(-1)^{i-1}}{(2i)!}
-    \left[
-      \sum_{j=0}^{i-1} \binom{2i}{2j+1}
-      - \sum_{j=0}^{i-1} \binom{2i}{2j+2}
-    \right]
-\right) A^{2i} \\
-&= I + \sum_{i=1}^{\infty}
-\left(
-  \dfrac{(-1)^i}{(2i)!}
-  + \dfrac{(-1)^{i}}{(2i)!}
-    \left[
-      \sum_{k = 1}^{2i} {2i \choose k} (-1)^{k}
-    \right]
-\right) A^{2i}  \\
-&= I + \sum_{i=1}^{\infty}
-\left(
-  \dfrac{(-1)^i}{(2i)!}
-  + \dfrac{(-1)^{i}}{(2i)!}
-    \left[
-      (1 - 1)^{2i} - 1
-    \right]
-\right) A^{2i}  \\
-&= I,
+    Since $(n-r){n \choose r} = n {n -1 \choose r},$ we get
+    \begin{align*}
+      &\sin (A)^2 + \cos (A)^2 \\
+      &= I + \sum_{i = 1}^{\infty} \left(\dfrac{(-1)^i}{(2i)!} +
+        \dfrac{(-1)^{i - 1}}{(2i + 1)!}\left\{\sum_{j = 0}^{i - 1}(2i +
+          1){2i\choose 2j + 1}  - \sum_{j = 0}^{i - 1} (2i + 1){2i
+      \choose 2j + 2}\right\}\right)A^{2i} \\
+      &= I + \sum_{i=1}^{\infty}
+      \left(
+        \dfrac{(-1)^i}{(2i)!}
+        + \dfrac{(-1)^{i-1}}{(2i)!}
+        \left[
+          \sum_{j=0}^{i-1} \binom{2i}{2j+1}
+          - \sum_{j=0}^{i-1} \binom{2i}{2j+2}
+        \right]
+      \right) A^{2i} \\
+      &= I + \sum_{i=1}^{\infty}
+      \left(
+        \dfrac{(-1)^i}{(2i)!}
+        + \dfrac{(-1)^{i}}{(2i)!}
+        \left[
+          \sum_{k = 1}^{2i} {2i \choose k} (-1)^{k}
+        \right]
+      \right) A^{2i}  \\
+      &= I + \sum_{i=1}^{\infty}
+      \left(
+        \dfrac{(-1)^i}{(2i)!}
+        + \dfrac{(-1)^{i}}{(2i)!}
+        \left[
+          (1 - 1)^{2i} - 1
+        \right]
+      \right) A^{2i}  \\
+      &= I,
     \end{align*}
     as required.
 
-    Therefore, $\sin(A)^2 = I - \cos(A)^2 = I,$ which is not the case, yielding a contradiction. \qed
+    Therefore, $\sin(A)^2 = I - \cos(A)^2 = I,$ which is not the
+    case, yielding a contradiction. \qed
 \end{enumerate}
 
 \subsection{Reflection}
-Looked at eigenvalues for 12. The given matrix has only the eigenvalue \(1\), so every eigenvalue \(\lambda\) of \(A\) satisfies \(\sin\lambda=1\). This means both eigenvalues of \(\cos A\) are zero. The \(2\times2\) size mattered here because the characteristic polynomial of \(\cos A\) is \(t^2\), so Cayley–Hamilton gives \((\cos A)^2=0\).
+Looked at eigenvalues for 12. The given matrix has only the
+eigenvalue \(1\), so every eigenvalue \(\lambda\) of \(A\) satisfies
+\(\sin\lambda=1\). This means both eigenvalues of \(\cos A\) are
+zero. The \(2\times2\) size mattered here because the characteristic
+polynomial of \(\cos A\) is \(t^2\), so Cayley–Hamilton gives \((\cos A)^2=0\).
 
-The identity \((\sin A)^2+(\cos A)^2=I\) seemed intuitive and proveable, so brute-forced proved it. Squaring the given matrix produces an upper-right entry of \(4054\), giving the contradiction.
+The identity \((\sin A)^2+(\cos A)^2=I\) seemed intuitive and
+proveable, so brute-forced proved it. Squaring the given matrix
+produces an upper-right entry of \(4054\), giving the contradiction.
 \end{document}

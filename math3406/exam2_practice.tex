@@ -12,15 +12,21 @@
 \pagestyle{empty}
 \begin{document}
 \begin{center}
-{\Large MATH 3406 Exam 2: Extra Practice}\\[4pt]
-{\small Twelve exercises from Axler, \emph{Linear Algebra Done Right} (4th ed.), in decreasing order of difficulty}
+  {\Large MATH 3406 Exam 2: Extra Practice}\\[4pt]
+  {\small Twelve exercises from Axler, \emph{Linear Algebra Done
+  Right} (4th ed.), in decreasing order of difficulty}
 \end{center}
 
-Throughout, $V$ and $W$ are vector spaces over $\F$. Nothing is assumed finite-dimensional unless stated.
+Throughout, $V$ and $W$ are vector spaces over $\F$. Nothing is
+assumed finite-dimensional unless stated.
 
-\prob{1}{5B \#4} Suppose $\F=\C$, $T\in\LL(V)$, $p\in\mathcal{P}(\C)$ is a nonconstant polynomial, and $\alpha\in\C$. Prove that $\alpha$ is an eigenvalue of $p(T)$ if and only if $\alpha=p(\lambda)$ for some eigenvalue $\lambda$ of $T$.
+\prob{1}{5B \#4} Suppose $\F=\C$, $T\in\LL(V)$, $p\in\mathcal{P}(\C)$
+is a nonconstant polynomial, and $\alpha\in\C$. Prove that $\alpha$
+is an eigenvalue of $p(T)$ if and only if $\alpha=p(\lambda)$ for
+some eigenvalue $\lambda$ of $T$.
 
-\textbf{Forward}: Suppose that $\alpha$ is an eigenvalue of $p(T).$ Then, we know 
+\textbf{Forward}: Suppose that $\alpha$ is an eigenvalue of $p(T).$
+Then, we know
 $$
 \dim \ker (p(T) - \alpha I) > 0,
 $$
@@ -32,54 +38,74 @@ yielding
 $$
 c(T- \mu_1 I ) \ldots (T - \mu_m I ) v = 0.
 $$
-for some $v \neq 0.$ Since this map is not injective, there must be some 
+for some $v \neq 0.$ Since this map is not injective, there must be some
 $$
 T - \mu_k I
 $$
-that is not injective, meaning such a $\mu_k = \lambda$ for some eigenvalue $\lambda.$ Then, $p(\lambda) - \alpha$
+that is not injective, meaning such a $\mu_k = \lambda$ for some
+eigenvalue $\lambda.$ Then, $p(\lambda) - \alpha$
 
-
-\textbf{Backward}: Conversely, know that $T$ is invariant under $\ker T - \lambda I,$ for any eigenvalue $\lambda$ of $T.$ Hence, for any $v \in \ker T - \lambda I,$ we get 
+\textbf{Backward}: Conversely, know that $T$ is invariant under $\ker
+T - \lambda I,$ for any eigenvalue $\lambda$ of $T.$ Hence, for any
+$v \in \ker T - \lambda I,$ we get
 $$
 p(T) v = p(\lambda) v,
 $$
-meaning $p(\lambda)$ is an eigenvalue of $p(T).$ Since $\alpha = p(\lambda),$ we know $\alpha$ is an eigenvalue of $p(T).$
+meaning $p(\lambda)$ is an eigenvalue of $p(T).$ Since $\alpha =
+p(\lambda),$ we know $\alpha$ is an eigenvalue of $p(T).$
 
-\prob{2}{3F \#33} Suppose $U$ is a subspace of $V$, and let $\pi\colon V\to V/U$ be the quotient map, so $\pi'\in\LL\bigl((V/U)',V'\bigr)$.
+\prob{2}{3F \#33} Suppose $U$ is a subspace of $V$, and let
+$\pi\colon V\to V/U$ be the quotient map, so $\pi'\in\LL\bigl((V/U)',V'\bigr)$.
 \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=0pt]
-\item Show that $\pi'$ is injective.
-\item Show that $\range \pi'=U^0$.
-\item Conclude that $\pi'$ is an isomorphism from $(V/U)'$ onto $U^0$.
+  \item Show that $\pi'$ is injective.
+  \item Show that $\range \pi'=U^0$.
+  \item Conclude that $\pi'$ is an isomorphism from $(V/U)'$ onto $U^0$.
 \end{enumerate}
 
-\prob{3}{3D \#6} Suppose $W$ is finite-dimensional and $S,T\in\LL(V,W)$. Prove that $\nul S=\nul T$ if and only if there exists an invertible $E\in\LL(W)$ such that $S=ET$.
+\prob{3}{3D \#6} Suppose $W$ is finite-dimensional and
+$S,T\in\LL(V,W)$. Prove that $\nul S=\nul T$ if and only if there
+exists an invertible $E\in\LL(W)$ such that $S=ET$.
 
-\prob{4}{3F \#22} Suppose $V$ is finite-dimensional and $U$, $W$ are subspaces of $V$.
+\prob{4}{3F \#22} Suppose $V$ is finite-dimensional and $U$, $W$ are
+subspaces of $V$.
 \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=0pt]
-\item Show that $(U+W)^0=U^0\cap W^0$.
-\item Show that $(U\cap W)^0=U^0+W^0$.
+  \item Show that $(U+W)^0=U^0\cap W^0$.
+  \item Show that $(U\cap W)^0=U^0+W^0$.
 \end{enumerate}
 
-\prob{5}{5C \#12a} Suppose $V$ is finite-dimensional, $T\in\LL(V)$ has an upper-triangular matrix with respect to some basis of $V$, and $U$ is a subspace of $V$ invariant under $T$. Prove that $T|_U$ has an upper-triangular matrix with respect to some basis of $U$.
+\prob{5}{5C \#12a} Suppose $V$ is finite-dimensional, $T\in\LL(V)$
+has an upper-triangular matrix with respect to some basis of $V$, and
+$U$ is a subspace of $V$ invariant under $T$. Prove that $T|_U$ has
+an upper-triangular matrix with respect to some basis of $U$.
 
-\prob{6}{5B \#28} Suppose $V$ is finite-dimensional and $T\in\LL(V)$. Prove that the minimal polynomial of $T'\in\LL(V')$ equals the minimal polynomial of $T$.
+\prob{6}{5B \#28} Suppose $V$ is finite-dimensional and $T\in\LL(V)$.
+Prove that the minimal polynomial of $T'\in\LL(V')$ equals the
+minimal polynomial of $T$.
 
-\prob{7}{5D \#8} Suppose $V$ is finite-dimensional and $T\in\LL(V)$. Let $\lambda_1,\dots,\lambda_m$ be the distinct nonzero eigenvalues of $T$. Prove that
+\prob{7}{5D \#8} Suppose $V$ is finite-dimensional and $T\in\LL(V)$.
+Let $\lambda_1,\dots,\lambda_m$ be the distinct nonzero eigenvalues
+of $T$. Prove that
 \[\dim E(\lambda_1,T)+\cdots+\dim E(\lambda_m,T)\le\dim\range T.\]
 
-\prob{8}{3F \#21} Suppose $V$ is finite-dimensional and $U$, $W$ are subspaces of $V$.
+\prob{8}{3F \#21} Suppose $V$ is finite-dimensional and $U$, $W$ are
+subspaces of $V$.
 \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=0pt]
-\item Prove that $W^0\subseteq U^0$ if and only if $U\subseteq W$.
-\item Prove that $W^0=U^0$ if and only if $U=W$.
+  \item Prove that $W^0\subseteq U^0$ if and only if $U\subseteq W$.
+  \item Prove that $W^0=U^0$ if and only if $U=W$.
 \end{enumerate}
 
-\prob{9}{5A \#25} Suppose $T\in\LL(V)$ and $u$, $w$ are eigenvectors of $T$ such that $u+w$ is also an eigenvector of $T$. Prove that $u$ and $w$ correspond to the same eigenvalue.
+\prob{9}{5A \#25} Suppose $T\in\LL(V)$ and $u$, $w$ are eigenvectors
+of $T$ such that $u+w$ is also an eigenvector of $T$. Prove that $u$
+and $w$ correspond to the same eigenvalue.
 
-\prob{10}{3E \#6} Suppose $v,x\in V$ and $U$, $W$ are subspaces of $V$ such that $v+U=x+W$. Prove that $U=W$.
+\prob{10}{3E \#6} Suppose $v,x\in V$ and $U$, $W$ are subspaces of
+$V$ such that $v+U=x+W$. Prove that $U=W$.
 
-\prob{11}{3F \#3} Suppose $V$ is finite-dimensional and $v\in V$ with $v\ne0$. Prove that there exists $\varphi\in V'$ such that $\varphi(v)=1$.
+\prob{11}{3F \#3} Suppose $V$ is finite-dimensional and $v\in V$ with
+$v\ne0$. Prove that there exists $\varphi\in V'$ such that $\varphi(v)=1$.
 
 \prob{12}{5A \#30} Suppose $T\in\LL(V)$ and
 \[(T-2I)(T-3I)(T-4I)=0.\]
-Suppose $\lambda$ is an eigenvalue of $T$. Prove that $\lambda=2$ or $\lambda=3$ or $\lambda=4$.
+Suppose $\lambda$ is an eigenvalue of $T$. Prove that $\lambda=2$ or
+$\lambda=3$ or $\lambda=4$.
 \end{document}

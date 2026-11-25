@@ -2,14 +2,14 @@
 \input{header}
 \begin{document}
 \begin{enumerate}
-    \item
+  \item
     \begin{enumerate}
-        \item \textbf{Max flow.}
+      \item \textbf{Max flow.}
         \begin{enumerate}
-            \item The flow on each edge is given below.
+          \item The flow on each edge is given below.
 
             \begin{center}
-            \begin{tabular}{c|c|c|c}
+              \begin{tabular}{c|c|c|c}
                 Edge & Flow & Capacity & Full? \\ \hline
                 $s \to b$ & 4 & 5 & \\
                 $s \to c$ & 4 & 8 & \\
@@ -23,145 +23,197 @@
                 $h \to d$ & 2 & 3 & \\
                 $e \to g$ & 8 & 10 & \\
                 $g \to t$ & 8 & 10 &
-            \end{tabular}
+              \end{tabular}
             \end{center}
 
-            \item The edges at full capacity are $b \to e$, $b \to d$, $c \to d$, and $f \to h$.
+          \item The edges at full capacity are $b \to e$, $b \to d$,
+            $c \to d$, and $f \to h$.
 
-            \item The total amount of flow from $s$ to $t$ is $8$.
+          \item The total amount of flow from $s$ to $t$ is $8$.
         \end{enumerate}
 
-        \item \textbf{Min cut.}
+      \item \textbf{Min cut.}
         \begin{enumerate}
-            \item $W = \{s, b, c, f\}$.
+          \item $W = \{s, b, c, f\}$.
 
-            \item The cut edges are $b \to e$, $b \to d$, $c \to d$, and $f \to h$.
+          \item The cut edges are $b \to e$, $b \to d$, $c \to d$,
+            and $f \to h$.
 
-            \item The total weight of the cut is $2 + 2 + 2 + 2 = 8$.
+          \item The total weight of the cut is $2 + 2 + 2 + 2 = 8$.
         \end{enumerate}
     \end{enumerate}
-    
-    \item We are given a directed graph $G = (V, E)$ where every edge has capacity 1, and two vertices $s, t.$ We've already solved $st$-max flow $f \in \mathbb R^{|E|}.$ We assume that $f$ is integral (algorithm from lecture returns an integral flow). Now, we insert a new edge $e = (u, v)$ with capacity $1.$ We want to find an $\mathcal O(|E|)$ time algorithm to find the new max-flow on this graph.
+
+  \item We are given a directed graph $G = (V, E)$ where every edge
+    has capacity 1, and two vertices $s, t.$ We've already solved
+    $st$-max flow $f \in \mathbb R^{|E|}.$ We assume that $f$ is
+    integral (algorithm from lecture returns an integral flow). Now,
+    we insert a new edge $e = (u, v)$ with capacity $1.$ We want to
+    find an $\mathcal O(|E|)$ time algorithm to find the new max-flow
+    on this graph.
 
     \begin{enumerate}
-        \item \begin{algorithmic}[1]
-            \Procedure{MaxFlowInsertingEdge}{$G, f, e$}
-                \State $G \gets (V(G), E(G) \cup \{e\})$ \Comment{Add $e$ to $G$}
-                \State $f(e) \gets 0$ \Comment{Initialize flow of $e$ to 0}
-                \vspace{3mm}
-                \State $G_f \gets \text{Augment}$($G, f$) \Comment{Generate augmented graph $G_f$}
-                \State $p \gets \text{DFSPath}$($G_f, s, t$) \Comment{Find an $st$-path}
+      \item
+        \begin{algorithmic}[1]
+          \Procedure{MaxFlowInsertingEdge}{$G, f, e$}
+          \State $G \gets (V(G), E(G) \cup \{e\})$ \Comment{Add $e$ to $G$}
+          \State $f(e) \gets 0$ \Comment{Initialize flow of $e$ to 0}
+          \vspace{3mm}
+          \State $G_f \gets \text{Augment}$($G, f$) \Comment{Generate
+          augmented graph $G_f$}
+          \State $p \gets \text{DFSPath}$($G_f, s, t$) \Comment{Find
+          an $st$-path}
 
-                \vspace{3mm}
-                \If{$p \equiv \texttt{nil}$} \Comment{No such st-path exists, flow already optimal}
-                    \State \Return {$f$}
-                \EndIf
+          \vspace{3mm}
+          \If{$p \equiv \texttt{nil}$} \Comment{No such st-path
+          exists, flow already optimal}
+          \State \Return {$f$}
+          \EndIf
 
-                \vspace{3mm}
+          \vspace{3mm}
 
-                \For{$e \in p$} \Comment{Push flow along $p$, after we're done flow is optimal}
-                    \If{$e$ \text{forward}}
-                        \State $f(e) \gets f(e) + 1$
-                    \Else
-                        \State $f(e) \gets f(e) - 1$
-                    \EndIf
-                \EndFor
+          \For{$e \in p$} \Comment{Push flow along $p$, after we're
+          done flow is optimal}
+          \If{$e$ \text{forward}}
+          \State $f(e) \gets f(e) + 1$
+          \Else
+          \State $f(e) \gets f(e) - 1$
+          \EndIf
+          \EndFor
 
-                \State \Return{$f$}
-            \EndProcedure
+          \State \Return{$f$}
+          \EndProcedure
         \end{algorithmic}
 
-        \item \textbf{Correctness} We assume that $f$ is an integral flow. Assign $f(e) = 0.$ Then, every $st$-path in the augmented graph $G_f$ with edge $e$ added must go through $e,$ since otherwise the augmented graph of $G \setminus \{e\}$ has an st-path, and is thus not a max-flow.
+      \item \textbf{Correctness} We assume that $f$ is an integral
+        flow. Assign $f(e) = 0.$ Then, every $st$-path in the
+        augmented graph $G_f$ with edge $e$ added must go through
+        $e,$ since otherwise the augmented graph of $G \setminus
+        \{e\}$ has an st-path, and is thus not a max-flow.
 
-        Let $W$ be the set of reachable vertices from $s$ on the augmentation graph $(G \setminus \{e\})_f.$
+        Let $W$ be the set of reachable vertices from $s$ on the
+        augmentation graph $(G \setminus \{e\})_f.$
 
         \begin{enumerate}
-            \item If there is an $st$-path $p$ on $G_f,$ define flow $f^\star$ such that
+          \item If there is an $st$-path $p$ on $G_f,$ define flow
+            $f^\star$ such that
             $$
-                f^\star(e) = \begin{cases}
-                    f(e) + 1& e \in p, \ e \text{ forward}  \\
-                    f(e) - 1& e \in p, \ e \text{ backward}  \\
-                    f(e) & \text{otherwise}
-                \end{cases}.
+            f^\star(e) =
+            \begin{cases}
+              f(e) + 1& e \in p, \ e \text{ forward}  \\
+              f(e) - 1& e \in p, \ e \text{ backward}  \\
+              f(e) & \text{otherwise}
+            \end{cases}.
             $$
-    
-            Then, consider the augmented graph $G_{f^\star}.$ The only edges that change from $G_f \to G_{f^\star}$ are those along $p,$ and these edges are reversed in direction. On $G_f,$ there is no outgoing edge from $W \to W^c.$ Since edges are only reversed, on $G_{f^\star}$ for there to be an outgoing edge from $W \to W^c,$ and incoming edge must have been reversed. 
-            
-            Only edges in $p$ were reversed, for $p$ to take an edge from $W^c \to W,$ it must be able to take two unique edges from $W \to W^c,$ since $s \in W$ and $t \not \in W,$ and $p$ is simple (cannot repeat edges). There can only ever be a single edge $e$ from $W \to W^c,$ since $f$ was maximal on $(G \setminus \{e\})_f,$ and therefore this is a contradiction.
-    
-            Thus, on $G_{f^\star}$ there is no outgoing edge from $W \to W^c,$ meaning $W$ is a min cut, and $f^\star$ is a max flow.
 
-            \item Otherwise, there is no $st$-path on $G_f.$ Then, the set of vertices reachable from $s$ is still a min-cut, meaning $f$ is a max flow.
+            Then, consider the augmented graph $G_{f^\star}.$ The
+            only edges that change from $G_f \to G_{f^\star}$ are
+            those along $p,$ and these edges are reversed in
+            direction. On $G_f,$ there is no outgoing edge from $W
+            \to W^c.$ Since edges are only reversed, on $G_{f^\star}$
+            for there to be an outgoing edge from $W \to W^c,$ and
+            incoming edge must have been reversed.
+
+            Only edges in $p$ were reversed, for $p$ to take an edge
+            from $W^c \to W,$ it must be able to take two unique
+            edges from $W \to W^c,$ since $s \in W$ and $t \not \in
+            W,$ and $p$ is simple (cannot repeat edges). There can
+            only ever be a single edge $e$ from $W \to W^c,$ since
+            $f$ was maximal on $(G \setminus \{e\})_f,$ and therefore
+            this is a contradiction.
+
+            Thus, on $G_{f^\star}$ there is no outgoing edge from $W
+            \to W^c,$ meaning $W$ is a min cut, and $f^\star$ is a max flow.
+
+          \item Otherwise, there is no $st$-path on $G_f.$ Then, the
+            set of vertices reachable from $s$ is still a min-cut,
+            meaning $f$ is a max flow.
         \end{enumerate}
 
-        In either case, our algorithm correctly returns some max-flow, meaning our algorithm is correct.
+        In either case, our algorithm correctly returns some
+        max-flow, meaning our algorithm is correct.
 
-        \item Modifying the graph, generating the augmentation, and updating the flow are all computable in $\mathcal O(|E|)$ time, meaning our algorithm runs in $\mathcal O(|E|).$
+      \item Modifying the graph, generating the augmentation, and
+        updating the flow are all computable in $\mathcal O(|E|)$
+        time, meaning our algorithm runs in $\mathcal O(|E|).$
     \end{enumerate}
 
-    \item Want to optimize revenue generated. Letting $x_j$ be the volume of material $j,$ we get optimization $$\max c^Tx,$$
-    where $$c = \begin{pmatrix}
-        1000 \\
-        1200 \\
-        12000
+  \item Want to optimize revenue generated. Letting $x_j$ be the
+    volume of material $j,$ we get optimization $$\max c^Tx,$$
+    where $$c =
+    \begin{pmatrix}
+      1000 \\
+      1200 \\
+      12000
     \end{pmatrix}.$$
 
     Our constraints satisfy
     $$
-        Ax \leq \begin{pmatrix}
-            100 \\
-            60
-        \end{pmatrix},
+    Ax \leq
+    \begin{pmatrix}
+      100 \\
+      60
+    \end{pmatrix},
     $$
-    where $$A = \begin{pmatrix}
-        2 & 1 & 3 \\
-        1 & 1 & 1
+    where $$A =
+    \begin{pmatrix}
+      2 & 1 & 3 \\
+      1 & 1 & 1
     \end{pmatrix}.$$
 
-    \item \begin{enumerate}
-        \item Our LP is 
+  \item
+    \begin{enumerate}
+      \item Our LP is
         $$
         \min c^T x, \ Ax \geq b,
         $$
-        where \begin{align*}
-            c = \begin{pmatrix}
-                3 \\
-                2
-            \end{pmatrix}, \ A = \begin{pmatrix}
-                1 & 3 \\
-                2 & 1 \\
-                1 & 0 \\
-                0 & 1 \\
-            \end{pmatrix}, \ b = \begin{pmatrix}
-                8 \\
-                20 \\
-                0 \\
-                0
-            \end{pmatrix},
+        where
+        \begin{align*}
+          c =
+          \begin{pmatrix}
+            3 \\
+            2
+          \end{pmatrix}, \ A =
+          \begin{pmatrix}
+            1 & 3 \\
+            2 & 1 \\
+            1 & 0 \\
+            0 & 1 \\
+          \end{pmatrix}, \ b =
+          \begin{pmatrix}
+            8 \\
+            20 \\
+            0 \\
+            0
+          \end{pmatrix},
         \end{align*}
-        where $x = (x_A, x_B)^T,$ since we encode the optimization constraint, (in terms of total cost), and the constraints for the no. of oranges, bananas, and minimum number of each bundle.
+        where $x = (x_A, x_B)^T,$ since we encode the optimization
+        constraint, (in terms of total cost), and the constraints for
+        the no. of oranges, bananas, and minimum number of each bundle.
 
-        \item Take $x_A = 10,$ $x_B = 0.$
+      \item Take $x_A = 10,$ $x_B = 0.$
 
-        \item Take a linear combination of the second and fourth constraint, with coefficients $3/2$ and $1/2,$ yielding $(3, 2) x \geq 30,$ meaning the objective has lower-bound $30.$
+      \item Take a linear combination of the second and fourth
+        constraint, with coefficients $3/2$ and $1/2,$ yielding $(3,
+        2) x \geq 30,$ meaning the objective has lower-bound $30.$
     \end{enumerate}
 
-    \item \begin{enumerate}
-        \item Given $f_{uv}$ for each $(u, v) \in E,$ our cost is given by 
+  \item
+    \begin{enumerate}
+      \item Given $f_{uv}$ for each $(u, v) \in E,$ our cost is given by
         $$
-            w^T f,
+        w^T f,
         $$
         where $f_{(u, v)}= f_{uv},$ and this cost is minimized.
 
-        \item For vertex $v,$ we need
+      \item For vertex $v,$ we need
         $$
-            \sum_{(u, v) \in E} f_{(u, v)} - \sum_{(v, u) \in E} f_{(v, u)} = d_{v},
+        \sum_{(u, v) \in E} f_{(u, v)} - \sum_{(v, u) \in E} f_{(v, u)} = d_{v},
         $$
         which is a linear constraint.
 
-        \item We need $f \leq c \in \mathbb R^{|E|},$ where $f_{(u, v)} = f_{uv}.$
+      \item We need $f \leq c \in \mathbb R^{|E|},$ where $f_{(u, v)} = f_{uv}.$
 
-        \item Similarly, we need $f \geq 0.$
+      \item Similarly, we need $f \geq 0.$
     \end{enumerate}
 \end{enumerate}
 \end{document}

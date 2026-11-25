@@ -7,7 +7,6 @@
 \usepackage{amsthm}
 \usepackage{amssymb}
 
-
 \renewcommand{\vec}[1]{\mathbf{#1}}
 
 \title{Homework 3}
@@ -20,73 +19,116 @@
 
 \begin{document}
 \begin{enumerate}
-\item \begin{enumerate}
-\item The generating function will be defined as \begin{align*}
-    \sum_{k = 0}^{\infty} 2x^{2k + 1} = 2x\sum_{k = 0}^\infty x^{2k} = \dfrac{2x}{1-x^2}
-\end{align*}
-by the geometric progression with multiplicative factor $x^2.$. \qed
+  \item
+    \begin{enumerate}
+      \item The generating function will be defined as
+        \begin{align*}
+          \sum_{k = 0}^{\infty} 2x^{2k + 1} = 2x\sum_{k = 0}^\infty
+          x^{2k} = \dfrac{2x}{1-x^2}
+        \end{align*}
+        by the geometric progression with multiplicative factor $x^2.$. \qed
 
-\item We find a closed form by applying the geometric progression identity, and using derivative identities. Hence, the generating function will be given by \begin{align*}
-    A(x) &= \sum_{k = 0}^{\infty}(k + 5^k)x^k \\ 
-    &= \sum_{k = 0}^\infty (k + 1 - 1)x^k + \sum_{k = 0}^\infty (5x)^k \\
-    &= \dfrac{1}{1-5x} - \dfrac{1}{1-x} + \sum_{k = 0}^\infty(k+1)x^k \\
-    &= \dfrac{1}{1-5x} - \dfrac{1}{1-x} + \dfrac{d}{dx}\left[\sum_{k = 0}^{\infty} x^{k + 1}\right] \\
-    &= \dfrac{1}{1-5x} - \dfrac{1}{1-x} + \dfrac{d}{dx}\left[x\sum_{k = 0}^{\infty} x^{k}\right] \\
-    &= \dfrac{1}{1-5x} - \dfrac{1}{1-x} + \dfrac{d}{dx}\left[\dfrac{x}{1-x}\right] \\
-    &= \dfrac{1}{1-5x} - \dfrac{1}{1-x} + \dfrac{d}{dx}\left[\dfrac{1-(1-x)}{1-x}\right] \\
-    &= \dfrac{1}{1-5x} - \dfrac{1}{1-x} + \dfrac{d}{dx}\left[\dfrac{1}{1-x} - 1\right] \\
-    &= \dfrac{1}{1-5x} - \dfrac{1}{1-x} + \dfrac{1}{(1-x)^2} \\
-    &= \dfrac{1}{1-5x} + \dfrac{x}{(1-x)^2}.
-\end{align*}
-\qed
-\end{enumerate}
+      \item We find a closed form by applying the geometric
+        progression identity, and using derivative identities. Hence,
+        the generating function will be given by
+        \begin{align*}
+          A(x) &= \sum_{k = 0}^{\infty}(k + 5^k)x^k \\
+          &= \sum_{k = 0}^\infty (k + 1 - 1)x^k + \sum_{k = 0}^\infty (5x)^k \\
+          &= \dfrac{1}{1-5x} - \dfrac{1}{1-x} + \sum_{k = 0}^\infty(k+1)x^k \\
+          &= \dfrac{1}{1-5x} - \dfrac{1}{1-x} +
+          \dfrac{d}{dx}\left[\sum_{k = 0}^{\infty} x^{k + 1}\right] \\
+          &= \dfrac{1}{1-5x} - \dfrac{1}{1-x} +
+          \dfrac{d}{dx}\left[x\sum_{k = 0}^{\infty} x^{k}\right] \\
+          &= \dfrac{1}{1-5x} - \dfrac{1}{1-x} +
+          \dfrac{d}{dx}\left[\dfrac{x}{1-x}\right] \\
+          &= \dfrac{1}{1-5x} - \dfrac{1}{1-x} +
+          \dfrac{d}{dx}\left[\dfrac{1-(1-x)}{1-x}\right] \\
+          &= \dfrac{1}{1-5x} - \dfrac{1}{1-x} +
+          \dfrac{d}{dx}\left[\dfrac{1}{1-x} - 1\right] \\
+          &= \dfrac{1}{1-5x} - \dfrac{1}{1-x} + \dfrac{1}{(1-x)^2} \\
+          &= \dfrac{1}{1-5x} + \dfrac{x}{(1-x)^2}.
+        \end{align*}
+        \qed
+    \end{enumerate}
 
-\item \begin{enumerate}
-    \item We first find the polynomial represented by the generating function $f.$ Splitting across the fraction, we get \begin{align*}
-        f(x) &= 4x^2 \cdot \dfrac{1}{1-2x} - 6x \cdot \dfrac{1}{1-2x} \\
-        &= 4x^2 \sum_{k = 0}^{\infty}2^k x^k - 6x \sum_{k = 0}^{\infty}2^k x^k \\
-        &= \sum_{k = 0}^\infty 2^{k +2} x^{k + 2} - \sum_{k = 0}^\infty 6 \cdot 2^k x^{k + 1} \\
-        &= \sum_{k = 2}^{\infty}2^k x^k - \sum_{k = 1}^{\infty} 6 \cdot 2^{k - 1} x^k \\
-        &= -6x + \sum_{k = 2}^{\infty} (- 2^{k + 1} )x^k.
+  \item
+    \begin{enumerate}
+      \item We first find the polynomial represented by the
+        generating function $f.$ Splitting across the fraction, we get
+        \begin{align*}
+          f(x) &= 4x^2 \cdot \dfrac{1}{1-2x} - 6x \cdot \dfrac{1}{1-2x} \\
+          &= 4x^2 \sum_{k = 0}^{\infty}2^k x^k - 6x \sum_{k =
+          0}^{\infty}2^k x^k \\
+          &= \sum_{k = 0}^\infty 2^{k +2} x^{k + 2} - \sum_{k =
+          0}^\infty 6 \cdot 2^k x^{k + 1} \\
+          &= \sum_{k = 2}^{\infty}2^k x^k - \sum_{k = 1}^{\infty} 6
+          \cdot 2^{k - 1} x^k \\
+          &= -6x + \sum_{k = 2}^{\infty} (- 2^{k + 1} )x^k.
+        \end{align*}
+        Hence, the sequence is given by
+        \begin{align*}
+          a_0 = 0, \qquad a_1 = -6,  \qquad (a_k)_{k \geq 2} = -2^{k + 1}.
+        \end{align*}
+        \qed
+
+      \item We proceed in a similar fashion, finding a polynomial
+        representation for $g$:
+        \begin{align*}
+          g(x) &= 2 \sum_{k = 0}^\infty(-1)^k x^{2k} - \sum_{k =
+          0}^{\infty}\dfrac{3^k x^k}{k!} \\
+          &= \sum_{k = 0}^{\infty} (-1)^k \cdot 2 \cdot x^{2k} -
+          \sum_{k = 0}^{\infty}  \dfrac{3^{2k} x^{2k}}{(2k)!} -
+          \sum_{k = 0}^\infty \dfrac{3^{2k + 1}x^{2k + 1}}{(2k + 1)!} \\
+          &= \sum_{k = 0}^\infty \left(2 \cdot (-1)^k -
+          \dfrac{3^{2k}}{(2k)!}\right)x^{2k} + \sum_{k = 0}^{\infty}
+          \left(- \dfrac{3^{2k + 1}}{(2k+1)!}\right) x^{2k + 1}.
+        \end{align*}
+        Hence, our sequence is given by
+        \begin{align*}
+          (a_{2k})_{k \geq 0} &= (-1)^k \cdot 2 - \dfrac{3^{2k}}{(2k)!}, \\
+          (a_{2k + 1})_{k \geq 0} &= - \dfrac{3^{2k + 1}}{(2k + 1)!}.
+        \end{align*}
+        \qed
+    \end{enumerate}
+
+  \item The closed form of the OGF for the convolution of the
+    sequences $(n^2)_{n \geq 0}$ and $(n)_{n \geq 0}$ will be given
+    by the product of the OGF's for both sequences. Finding the OGF
+    for either sequence, we get
+    \begin{align*}
+      A(x) &= \sum_{k = 0}^{\infty}k^2 x^k = \sum_{k = 0}^{\infty}
+      [(k + 2)(k + 1) - 3(k + 1) + 1] x^k \\
+      &= \sum_{k = 0}^\infty (k+2)(k + 1)x^k - 3\sum_{k = 0}^\infty
+      (k+1)x^k  + \dfrac{1}{1-x} \\
+      &= \dfrac{d^2}{dx^2}\left[\dfrac{x^2}{1-x}\right] -
+      3\dfrac{d}{dx}\left[\dfrac{x}{1-x}\right] + \dfrac{1}{1-x} \\
+      &= \dfrac{d^2}{dx^2}\left[\dfrac{(1-x)^2 - 2(1-x) +
+      1}{1-x}\right] - 3\dfrac{d}{dx}\left[\dfrac{x}{1-x}\right] +
+      \dfrac{1}{1-x} \\
+      &= \dfrac{d^2}{dx^2}\left[-1 - x + \dfrac{1}{1 - x}\right] -
+      3\dfrac{d}{dx}\left[\dfrac{x}{1-x}\right] + \dfrac{1}{1-x} \\
+      &= \dfrac{d^2}{dx^2}\left[\dfrac{1}{1 - x}\right] -
+      3\dfrac{d}{dx}\left[\dfrac{1 - (1 - x)}{1-x}\right] + \dfrac{1}{1-x} \\
+      &= \dfrac{d^2}{dx^2}\left[\dfrac{1}{1 - x}\right] -
+      3\dfrac{d}{dx}\left[\dfrac{1}{1-x}\right] + \dfrac{1}{1-x} \\
+      &= \dfrac{d}{dx}\left[\dfrac{1}{(1 - x)^2}\right] -
+      \dfrac{3}{(1-x)^2} + \dfrac{1}{1-x} \\
+      &= \dfrac{2}{(1 - x)^3} - \dfrac{3}{(1-x)^2} + \dfrac{1}{1-x},
     \end{align*}
-    Hence, the sequence is given by \begin{align*}
-        a_0 = 0, \qquad a_1 = -6,  \qquad (a_k)_{k \geq 2} = -2^{k + 1}.
-    \end{align*} 
-    \qed
-
-    \item We proceed in a similar fashion, finding a polynomial representation for $g$: \begin{align*}
-       g(x) &= 2 \sum_{k = 0}^\infty(-1)^k x^{2k} - \sum_{k = 0}^{\infty}\dfrac{3^k x^k}{k!} \\
-       &= \sum_{k = 0}^{\infty} (-1)^k \cdot 2 \cdot x^{2k} - \sum_{k = 0}^{\infty}  \dfrac{3^{2k} x^{2k}}{(2k)!} - \sum_{k = 0}^\infty \dfrac{3^{2k + 1}x^{2k + 1}}{(2k + 1)!} \\
-       &= \sum_{k = 0}^\infty \left(2 \cdot (-1)^k - \dfrac{3^{2k}}{(2k)!}\right)x^{2k} + \sum_{k = 0}^{\infty} \left(- \dfrac{3^{2k + 1}}{(2k+1)!}\right) x^{2k + 1}.
+    for $(n^2)_{n \geq 0}.$ For $(n)_{n \geq 0},$ we get the
+    generating function
+    \begin{align*}
+      B(x) &= \sum_{k = 0}^\infty kx^k = \sum_{k = 0}^\infty (k + 1 - 1)x^k \\
+      &=\dfrac{d}{dx}\left[\dfrac{x}{1-x}\right] - \dfrac{1}{1-x} \\
+      &= \dfrac{1}{(1-x)^2} - \dfrac{1}{1-x} \\
+      &= \dfrac{x}{(1-x)^2}.
     \end{align*}
-    Hence, our sequence is given by \begin{align*}
-        (a_{2k})_{k \geq 0} &= (-1)^k \cdot 2 - \dfrac{3^{2k}}{(2k)!}, \\
-        (a_{2k + 1})_{k \geq 0} &= - \dfrac{3^{2k + 1}}{(2k + 1)!}. 
+    Simplifying $A(x),$ we get
+    \begin{align*}
+      A(x) = \dfrac{2 - 3(1-x) + (1-x)^2}{(1-x)^3} = \dfrac{x(x + 1)}{(1-x)^3}.
     \end{align*}
-    \qed
-\end{enumerate}
-
-\item The closed form of the OGF for the convolution of the sequences $(n^2)_{n \geq 0}$ and $(n)_{n \geq 0}$ will be given by the product of the OGF's for both sequences. Finding the OGF for either sequence, we get \begin{align*}
-    A(x) &= \sum_{k = 0}^{\infty}k^2 x^k = \sum_{k = 0}^{\infty} [(k + 2)(k + 1) - 3(k + 1) + 1] x^k \\
-    &= \sum_{k = 0}^\infty (k+2)(k + 1)x^k - 3\sum_{k = 0}^\infty (k+1)x^k  + \dfrac{1}{1-x} \\
-    &= \dfrac{d^2}{dx^2}\left[\dfrac{x^2}{1-x}\right] - 3\dfrac{d}{dx}\left[\dfrac{x}{1-x}\right] + \dfrac{1}{1-x} \\
-    &= \dfrac{d^2}{dx^2}\left[\dfrac{(1-x)^2 - 2(1-x) + 1}{1-x}\right] - 3\dfrac{d}{dx}\left[\dfrac{x}{1-x}\right] + \dfrac{1}{1-x} \\
-    &= \dfrac{d^2}{dx^2}\left[-1 - x + \dfrac{1}{1 - x}\right] - 3\dfrac{d}{dx}\left[\dfrac{x}{1-x}\right] + \dfrac{1}{1-x} \\
-    &= \dfrac{d^2}{dx^2}\left[\dfrac{1}{1 - x}\right] - 3\dfrac{d}{dx}\left[\dfrac{1 - (1 - x)}{1-x}\right] + \dfrac{1}{1-x} \\
-    &= \dfrac{d^2}{dx^2}\left[\dfrac{1}{1 - x}\right] - 3\dfrac{d}{dx}\left[\dfrac{1}{1-x}\right] + \dfrac{1}{1-x} \\
-    &= \dfrac{d}{dx}\left[\dfrac{1}{(1 - x)^2}\right] - \dfrac{3}{(1-x)^2} + \dfrac{1}{1-x} \\
-    &= \dfrac{2}{(1 - x)^3} - \dfrac{3}{(1-x)^2} + \dfrac{1}{1-x},
-\end{align*}
-for $(n^2)_{n \geq 0}.$ For $(n)_{n \geq 0},$ we get the generating function \begin{align*}
-    B(x) &= \sum_{k = 0}^\infty kx^k = \sum_{k = 0}^\infty (k + 1 - 1)x^k \\
-    &=\dfrac{d}{dx}\left[\dfrac{x}{1-x}\right] - \dfrac{1}{1-x} \\
-    &= \dfrac{1}{(1-x)^2} - \dfrac{1}{1-x} \\
-    &= \dfrac{x}{(1-x)^2}.
-\end{align*}
-Simplifying $A(x),$ we get \begin{align*}
-    A(x) = \dfrac{2 - 3(1-x) + (1-x)^2}{(1-x)^3} = \dfrac{x(x + 1)}{(1-x)^3}.
-\end{align*}
-Hence, $$(B \cdot A)(x)  = \dfrac{x^2(x+1)}{(1-x)^5} = f(x),$$
-where $f(x)$ is the closed form for the OGF of $(n^2)_{n \geq 0}$ convolved with $(n)_{n \geq 0}.$ \qed
+    Hence, $$(B \cdot A)(x)  = \dfrac{x^2(x+1)}{(1-x)^5} = f(x),$$
+    where $f(x)$ is the closed form for the OGF of $(n^2)_{n \geq 0}$
+    convolved with $(n)_{n \geq 0}.$ \qed
 \end{enumerate}
 \end{document}

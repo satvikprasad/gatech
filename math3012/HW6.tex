@@ -6,7 +6,6 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 
-
 \renewcommand{\vec}[1]{\mathbf{#1}}
 
 \title{Homework 3}
@@ -19,91 +18,139 @@
 
 \begin{document}
 \begin{enumerate}
-\item \begin{enumerate}
-\item For an arbitrary rook polynomial coefficient $r_k,$ we choose $k$ rows and $k$ columns to be occupied by a rook, and then for each row we choose a corresponding column for the rook to be placed at, in $k!$ ways. Hence, this yields \begin{align*}
-    r_k = {3 \choose k}^2 k!,
-\end{align*}
-meaning the rook polynomial for the $3 \times 3$ chessboard is \begin{align*}
-    R(x) = 1 + 9x + 18x^2 + 6x^3.
-\end{align*}
+  \item
+    \begin{enumerate}
+      \item For an arbitrary rook polynomial coefficient $r_k,$ we
+        choose $k$ rows and $k$ columns to be occupied by a rook, and
+        then for each row we choose a corresponding column for the
+        rook to be placed at, in $k!$ ways. Hence, this yields
+        \begin{align*}
+          r_k = {3 \choose k}^2 k!,
+        \end{align*}
+        meaning the rook polynomial for the $3 \times 3$ chessboard is
+        \begin{align*}
+          R(x) = 1 + 9x + 18x^2 + 6x^3.
+        \end{align*}
 
-\item Once again, the arbitrary rook number will be given by \begin{align*}
-    r_k = {8 \choose k}^2 k!,
-\end{align*}
-and therefore the rook polynomial for an $8\times8$ chessboard will be \begin{align*}
-    R(x) = \sum_{k=0}^{8}{8 \choose k}^2 k!\cdot x^k.
-\end{align*}
-\end{enumerate}
+      \item Once again, the arbitrary rook number will be given by
+        \begin{align*}
+          r_k = {8 \choose k}^2 k!,
+        \end{align*}
+        and therefore the rook polynomial for an $8\times8$ chessboard will be
+        \begin{align*}
+          R(x) = \sum_{k=0}^{8}{8 \choose k}^2 k!\cdot x^k.
+        \end{align*}
+    \end{enumerate}
 
-\item \begin{enumerate}
-\item The $5$ candies we need to distribute are m\&ms, butterfingers, peanut butter cups, skittles, and snickers. Thus, let us construct a chessboard as follows:
+  \item
+    \begin{enumerate}
+      \item The $5$ candies we need to distribute are m\&ms,
+        butterfingers, peanut butter cups, skittles, and snickers.
+        Thus, let us construct a chessboard as follows:
 
-\begin{center}
-\begin{tabular}{c|c|c|c|c|c|}
-      & A              & B              & C              & D              & E              \\
-   \hline
-   M  &                & $\blacksquare$ &                & $\blacksquare$ &                \\
-   \hline
-   B  & $\blacksquare$ &                &                &                &                \\
-   \hline
-   P  & $\blacksquare$ &                & $\blacksquare$ &                & $\blacksquare$ \\
-   \hline
-   Sk &                & $\blacksquare$ &                &                &                \\
-   \hline
-   Sn &                &                &                &                & $\blacksquare$ \\
-   \hline
-\end{tabular}
-\end{center}
-Placing 5 'rooks' on this board will mean if any individual chooses a specific candy, they can only get one candy, and no one else can get the same candy.
+        \begin{center}
+          \begin{tabular}{c|c|c|c|c|c|}
+            & A              & B              & C              & D
+            & E              \\
+            \hline
+            M  &                & $\blacksquare$ &                &
+            $\blacksquare$ &                \\
+            \hline
+            B  & $\blacksquare$ &                &                &
+            &                \\
+            \hline
+            P  & $\blacksquare$ &                & $\blacksquare$ &
+            & $\blacksquare$ \\
+            \hline
+            Sk &                & $\blacksquare$ &                &
+            &                \\
+            \hline
+            Sn &                &                &                &
+            & $\blacksquare$ \\
+            \hline
+          \end{tabular}
+        \end{center}
+        Placing 5 'rooks' on this board will mean if any individual
+        chooses a specific candy, they can only get one candy, and no
+        one else can get the same candy.
 
-\newpage
+        \newpage
 
-\item By swapping the 3rd and 1st rows, and then swapping the 2nd and 3rd columns, we yield the following board:
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|}
-   \hline
-    $\blacksquare$ & $\blacksquare$ &                &                & $\blacksquare$ \\
-   \hline
-    $\blacksquare$ &                &                &                &                \\
-   \hline
-                   &                & $\blacksquare$ & $\blacksquare$ &                \\
-   \hline
-                   &                & $\blacksquare$ &                &                \\
-   \hline
-                   &                &                &                & $\blacksquare$ \\
-   \hline
-\end{tabular}
-\end{center}
+      \item By swapping the 3rd and 1st rows, and then swapping the
+        2nd and 3rd columns, we yield the following board:
+        \begin{center}
+          \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            $\blacksquare$ & $\blacksquare$ &                &
+            & $\blacksquare$ \\
+            \hline
+            $\blacksquare$ &                &                &
+            &                \\
+            \hline
+            &                & $\blacksquare$ & $\blacksquare$ &
+            \\
+            \hline
+            &                & $\blacksquare$ &                &
+            \\
+            \hline
+            &                &                &                &
+            $\blacksquare$ \\
+            \hline
+          \end{tabular}
+        \end{center}
 
-Placing rooks on black squares (disallowed positions), we get $r_0 = 1,$ and $r_1 = 8.$ 
+        Placing rooks on black squares (disallowed positions), we get
+        $r_0 = 1,$ and $r_1 = 8.$
 
-For $r_k,$ $k \geq 2,$ we can either choose to include the top-right black square, or not. If we place a rook on it, the remainder of our board $B'$ has rook polynomial \begin{align*}
-    (1+ x) \cdot (1 + 3x + x^2) = 1 + 4x + 4x^2 + x^3,
-\end{align*}
-whereas if we don't place a rook on it, the remainder of our new board $B''$ has rook polynomial: \begin{align*}
-    (1 + 3x + x^2)^2(1 + x) &= (1 + 9x^2 + x^4 + 6x + 6x^3 + 2x^2)(1 + x) \\
-                            &= (1 + 6x + 11x^2 + 6x^3 + x^4)(1 + x) \\
-                            &= 1 + 7x + 17x^2 + 17x^3 + 7x^4 + x^5 
-\end{align*}
-Because $r_k = r_{k -1, B'} + r_{k, B''},$ or equivalently, $$R(\bar C, x) = xR(B', x) + R(B'', x),$$ we can compute $r_k$ from the coefficients of \begin{align*}
-&x(1 + 4x + 4x^2 + x^3) + 1 + 7x + 17x^2 + 17x^3 + 7x^4 + x^5 \\
-&= 1 + 8x + 21x^2 + 21x^3 + 8x^4 + x^5,
-\end{align*}
-yielding a new rook polynomial given by: \begin{align*}
-    R(\bar C, x) = 1 + 8x + 21x^2 + 21x^3 + 8x^4 + x^5.
-\end{align*}
+        For $r_k,$ $k \geq 2,$ we can either choose to include the
+        top-right black square, or not. If we place a rook on it, the
+        remainder of our board $B'$ has rook polynomial
+        \begin{align*}
+          (1+ x) \cdot (1 + 3x + x^2) = 1 + 4x + 4x^2 + x^3,
+        \end{align*}
+        whereas if we don't place a rook on it, the remainder of our
+        new board $B''$ has rook polynomial:
+        \begin{align*}
+          (1 + 3x + x^2)^2(1 + x) &= (1 + 9x^2 + x^4 + 6x + 6x^3 +
+          2x^2)(1 + x) \\
+          &= (1 + 6x + 11x^2 + 6x^3 + x^4)(1 + x) \\
+          &= 1 + 7x + 17x^2 + 17x^3 + 7x^4 + x^5
+        \end{align*}
+        Because $r_k = r_{k -1, B'} + r_{k, B''},$ or equivalently,
+        $$R(\bar C, x) = xR(B', x) + R(B'', x),$$ we can compute
+        $r_k$ from the coefficients of
+        \begin{align*}
+          &x(1 + 4x + 4x^2 + x^3) + 1 + 7x + 17x^2 + 17x^3 + 7x^4 + x^5 \\
+          &= 1 + 8x + 21x^2 + 21x^3 + 8x^4 + x^5,
+        \end{align*}
+        yielding a new rook polynomial given by:
+        \begin{align*}
+          R(\bar C, x) = 1 + 8x + 21x^2 + 21x^3 + 8x^4 + x^5.
+        \end{align*}
 
-\item Let $c_1 := \text{`A gets the wrong snack'}$, $c_2 := \text{`B gets the wrong snack'},$ and so on. Then, the number of possible distributions can be counted as: \begin{align*}
-    N(\bar c_1 \bar c_2 \ldots \bar c_5) = N - S_1 + S_2 - \ldots -S_5.
-\end{align*}
-Notice that $N$ is the total number of ways to distribute $5$ unique snacks among $5$ people, yielding $N = 5!$ ways. Additionally, $S_k$ will be the sum of all the ways to distribute $k$ snacks incorrectly. This can be counted by using $r_k$ to fix at least $k$ of the snacks incorrect, and then arrange between the $5 -k$ remaining rows and columns in $(5 - k)!$ ways. Hence, \begin{align*}
-    S_k = r_k \cdot (5 -k)!,
-\end{align*}
-yielding the expression: \begin{align*}
-    N(\bar c_1 \bar c_2 \ldots \bar c_5)  &= 5! - 8\cdot 4! + 21 \cdot 3! - 21 \cdot 2! + 8 \cdot 1! - 1 \cdot 0! \\
-    &= 120 - 192 + 126 - 42 + 8 - 1 = 19
-\end{align*}
-possible ways to distribute the snacks.
-\end{enumerate}
+      \item Let $c_1 := \text{`A gets the wrong snack'}$, $c_2 :=
+        \text{`B gets the wrong snack'},$ and so on. Then, the number
+        of possible distributions can be counted as:
+        \begin{align*}
+          N(\bar c_1 \bar c_2 \ldots \bar c_5) = N - S_1 + S_2 - \ldots -S_5.
+        \end{align*}
+        Notice that $N$ is the total number of ways to distribute $5$
+        unique snacks among $5$ people, yielding $N = 5!$ ways.
+        Additionally, $S_k$ will be the sum of all the ways to
+        distribute $k$ snacks incorrectly. This can be counted by
+        using $r_k$ to fix at least $k$ of the snacks incorrect, and
+        then arrange between the $5 -k$ remaining rows and columns in
+        $(5 - k)!$ ways. Hence,
+        \begin{align*}
+          S_k = r_k \cdot (5 -k)!,
+        \end{align*}
+        yielding the expression:
+        \begin{align*}
+          N(\bar c_1 \bar c_2 \ldots \bar c_5)  &= 5! - 8\cdot 4! +
+          21 \cdot 3! - 21 \cdot 2! + 8 \cdot 1! - 1 \cdot 0! \\
+          &= 120 - 192 + 126 - 42 + 8 - 1 = 19
+        \end{align*}
+        possible ways to distribute the snacks.
+    \end{enumerate}
 \end{enumerate}
 \end{document}

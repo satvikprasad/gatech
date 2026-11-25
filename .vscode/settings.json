@@ -1,0 +1,40 @@
+{
+  "editor.wordWrap": "on",
+
+  // Build with latexmk -> pdflatex. TEXINPUTS adds the parent dir (the repo root,
+  // since builds run inside each course folder) so \input{header} works like on
+  // Overleaf. Trailing ":" keeps the default search paths.
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdf",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {
+        "TEXINPUTS": "..:",
+        "PATH": "/Library/TeX/texbin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      }
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    { "name": "latexmk (pdf)", "tools": ["latexmk"] }
+  ],
+  "latex-workshop.latex.recipe.default": "first",
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.latex.outDir": "%DIR%/build",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.latex.autoClean.run": "never",
+  "latex-workshop.formatting.latex": "tex-fmt",
+  "latex-workshop.formatting.tex-fmt.path": "/opt/homebrew/bin/tex-fmt",
+  "[latex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop",
+    "editor.formatOnSave": true
+  },
+  "latex-workshop.kpsewhich.path": "/Library/TeX/texbin/kpsewhich"
+}

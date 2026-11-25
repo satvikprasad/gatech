@@ -5,38 +5,43 @@
 \subsection{Writing Proofs}
 \begin{enumerate}
 
-    \item Let us assume for the sake of contradiction that there exists such a $\lambda \in \mathbb C$ that satisfies
+  \item Let us assume for the sake of contradiction that there exists
+    such a $\lambda \in \mathbb C$ that satisfies
     $$
-        \lambda(2 - 3i, 5 + 4i, -6+7i) = (12 -5i, 7 + 22i, -32 - 9i).
+    \lambda(2 - 3i, 5 + 4i, -6+7i) = (12 -5i, 7 + 22i, -32 - 9i).
     $$
-    By the definition of scalar multiplication on $\mathbb C^{3},$ this implies 
+    By the definition of scalar multiplication on $\mathbb C^{3},$ this implies
     $$
     \begin{pmatrix}
-    \lambda (2 -3 i) \\
-    \lambda(5 + 4 i) \\
-    \lambda(-6 + 7 i)
-    \end{pmatrix} = \begin{pmatrix}
-        12 - 5i \\
-        7 + 22i \\
-        -32 - 9i
+      \lambda (2 -3 i) \\
+      \lambda(5 + 4 i) \\
+      \lambda(-6 + 7 i)
+    \end{pmatrix} =
+    \begin{pmatrix}
+      12 - 5i \\
+      7 + 22i \\
+      -32 - 9i
     \end{pmatrix}.
     $$
 
-    From the first coordinate, we know 
+    From the first coordinate, we know
     \begin{align*}
-    \lambda = \dfrac{12 - 5i}{2 - 3i} &= \dfrac{(12 - 5i)(2+3i)}{(2 - 3i)(2 + 3i)} \\
-    &= 3 + 2i.
+      \lambda = \dfrac{12 - 5i}{2 - 3i} &= \dfrac{(12 - 5i)(2+3i)}{(2
+      - 3i)(2 + 3i)} \\
+      &= 3 + 2i.
     \end{align*}
 
     Plugging this into the third coordinate, this implies
     $$
-    (3+2i)(-6+7i) = -32-9i \Leftrightarrow  -32 +9i = -32-9i \Leftrightarrow 18i = 0,
+    (3+2i)(-6+7i) = -32-9i \Leftrightarrow  -32 +9i = -32-9i
+    \Leftrightarrow 18i = 0,
     $$
     implying $i = 0,$ which is a contradiction.
 
-    Thus, there is no such $\lambda \in \mathbb C$ that satisfies the constraints.
+    Thus, there is no such $\lambda \in \mathbb C$ that satisfies the
+    constraints.
 
-    \item Consider the element 
+  \item Consider the element
     $$
     x = \dfrac{1}{3}(w - v).
     $$
@@ -45,90 +50,125 @@
     $$
     meaning there is an $x \in V$ such that $v + 3x = w.$
 
-    \item Let us define addition such that given $f \in V^{S}$ and $g \in V^{S},$ $f + g \in \mathbb V^{S}$ is the function such that 
+  \item Let us define addition such that given $f \in V^{S}$ and $g
+    \in V^{S},$ $f + g \in \mathbb V^{S}$ is the function such that
     $$
-    (f \oplus g)(x) = f(x) + g(x) 
+    (f \oplus g)(x) = f(x) + g(x)
     $$
-    for all $x \in S,$ where $+$ denotes the addition operator in $\mathbb F^{S}.$
+    for all $x \in S,$ where $+$ denotes the addition operator in
+    $\mathbb F^{S}.$
 
-    Similarly, define multiplication as $$(\lambda \otimes f)(x) = \lambda \cdot f(x)$$ for $\lambda$ in the underlying field of $V,$ $\mathbb F,$ where $\cdot$ denotes the underlying scalar multiplication on $\mathbb F^{S}.$
+    Similarly, define multiplication as $$(\lambda \otimes f)(x) =
+    \lambda \cdot f(x)$$ for $\lambda$ in the underlying field of
+    $V,$ $\mathbb F,$ where $\cdot$ denotes the underlying scalar
+    multiplication on $\mathbb F^{S}.$
 
     \begin{itemize}
-        \item Since $f + g \in V^{S},$ $V^{S}$ is closed under addition.
-        \item $(g + f)(x) = g(x) + f(x) = f(x) + g(x) = (f + g)(x),$ meaning $g + f = f+ g,$ and hence addition on $V^{S}$ is commutative.
-        \item Since \begin{align*}
-            (a + (b + c))(x) &= a(x) + (b+c)(x) \\ 
-                             &= a(x) + b(x) + c(x) \\ 
-                             &= (a(x) + b(x)) + c(x) \\
-                             &= (a + b)(x) + c(x) \\
-                             &= ((a + b) + c)(x),
+      \item Since $f + g \in V^{S},$ $V^{S}$ is closed under addition.
+      \item $(g + f)(x) = g(x) + f(x) = f(x) + g(x) = (f + g)(x),$
+        meaning $g + f = f+ g,$ and hence addition on $V^{S}$ is commutative.
+      \item Since
+        \begin{align*}
+          (a + (b + c))(x) &= a(x) + (b+c)(x) \\
+          &= a(x) + b(x) + c(x) \\
+          &= (a(x) + b(x)) + c(x) \\
+          &= (a + b)(x) + c(x) \\
+          &= ((a + b) + c)(x),
         \end{align*}
         we know $a + (b+ c) = (a+ b) + c,$ meaning addition is associative.
 
-        \item Defining $0$ as the function in $V^{S}$ s.t $0(x) = 0 \in V,$ we know $$
+      \item Defining $0$ as the function in $V^{S}$ s.t $0(x) = 0 \in
+        V,$ we know $$
         (f + 0)(x) = f(x) + 0(x) = f(x) + 0 = f(x),
         $$
         meaning $f + 0 = f,$ and thus there is an additive identity.
 
-        \item Given $f,$ $-f \in V^{S}$ such that $(-f)(x) = -f(x)$ satisfies
+      \item Given $f,$ $-f \in V^{S}$ such that $(-f)(x) = -f(x)$ satisfies
         $$
         ( f + (-f))(x) = f(x) - f(x) = 0 = 0(x),
         $$
-        meaning $f + (-f) = 0,$ and every element in $V^{S}$ has an additive inverse.
+        meaning $f + (-f) = 0,$ and every element in $V^{S}$ has an
+        additive inverse.
 
-        \item Since $\lambda f \in V^{S},$ $V^{S}$ is closed under scalar multiplication.
-        \item Since 
+      \item Since $\lambda f \in V^{S},$ $V^{S}$ is closed under
+        scalar multiplication.
+      \item Since
         \begin{align*}
-            (\lambda(\mu f))(x) =  \lambda (\mu f)(x) &= \lambda \mu f(x)  \\
-                                                      &= (\lambda \mu) f(x) \\
-                                                      &= ((\lambda \mu) f)(x) \\
+          (\lambda(\mu f))(x) =  \lambda (\mu f)(x) &= \lambda \mu f(x)  \\
+          &= (\lambda \mu) f(x) \\
+          &= ((\lambda \mu) f)(x) \\
         \end{align*}
-        we can conclude $\lambda (\mu f) = (\mu \lambda) f,$ and hence scalar multiplication is associative.
+        we can conclude $\lambda (\mu f) = (\mu \lambda) f,$ and
+        hence scalar multiplication is associative.
 
-        \item Multiplying by the identity on $\mathbb F,$ $1,$ yields $$
+      \item Multiplying by the identity on $\mathbb F,$ $1,$ yields $$
         (1 \cdot f)(x) = 1 \cdot f(x) = f(x),
         $$
-        meaning $1 \cdot f = f,$ and we have a multiplicative identity on $V^{S}.$ 
+        meaning $1 \cdot f = f,$ and we have a multiplicative
+        identity on $V^{S}.$
 
-        \item Since 
+      \item Since
         \begin{align*}
-        (\mu (f + g) )(x) &= \mu (f+g)(x) \\ 
-        &= \mu (f(x) + g(x)) \\ 
-        &= \mu f(x) + \mu g(x) \\ 
-        &= (\mu f)(x) + (\mu g)(x) \\
-        &= (\mu f+ \mu g)(x),
+          (\mu (f + g) )(x) &= \mu (f+g)(x) \\
+          &= \mu (f(x) + g(x)) \\
+          &= \mu f(x) + \mu g(x) \\
+          &= (\mu f)(x) + (\mu g)(x) \\
+          &= (\mu f+ \mu g)(x),
         \end{align*}
-        we know $\mu(f + g) = \mu f + \mu g,$ meaning scalar multiplication distributes under addition on $V^{S}$.
+        we know $\mu(f + g) = \mu f + \mu g,$ meaning scalar
+        multiplication distributes under addition on $V^{S}$.
 
-        \item Finally, we know \begin{align*}
-        ((\lambda + \mu)f)(x) = (\lambda + \mu)f(x) &= \lambda f(x) + \mu f(x) \\
-        &= (\lambda f + \mu f)(x),
+      \item Finally, we know
+        \begin{align*}
+          ((\lambda + \mu)f)(x) = (\lambda + \mu)f(x) &= \lambda f(x)
+          + \mu f(x) \\
+          &= (\lambda f + \mu f)(x),
         \end{align*}
         we can conclude that $(\lambda + \mu)f = \lambda f + \mu f.$
     \end{itemize}
 
     Since $V^{S}$ satisfies the axioms of a vector space, it is a vector space.
 
-    \item Let $U^{\infty}$ denote $$\bigcap_{\alpha \in S} U_{\alpha}.$$ We now need to prove it is closed under scalar addition, scalar multiplication, and contains the additive identity.
+  \item Let $U^{\infty}$ denote $$\bigcap_{\alpha \in S}
+    U_{\alpha}.$$ We now need to prove it is closed under scalar
+    addition, scalar multiplication, and contains the additive identity.
 
     \begin{itemize}
-        \item Consider $f \in U^{\infty}$ and $g \in U^{\infty}.$ By definition, this means $f, g \in U_{\alpha}$ for all $\alpha \in S.$ Since $U_{\alpha}$ is a subspace, $f + g$ is also in $U_{\alpha},$ meaning $f + g \in U_{\alpha}$ for all $\alpha \in S.$ Thus, by the definition of $U^{\infty},$ $f + g \in U^{\infty},$ meaning $U^{\infty}$ is closed under addition.
-        \item Consider an arbitrary $f \in U^{\infty}.$ Then, $f \in U_{\alpha}$ for all $\alpha \in S.$ Since $U_\alpha$ is closed under scalar multiplication, $$\lambda f \in U_\alpha$$ for all $\alpha \in S,$ meaning by definition $\lambda f \in U^{\infty},$ and hence $U^{\infty}$ is closed under scalar multiplication.
+      \item Consider $f \in U^{\infty}$ and $g \in U^{\infty}.$ By
+        definition, this means $f, g \in U_{\alpha}$ for all $\alpha
+        \in S.$ Since $U_{\alpha}$ is a subspace, $f + g$ is also in
+        $U_{\alpha},$ meaning $f + g \in U_{\alpha}$ for all $\alpha
+        \in S.$ Thus, by the definition of $U^{\infty},$ $f + g \in
+        U^{\infty},$ meaning $U^{\infty}$ is closed under addition.
+      \item Consider an arbitrary $f \in U^{\infty}.$ Then, $f \in
+        U_{\alpha}$ for all $\alpha \in S.$ Since $U_\alpha$ is
+        closed under scalar multiplication, $$\lambda f \in
+        U_\alpha$$ for all $\alpha \in S,$ meaning by definition
+        $\lambda f \in U^{\infty},$ and hence $U^{\infty}$ is closed
+        under scalar multiplication.
 
-        \item $0,$ the additive identity of $V,$ must be contained in $U_\alpha$ for all $\alpha \in S$ since $U_\alpha$ is a subspace, meaning by definition $0 \in U^{\infty}.$
+      \item $0,$ the additive identity of $V,$ must be contained in
+        $U_\alpha$ for all $\alpha \in S$ since $U_\alpha$ is a
+        subspace, meaning by definition $0 \in U^{\infty}.$
 
-        \item Finally, since $U_{\alpha}$ is a subset of $V,$ by the definition of the intersection, $U^{\infty}$ is a subset of $V.$
+      \item Finally, since $U_{\alpha}$ is a subset of $V,$ by the
+        definition of the intersection, $U^{\infty}$ is a subset of $V.$
     \end{itemize}
 
-    Thus, because $U^{\infty}$ satisfies the above criteria, it is a subspace of $V.$
+    Thus, because $U^{\infty}$ satisfies the above criteria, it is a
+    subspace of $V.$
 
-    \item Counterexample: $V = \mathbb R^{2},$ $U = \{(x, 0) : x \in \mathbb R \},$ $V_1 = \{(x, y) : y = -x\},$ and $V_2 = \{(x, y) : y=x\}.$
+  \item Counterexample: $V = \mathbb R^{2},$ $U = \{(x, 0) : x \in
+    \mathbb R \},$ $V_1 = \{(x, y) : y = -x\},$ and $V_2 = \{(x, y) : y=x\}.$
 \end{enumerate}
 
 \subsection{Evaluating Proofs}
-The addition operation $+$ is defined on the vector space $V,$ not only on the subspaces $V_1$ and $V_2,$ and hence $v_1 + v_2$ is defined, and the argument is invalid.
+The addition operation $+$ is defined on the vector space $V,$ not
+only on the subspaces $V_1$ and $V_2,$ and hence $v_1 + v_2$ is
+defined, and the argument is invalid.
 
 \subsection{Using Computers}
 \includegraphics[width=0.5\linewidth]{math3406/using_computers.png}
-\includegraphics[width=0.5\linewidth]{math3406/Screenshot 2026-08-25 at 8.45.56 am.png}
+\includegraphics[width=0.5\linewidth]{math3406/Screenshot 2026-08-25
+at 8.45.56 am.png}
 \end{document}

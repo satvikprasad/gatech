@@ -5,118 +5,169 @@
 \begin{document}
 \subsection{Writing Proofs}
 \begin{enumerate}
-    \item Since the inner product is linear in the first argument and conjugate linear in the second, we have  \begin{align*}
-       S &:= \sum_{i = 1} ^{n} \sum_{j = 1}^{n} \langle v_i, v_j \rangle = \sum_{j = 1}^{n} \sum_{i = 1}^{n} \langle v_i, v_j\rangle = \sum_{j = 1}^{n} \left\langle \sum_{i = 1}v_i, v_j \right\rangle \\
-       &= \left\langle \sum_{i = 1}^{n} v_i, \sum_{j = 1}^{n} v_j\right\rangle = \left|\left| \sum_{i = 1}^{n}v_i\right|\right|^2 \geq 0,
+  \item Since the inner product is linear in the first argument and
+    conjugate linear in the second, we have
+    \begin{align*}
+      S &:= \sum_{i = 1} ^{n} \sum_{j = 1}^{n} \langle v_i, v_j
+      \rangle = \sum_{j = 1}^{n} \sum_{i = 1}^{n} \langle v_i,
+      v_j\rangle = \sum_{j = 1}^{n} \left\langle \sum_{i = 1}v_i, v_j
+      \right\rangle \\
+      &= \left\langle \sum_{i = 1}^{n} v_i, \sum_{j = 1}^{n}
+      v_j\right\rangle = \left|\left| \sum_{i =
+      1}^{n}v_i\right|\right|^2 \geq 0,
     \end{align*}
     and hence $S \geq 0$ as required.
 
-    \item Starting from the RHS, we have
+  \item Starting from the RHS, we have
     \begin{align*}
-       \text{RHS} =  \dfrac{||u + v||^2 - ||u - v||^2}{4} = \dfrac{\langle u + v, u + v\rangle - \langle u - v, u - v\rangle}{4}.
+      \text{RHS} =  \dfrac{||u + v||^2 - ||u - v||^2}{4} =
+      \dfrac{\langle u + v, u + v\rangle - \langle u - v, u - v\rangle}{4}.
     \end{align*}
-    By linearity in the first argument and conjugate linearity in the second, we have
+    By linearity in the first argument and conjugate linearity in the
+    second, we have
     \begin{align*}
-        \text{RHS}  &= \dfrac{\langle u, u \rangle + \langle v, u \rangle + \langle u, v \rangle + \langle v, v \rangle - (\langle u, u \rangle + \langle v, v \rangle - \langle v, u \rangle - \langle u, v \rangle )}{4} \\
-        &= \dfrac{2 \langle v, u \rangle + 2 \langle u, v\rangle}{4}.
+      \text{RHS}  &= \dfrac{\langle u, u \rangle + \langle v, u
+        \rangle + \langle u, v \rangle + \langle v, v \rangle -
+        (\langle u, u \rangle + \langle v, v \rangle - \langle v, u
+      \rangle - \langle u, v \rangle )}{4} \\
+      &= \dfrac{2 \langle v, u \rangle + 2 \langle u, v\rangle}{4}.
     \end{align*}
-    Since the field is over $\mathbb R, $ $\bar \lambda = \lambda,$ meaning the inner product is symmetric, yielding $$
-    \text{RHS} = \dfrac{4 \langle u, v \rangle}4{} = \langle u, v \rangle = \text{LHS}
+    Since the field is over $\mathbb R, $ $\bar \lambda = \lambda,$
+    meaning the inner product is symmetric, yielding $$
+    \text{RHS} = \dfrac{4 \langle u, v \rangle}4{} = \langle u, v
+    \rangle = \text{LHS}
     $$
     as required.
 
-    \item \begin{enumerate}
-        \item Starting from the LHS, we have \begin{align*}
-            \dfrac{d}{dt} \langle f(t), g(t) \rangle = \dfrac{d}{dt} \sum_{i = 1}^{n} f_i(t) g_i(t).
+  \item
+    \begin{enumerate}
+      \item Starting from the LHS, we have
+        \begin{align*}
+          \dfrac{d}{dt} \langle f(t), g(t) \rangle = \dfrac{d}{dt}
+          \sum_{i = 1}^{n} f_i(t) g_i(t).
         \end{align*}
         Using the product rule, we get
         $$
-        \dfrac{d}{dt} \langle f(t), g(t) \rangle = \sum_{i = 1}^{n} f_i(t) g_i'(t) + f_i'(t) g_i(t) = \sum_{i = 1}^{n} f_i(t) g_i'(t) + \sum_{i = 1}^{n} f_i'(t) g(t).
+        \dfrac{d}{dt} \langle f(t), g(t) \rangle = \sum_{i = 1}^{n}
+        f_i(t) g_i'(t) + f_i'(t) g_i(t) = \sum_{i = 1}^{n} f_i(t)
+        g_i'(t) + \sum_{i = 1}^{n} f_i'(t) g(t).
         $$
         Therefore, we conclude $$
-        \dfrac{d}{dt} \langle f(t), g(t)\rangle = \langle f'(t), g(t)\rangle + \langle f(t),g'(t)\rangle
+        \dfrac{d}{dt} \langle f(t), g(t)\rangle = \langle f'(t),
+        g(t)\rangle + \langle f(t),g'(t)\rangle
         $$
         as required.
 
-        \item Suppose we have a $c > 0$ for which $||f(t)|| = c$  for all $t \in \mathbb R.$ Then, $\langle f(t), f(t) \rangle = c^2,$ and differentiating yields
+      \item Suppose we have a $c > 0$ for which $||f(t)|| = c$  for
+        all $t \in \mathbb R.$ Then, $\langle f(t), f(t) \rangle =
+        c^2,$ and differentiating yields
         $$
         \langle f'(t), f(t)\rangle + \langle f(t), f'(t)\rangle = 0.
         $$
-        Since this is over the field $\mathbb R$, the inner product is symmetric, and we can therefore conclude
+        Since this is over the field $\mathbb R$, the inner product
+        is symmetric, and we can therefore conclude
         $$
         \langle f'(t), f(t)\rangle = 0
         $$
-        for all $t \in \mathbb R.$ 
+        for all $t \in \mathbb R.$
 
-        \item Tangent vector to curve is orthogonal to displacement.
+      \item Tangent vector to curve is orthogonal to displacement.
     \end{enumerate}
 
-    \item Let us prove the forward direction first. Extend the orthonormal list $e_1, e_2, \ldots, e_m$ to an orthonormal basis $e_1, \ldots, e_n,$ where $n \geq m.$ Then, we have $v = v_1 e_1 + \ldots + v_n e_n$ for some $v_k \in \mathbb F.$ Hence, 
+  \item Let us prove the forward direction first. Extend the
+    orthonormal list $e_1, e_2, \ldots, e_m$ to an orthonormal basis
+    $e_1, \ldots, e_n,$ where $n \geq m.$ Then, we have $v = v_1 e_1
+    + \ldots + v_n e_n$ for some $v_k \in \mathbb F.$ Hence,
     $$
     \sum_{i = 1}^{m} |\langle v, e_i\rangle |^2 = \sum_{i = 1}^{m} v_i \bar v_i.
     $$
     By our hypothesis, this is equal to $$
     v_1 \bar v_1 + v_2 \bar v_2 + \ldots + v_n \bar v_n,
     $$
-    meaning $v_{m + 1} \bar v_{m + 1} + \ldots + v_{n} \bar v_{n}= 0.$ Each term is non-negative, meaning we need
+    meaning $v_{m + 1} \bar v_{m + 1} + \ldots + v_{n} \bar v_{n}=
+    0.$ Each term is non-negative, meaning we need
     $$
     v_{i} \bar v_i = 0, \ \forall m + 1 \leq i  \leq n,
     $$
     which forces $v_i = 0.$
 
-    Therefore, $v = v_1 e_1 + \ldots + v_m e_m \in \text{span}(e_1, \ldots, e_m).$
+    Therefore, $v = v_1 e_1 + \ldots + v_m e_m \in \text{span}(e_1,
+    \ldots, e_m).$
 
-    Conversely, assume $v \in \text{span}(e_1, \ldots, e_m),$ meaning for some $v_j \in \mathbb F,$ $v = v_1 e_1 + \ldots + v_me_m.$ Then, the inner product $\langle v, e_j \rangle$ resolves to $v_j$ since $\langle e_i, e_j \rangle = 0$ whenever $i \neq j.$ Hence, we have
+    Conversely, assume $v \in \text{span}(e_1, \ldots, e_m),$ meaning
+    for some $v_j \in \mathbb F,$ $v = v_1 e_1 + \ldots + v_me_m.$
+    Then, the inner product $\langle v, e_j \rangle$ resolves to
+    $v_j$ since $\langle e_i, e_j \rangle = 0$ whenever $i \neq j.$
+    Hence, we have
     $$
-    \sum_{i = 1}^{m} | \langle v, e_i \rangle|^2 = \sum_{i = 1}^{m} v_i \bar v_i = ||v||^2
+    \sum_{i = 1}^{m} | \langle v, e_i \rangle|^2 = \sum_{i = 1}^{m}
+    v_i \bar v_i = ||v||^2
     $$
     where $|| \cdot ||$ is the standard norm over $\mathbb F.$
 
-    Therefore,  \begin{align*}
-    \sum_{i = 1}^{m} |\langle v, e_i\rangle |^2 = \sum_{i = 1}^{m} v_i \bar v_i.
+    Therefore,
+    \begin{align*}
+      \sum_{i = 1}^{m} |\langle v, e_i\rangle |^2 = \sum_{i = 1}^{m}
+      v_i \bar v_i.
     \end{align*}
     if and only if $$
     v \in \text{span}(e_1, \ldots, e_m)
     $$
     as required.
 
-    \item By the Riesz Representation Theorem, any linear functional $\varphi \in V'$ can be written in the form $\phi(v) = \langle v, u \rangle$ for some $u \in V.$
+  \item By the Riesz Representation Theorem, any linear functional
+    $\varphi \in V'$ can be written in the form $\phi(v) = \langle v,
+    u \rangle$ for some $u \in V.$
 
-    Consider the dual basis $\{\delta_{i}\}_{i = 1}^{n}$ satisfying $\delta_i(v_j) = 1$ if $i =j,$ and $0$ otherwise. By the Riesz representation theorem, for every such $\delta_i$ there is some $u_i$ such that for all $v \in V,$ $\delta_i(v) = \langle v, u_i \rangle,$ meaning $$
-    \langle v_j, u_i \rangle = \delta_i(v_j) = \begin{cases}
-       1 & i = j \\
-       0 & \text{otherwise}
+    Consider the dual basis $\{\delta_{i}\}_{i = 1}^{n}$ satisfying
+    $\delta_i(v_j) = 1$ if $i =j,$ and $0$ otherwise. By the Riesz
+    representation theorem, for every such $\delta_i$ there is some
+    $u_i$ such that for all $v \in V,$ $\delta_i(v) = \langle v, u_i
+    \rangle,$ meaning $$
+    \langle v_j, u_i \rangle = \delta_i(v_j) =
+    \begin{cases}
+      1 & i = j \\
+      0 & \text{otherwise}
     \end{cases}.
     $$
 
     Thus, it remains to prove that $\{u_j\}_{j = 1}^{n}$ is a basis. Assume $$
     \sum_{i = 1}^{n}\lambda_i u_i = 0
     $$
-    for some $\lambda_j \in \mathbb F.$ Then, taking the inner product with an arbitrary $v,$ and using conjugate linearity, we have
+    for some $\lambda_j \in \mathbb F.$ Then, taking the inner
+    product with an arbitrary $v,$ and using conjugate linearity, we have
     $$
     \sum_{i = 1}^{n}\bar \lambda_i\langle v, u_i \rangle = 0
     $$
-    for all $v \in V,$ or equivalently, 
+    for all $v \in V,$ or equivalently,
     $$
     \left(\sum_{i = 1}^{n} \bar \lambda_i \delta_i\right)(v) = 0
     $$
     for all $v,$ implying $$
     \sum_{i = 1}^{n} \bar \lambda_i \delta_i = 0 \in V'.
     $$
-    Since $\{\delta_i\}_{i = 1}^{n}$ is a basis, this forces $\bar \lambda_i = 0$ for all $i,$ meaning $\lambda_i = 0$ over all $i$, and hence $u_j$ is linearly independent. Any linearly independent set of size $\dim V$ is a basis over $V,$ meaning $\{u_i\}_{i = 1}^{n}$ is a basis.
+    Since $\{\delta_i\}_{i = 1}^{n}$ is a basis, this forces $\bar
+    \lambda_i = 0$ for all $i,$ meaning $\lambda_i = 0$ over all $i$,
+    and hence $u_j$ is linearly independent. Any linearly independent
+    set of size $\dim V$ is a basis over $V,$ meaning $\{u_i\}_{i =
+    1}^{n}$ is a basis.
 
-    Hence, there exists a basis $\{u_i\}_{i =1}^{n}$ with $$\begin{cases}
-       1 & i = j \\
-       0 & \text{otherwise}
+    Hence, there exists a basis $\{u_i\}_{i =1}^{n}$ with $$
+    \begin{cases}
+      1 & i = j \\
+      0 & \text{otherwise}
     \end{cases}$$
     as required. \qed
 \end{enumerate}
 
-\subsection{Evaluating Proofs} The structure of the proof is correct, but you need roots, i.e., $x = (a_1, a_2\sqrt2, a_3 \sqrt 3, \ldots)$ and $b = (a_1, a_2/\sqrt 2, a_2 / \sqrt 3, \ldots).$
+\subsection{Evaluating Proofs} The structure of the proof is correct,
+but you need roots, i.e., $x = (a_1, a_2\sqrt2, a_3 \sqrt 3, \ldots)$
+and $b = (a_1, a_2/\sqrt 2, a_2 / \sqrt 3, \ldots).$
 
 \subsection{Using Computers}
 \begin{center}
-    \includegraphics[width=0.75\linewidth]{math3406/Screenshot 2026-11-19 at 7.01.58 pm.png}
+  \includegraphics[width=0.75\linewidth]{math3406/Screenshot
+  2026-11-19 at 7.01.58 pm.png}
 \end{center}
 The claim is correct.
 \end{document}

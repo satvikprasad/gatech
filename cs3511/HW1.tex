@@ -4,10 +4,12 @@
 
 \begin{document}
 \begin{enumerate}
-    \item $\{q, s\} < \{u\} < \{r\} < \{f, h\} < \{k\} < \{g, m, t\} < \{w\} < \{p\}$
+  \item $\{q, s\} < \{u\} < \{r\} < \{f, h\} < \{k\} < \{g, m, t\} <
+    \{w\} < \{p\}$
 
-    \item \begin{enumerate}
-        \item We prove that $\lg n! = \mathcal O(n \lg n)$. Notice that
+  \item
+    \begin{enumerate}
+      \item We prove that $\lg n! = \mathcal O(n \lg n)$. Notice that
         $$
         n! = 1 \cdot 2 \cdots n \leq n \cdot n \cdots n = n^n.
         $$
@@ -21,29 +23,31 @@
         $$
         meaning $\lg n! = \mathcal O(n \lg n)$.
 
-        \item Notice that for all $n \geq 2$,
+      \item Notice that for all $n \geq 2$,
         $$
         n! = \big(1 \cdot 2 \cdots \lfloor n/2 \rfloor\big)
-             \big((\lfloor n/2 \rfloor + 1) \cdots n\big).
+        \big((\lfloor n/2 \rfloor + 1) \cdots n\big).
         $$
         Hence,
         $$
         n! \geq \underbrace{\lfloor n/2\rfloor!}_{\geq 1}
-                \times \lfloor n/2 \rfloor^{\,n - \lfloor n/2 \rfloor}.
+        \times \lfloor n/2 \rfloor^{\,n - \lfloor n/2 \rfloor}.
         $$
         Since $n - \lfloor n/2 \rfloor \geq n/2 \geq 1$, we can conclude
         $$
         n! \geq \lfloor n/2 \rfloor^{n/2}.
         $$
-        Finally, since for all $n \geq 2$, $\lfloor n/2 \rfloor \geq n/4$, we get
+        Finally, since for all $n \geq 2$, $\lfloor n/2 \rfloor \geq
+        n/4$, we get
         \begin{align*}
-            \lg n! &\geq \frac{n}{2} \lg \lfloor n/2 \rfloor \\
-                   &\geq \frac{n}{2} \lg \frac{n}{4} \\
-                   &= \frac{n}{2} \lg n - n.
+          \lg n! &\geq \frac{n}{2} \lg \lfloor n/2 \rfloor \\
+          &\geq \frac{n}{2} \lg \frac{n}{4} \\
+          &= \frac{n}{2} \lg n - n.
         \end{align*}
         Thus, for $n \geq 16 = 2^4$, we get
         $$
-        \frac{1}{4} \lg n - 1 \geq 0 \;\Rightarrow\; \frac{n}{4} \lg n - n \geq 0,
+        \frac{1}{4} \lg n - 1 \geq 0 \;\Rightarrow\; \frac{n}{4} \lg
+        n - n \geq 0,
         $$
         meaning $\frac{n}{2} \lg n - n \geq \frac{n}{4} \lg n$. Thus, for
         $n \geq n_0 = 16$, there exists a $c = 1/4$ such that
@@ -52,28 +56,29 @@
         $$
         meaning $\lg n! = \Omega(n \lg n)$.
 
-        \item Note that for $a, b > 1$, $\log_a n = \lg n / \lg a$. Thus, for all
+      \item Note that for $a, b > 1$, $\log_a n = \lg n / \lg a$. Thus, for all
         $n \geq 1$, there exists a $c = \dfrac{\lg b}{\lg a}$ such that
         $$
         \log_a n = \frac{\lg n}{\lg a}
-                 = \frac{\lg b}{\lg a} \cdot \frac{\lg n}{\lg b}
-                 = c \cdot \log_b n
-                 \leq c \cdot \log_b n.
+        = \frac{\lg b}{\lg a} \cdot \frac{\lg n}{\lg b}
+        = c \cdot \log_b n
+        \leq c \cdot \log_b n.
         $$
         Thus, $\log_a n = \mathcal O(\log_b n)$.
     \end{enumerate}
 
-    \item \begin{enumerate}
-        \item \textsc{BinarySearch} satisfies $T(1) = \mathcal O(1)$ and
+  \item
+    \begin{enumerate}
+      \item \textsc{BinarySearch} satisfies $T(1) = \mathcal O(1)$ and
         $T(n) = T(n/2) + \mathcal O(1)$, meaning $T(n) = \mathcal O(\lg n)$.
 
-        \item \textsc{Maximum} satisfies $T(1) = \mathcal O(1)$ and
+      \item \textsc{Maximum} satisfies $T(1) = \mathcal O(1)$ and
         $T(n) = 2T(n/2) + \mathcal O(1)$, meaning $T(n) = \mathcal O(n)$.
 
-        \item \textsc{AlternateMaximum} satisfies $T(1) = \mathcal O(1)$ and
+      \item \textsc{AlternateMaximum} satisfies $T(1) = \mathcal O(1)$ and
         $T(n) = T(n-1) + \mathcal O(1)$, meaning $T(n) = \mathcal O(n)$.
 
-        \item \textsc{MyAlgo} satisfies $T(n) = \mathcal O(1)$ for all
+      \item \textsc{MyAlgo} satisfies $T(n) = \mathcal O(1)$ for all
         $n \in \{1, \ldots, 10\}$, and
         $$
         T(n) = 2T\!\left(\tfrac{3}{4}n\right) + \mathcal O(n).
@@ -84,7 +89,7 @@
         $$
     \end{enumerate}
 
-    \item Since $n$ can be halved at most $\lg(n/k)$ times before it is less
+  \item Since $n$ can be halved at most $\lg(n/k)$ times before it is less
     than $k$, the recursion can be viewed as a binary tree of height
     $\lg(n/k)$, where the work at a leaf is $\mathcal O(k \lg k)$, and the work
     at an internal node is $\mathcal O(k)$ more than the work at its children.
@@ -99,16 +104,16 @@
     Additionally, since height $h$ has $(n/k) \cdot 2^{-h}$ nodes, each
     requiring $\mathcal O(k)$ additional work,
     \begin{align*}
-        R(h) &= R(h-1) + \mathcal O\big((n/k) \cdot 2^{-h} \cdot k\big)
-              = R(h-1) + \mathcal O(2^{-h} n), \qquad h \geq 1, \\
-        R(h) &= \mathcal O(n \lg k) + \sum_{j=1}^{h} \mathcal O(2^{-j} n).
+      R(h) &= R(h-1) + \mathcal O\big((n/k) \cdot 2^{-h} \cdot k\big)
+      = R(h-1) + \mathcal O(2^{-h} n), \qquad h \geq 1, \\
+      R(h) &= \mathcal O(n \lg k) + \sum_{j=1}^{h} \mathcal O(2^{-j} n).
     \end{align*}
     Hence, using properties of the geometric series,
     $$
     T(n) = R(L)
-         = \mathcal O(n \lg k) + \frac{n}{2} \sum_{j=0}^{L-1} \mathcal O(2^{-j})
-         = \mathcal O(n \lg k) + \mathcal O(n - k)
-         = \mathcal O(n \lg k),
+    = \mathcal O(n \lg k) + \frac{n}{2} \sum_{j=0}^{L-1} \mathcal O(2^{-j})
+    = \mathcal O(n \lg k) + \mathcal O(n - k)
+    = \mathcal O(n \lg k),
     $$
     as required.
 \end{enumerate}

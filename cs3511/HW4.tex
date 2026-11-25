@@ -4,62 +4,87 @@
 
 \begin{document}
 \begin{enumerate}
-    \item Let $h$ be a consistent heuristic, i.e, for all $v$ and neighbours of $v,$ $u,$ we have
+  \item Let $h$ be a consistent heuristic, i.e, for all $v$ and
+    neighbours of $v,$ $u,$ we have
     $$
     h(v) \leq c([v, u]) + h(u),
     $$
-    where $c$ maps edges to their weights, and $h(G) = 0$ where $G$ is our target vertex.
+    where $c$ maps edges to their weights, and $h(G) = 0$ where $G$
+    is our target vertex.
 
-    Then, let us prove that $A*$ assigns the correct $\texttt{distance[v]} = \text{dist}(s, v)$ when $v$ is visited for the first time. Let us proceed by contradiction.
+    Then, let us prove that $A*$ assigns the correct
+    $\texttt{distance[v]} = \text{dist}(s, v)$ when $v$ is visited
+    for the first time. Let us proceed by contradiction.
 
-    Consider the first vertex $v$ assigned an incorrect distance $\texttt{distance[v]}.$ Let $u$ be the parent vertex of $v$ in the DAG produced by the edges taken by A*. Then, since there is no path from $s \to v$ with weight $< \text{dist}(s, v),$ we can conclude $$
-        \texttt{distance[v]} > \text{dist}(s, v).
-    $$
-
-    Additionally, since $v$ is the first vertex with an incorrect assigned distance, 
-    $$
-        \texttt{distance[u]} = \text{dist}(u, v).
-    $$
-    We take some edge $[u, v]$ to $v,$ meaning $\texttt{distance[v]} = \texttt{distance[u]} + c([u, v]),$ or equivalently, 
-    $$
-        \texttt{distance[v]} = \text{dist}(s, u) + c([u, v]).
+    Consider the first vertex $v$ assigned an incorrect distance
+    $\texttt{distance[v]}.$ Let $u$ be the parent vertex of $v$ in
+    the DAG produced by the edges taken by A*. Then, since there is
+    no path from $s \to v$ with weight $< \text{dist}(s, v),$ we can conclude $$
+    \texttt{distance[v]} > \text{dist}(s, v).
     $$
 
-    Let $u'$ be the predecessor of $v$ in the correct minimum distance path from $s \to v,$ i.e., $\text{dist}(s, u') + c([u', v]) = \text{dist}(s, v).$ We have two cases:
+    Additionally, since $v$ is the first vertex with an incorrect
+    assigned distance,
+    $$
+    \texttt{distance[u]} = \text{dist}(u, v).
+    $$
+    We take some edge $[u, v]$ to $v,$ meaning $\texttt{distance[v]}
+    = \texttt{distance[u]} + c([u, v]),$ or equivalently,
+    $$
+    \texttt{distance[v]} = \text{dist}(s, u) + c([u, v]).
+    $$
+
+    Let $u'$ be the predecessor of $v$ in the correct minimum
+    distance path from $s \to v,$ i.e., $\text{dist}(s, u') + c([u',
+    v]) = \text{dist}(s, v).$ We have two cases:
     \begin{itemize}
-        \item If $u'$ has already been visited, then $\texttt{distance[u']} = \text{dist}(s, u'),$ and the key $\text{dist}(s, u') + c([u', v]) + h(v)$ is in the heap. In this case, we require
+      \item If $u'$ has already been visited, then
+        $\texttt{distance[u']} = \text{dist}(s, u'),$ and the key
+        $\text{dist}(s, u') + c([u', v]) + h(v)$ is in the heap. In
+        this case, we require
         $$
-            \texttt{distance[u]} + c([u, v]) + h(v) \leq \texttt{distance[u']} + c([u', v]) + h(v),
+        \texttt{distance[u]} + c([u, v]) + h(v) \leq
+        \texttt{distance[u']} + c([u', v]) + h(v),
         $$
-        since we took edge $[u, v]$ to $v$ before edge $[u', v].$ Simplifying, we get 
+        since we took edge $[u, v]$ to $v$ before edge $[u', v].$
+        Simplifying, we get
         $$
-        \texttt{distance[u]} + c([u, v]) \leq \texttt{distance[u']} + c([u', v]).
+        \texttt{distance[u]} + c([u, v]) \leq \texttt{distance[u']} +
+        c([u', v]).
         $$
-        Since $u'$ is the predecessor on a minimum weight path from $s \to v,$ we must have
+        Since $u'$ is the predecessor on a minimum weight path from
+        $s \to v,$ we must have
         $$
-        \texttt{distance[v] = }\texttt{distance[u]} + c([u, v]) = \texttt{distance[u']} + c([u', v]) = \text{dist}(s, v),
+        \texttt{distance[v] = }\texttt{distance[u]} + c([u, v]) =
+        \texttt{distance[u']} + c([u', v]) = \text{dist}(s, v),
         $$
-        meaning $\texttt{distance[v]}$ is indeed set correctly, contradicting our assumption.
+        meaning $\texttt{distance[v]}$ is indeed set correctly,
+        contradicting our assumption.
 
-        \item Otherwise, $v$ is visited before $u'.$ Consider the earliest vertex $w$ along minimal $s \to u'$ that has been visited at the point $v$ is visited. Then, 
+      \item Otherwise, $v$ is visited before $u'.$ Consider the
+        earliest vertex $w$ along minimal $s \to u'$ that has been
+        visited at the point $v$ is visited. Then,
         $$
-            \texttt{distance[v]} + h(v) \leq \texttt{distance[w]} + h(w).
+        \texttt{distance[v]} + h(v) \leq \texttt{distance[w]} + h(w).
         $$
         By the consistence of $h,$ we further get
         $$
         h(w) \leq \text{dist}(w, u') + h(u'),
         $$
-        (applying consistency along the the minimal path from $w \to u'$). Hence,
+        (applying consistency along the the minimal path from $w \to
+        u'$). Hence,
         $$
-        \texttt{distance[v]} + h(v) \leq  \texttt{distance[w]} + \text{dist(w, u')} + h(u').
+        \texttt{distance[v]} + h(v) \leq  \texttt{distance[w]} +
+        \text{dist(w, u')} + h(u').
         $$
         Since $\texttt{distance[w]} = \text{dist(s, u)},$ we get
         $$
-        \texttt{distance[v]} + h(v) \leq \text{dist}(s, u') + h(u') \leq \text{dist}(s, u')  + c[u', v] + h(v).
+        \texttt{distance[v]} + h(v) \leq \text{dist}(s, u') + h(u')
+        \leq \text{dist}(s, u')  + c[u', v] + h(v).
         $$
         Note that $u'$ is the predecessor of $v$ along the minimal path, meaning
         $$
-            \text{dist}(s, u') + c[u', v] = \text{dist}(s, v),
+        \text{dist}(s, u') + c[u', v] = \text{dist}(s, v),
         $$
         and thus
         $$
@@ -68,220 +93,282 @@
         which is a contradiction.
     \end{itemize}
 
-    In either case, we derive a contradiction, meaning $v$ cannot have an incorrect assigned distance. Hence, there is no first vertex $v$ with an incorrectly assigned distance, meaning all distances are assigned correctly if the vertex is visited. 
+    In either case, we derive a contradiction, meaning $v$ cannot
+    have an incorrect assigned distance. Hence, there is no first
+    vertex $v$ with an incorrectly assigned distance, meaning all
+    distances are assigned correctly if the vertex is visited.
 
-    \item We use an approach similar to Djikstra's.
+  \item We use an approach similar to Djikstra's.
 
     \begin{algorithm}
-    \begin{algorithmic}
+      \begin{algorithmic}
         \Procedure{Solution}{$G$, $s$, $t$}
-            \State $q := \texttt{max\_heap}()$
-            \State $q \gets (\inf, [\texttt{nil}, s])$
-            \State $\texttt{pred} := \texttt{map}()$
+        \State $q := \texttt{max\_heap}()$
+        \State $q \gets (\inf, [\texttt{nil}, s])$
+        \State $\texttt{pred} := \texttt{map}()$
 
-            \vspace{3mm}
+        \vspace{3mm}
 
-            \While{$\neg \texttt{empty}(q)$}
-                \State $\texttt{priority}, [u, v] \gets \texttt{pop}(q)$
-                \If{$n \in \texttt{pred}$}
-                    \State \textbf{continue}
-                \EndIf
-                    
-                \State $\texttt{pred}[v] \gets u$
+        \While{$\neg \texttt{empty}(q)$}
+        \State $\texttt{priority}, [u, v] \gets \texttt{pop}(q)$
+        \If{$n \in \texttt{pred}$}
+        \State \textbf{continue}
+        \EndIf
 
-                \vspace{3mm}
+        \State $\texttt{pred}[v] \gets u$
 
-                \For{$n \in G[v]$}
-                    \State $q \gets (\min(\texttt{priority}, c[v, n]), [v, n])$
-                \EndFor
-            \EndWhile
+        \vspace{3mm}
 
-            \vspace{3mm}
-            
-            \State \Return $\texttt{as\_list}(\texttt{pred})$
+        \For{$n \in G[v]$}
+        \State $q \gets (\min(\texttt{priority}, c[v, n]), [v, n])$
+        \EndFor
+        \EndWhile
+
+        \vspace{3mm}
+
+        \State \Return $\texttt{as\_list}(\texttt{pred})$
         \EndProcedure
-    \end{algorithmic}
+      \end{algorithmic}
     \end{algorithm}
-    
-    We prove that such an algorithm is correct, via contradiction. Assume that the path $p$ returned by our algorithm is incorrect. Let $\kappa(p)$ be the minimum edge weight of path $p,$ and let the path returned by our algorithm be $p,$ and a correct path be $p^\star.$
 
-    Consider $e = [u, w],$ the edge in $p$ with weight $\kappa(p).$ Since $c(e) = \kappa(p) < \kappa(p^\star),$ every edge in $p^\star$ has a higher priority, meaning we will never pop off edge $e$ from our priority queue until $p^\star$ has been traversed. However, this is a contradiction, since then our algorithm will assign $p^\star$ as our path from $s \to t.$
+    We prove that such an algorithm is correct, via contradiction.
+    Assume that the path $p$ returned by our algorithm is incorrect.
+    Let $\kappa(p)$ be the minimum edge weight of path $p,$ and let
+    the path returned by our algorithm be $p,$ and a correct path be $p^\star.$
+
+    Consider $e = [u, w],$ the edge in $p$ with weight $\kappa(p).$
+    Since $c(e) = \kappa(p) < \kappa(p^\star),$ every edge in
+    $p^\star$ has a higher priority, meaning we will never pop off
+    edge $e$ from our priority queue until $p^\star$ has been
+    traversed. However, this is a contradiction, since then our
+    algorithm will assign $p^\star$ as our path from $s \to t.$
 
     Thus, the path $p$ returned must be one that maximizes $\kappa(p).$
 
-    Since every edge is traversed once, and for every edge we push onto the priority queue of size $\mathcal O(|E|),$ the time complexity of this algorithm is $\mathcal O(|E| \log |E|).$
+    Since every edge is traversed once, and for every edge we push
+    onto the priority queue of size $\mathcal O(|E|),$ the time
+    complexity of this algorithm is $\mathcal O(|E| \log |E|).$
 
-    \item We use the same approach as Djikstra's, and treat the keys in the priority queue as the minimum time required  to reach vertex $v.$
+  \item We use the same approach as Djikstra's, and treat the keys in
+    the priority queue as the minimum time required  to reach vertex $v.$
 
     \begin{algorithm}
-        \caption{Delayed Djikstra's}
-        \begin{algorithmic}
-            \Procedure{DjikstraDelayed}{$G, W, S, R$} 
-                \State $q := \texttt{min\_heap}()$
-                \State $q \gets (0, 0)$
-                \State $\texttt{visited} := \texttt{set}()$
+      \caption{Delayed Djikstra's}
+      \begin{algorithmic}
+        \Procedure{DjikstraDelayed}{$G, W, S, R$}
+        \State $q := \texttt{min\_heap}()$
+        \State $q \gets (0, 0)$
+        \State $\texttt{visited} := \texttt{set}()$
 
-                \vspace{3mm}
+        \vspace{3mm}
 
-                \While{$\neg \texttt{empty}(q)$} 
-                    \State $\texttt{time}, v \gets \texttt{pop}(q)$
+        \While{$\neg \texttt{empty}(q)$}
+        \State $\texttt{time}, v \gets \texttt{pop}(q)$
 
-                     \If{$v \in \texttt{visited}$}
-                        \State \textbf{continue}
-                     \EndIf
+        \If{$v \in \texttt{visited}$}
+        \State \textbf{continue}
+        \EndIf
 
-                     \vspace{3mm}
+        \vspace{3mm}
 
-                        \State $\texttt{visited} \gets v$
-                     \If{$v \equiv n -1 $}
-                        \State \Return \texttt{time}
-                     \EndIf
+        \State $\texttt{visited} \gets v$
+        \If{$v \equiv n -1 $}
+        \State \Return \texttt{time}
+        \EndIf
 
-                     \vspace{3mm}
+        \vspace{3mm}
 
-                     \For{$w \in G[v]$}
-                        \If{$w \in \texttt{visited}$}
-                            \State \textbf{continue}
-                        \EndIf
+        \For{$w \in G[v]$}
+        \If{$w \in \texttt{visited}$}
+        \State \textbf{continue}
+        \EndIf
 
-                        \vspace{3mm}
+        \vspace{3mm}
 
-                        \State $e \gets [w, n]$
+        \State $e \gets [w, n]$
 
-                        \If{$\texttt{time} + W[e] > R[e]$}
-                            \State \textbf{continue}
-                        \EndIf
+        \If{$\texttt{time} + W[e] > R[e]$}
+        \State \textbf{continue}
+        \EndIf
 
-                        \vspace{3mm}
+        \vspace{3mm}
 
-                        \State $q \gets (\max(\texttt{time}, S[e]) + W_e, n)$
-                    \EndFor
-                \EndWhile
+        \State $q \gets (\max(\texttt{time}, S[e]) + W_e, n)$
+        \EndFor
+        \EndWhile
 
-                \vspace{3mm}
+        \vspace{3mm}
 
-                \State \Return $\inf$
-            \EndProcedure
-        \end{algorithmic}
+        \State \Return $\inf$
+        \EndProcedure
+      \end{algorithmic}
     \end{algorithm}
 
-    Since this is just Djikstra's with a different priority that is still computed in $\mathcal O(1)$ time, the time complexity is $\mathcal O(|E| \log |E|).$ 
+    Since this is just Djikstra's with a different priority that is
+    still computed in $\mathcal O(1)$ time, the time complexity is
+    $\mathcal O(|E| \log |E|).$
 
-    We prove this algorithm is correct via contradiction. Assume that this algorithm returns the incorrect time required. Let $\tau (v)$ be the minimum time required to visit $v.$ 
+    We prove this algorithm is correct via contradiction. Assume that
+    this algorithm returns the incorrect time required. Let $\tau
+    (v)$ be the minimum time required to visit $v.$
 
-    We prove that the keys in $\texttt{time}$ are always equal to $\tau(v).$ Consider the first vertex $w$ assigned an incorrect time $\texttt{time}[w] > \tau(w)$ (since no path can have a lesser time than the minimal time).
+    We prove that the keys in $\texttt{time}$ are always equal to
+    $\tau(v).$ Consider the first vertex $w$ assigned an incorrect
+    time $\texttt{time}[w] > \tau(w)$ (since no path can have a
+    lesser time than the minimal time).
 
-    Then, the predecessor of $w$ in the traversal, $u,$ was assigned a correct time. Consider the predecessor of $w$ in the optimal path, $u^\star.$ 
+    Then, the predecessor of $w$ in the traversal, $u,$ was assigned
+    a correct time. Consider the predecessor of $w$ in the optimal
+    path, $u^\star.$
 
     \begin{itemize}
-        \item If $u^\star$ was already visited, we know 
+      \item If $u^\star$ was already visited, we know
         $$
-        \max(\tau(u^\star), S[u^\star, w]) + W[u^\star, w] \geq \max(\tau(u), S[u, w]) + W[u, w],
+        \max(\tau(u^\star), S[u^\star, w]) + W[u^\star, w] \geq
+        \max(\tau(u), S[u, w]) + W[u, w],
         $$
-        since edge $[u, w]$ was taken instead of edge $[u^\star, w].$ 
+        since edge $[u, w]$ was taken instead of edge $[u^\star, w].$
 
         Since $u^\star$ is the predecessor of $w$ in the minimal path, $$
-        \max(\tau(u^\star), S[u^\star, w]) + W[u^\star, w] \leq \max(\tau(p), S[p, w]) + W[p, w]
+        \max(\tau(u^\star), S[u^\star, w]) + W[u^\star, w] \leq
+        \max(\tau(p), S[p, w]) + W[p, w]
         $$
-        for all neighbors of $w,$ $p,$ since otherwise the path through $p$ is more minimal. Then, 
+        for all neighbors of $w,$ $p,$ since otherwise the path
+        through $p$ is more minimal. Then,
         $$
-        \max(\tau(u^\star), S[u^\star, w]) + W[u^\star, w] \leq \max(\tau(u), S[u, w]) + W[u, w].
-        $$
-
-        However, we chose $[u, w]$ instead of $[u^\star, w],$ and both sides of the expression are our priorities in the minimum heap, meaning
-        $$
-        \max(\tau(u^\star), S[u^\star, w]) + W[u^\star, w] \geq \max(\tau(u), S[u, w]) + W[u, w].
+        \max(\tau(u^\star), S[u^\star, w]) + W[u^\star, w] \leq
+        \max(\tau(u), S[u, w]) + W[u, w].
         $$
 
-        Hence, since $\tau(w) = \max(\tau(u^\star), S[u^\star, w]) + W[u^\star, w]$ since because this edge is taken in the optimal path, \begin{align*}
-        \tau(w) &= \max(\tau(u^\star), S[u^\star, w]) + W[u^\star, w] \\ &= \max(\tau(u), S[u, w]) + W[u, w] = \texttt{time}[w],
+        However, we chose $[u, w]$ instead of $[u^\star, w],$ and
+        both sides of the expression are our priorities in the
+        minimum heap, meaning
+        $$
+        \max(\tau(u^\star), S[u^\star, w]) + W[u^\star, w] \geq
+        \max(\tau(u), S[u, w]) + W[u, w].
+        $$
+
+        Hence, since $\tau(w) = \max(\tau(u^\star), S[u^\star, w]) +
+        W[u^\star, w]$ since because this edge is taken in the optimal path,
+        \begin{align*}
+          \tau(w) &= \max(\tau(u^\star), S[u^\star, w]) + W[u^\star,
+          w] \\ &= \max(\tau(u), S[u, w]) + W[u, w] = \texttt{time}[w],
         \end{align*}
         which is a contradiction.
 
-        \item Otherwise, $u^\star$ is visited after $w.$ Since $\texttt{time}[u^\star] \geq \tau(u^\star).$ At the time $w$ is visited, consider the shortest path to $u^\star,$ and let the earliest vertex in the path not visited yet be $t.$ Then, since $w$ was popped off before $t$, and the predecessor of $t$, $t'$, has a correct $\texttt{time},$ we have
+      \item Otherwise, $u^\star$ is visited after $w.$ Since
+        $\texttt{time}[u^\star] \geq \tau(u^\star).$ At the time $w$
+        is visited, consider the shortest path to $u^\star,$ and let
+        the earliest vertex in the path not visited yet be $t.$ Then,
+        since $w$ was popped off before $t$, and the predecessor of
+        $t$, $t'$, has a correct $\texttt{time},$ we have
         $$
-            \max(\tau(u), S[u, w]) + W[u, w] \leq \max(\tau(t'), S[t', t]) + W[t', t].
+        \max(\tau(u), S[u, w]) + W[u, w] \leq \max(\tau(t'), S[t',
+        t]) + W[t', t].
         $$
 
-        Now, consider vertices following $t'$ in the optimal path to $u^\star.$ Since
+        Now, consider vertices following $t'$ in the optimal path to
+        $u^\star.$ Since
         $$
         \max(\tau, S) + W \geq \tau,
         $$
         then $$
-            \tau(u^\star) \geq \max(\tau(t'), S[t', t]) + W[t', t],
+        \tau(u^\star) \geq \max(\tau(t'), S[t', t]) + W[t', t],
         $$
         meaning
         $$
-            \texttt{time}[w]= \max(\tau(u), S[u, w]) + W[u, w] \leq \tau(u^\star) \leq \tau(w),
+        \texttt{time}[w]= \max(\tau(u), S[u, w]) + W[u, w] \leq
+        \tau(u^\star) \leq \tau(w),
         $$
-        since $\tau(w) = \max(\tau(u^\star), S[u^\star, w]) + W[u^\star, w].$  Once again, this is a contradiction, since $\texttt{time}[w] > \tau(w).$
+        since $\tau(w) = \max(\tau(u^\star), S[u^\star, w]) +
+        W[u^\star, w].$  Once again, this is a contradiction, since
+        $\texttt{time}[w] > \tau(w).$
     \end{itemize}
 
-    In either case, we derive a contradiction, meaning there can be no such $w.$ Hence, every vertex is assigned a correct time, meaning $n - 1$ is assigned a correct time.
+    In either case, we derive a contradiction, meaning there can be
+    no such $w.$ Hence, every vertex is assigned a correct time,
+    meaning $n - 1$ is assigned a correct time.
 
-    \item When a new edge is added to the MST, the total weight increases by the weight of the path from the root to the new vertex incident by the edge.
+  \item When a new edge is added to the MST, the total weight
+    increases by the weight of the path from the root to the new
+    vertex incident by the edge.
 
     \begin{algorithm}
-        \caption{Fancy MST} 
-        \begin{algorithmic}
-            \Procedure{FancyMST}{$G$, $r$, $c$}
-            \State $p,\ \texttt{mst} \gets \texttt{map}(),\ \texttt{set}()$
-            \State $q := \texttt{min\_heap}()$
-            \State $p[r] = 0$
-            
-            \vspace{3mm}
-            
-            \For{$n \in G[r]$}
-                \State $q \gets (c[r, n], (r, n))$
-            \EndFor
-            
-            \vspace{3mm}
-            
-            \While{$\neg \texttt{empty}(q)$}
-                \State $\_, (u, v) \gets \texttt{pop}(q)$
-            
-                \vspace{3mm}
-            
-                \If{$v \in p$}
-                    \State \textbf{continue}
-                \EndIf
-            
-                \vspace{3mm}
-            
-                \State $\texttt{mst} \gets (u, v)$
-                \State $p[v] = p[u] + c[u, v].$
-            
-                \vspace{3mm}
-            
-                \For{$n \in G[v]$}
-                    \State $\Delta c \gets p[v] + c[v, n]$
-            
-                    \State $q \gets (\Delta c, (v, n))$
-                \EndFor
-            \EndWhile
+      \caption{Fancy MST}
+      \begin{algorithmic}
+        \Procedure{FancyMST}{$G$, $r$, $c$}
+        \State $p,\ \texttt{mst} \gets \texttt{map}(),\ \texttt{set}()$
+        \State $q := \texttt{min\_heap}()$
+        \State $p[r] = 0$
 
-            \vspace{3mm}
-            
-            \State \Return \texttt{mst}            
-            \EndProcedure
-        \end{algorithmic}
+        \vspace{3mm}
+
+        \For{$n \in G[r]$}
+        \State $q \gets (c[r, n], (r, n))$
+        \EndFor
+
+        \vspace{3mm}
+
+        \While{$\neg \texttt{empty}(q)$}
+        \State $\_, (u, v) \gets \texttt{pop}(q)$
+
+        \vspace{3mm}
+
+        \If{$v \in p$}
+        \State \textbf{continue}
+        \EndIf
+
+        \vspace{3mm}
+
+        \State $\texttt{mst} \gets (u, v)$
+        \State $p[v] = p[u] + c[u, v].$
+
+        \vspace{3mm}
+
+        \For{$n \in G[v]$}
+        \State $\Delta c \gets p[v] + c[v, n]$
+
+        \State $q \gets (\Delta c, (v, n))$
+        \EndFor
+        \EndWhile
+
+        \vspace{3mm}
+
+        \State \Return \texttt{mst}
+        \EndProcedure
+      \end{algorithmic}
     \end{algorithm}
 
-    We traverse every edge once, and push onto a heap of size $\mathcal O(|E|),$ yielding a complexity of $\mathcal O(|E| \log |E|).$
+    We traverse every edge once, and push onto a heap of size
+    $\mathcal O(|E|),$ yielding a complexity of $\mathcal O(|E| \log |E|).$
 
-    We prove correctness via contradiction. Consider the first iteration where the set $\texttt{mst}$ was not the minimum fancy spanning tree of the visited set (keys of $\texttt{p}$). Let the minimum fancy spanning tree of vertex set $V$ be $\mu(V).$
+    We prove correctness via contradiction. Consider the first
+    iteration where the set $\texttt{mst}$ was not the minimum fancy
+    spanning tree of the visited set (keys of $\texttt{p}$). Let the
+    minimum fancy spanning tree of vertex set $V$ be $\mu(V).$
 
-    Then, our first invalid iteration has vertex set $V \cup \{v\}$, where $V$ is the vertex set of the previous iteration. Consider MFST $\mu(V \cup \{v\}),$ with some edge $e$ incident on $v$ from component $V.$ We know $$
-        c[\mu(V \cup \{v\})] < c[\texttt{mst}]
+    Then, our first invalid iteration has vertex set $V \cup \{v\}$,
+    where $V$ is the vertex set of the previous iteration. Consider
+    MFST $\mu(V \cup \{v\}),$ with some edge $e$ incident on $v$ from
+    component $V.$ We know $$
+    c[\mu(V \cup \{v\})] < c[\texttt{mst}]
     $$
     during this current iteration.
 
-    Additionally, $\mu(V \cup \{v\}) = \mu(V) \cup e$ for some edge $e$ with incident vertex $v,$ and outgoing from some vertex $u \in V$. Since $\mu(V \cup \{v\})$ is minimal, and $$c[\mu(V \cup \{v\})] = c[\mu(V)] + c[p],$$ where $p$ is the path from $r$ through the MST $\mu(V)$ through $e$ into $v,$ the chosen $[u, v]$ must minimize
+    Additionally, $\mu(V \cup \{v\}) = \mu(V) \cup e$ for some edge
+    $e$ with incident vertex $v,$ and outgoing from some vertex $u
+    \in V$. Since $\mu(V \cup \{v\})$ is minimal, and $$c[\mu(V \cup
+    \{v\})] = c[\mu(V)] + c[p],$$ where $p$ is the path from $r$
+    through the MST $\mu(V)$ through $e$ into $v,$ the chosen $[u,
+    v]$ must minimize
     $$
     c[r \to \ldots \to u \to v].
     $$
-    Since on this iteration we choose such an $e,$ we can conclude $c[\texttt{mst}] = c[\mu(V \cup \{v\})],$ which is a contradiction.
+    Since on this iteration we choose such an $e,$ we can conclude
+    $c[\texttt{mst}] = c[\mu(V \cup \{v\})],$ which is a contradiction.
 
-    Thus, there can be no such invalid iteration, and $\texttt{mst}$ represents the MFST of the entire graph $G$ by the final iteration of our algorithm.
+    Thus, there can be no such invalid iteration, and $\texttt{mst}$
+    represents the MFST of the entire graph $G$ by the final
+    iteration of our algorithm.
 \end{enumerate}
 \end{document}

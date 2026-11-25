@@ -4,192 +4,256 @@
 
 \begin{document}
 \begin{enumerate}
-    \item \textbf{Green Circle, 1} Construct the map $f: \{a_1, \ldots, a_{n + 1}\} \to \{1, \ldots, n\}$ such that
+  \item \textbf{Green Circle, 1} Construct the map $f: \{a_1, \ldots,
+    a_{n + 1}\} \to \{1, \ldots, n\}$ such that
     $$
     f(2k - 1) = k, \qquad f(2k) = k, \qquad \forall k \in \{1, \ldots, n\}.
     $$
-    By the pigeonhole principle, this map cannot be injective, and there must be some $i \neq j$ such that $f(a_i) = f(a_j).$ Since $a_i, a_j$ distinct, (assuming WLOG that $a_i < a_j$), this means
+    By the pigeonhole principle, this map cannot be injective, and
+    there must be some $i \neq j$ such that $f(a_i) = f(a_j).$ Since
+    $a_i, a_j$ distinct, (assuming WLOG that $a_i < a_j$), this means
     $$
     a_j = a_i + 1.
     $$
-    Now, for the sake of contradiction assume that $a_j, a_i$ aren't relatively prime. Then, there exists a prime factor $p,$ and positive integers $M, N$ with $N > M$ such that 
+    Now, for the sake of contradiction assume that $a_j, a_i$ aren't
+    relatively prime. Then, there exists a prime factor $p,$ and
+    positive integers $M, N$ with $N > M$ such that
     $$
     a_i = pM, \ a_j = pN \Rightarrow pN = pM + 1,
     $$
-    meaning $p(N - M) = 1.$ Since $p > 1,$ this means $M< N < M + 1,$ which is impossible for an integer $N.$ Thus, this is a contradiction, meaning $a_i, a_j$ are relatively prime, concluding our proof.
+    meaning $p(N - M) = 1.$ Since $p > 1,$ this means $M< N < M + 1,$
+    which is impossible for an integer $N.$ Thus, this is a
+    contradiction, meaning $a_i, a_j$ are relatively prime,
+    concluding our proof.
 
-    We show that $n + 1$ cannot be replaced by $n$ by considering the case where $n = 2.$ Then, we can choose $a_1 = 2, a_2 = 4$ such that $1 \leq a_1, a_2 \leq 2(2),$ and $a_1, a_2$ are not relatively prime. Hence, $n + 1$ is the smallest such integer such that this holds in the general case.
+    We show that $n + 1$ cannot be replaced by $n$ by considering the
+    case where $n = 2.$ Then, we can choose $a_1 = 2, a_2 = 4$ such
+    that $1 \leq a_1, a_2 \leq 2(2),$ and $a_1, a_2$ are not
+    relatively prime. Hence, $n + 1$ is the smallest such integer
+    such that this holds in the general case.
 
-    \item \textbf{Green Circle, 2} Notice that 
+  \item \textbf{Green Circle, 2} Notice that
     $$
     \dfrac{a_i - a_j}{(1 +a_i)(1+a_j)} = \dfrac{1}{1+a_j} - \dfrac{1}{1+a_i}.
     $$
-    Since $a_k \in \mathbb R^{+},$ we know 
+    Since $a_k \in \mathbb R^{+},$ we know
     $$
     a_j > 0 \Rightarrow 1 + a_j > 1 \Rightarrow \dfrac{1}{1+a_j} < 1.
     $$
-    Additionally, since $a_j > 0,$ we know 
+    Additionally, since $a_j > 0,$ we know
     $$
     \dfrac{1}{1+a_j} > 0.
     $$
 
-    Then, construct the map $f: \{a_1, \ldots, a_{n +1}\} \to \{1, \ldots, n\}$ defined by 
+    Then, construct the map $f: \{a_1, \ldots, a_{n +1}\} \to \{1,
+    \ldots, n\}$ defined by
     $$
     f(x) = \left\lceil \dfrac{n}{1+x} \right\rceil.
     $$
 
-    By the pigeonhole principle, there must be $i \neq j$ such that $\lceil n/(1 + a_i) \rceil = \lceil n/(1 + a_j) \rceil.$ In otherwords, 
+    By the pigeonhole principle, there must be $i \neq j$ such that
+    $\lceil n/(1 + a_i) \rceil = \lceil n/(1 + a_j) \rceil.$ In otherwords,
     $$
     k - 1< n/(1 + a_j) \leq k, \qquad k - 1< n/(1 + a_j) \leq k
-    $$ 
+    $$
     for some integer $1 \leq k \leq n.$
 
     Manipulating, we get
     $$
-    \frac{k - 1}{n}< 1/(1 + a_j) \leq \frac{k}{n}, \qquad \frac{k - 1}{n}< 1/(1 + a_j) \leq \frac{k}{n},
+    \frac{k - 1}{n}< 1/(1 + a_j) \leq \frac{k}{n}, \qquad \frac{k -
+    1}{n}< 1/(1 + a_j) \leq \frac{k}{n},
     $$
     meaning
     $$
-    -\frac{1}{n}< \dfrac{1}{1+a_i} - \dfrac{1}{1 +a_j} < \frac{1}{n} \Rightarrow \left|\dfrac{a_i - a_j}{(1+a_i)(1+a_j)}\right| < \dfrac{1}{n}.
+    -\frac{1}{n}< \dfrac{1}{1+a_i} - \dfrac{1}{1 +a_j} < \frac{1}{n}
+    \Rightarrow \left|\dfrac{a_i - a_j}{(1+a_i)(1+a_j)}\right| < \dfrac{1}{n}.
     $$
-    Thus, (assuming WLOG $a_i > a_j$), we have 
+    Thus, (assuming WLOG $a_i > a_j$), we have
     $$
     0 < \dfrac{a_i - a_j}{(1+a_i)(1+a_j)} \leq \dfrac{1}{n}.
     $$
 
-    \item \textbf{Green Circle, 4} Represent this as a graph with vertices $v_k$ for each person, and edge $[v_i, v_j]$ if $i$ is an acquaintance of $j.$ Then, we know 
+  \item \textbf{Green Circle, 4} Represent this as a graph with
+    vertices $v_k$ for each person, and edge $[v_i, v_j]$ if $i$ is
+    an acquaintance of $j.$ Then, we know
     $$
     \sum_{k = 1}^{n} \deg(v) = 2|E|,
     $$
     meaning the sum of the degrees of vertices must be even.
 
-    Proceed via induction. For our base case, when $n = 2,$ two vertices can either both have degree $0,$ or both have degree $1,$ meaning there must be two vertices with the same degree.
+    Proceed via induction. For our base case, when $n = 2,$ two
+    vertices can either both have degree $0,$ or both have degree
+    $1,$ meaning there must be two vertices with the same degree.
 
-    Assume for $n - 1 \geq 1$ vertices in a bidirectional graph, two must have the same degree. Then, consider a graph with degree $n.$
+    Assume for $n - 1 \geq 1$ vertices in a bidirectional graph, two
+    must have the same degree. Then, consider a graph with degree $n.$
 
     A vertex can have degree $0, 1, \ldots, n- 1.$ We split this into two cases:
     \begin{itemize}
-        \item If there is no vertex with degree $0,$ then there are $n - 1$ possible degrees, and $n$ vertices, meaning two vertices must have the same degree.
-        \item If there is a vertex of degree $0,$ $v_i,$ the remaining vertices form a graph with $n - 1$ vertices. By our inductive hypothesis, two vertices must have the same degree in this graph.
+      \item If there is no vertex with degree $0,$ then there are $n
+        - 1$ possible degrees, and $n$ vertices, meaning two vertices
+        must have the same degree.
+      \item If there is a vertex of degree $0,$ $v_i,$ the remaining
+        vertices form a graph with $n - 1$ vertices. By our inductive
+        hypothesis, two vertices must have the same degree in this graph.
     \end{itemize}
 
-    Therefore, by induction, a bidirectional graph must have two vertices with the same degree. By our bijection, there must be two people with the same number of acquaintances.
+    Therefore, by induction, a bidirectional graph must have two
+    vertices with the same degree. By our bijection, there must be
+    two people with the same number of acquaintances.
 
-    \item \textbf{Blue Square, 6} Some non-empty consecutive block is a perfect square if and only if every prime $p$ that divides $a_{r + 1}, \ldots, a_{s}$ appears an even number of times. 
+  \item \textbf{Blue Square, 6} Some non-empty consecutive block is a
+    perfect square if and only if every prime $p$ that divides $a_{r
+    + 1}, \ldots, a_{s}$ appears an even number of times.
 
-    Write $a_i = p_1^{r_{1i}} p_2^{r_2i} \ldots p_k^{r_ki}$ Then, for a consecutive block to be a perfect square, we need consecutive indices $r + 1, \ldots, s$ such that
+    Write $a_i = p_1^{r_{1i}} p_2^{r_2i} \ldots p_k^{r_ki}$ Then, for
+    a consecutive block to be a perfect square, we need consecutive
+    indices $r + 1, \ldots, s$ such that
     $$
     \sum_{i = r+1}^{s} r_{ji} \equiv 0 \mod 2
     $$
-    for all integers $1 \leq j \leq k.$ Let $\eta : \{0, \ldots, 2^k\} \to \{0, 1\}^k$ be defined by
+    for all integers $1 \leq j \leq k.$ Let $\eta : \{0, \ldots,
+    2^k\} \to \{0, 1\}^k$ be defined by
     $$
-    \eta_j(s) = \left(\sum_{i = 1}^{s} r_{ji}\right) \bmod 2, \qquad \eta(s) = (\eta_1, \ldots, \eta_k).
+    \eta_j(s) = \left(\sum_{i = 1}^{s} r_{ji}\right) \bmod 2, \qquad
+    \eta(s) = (\eta_1, \ldots, \eta_k).
     $$
-    Notice that $|\{a : a = \eta(s)\}| = 2^k,$ since each entry can either be $0$ or $1.$ Thus, by the pigeonhole principle there must be two unique $s_1, s_2$ (representing prefixes of $a_1, \ldots, a_{2^k}$) such that $\eta(s_1) = \eta(s_2).$ WLOG, assume $s_1 < s_2.$ Then, consider 
+    Notice that $|\{a : a = \eta(s)\}| = 2^k,$ since each entry can
+    either be $0$ or $1.$ Thus, by the pigeonhole principle there
+    must be two unique $s_1, s_2$ (representing prefixes of $a_1,
+    \ldots, a_{2^k}$) such that $\eta(s_1) = \eta(s_2).$ WLOG, assume
+    $s_1 < s_2.$ Then, consider
     $$
     a_{s_1 +1}, \ldots a_{s_2}.
     $$
-    Notice that \begin{align*}
-        \sum_{i = s_1 + 1}^{s_2} r_{ji} = \eta_j(s_2) - \eta_j(s_1) \equiv 0 \mod 2,
+    Notice that
+    \begin{align*}
+      \sum_{i = s_1 + 1}^{s_2} r_{ji} = \eta_j(s_2) - \eta_j(s_1)
+      \equiv 0 \mod 2,
     \end{align*}
     meaning this consecutive, non-empty block is a perfect square.
 
-    Thus, by the pigeonhole principle there must be at least one consecutive non-empty block that is a perfect square.
+    Thus, by the pigeonhole principle there must be at least one
+    consecutive non-empty block that is a perfect square.
 
-    \item \textbf{Blue Square, 11} \begin{enumerate}
-        \item We want to show that for any irrational $\alpha,$ there exists positive integers $p, q$ such that 
+  \item \textbf{Blue Square, 11}
+    \begin{enumerate}
+      \item We want to show that for any irrational $\alpha,$ there
+        exists positive integers $p, q$ such that
         $$
         \left|\alpha - \dfrac{p}{q}\right| < \dfrac{1}{Nq}.
         $$
 
-        In other words, we need 
+        In other words, we need
         $$
         |q\alpha - p| < \dfrac{|q|}{Nq}.
         $$
-        Then, we have 
+        Then, we have
         $$
         |q \alpha - p| < \dfrac{1}{N},
         $$
 
-        Consider the mapping $f : \{0, \ldots, N\} \to \{1, \ldots, N\}$ given by 
+        Consider the mapping $f : \{0, \ldots, N\} \to \{1, \ldots,
+        N\}$ given by
         $$
         f(k) = \lceil N \{k \alpha\} \rceil.
         $$
 
-        By the pigeonhole principle, there must be two $i \neq j$ such that $f(i) = f(j).$ WLOG assume $i < j$ Then, we have 
+        By the pigeonhole principle, there must be two $i \neq j$
+        such that $f(i) = f(j).$ WLOG assume $i < j$ Then, we have
         $$
         \lceil N\{j \alpha\} \rceil = \lceil N\{i \alpha \}\rceil,
         $$
-        meaning 
+        meaning
         $$
         |N\{j \alpha\}-N\{i \alpha\}| < 1,
         $$
-        an exclusive bound since $\alpha$ irrational. This allows us to conclude 
+        an exclusive bound since $\alpha$ irrational. This allows us to conclude
         $$
-        | (j-i) \alpha - (\lfloor j \alpha \rfloor - \lfloor i \alpha \rfloor)| < \dfrac{1}{N}.
+        | (j-i) \alpha - (\lfloor j \alpha \rfloor - \lfloor i \alpha
+        \rfloor)| < \dfrac{1}{N}.
         $$
-        Letting $1 \leq q = j - i \leq N,$ and $q = \lfloor j \alpha \rfloor - \lfloor i \alpha \rfloor,$ we get
+        Letting $1 \leq q = j - i \leq N,$ and $q = \lfloor j \alpha
+        \rfloor - \lfloor i \alpha \rfloor,$ we get
         $$
-        |q \alpha - p| < \dfrac{1}{N} \Rightarrow \left|\alpha - \dfrac{p}{q}\right| < \dfrac{1}{qN}.
+        |q \alpha - p| < \dfrac{1}{N} \Rightarrow \left|\alpha -
+        \dfrac{p}{q}\right| < \dfrac{1}{qN}.
         $$
 
-        \item Assume the set of $p, q$ satisfying
+      \item Assume the set of $p, q$ satisfying
         $$
         \left|\alpha  - \dfrac{p}{q}\right| < \dfrac{1}{Nq}
         $$
-        for any $N$ is finite. Then, consider the $(p', q')$ tuple that minimizes 
+        for any $N$ is finite. Then, consider the $(p', q')$ tuple
+        that minimizes
         $$
         (p', q') = \text{argmin}_{p, q} \left|q\alpha - p\right|.
         $$
 
-        Choose the smallest integer $N"$ such that $$N' > \dfrac{1}{|q'\alpha - p'|}.$$ This satisfies 
+        Choose the smallest integer $N"$ such that $$N' >
+        \dfrac{1}{|q'\alpha - p'|}.$$ This satisfies
         $$
         \dfrac{1}{N} < \left|q'\alpha - p'\right|,
         $$
         meaning for all $p, q,$
         $$
-        |q\alpha - p| > \dfrac{1}{N'} \Rightarrow \left|\alpha - \dfrac{p}{q}\right| > \dfrac{1}{Nq},
+        |q\alpha - p| > \dfrac{1}{N'} \Rightarrow \left|\alpha -
+        \dfrac{p}{q}\right| > \dfrac{1}{Nq},
         $$
         which contradicts the existence of valid $p, q$ for any $N.$
 
-        Therefore, the set of $p, q$ must be infinite, meaning there are infinitely many $p, q$ such that
+        Therefore, the set of $p, q$ must be infinite, meaning there
+        are infinitely many $p, q$ such that
         $$
         \left | \alpha - \dfrac{p}{q} \right| < \dfrac{1}{Nq}.
         $$
-        Since $N \geq q,$ $1/ Nq \leq 1/q^2,$ and thus there are infinitely many $p, q$ such that 
+        Since $N \geq q,$ $1/ Nq \leq 1/q^2,$ and thus there are
+        infinitely many $p, q$ such that
         $$
         \left|\alpha - \dfrac{p}{q}\right| < \dfrac{1}{q^2}.
         $$
     \end{enumerate}
 
-    \item \textbf{Black Diamond, 12} Insight: we need to make the same argument for a single $q$ over multiple $p,$ implying we need the same $j, i$ over all $\alpha_1, \ldots, \alpha_d.$ Hence, we need to show that there exists some $j, i$ such that the largest pairwise distance between corresponding elements in the two sets 
+  \item \textbf{Black Diamond, 12} Insight: we need to make the same
+    argument for a single $q$ over multiple $p,$ implying we need the
+    same $j, i$ over all $\alpha_1, \ldots, \alpha_d.$ Hence, we need
+    to show that there exists some $j, i$ such that the largest
+    pairwise distance between corresponding elements in the two sets
     $$
-    (\{j \alpha_1\}, \{j\alpha_2\}, \ldots, \{j \alpha_d\}), (\{i \alpha_1\}, \{i \alpha_2\} \ldots, \{i \alpha_d\})
+    (\{j \alpha_1\}, \{j\alpha_2\}, \ldots, \{j \alpha_d\}), (\{i
+    \alpha_1\}, \{i \alpha_2\} \ldots, \{i \alpha_d\})
     $$
     is $1/N.$
 
-    This corresponds exactly to the two points (treating LHS and RHS as a vector) being in the same unit cube.
+    This corresponds exactly to the two points (treating LHS and RHS
+    as a vector) being in the same unit cube.
 
     Thus, consider the $N^d + 1$ points
     $$
-    \vec p_k = (\{k\alpha_1\}, \{k\alpha_2\}, \ldots, \{k\alpha_d\}) \in \mathbb [0, 1]^{d}, \qquad 0 \leq k \leq N^d.
+    \vec p_k = (\{k\alpha_1\}, \{k\alpha_2\}, \ldots, \{k\alpha_d\})
+    \in \mathbb [0, 1]^{d}, \qquad 0 \leq k \leq N^d.
     $$
-    Split $[0, 1]^d$ into $N^d$ cubes of side length $1 /N.$ Then, by the pigeonhole principle there must be two indices $i, j$ (WLOG assume $j > i$) such that
+    Split $[0, 1]^d$ into $N^d$ cubes of side length $1 /N.$ Then, by
+    the pigeonhole principle there must be two indices $i, j$ (WLOG
+    assume $j > i$) such that
     $$
-        \vec p_i, \vec p_j 
+    \vec p_i, \vec p_j
     $$
     are in the same unit cube.
 
-    Thus, 
+    Thus,
     $$
     |\{j \alpha_k\} - \{i\alpha_k\}| < \dfrac{1}{N}
     $$
-    for all $1 \leq k \leq d,$ (not an equality because $\alpha_k$ is irrational). Equivalently, 
+    for all $1 \leq k \leq d,$ (not an equality because $\alpha_k$ is
+    irrational). Equivalently,
     $$
-    |(j - i) \alpha_k - (\lfloor j\alpha_k\rfloor - \lfloor i \alpha_k\rfloor)| < 1/N.
+    |(j - i) \alpha_k - (\lfloor j\alpha_k\rfloor - \lfloor i
+    \alpha_k\rfloor)| < 1/N.
     $$
 
-    Let $j - i = q,$ and $\lfloor j\alpha_k\rfloor - \lfloor i\alpha_k\rfloor =p_k$ for some $k.$ Then, we have 
+    Let $j - i = q,$ and $\lfloor j\alpha_k\rfloor - \lfloor
+    i\alpha_k\rfloor =p_k$ for some $k.$ Then, we have
     $$
     |q\alpha_k - p_k| < \dfrac{1}{N}
     $$
@@ -197,11 +261,20 @@
 
     Dividing both sides by $q,$ we can conclude
     $$
-    \left|\alpha_k - \dfrac{p_i}{q_i}\right| < \dfrac{1}{qN}, \qquad 1 \leq i \leq d.
+    \left|\alpha_k - \dfrac{p_i}{q_i}\right| < \dfrac{1}{qN}, \qquad
+    1 \leq i \leq d.
     $$
 \end{enumerate}
 
 \subsection{Reflection}
-For Blue Square 6, initially looked at all possible contiguous sequences, but realised here a collision didn't really help if we define buckets on prime multiplicity parity, because you're not guaranteed to have something in the bucket corresponding to even multiplicities. Instead, saw that if we have a collision in the same bucket, the division of the larger number with the smaller number will have prime multiplicities that are all even. From there, a contiguous sequence can be represented as a larger prefix divided by a smaller prefix, so the solution fell out.
+For Blue Square 6, initially looked at all possible contiguous
+sequences, but realised here a collision didn't really help if we
+define buckets on prime multiplicity parity, because you're not
+guaranteed to have something in the bucket corresponding to even
+multiplicities. Instead, saw that if we have a collision in the same
+bucket, the division of the larger number with the smaller number
+will have prime multiplicities that are all even. From there, a
+contiguous sequence can be represented as a larger prefix divided by
+a smaller prefix, so the solution fell out.
 
 \end{document}

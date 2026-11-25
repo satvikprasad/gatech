@@ -4,119 +4,185 @@
 
 \begin{document}
 \begin{enumerate}
-    \item Denote $A_{< j} = \bigcup_{i = 1}^{j -1}A_j.$
-    Let $B_k = A_k \setminus A_{< k},$ and $B_1 = A_1.$ Then, we propose that 
+  \item Denote $A_{< j} = \bigcup_{i = 1}^{j -1}A_j.$
+    Let $B_k = A_k \setminus A_{< k},$ and $B_1 = A_1.$ Then, we propose that
     \begin{align*}
-    \bigcup_{k = 1}^{n} A_k = \bigcup_{k = 1}^{n} B_k.
+      \bigcup_{k = 1}^{n} A_k = \bigcup_{k = 1}^{n} B_k.
     \end{align*}
 
-    This can be proved via double set containment. 
-    
-    Consider an element $a \in \bigcup_{k =1}^{n}A_k.$ Since $a$ is in this finite union, it is in at least one of $A_j$ for $1 \leq j \leq n.$ Take the smallest such $j.$ Then, $B_j$ contains $a$ since $a$ is not contained in $A_{< j},$ and is contained in $A_j.$ ($B_j = A_j \setminus A_{< j}$). Therefore, the finite union on the right hand side contains $a,$ since $B_j$ is in this union. Thus, $\bigcup_{k = 1}^{n}A_k \subseteq \bigcup_{k =1}^{n} B_k.$
+    This can be proved via double set containment.
 
-    Conversely, consider an element $a \in \bigcup_{k =1 }^{n} B_k.$ Then $a \in B_j$ for some index $j.$ Because $B_j = A_j \setminus A_{<j},$ $a$ must be in $A_j,$ meaning $a$ is in $\bigcup_{k = 1}^{n} A_k.$ As a result, $\bigcup_{k =1}^{n}A_k \supseteq \bigcup_{k = 1}^{n} B_k,$ meaning the two sets are equal.
+    Consider an element $a \in \bigcup_{k =1}^{n}A_k.$ Since $a$ is
+    in this finite union, it is in at least one of $A_j$ for $1 \leq
+    j \leq n.$ Take the smallest such $j.$ Then, $B_j$ contains $a$
+    since $a$ is not contained in $A_{< j},$ and is contained in
+    $A_j.$ ($B_j = A_j \setminus A_{< j}$). Therefore, the finite
+    union on the right hand side contains $a,$ since $B_j$ is in this
+    union. Thus, $\bigcup_{k = 1}^{n}A_k \subseteq \bigcup_{k =1}^{n} B_k.$
 
-    Additionally, assume there is an element $b$ in both $B_i$ and $B_j$ for $i \neq j.$ WLOG, assume $i < j.$ Then, $b$ is in $A_i,$ but not in $A_{< i}.$ But that means, $b$ must be in $A_{< j}$ since $j > i,$ but that means it cannot be in $B_j.$ This a contradiction, meaning there is no element in $B_i \cap B_j$ and thus $B_i \cap B_j = \emptyset$ when $i \neq j.$
+    Conversely, consider an element $a \in \bigcup_{k =1 }^{n} B_k.$
+    Then $a \in B_j$ for some index $j.$ Because $B_j = A_j \setminus
+    A_{<j},$ $a$ must be in $A_j,$ meaning $a$ is in $\bigcup_{k =
+    1}^{n} A_k.$ As a result, $\bigcup_{k =1}^{n}A_k \supseteq
+    \bigcup_{k = 1}^{n} B_k,$ meaning the two sets are equal.
 
-    Finally, since $(\Omega, \mathcal F, \mathbb P)$ is a probability measure, and $B_1, \ldots, B_n$ are pairwise disjoint, we can conclude \begin{align*}
-        \mathbb P\left(
-            \bigcup_{k =1 }^{n} A_k
-        \right) = \mathbb P\left(
-            \bigcup_{k = 1}^{n} B_k
-        \right) = \sum_{k = 1}^{n} \mathbb P(B_k).
-    \end{align*}
+    Additionally, assume there is an element $b$ in both $B_i$ and
+    $B_j$ for $i \neq j.$ WLOG, assume $i < j.$ Then, $b$ is in
+    $A_i,$ but not in $A_{< i}.$ But that means, $b$ must be in $A_{<
+    j}$ since $j > i,$ but that means it cannot be in $B_j.$ This a
+    contradiction, meaning there is no element in $B_i \cap B_j$ and
+    thus $B_i \cap B_j = \emptyset$ when $i \neq j.$
 
-    But, notice that $A_k = B_k \cup A_{< k},$ meaning \begin{align*}
-        \mathbb P(A_k) = \mathbb P(B_k \cup A_{< k}).
-    \end{align*}
-    Since $B_k$ and $A_{< k}$ are disjoint (by definition no element of $A_{<k}$ can be in $B_k$), we get
+    Finally, since $(\Omega, \mathcal F, \mathbb P)$ is a probability
+    measure, and $B_1, \ldots, B_n$ are pairwise disjoint, we can conclude
     \begin{align*}
-        \mathbb P(A_k) = \mathbb P(B_k) + \mathbb P(A_{< k}) \geq \mathbb P(B_k),
+      \mathbb P\left(
+        \bigcup_{k =1 }^{n} A_k
+      \right) = \mathbb P\left(
+        \bigcup_{k = 1}^{n} B_k
+      \right) = \sum_{k = 1}^{n} \mathbb P(B_k).
     \end{align*}
-    and thus we can conclude \begin{align*}
-        \mathbb P\left(
-            \bigcup_{k =1 }^{n} A_k
-        \right) \leq \sum_{k = 1}^{n} \mathbb P(A_k)
+
+    But, notice that $A_k = B_k \cup A_{< k},$ meaning
+    \begin{align*}
+      \mathbb P(A_k) = \mathbb P(B_k \cup A_{< k}).
+    \end{align*}
+    Since $B_k$ and $A_{< k}$ are disjoint (by definition no element
+    of $A_{<k}$ can be in $B_k$), we get
+    \begin{align*}
+      \mathbb P(A_k) = \mathbb P(B_k) + \mathbb P(A_{< k}) \geq \mathbb P(B_k),
+    \end{align*}
+    and thus we can conclude
+    \begin{align*}
+      \mathbb P\left(
+        \bigcup_{k =1 }^{n} A_k
+      \right) \leq \sum_{k = 1}^{n} \mathbb P(A_k)
     \end{align*}
     as required.
 
-    \item 
+  \item
     \begin{enumerate}
-        \item When the outcome of every toss is of interest, any outcome can be represented via a binary string of length $10,$ meaning there are $2^{10}$ outcomes, and hence $2^{2^{10}}$ combinations of outcomes, meaning the size of our event space is $2^{2^{10}}.$ 
+      \item When the outcome of every toss is of interest, any
+        outcome can be represented via a binary string of length
+        $10,$ meaning there are $2^{10}$ outcomes, and hence
+        $2^{2^{10}}$ combinations of outcomes, meaning the size of
+        our event space is $2^{2^{10}}.$
 
-        \item In this case, an outcome can be represented via a single number ranging from $0$ to $10.$ Thus, there are $11$ outcomes, and thus our event space has size $2^{11}$ (power set of outcomes).
+      \item In this case, an outcome can be represented via a single
+        number ranging from $0$ to $10.$ Thus, there are $11$
+        outcomes, and thus our event space has size $2^{11}$ (power
+        set of outcomes).
     \end{enumerate}
-    
-    \item \begin{enumerate}
-        \item Probability $1 - (5/6)^4 \approx 0.518$
-        \item Probability $1 - (35/36)^{24} \approx 0.491$
+
+  \item
+    \begin{enumerate}
+      \item Probability $1 - (5/6)^4 \approx 0.518$
+      \item Probability $1 - (35/36)^{24} \approx 0.491$
     \end{enumerate}
 
     Hence, (a) has a higher probability.
 
-    \item Let $Y$ be the random variable representing the ordered selection of elements, and $X$ represent the unordered selection of elements. Notice that for $X = x,$ there are $3!$ selections for $Y = y$ that can achieve such an outcome. Hence, $$\mathbb P(X = x) = \sum_{y \text{ is a permutation of } x}\mathbb P(Y=  y).$$
+  \item Let $Y$ be the random variable representing the ordered
+    selection of elements, and $X$ represent the unordered selection
+    of elements. Notice that for $X = x,$ there are $3!$ selections
+    for $Y = y$ that can achieve such an outcome. Hence, $$\mathbb
+    P(X = x) = \sum_{y \text{ is a permutation of } x}\mathbb P(Y=  y).$$
 
     Now, we get $$
-    \mathbb P(Y = y) = \frac{1}{9} \cdot \frac{1}{8} \cdot \frac{1}{7}, \qquad \mathbb P(X = x) = \dfrac{3!}{9 \cdot 8 \cdot 7} = \dfrac{1}{84}.
+    \mathbb P(Y = y) = \frac{1}{9} \cdot \frac{1}{8} \cdot
+    \frac{1}{7}, \qquad \mathbb P(X = x) = \dfrac{3!}{9 \cdot 8 \cdot
+    7} = \dfrac{1}{84}.
     $$
 
-    There are 7 such unordered sets $x$ where all three numbers are adjacent (up to permutations), and hence $$\mathbb P(X \text{ adjacent}) = \dfrac{7}{84} = \frac{1}{12}.$$ 
+    There are 7 such unordered sets $x$ where all three numbers are
+    adjacent (up to permutations), and hence $$\mathbb P(X \text{
+    adjacent}) = \dfrac{7}{84} = \frac{1}{12}.$$
 
-    \item \begin{enumerate}
-    \item The probability that no pairs of people share the same birthday is 
-    $$
-    \dfrac{365}{365} \cdot \ldots \cdot \dfrac{365 -k + 1}{365} = \dfrac{^{365}P_k}{365^{k}},
-    $$
-    meaning the probability that at least one pair of people share the same birthday is
-    $$
-    1- \dfrac{^{365}P_k}{365^{k}}.
-    $$
-    
-    This is monotonically increasing. When $k = 23,$ the above evaluates to $\sim 0.507,$ whereas when $k = 22,$ the above evaluates to $\sim 0.476,$ meaning $k_\text{birthday} = 23.$
+  \item
+    \begin{enumerate}
+      \item The probability that no pairs of people share the same birthday is
+        $$
+        \dfrac{365}{365} \cdot \ldots \cdot \dfrac{365 -k + 1}{365} =
+        \dfrac{^{365}P_k}{365^{k}},
+        $$
+        meaning the probability that at least one pair of people
+        share the same birthday is
+        $$
+        1- \dfrac{^{365}P_k}{365^{k}}.
+        $$
 
-    \item Let $E_{ab}$ denote the event that people $a$ and $b$ share a birthday. The given argument computes
-    $$
-    \sum_{\{a, b\}} \mathbb P(E_{ab}) = {k \choose 2} \cdot \dfrac{1}{365},
-    $$
-    and treats this as $\mathbb P\left(\bigcup_{\{a,b\}} E_{ab}\right).$ But the events $E_{ab}$ are not mutually exclusive, so the probability of their union is not the sum of their probabilities.  E.g., $E_{ab}$ and $E_{bc}$ both occur whenever $a, b, c$ all share a birthday, and this outcome is counted twice in the sum. By the result of Question 1, the sum is only an upper bound:
-    $$
-    \mathbb P\left(\bigcup_{\{a,b\}} E_{ab}\right) \leq {k \choose 2} \cdot \dfrac{1}{365}.
-    $$   
+        This is monotonically increasing. When $k = 23,$ the above
+        evaluates to $\sim 0.507,$ whereas when $k = 22,$ the above
+        evaluates to $\sim 0.476,$ meaning $k_\text{birthday} = 23.$
+
+      \item Let $E_{ab}$ denote the event that people $a$ and $b$
+        share a birthday. The given argument computes
+        $$
+        \sum_{\{a, b\}} \mathbb P(E_{ab}) = {k \choose 2} \cdot \dfrac{1}{365},
+        $$
+        and treats this as $\mathbb P\left(\bigcup_{\{a,b\}}
+        E_{ab}\right).$ But the events $E_{ab}$ are not mutually
+        exclusive, so the probability of their union is not the sum
+        of their probabilities.  E.g., $E_{ab}$ and $E_{bc}$ both
+        occur whenever $a, b, c$ all share a birthday, and this
+        outcome is counted twice in the sum. By the result of
+        Question 1, the sum is only an upper bound:
+        $$
+        \mathbb P\left(\bigcup_{\{a,b\}} E_{ab}\right) \leq {k
+        \choose 2} \cdot \dfrac{1}{365}.
+        $$
     \end{enumerate}
 
-    \item 
+  \item
     \begin{enumerate}
-    \item We just expand twice: 
-    \begin{align*}
-    \mathbb P(A \cup B \cup C) &= \mathbb P(A \cup B) + \mathbb P(C) - \mathbb P((A \cup B) \cap C) \\
-    &= \mathbb P(A) + \mathbb P(B) + \mathbb P(C) \\ &- \mathbb P(A \cap B) - \mathbb P((A \cap C) \cup (B \cap C)) \\
-    &= \mathbb P(A) + \mathbb P(B) + \mathbb P(C) \\ &- \mathbb P(A \cap B) - \mathbb P(A \cap C) - \mathbb P(B \cap C) + \mathbb P(A \cap C \cap B \cap C) \\
-    &= \mathbb P(A) + \mathbb P(B) + \mathbb P(C) \\ &- \mathbb P(A \cap B) - \mathbb P(A \cap C) - \mathbb P(B \cap C) \\ &+ \mathbb P(A \cap B \cap C)
-    \end{align*}
-    as required.
+      \item We just expand twice:
+        \begin{align*}
+          \mathbb P(A \cup B \cup C) &= \mathbb P(A \cup B) + \mathbb
+          P(C) - \mathbb P((A \cup B) \cap C) \\
+          &= \mathbb P(A) + \mathbb P(B) + \mathbb P(C) \\ &- \mathbb
+          P(A \cap B) - \mathbb P((A \cap C) \cup (B \cap C)) \\
+          &= \mathbb P(A) + \mathbb P(B) + \mathbb P(C) \\ &- \mathbb
+          P(A \cap B) - \mathbb P(A \cap C) - \mathbb P(B \cap C) +
+          \mathbb P(A \cap C \cap B \cap C) \\
+          &= \mathbb P(A) + \mathbb P(B) + \mathbb P(C) \\ &- \mathbb
+          P(A \cap B) - \mathbb P(A \cap C) - \mathbb P(B \cap C)
+          \\ &+ \mathbb P(A \cap B \cap C)
+        \end{align*}
+        as required.
 
-    \item Let $\sigma$ be a permutation of $(1, \ldots, n)$ sampled uniformly at random. We win if $\sigma(i) = i$ for some index $1 \leq i \leq n.$ Hence, we want to determine the probability that there is at least one such index.
+      \item Let $\sigma$ be a permutation of $(1, \ldots, n)$ sampled
+        uniformly at random. We win if $\sigma(i) = i$ for some index
+        $1 \leq i \leq n.$ Hence, we want to determine the
+        probability that there is at least one such index.
 
-    For each $i,$ let $$A_i = \{\sigma(i) = i\}$$ be the event that the $i$-th position is a fixed point. Then, our probability becomes
-    $$
-    p = \mathbb P(A_1 \cup A_2 \cup  \ldots \cup A_n).
-    $$
+        For each $i,$ let $$A_i = \{\sigma(i) = i\}$$ be the event
+        that the $i$-th position is a fixed point. Then, our probability becomes
+        $$
+        p = \mathbb P(A_1 \cup A_2 \cup  \ldots \cup A_n).
+        $$
 
-    Notice that for any $\mathcal A \subseteq \{1, \ldots, n\},$ $$
-    \mathbb P\left(\bigcap_{i \in \mathcal A} A_i\right) = \dfrac{(n - |\mathcal A|)!}{n!},
-    $$ 
-    since the positions in $\mathcal A$ are fixed and the remaining $n - |\mathcal A|$ positions may be permuted freely. Therefore, iterating over $|\mathcal A| = k$, we can use the principle of inclusion exclusion to yield
-    $$
-    p = \sum_{k = 1}^{n} (-1)^{k+1} \cdot \dfrac{(n - k)!}{n!} \cdot \underbrace{\left|\{\mathcal A \subseteq \{1, \ldots, n\} : |\mathcal A| = k\}\right|}_{n \choose k},
-    $$
-    simplifying down to 
-    $$
-    p = \sum_{k = 1}^{n} (-1)^{k+1} \dfrac{1}{k!}.
-    $$
+        Notice that for any $\mathcal A \subseteq \{1, \ldots, n\},$ $$
+        \mathbb P\left(\bigcap_{i \in \mathcal A} A_i\right) =
+        \dfrac{(n - |\mathcal A|)!}{n!},
+        $$
+        since the positions in $\mathcal A$ are fixed and the
+        remaining $n - |\mathcal A|$ positions may be permuted
+        freely. Therefore, iterating over $|\mathcal A| = k$, we can
+        use the principle of inclusion exclusion to yield
+        $$
+        p = \sum_{k = 1}^{n} (-1)^{k+1} \cdot \dfrac{(n - k)!}{n!}
+        \cdot \underbrace{\left|\{\mathcal A \subseteq \{1, \ldots,
+        n\} : |\mathcal A| = k\}\right|}_{n \choose k},
+        $$
+        simplifying down to
+        $$
+        p = \sum_{k = 1}^{n} (-1)^{k+1} \dfrac{1}{k!}.
+        $$
 
-    For large $n,$ we get $$
-    p \approx -\sum_{k = 1}^{\infty} \dfrac{(-1)^{k}}{k!} = -\left(e^{-1} - 1\right) = 1 - \dfrac{1}{e}.
-    $$
+        For large $n,$ we get $$
+        p \approx -\sum_{k = 1}^{\infty} \dfrac{(-1)^{k}}{k!} =
+        -\left(e^{-1} - 1\right) = 1 - \dfrac{1}{e}.
+        $$
     \end{enumerate}
 \end{enumerate}
 \end{document}

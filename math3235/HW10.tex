@@ -1,0 +1,61 @@
+\documentclass[12pt]{article}
+\input{header}
+
+\begin{document}
+\begin{enumerate}
+  \item A fair dice is thrown 12000 times, and let $S$ denote the number of sixes thrown. Define sample space $\Omega = \{1, 2, \ldots, 6\}^{12000}.$ For $1 \leq i \leq 12000,$ let $X_i : \Omega \to \mathbb R$ be defined such that
+    \begin{align*}
+      X_i(\omega)  =
+      \begin{cases}
+        1 & \omega_i = 6 \\
+        0 & \text{otherwise}
+      \end{cases}
+    \end{align*}
+
+    Then, $$S = \sum_{i = 1}^{12000} X_i,$$ and applying the CLT yields $S \approx 12000\mu + \sigma \sqrt{12000}Z = 2000 + 20\sigma \sqrt{30} Z.$
+
+    Finding the variance of a single $X_i,$ we get
+    $$
+    \mathbb E[X_i^2] = 1/6 \Rightarrow \sigma^2 = 1/6 - (1/6)^2 = 5/36.
+    $$
+
+    Thus, we have $$
+    f_S(x) \approx f_{2000 + \frac{50}{3} \sqrt{6} \cdot Z}(x),
+    $$
+    where $Z \sim \mathcal N(0, 1).$
+
+    Hence, the probability satisfies
+    \begin{align*}
+      \mathbb P(1900 < S < 2200) \approx \mathbb P\left(-\sqrt{6} < Z < 2 \sqrt{6}\right) = \int_{-\sqrt{6}}^{2 \sqrt{6}} \dfrac{1}{\sqrt{2\pi}} e^{- \frac{1}{2}x^2} \, dx
+    \end{align*}
+    as required.
+
+  \item
+    \begin{enumerate}
+      \item Suppose $X_N \to X$ in $L^2$, meaning we have some RV $X$ such that
+        \begin{align*}
+          \lim_{n \to \infty} \mathbb E[(X_n - X)^2] = 0.
+        \end{align*}
+
+        By Jensen's inequality, since $f: \mathbb R \to \mathbb R, \ f(x) = x^2$ is convex, we know
+        $$
+        \mathbb E[|X_n - X|^2] \geq \mathbb E[|X_n - X|]^2 \geq 0,
+        $$
+        since $|X_n - X|$ is always positive.
+
+        Applying limits to both sides, by the squeeze theorem we must have $$
+        \lim_{n \to \infty} \mathbb E[|X_n - X|]^2 = 0 \Rightarrow \lim_{n \to \infty} \mathbb E[|X_n - X|] = 0.
+        $$
+
+        Once again, by convexity of $f: \mathbb R \to \mathbb R^{+}, \ f(x) = |x|,$ we know
+        $$
+        \mathbb E[|X_n - X|] \geq |\mathbb E[X_n - X]| = |\mathbb E[X_n] - \mathbb E[X]| \geq 0,
+        $$
+        and by the squeeze theorem again,
+        $$
+        \lim_{n \to \infty} |\mathbb E[X_n] - \mathbb E[X]| = 0 \Rightarrow \mathbb \lim_{n \to \infty} E[X_n] = \mathbb E[X]
+        $$
+        as required.
+    \end{enumerate}
+\end{enumerate}
+\end{document}

@@ -5,37 +5,43 @@
 \begin{document}
 \subsection{Green Circle}
 \begin{enumerate}
-    \item [1] The expression
+  \item [1] The expression
     $$
     \sum_{k = 0}^{\lfloor n/ 2\rfloor} {n \choose 2 j}
     $$
-    counts the number of even sized subsets of $[n].$ Using a generating function, we can see 
+    counts the number of even sized subsets of $[n].$ Using a
+    generating function, we can see
     $$
-    (1+x)^n = \sum_{k = 0}^{n} {n \choose k} x^k, \qquad (1-x)^n =\sum_{k = 0}^{n} {n \choose k}(-1)^k x^k.
+    (1+x)^n = \sum_{k = 0}^{n} {n \choose k} x^k, \qquad (1-x)^n
+    =\sum_{k = 0}^{n} {n \choose k}(-1)^k x^k.
     $$
-    Since we want odd terms to cancel out, we get 
+    Since we want odd terms to cancel out, we get
     $$
-    \dfrac{(1+x)^n + (1-x)^n}{2} = \sum_{j = 0}^{\lfloor n/2 \rfloor }{n \choose 2j} x^k,
+    \dfrac{(1+x)^n + (1-x)^n}{2} = \sum_{j = 0}^{\lfloor n/2 \rfloor
+    }{n \choose 2j} x^k,
     $$
-    and letting $x = 1$ we get 
+    and letting $x = 1$ we get
     $$
     2^{n-1} = \sum_{j = 0}^{\lfloor n /2 \rfloor} {n \choose 2j}.
     $$
 
-    \item [3] We desire to evaluate 
+  \item [3] We desire to evaluate
     $$
-    C_n = \sum_{k = 0}^{n}(-1)^k{n \choose k}^2 = \sum_{k = 0}^{n} (-1)^k {n \choose k}{n \choose n - k }
+    C_n = \sum_{k = 0}^{n}(-1)^k{n \choose k}^2 = \sum_{k = 0}^{n}
+    (-1)^k {n \choose k}{n \choose n - k }
     $$
     for every $n \geq k.$
 
     Consider the two generating functions
     $$
-    A(x) = \sum_{k = 0}^{n} (-1)^k{n \choose k}x^k, \qquad B(x) = \sum_{k = 0}^{n} {n \choose k} x^k.
+    A(x) = \sum_{k = 0}^{n} (-1)^k{n \choose k}x^k, \qquad B(x) =
+    \sum_{k = 0}^{n} {n \choose k} x^k.
     $$
 
-    Then, $$[x^{n}](AB) = \sum_{k = 0}^{n} (-1)^k {n \choose k}{n \choose n - k} = C_n.$$
+    Then, $$[x^{n}](AB) = \sum_{k = 0}^{n} (-1)^k {n \choose k}{n
+    \choose n - k} = C_n.$$
 
-    Simplifying $A, B,$ we get 
+    Simplifying $A, B,$ we get
     $$
     A(x) = (1-x)^n, \qquad B(x) = (1+x)^n,
     $$
@@ -43,23 +49,24 @@
     $$
     C_n = [x^n] (1-x^2)^n = [x^n] \sum_{k = 0}^{n} (-1)^k {n \choose k} x^{2k}.
     $$
-    Thus, if $n \equiv 0 \pmod 2,$ then 
+    Thus, if $n \equiv 0 \pmod 2,$ then
     $$
     C_n = (-1)^{n/2} {n \choose n/2}
     $$
     otherwise $C_n = 0.$
 
-    \item [4] We have $a_0 = 0$ and $a_n = 2a_{n -1} + 1$ for $n \geq 1.$ Define the generating function
+  \item [4] We have $a_0 = 0$ and $a_n = 2a_{n -1} + 1$ for $n \geq
+    1.$ Define the generating function
     \begin{align*}
-    A(x) = \sum_{k \geq 0} a_k x^k &= \sum_{k \geq 1} a_kx^k \\
-    &= \sum_{k \geq 1} (2a_{k - 1} + 1)x^k \\
-    &=2x\sum_{k \geq 0} a_{k} x^k + \sum_{k \geq 1} x^k.
+      A(x) = \sum_{k \geq 0} a_k x^k &= \sum_{k \geq 1} a_kx^k \\
+      &= \sum_{k \geq 1} (2a_{k - 1} + 1)x^k \\
+      &=2x\sum_{k \geq 0} a_{k} x^k + \sum_{k \geq 1} x^k.
     \end{align*}
-    For $|x| < 1,$ we get 
+    For $|x| < 1,$ we get
     $$
     A(x)  = 2xA(x) + \dfrac{x}{1-x},
     $$
-    or equivalently, 
+    or equivalently,
     $$
     A(x) = \dfrac{x}{(1-x)(1-2x)} = \dfrac{1}{1-2x} - \dfrac{1}{1-x},
     $$
@@ -72,13 +79,14 @@
 
 \subsection{Blue Square}
 \begin{enumerate}
-    \item [7] We look for a simple formula for 
+  \item [7] We look for a simple formula for
     $$
     \sum_{j = 0}^{\lfloor n/3 \rfloor} {n \choose 3j}.
     $$
-    We can achieve this by summing generating functions where only the terms with $k \equiv 0 \pmod 3$ survive.
+    We can achieve this by summing generating functions where only
+    the terms with $k \equiv 0 \pmod 3$ survive.
 
-    Notice that if we have 
+    Notice that if we have
     $$
     \omega^3 = 1
     $$
@@ -86,83 +94,99 @@
     $$
     (\omega - 1)(\omega^2 + \omega + 1) = 0.
     $$
-    Given $\omega \neq 1,$ we have 
+    Given $\omega \neq 1,$ we have
     $$
     \omega^2 + \omega + 1 = 0.
     $$
 
-    Consider $\omega^{2k} + \omega^k + 1$ for some integer $k.$ Then, if $k \equiv 0 \pmod 3,$ we have $\omega^{2k} + \omega + 1 = 1 + 1 + 1 = 3.$ Otherwise, if $k \equiv 1$ or $k \equiv 2 \pmod 3,$ then $\{w^{2k}, w^{k}\} = \{w^2, w\},$ meaning $$
+    Consider $\omega^{2k} + \omega^k + 1$ for some integer $k.$ Then,
+    if $k \equiv 0 \pmod 3,$ we have $\omega^{2k} + \omega + 1 = 1 +
+    1 + 1 = 3.$ Otherwise, if $k \equiv 1$ or $k \equiv 2 \pmod 3,$
+    then $\{w^{2k}, w^{k}\} = \{w^2, w\},$ meaning $$
     w^{2k} + w^{k} + 1 = 0.
     $$
 
     Thus, using this we can show
     $$
-    (1 + 1)^n + (1 + \omega)^n + (1 + \omega^2)^n = \sum_{k = 0}^{n} {n \choose k} (1 + \omega^k + \omega^{2k})x^k = 3\sum_{k = 0}^{\lfloor n/3 \rfloor } {n \choose k}x^k,
+    (1 + 1)^n + (1 + \omega)^n + (1 + \omega^2)^n = \sum_{k = 0}^{n}
+    {n \choose k} (1 + \omega^k + \omega^{2k})x^k = 3\sum_{k =
+    0}^{\lfloor n/3 \rfloor } {n \choose k}x^k,
     $$
     meaning
     $$
-    \sum_{j = 0}^{ \lfloor n/3 \rfloor} {n \choose 3j} = \dfrac{2^n + (1 + e^{i\pi/3})^n + (1 + e^{-i\pi/3})^n}{3}.
+    \sum_{j = 0}^{ \lfloor n/3 \rfloor} {n \choose 3j} = \dfrac{2^n +
+    (1 + e^{i\pi/3})^n + (1 + e^{-i\pi/3})^n}{3}.
     $$
 
     Simplifying, we have
-\begin{align*}
-e^{\frac{in\pi}{6}}\left(2\cos\frac{\pi}{6}\right)^n + e^{-\frac{in\pi}{6}}\left(2\cos\frac{\pi}{6}\right)^n
-&= 3^{\frac{n}{2}}\left(e^{\frac{in\pi}{6}} + e^{-\frac{in\pi}{6}}\right) \\
-&= 3^{\frac{n}{2}} \cdot 2\cos\left(\frac{n\pi}{6}\right).
-\end{align*}
+    \begin{align*}
+      e^{\frac{in\pi}{6}}\left(2\cos\frac{\pi}{6}\right)^n +
+      e^{-\frac{in\pi}{6}}\left(2\cos\frac{\pi}{6}\right)^n
+      &= 3^{\frac{n}{2}}\left(e^{\frac{in\pi}{6}} +
+      e^{-\frac{in\pi}{6}}\right) \\
+      &= 3^{\frac{n}{2}} \cdot 2\cos\left(\frac{n\pi}{6}\right).
+    \end{align*}
 
-\item [9] We have $c_n$ counting colored compositions of sum $n.$ 
+  \item [9] We have $c_n$ counting colored compositions of sum $n.$
 
-Any such composition will have a last element $k$ with $k$ different options for its color. Hence, we have
-\begin{align*}
-    c_n = \sum_{k = 1}^{n} k c_{n - k}
-\end{align*}
-for all $n \geq 1.$
+    Any such composition will have a last element $k$ with $k$
+    different options for its color. Hence, we have
+    \begin{align*}
+      c_n = \sum_{k = 1}^{n} k c_{n - k}
+    \end{align*}
+    for all $n \geq 1.$
 
-Defining a generating function, we get
-$$
-C(x) = 1 + \sum_{k \geq 1} c_k x^k = 1 + \sum_{k \geq 1} \sum_{j = 1}^{k} jc_{k - j} x^k.
-$$
-Swapping the order of summation, we get 
-\begin{align*}
-C(x) &= 1 + \sum_{j \geq 1} j\sum_{k \geq j} c_{k -j} x^k \\
-&=1 +  \sum_{j \geq 1} jx ^j\sum_{k \geq 0} c_{k} x^{k} \\
-&= 1 + C(x)\sum_{j \geq 1} jx^j \\
-&= 1+ xC(x) \sum_{j \geq 0} (j+1)x^{j} \\
-&= 1 + C(x) \dfrac{x}{(1-x)^2}
-\end{align*}
-for all $|x| < 1.$ Hence, we get 
-\begin{align*}
-C(x) = \dfrac{(1-x)^2}{(1-x)^2 - x} &= 1 + \dfrac{x}{x^2 -3x + 1} \\
-&= 1  + \dfrac{1}{\sqrt{5}} \left(
-\dfrac{1}{1 - \alpha x} - \dfrac{1}{1-\beta x}
-\right),
-\end{align*}
-where $\alpha = (3 + \sqrt 5)/2,$ and $\beta = (3 - \sqrt 5)/2.$ Expanding, we get 
-$$
-C(x) = 1 + \sum_{j \geq 0} \dfrac{\alpha^j - \beta^j}{\sqrt 5} x^j,
-$$
-yielding
-$$
-c_0 = 1, \qquad c_j = \dfrac{(3 + \sqrt 5 )^j - (3 - \sqrt 5)^j}{2^j\sqrt 5}.
-$$
+    Defining a generating function, we get
+    $$
+    C(x) = 1 + \sum_{k \geq 1} c_k x^k = 1 + \sum_{k \geq 1} \sum_{j
+    = 1}^{k} jc_{k - j} x^k.
+    $$
+    Swapping the order of summation, we get
+    \begin{align*}
+      C(x) &= 1 + \sum_{j \geq 1} j\sum_{k \geq j} c_{k -j} x^k \\
+      &=1 +  \sum_{j \geq 1} jx ^j\sum_{k \geq 0} c_{k} x^{k} \\
+      &= 1 + C(x)\sum_{j \geq 1} jx^j \\
+      &= 1+ xC(x) \sum_{j \geq 0} (j+1)x^{j} \\
+      &= 1 + C(x) \dfrac{x}{(1-x)^2}
+    \end{align*}
+    for all $|x| < 1.$ Hence, we get
+    \begin{align*}
+      C(x) = \dfrac{(1-x)^2}{(1-x)^2 - x} &= 1 + \dfrac{x}{x^2 -3x + 1} \\
+      &= 1  + \dfrac{1}{\sqrt{5}} \left(
+        \dfrac{1}{1 - \alpha x} - \dfrac{1}{1-\beta x}
+      \right),
+    \end{align*}
+    where $\alpha = (3 + \sqrt 5)/2,$ and $\beta = (3 - \sqrt 5)/2.$
+    Expanding, we get
+    $$
+    C(x) = 1 + \sum_{j \geq 0} \dfrac{\alpha^j - \beta^j}{\sqrt 5} x^j,
+    $$
+    yielding
+    $$
+    c_0 = 1, \qquad c_j = \dfrac{(3 + \sqrt 5 )^j - (3 - \sqrt
+    5)^j}{2^j\sqrt 5}.
+    $$
 
-Since $\alpha^2 = 3\alpha -1 $  and $\beta^ 2 = 3\beta - 1,$ ewe get 
-\begin{align*}
-c_n &= \dfrac{\alpha^{n-2}(3 \alpha - 1) - \beta^{n-2}(3 \beta - 1)}{\sqrt 5} \\
-&=3 \dfrac{\alpha^{n-1} - \beta^{n-1}}{\sqrt 5} - \dfrac{\alpha^{n-2} - \beta^{n-2}}{\sqrt 5} \\
-&= 3 c_{n-1} - c_{n-2}
-\end{align*}
-as required.
+    Since $\alpha^2 = 3\alpha -1 $  and $\beta^ 2 = 3\beta - 1,$ ewe get
+    \begin{align*}
+      c_n &= \dfrac{\alpha^{n-2}(3 \alpha - 1) - \beta^{n-2}(3 \beta
+      - 1)}{\sqrt 5} \\
+      &=3 \dfrac{\alpha^{n-1} - \beta^{n-1}}{\sqrt 5} -
+      \dfrac{\alpha^{n-2} - \beta^{n-2}}{\sqrt 5} \\
+      &= 3 c_{n-1} - c_{n-2}
+    \end{align*}
+    as required.
 \end{enumerate}
 
 \subsection{Black Diamond}
 \begin{enumerate}
-    \item [10] Write the generating function for the number of ways to get sum $k$ when rolling two distinct dice as 
+  \item [10] Write the generating function for the number of ways to
+    get sum $k$ when rolling two distinct dice as
     $$
     G(x) = (x + \ldots +x ^6)^2 = x^2 (1 + \ldots + x^5)^2.
     $$
-    We want to find an alternative factorization of this generating function. Write 
+    We want to find an alternative factorization of this generating
+    function. Write
     $$
     1 + \ldots + x^5 = \dfrac{x^6 - 1}{x - 1}.
     $$
@@ -172,40 +196,48 @@ as required.
     $$
     yielding factorization
     $$
-    (x - e^{i\pi/3}) (x - e^{-i\pi/3}) (x - e^{2i\pi/3})(x - e^{-2i\pi/3}) (x + 1),
+    (x - e^{i\pi/3}) (x - e^{-i\pi/3}) (x - e^{2i\pi/3})(x -
+    e^{-2i\pi/3}) (x + 1),
     $$
-    or equivalently, 
+    or equivalently,
     $$
     (x^2 - x + 1)(x^2 + x +1)(x + 1),
     $$
     and $$
     G(x) = (x^2 - x + 1)^2 (x^2 + x+1)^2 (x+1)^2 x^2.
     $$
-    Hence, to construct an alternative factorization, let us take factors 
+    Hence, to construct an alternative factorization, let us take factors
     $$
-    G_1(x) = (x^2 - x+ 1)^2(x^2 + x+ 1) (x+1) x = x^8 + x^6 + x^5 + x^4 + x^3 + x,
+    G_1(x) = (x^2 - x+ 1)^2(x^2 + x+ 1) (x+1) x = x^8 + x^6 + x^5 +
+    x^4 + x^3 + x,
     $$
     and $$
     G_2(x) = (x^2 + x+ 1)(x+1)x = x^4 + 2x^3 + 2x^2 + x,
     $$
-    corresponding to the dice with faces $\{8,6, 5, 4, 3, 1\}$ and $\{1, 2, 2, 3, 3, 4\}.$
+    corresponding to the dice with faces $\{8,6, 5, 4, 3, 1\}$ and
+    $\{1, 2, 2, 3, 3, 4\}.$
 
-    \item [12] For odd primes $p,$ we want to find the number of subsets of $[p]$ such that their sum is divisible by $p.$ The term in the generating function
+  \item [12] For odd primes $p,$ we want to find the number of
+    subsets of $[p]$ such that their sum is divisible by $p.$ The
+    term in the generating function
     $$
     [z^k]\underbrace{\prod_{j = 1}^{j = p} (1  + z^{j})}_{:=G(z)}
     $$
-    will count the number of ways to get a subset with sum $k.$ Hence, we want to find
+    will count the number of ways to get a subset with sum $k.$
+    Hence, we want to find
     $$
     C_p = \sum_{k = 0}^{(p + 1) / 2} [z^{kp}] \prod_{j = 1}^{j = p} (1 + z^j).
     $$
 
-    Notice that the root of unity $\omega^{p} = 1$ can help us cancel out terms that are not divisible by $p.$ Let $\omega = e^{2\pi i /p}.$ Then, 
+    Notice that the root of unity $\omega^{p} = 1$ can help us cancel
+    out terms that are not divisible by $p.$ Let $\omega = e^{2\pi i /p}.$ Then,
     $$
     1 + \omega^k + (\omega^k)^2 + \ldots + (\omega^k)^{p - 1} = 0.
     $$
-    for all $k \not \equiv 0 \pmod p,$ and $p - 1$ otherwise. Thus, 
+    for all $k \not \equiv 0 \pmod p,$ and $p - 1$ otherwise. Thus,
     $$
-    \sum_{j = 0}^{p-1}G(w^j) = \sum_{k = 0}^{(p + 1)/2} (p-1)[z^{kp}] G(z) = (p-1)C_p.
+    \sum_{j = 0}^{p-1}G(w^j) = \sum_{k = 0}^{(p + 1)/2} (p-1)[z^{kp}]
+    G(z) = (p-1)C_p.
     $$
 
     Note that
@@ -213,39 +245,45 @@ as required.
     G(1) = \prod_{j = 1}^{p} (1+1^j) = 2^p.
     $$
 
-    Otherwise, 
+    Otherwise,
     \begin{align*}
-        G(\omega^r) &= \prod_{j = 1}^{p}(1 + (\omega^r)^j) \\
-        &= 2 \prod_{j = 1}^{p-1} (1 + \omega^{rj}).
+      G(\omega^r) &= \prod_{j = 1}^{p}(1 + (\omega^r)^j) \\
+      &= 2 \prod_{j = 1}^{p-1} (1 + \omega^{rj}).
     \end{align*}
 
-    Given an integer $1 \leq r \leq p-1,$ let us look at $jr \pmod p$ for all $1 \leq j \leq p - 1.$ Assume for the sake of contradiction that there are two $1 \leq j_1 <  j_2 \leq p - 1$ such that
+    Given an integer $1 \leq r \leq p-1,$ let us look at $jr \pmod p$
+    for all $1 \leq j \leq p - 1.$ Assume for the sake of
+    contradiction that there are two $1 \leq j_1 <  j_2 \leq p - 1$ such that
     $$
-        j_1r \equiv  j_2 r \pmod p.
+    j_1r \equiv  j_2 r \pmod p.
     $$
-    Then, 
+    Then,
     $$
     r(j_2 - j_1) \equiv  0 \pmod p,
     $$
-    meaning $p$ either divides $r$ or $j_2 - j_1$ by Euclid's lemma. Neither is possible, since both quantities are within $[1, p - 1].$ Thus, the image of $jr \pmod p$ must be $\{1, 2, \ldots, p - 1\}.$
+    meaning $p$ either divides $r$ or $j_2 - j_1$ by Euclid's lemma.
+    Neither is possible, since both quantities are within $[1, p -
+    1].$ Thus, the image of $jr \pmod p$ must be $\{1, 2, \ldots, p - 1\}.$
 
-    Hence, we can write 
+    Hence, we can write
     \begin{align*}
-    G(\omega^r) &= 2 \prod_{j = 1}^{p-1} (1 + \omega^{j}).
+      G(\omega^r) &= 2 \prod_{j = 1}^{p-1} (1 + \omega^{j}).
     \end{align*}
     Since
     $$
     \prod_{j = 1}^{p-1} (x-\omega^j)
     $$
-    has roots $\omega, \omega^2, \ldots, \omega^{p-1},$ we can conclude it is equal to 
+    has roots $\omega, \omega^2, \ldots, \omega^{p-1},$ we can
+    conclude it is equal to
     $$
     \dfrac{x^p - 1}{x- 1} = 1 + x + \ldots + x^{p-1}.
     $$
     Letting $x = -1,$ we have
     $$
-    (-1)^{p-1}\prod_{j = 1}^{p-1}(x + \omega^j) = 1 -  x + \ldots + (-1)^{p-1}x^{p-1}.
+    (-1)^{p-1}\prod_{j = 1}^{p-1}(x + \omega^j) = 1 -  x + \ldots +
+    (-1)^{p-1}x^{p-1}.
     $$
-    Since $p$ is odd, we finally get 
+    Since $p$ is odd, we finally get
     $$
     \prod_{j = 1}^{p-1}(1 + \omega^j) = 1,
     $$
@@ -256,11 +294,14 @@ as required.
 \end{enumerate}
 
 \subsection{Reflection}
-Had to use lots of roots of unity for this problem set, which I learned back in high-school and forgot after that. Got 
+Had to use lots of roots of unity for this problem set, which I
+learned back in high-school and forgot after that. Got
 $$
 \sum_{k = 1}^{p - 1} (1 + \cos(2\pi i j/p))
 $$
-as one of my polynomials by multiplying conjugate pairs, but realized that the easier way to solve it was to write $\prod_{j =1}^{p-1} 1 + \omega^j$ as a value on the polynomial
+as one of my polynomials by multiplying conjugate pairs, but realized
+that the easier way to solve it was to write $\prod_{j =1}^{p-1} 1 +
+\omega^j$ as a value on the polynomial
 $$
 \dfrac{x^p - 1}{x-1}
 $$

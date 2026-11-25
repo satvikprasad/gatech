@@ -3,15 +3,16 @@
 
 \begin{document}
 \begin{enumerate}
-    \item We have $f(x, y)$ with joint density
+  \item We have $f(x, y)$ with joint density
     $$
-    f(x, y) = \begin{cases}
-        \dfrac{1}{2}(x+y)e^{-(x+y)} & x, y > 0 \\
-        0 & \text{otherwise}
+    f(x, y) =
+    \begin{cases}
+      \dfrac{1}{2}(x+y)e^{-(x+y)} & x, y > 0 \\
+      0 & \text{otherwise}
     \end{cases}.
     $$
     We find density of $Z = X + Y$ using a change of variables map
-    $T: \mathbb R^{2} \to \mathbb R^{2}$ defined by 
+    $T: \mathbb R^{2} \to \mathbb R^{2}$ defined by
     $$
     T(x, y) = (x + y, y)
     $$
@@ -19,52 +20,61 @@
     $$
     T^{-1}(z, u) = (z - u, u).
     $$
-    This map has Jacobian 
+    This map has Jacobian
     $$
-    J = \begin{vmatrix}
-    1 & - 1 \\
-    0 & 1
+    J =
+    \begin{vmatrix}
+      1 & - 1 \\
+      0 & 1
     \end{vmatrix} = 1,
     $$
-    and thus for random variables $Z = X + Y, U = Y$ we get joint density $g(z, v)$
+    and thus for random variables $Z = X + Y, U = Y$ we get joint
+    density $g(z, v)$
     $$
-        g(z, v) = \begin{cases}
-            \dfrac{1}{2}  ze^{-z} &  z - u, u > 0  \\
-            0 & \text{otherwise}
-        \end{cases}.
+    g(z, v) =
+    \begin{cases}
+      \dfrac{1}{2}  ze^{-z} &  z - u, u > 0  \\
+      0 & \text{otherwise}
+    \end{cases}.
     $$
-    Finding the marginal, since we have support on $z > u,$ we get 
+    Finding the marginal, since we have support on $z > u,$ we get
     $$
-        f_Z(z) = \int_{0}^{z} \dfrac{1}{2}z e^{-z} \, du = \dfrac{1}{2}z^{2} e^{-z}
+    f_Z(z) = \int_{0}^{z} \dfrac{1}{2}z e^{-z} \, du = \dfrac{1}{2}z^{2} e^{-z}
     $$
     when $z > 0,$ and $0$ otherwise.
 
-    \item Since the uniform distribution is continuous, and the Bernoulli distribution is discrete, we work with CDFs.
+  \item Since the uniform distribution is continuous, and the
+    Bernoulli distribution is discrete, we work with CDFs.
 
-    We know $$\mathbb P(X + Y \leq z) = \mathbb P(X + 1 \leq z  \mid Y = 1) \mathbb P(Y = 1) + \mathbb P(X \leq z \mid Y = 0) \mathbb P(Y = 0).$$
+    We know $$\mathbb P(X + Y \leq z) = \mathbb P(X + 1 \leq z  \mid
+    Y = 1) \mathbb P(Y = 1) + \mathbb P(X \leq z \mid Y = 0) \mathbb P(Y = 0).$$
 
     Since $X, Y$ are independent, we can drop the conditionals, yielding
     \begin{align*}
-    F_Z(z) = \mathbb P(X + Y \leq Z) &= \dfrac{1}{3}F_X(z - 1)  + \dfrac{2}{3} F_X(z) \\
-    &= \begin{cases}
+      F_Z(z) = \mathbb P(X + Y \leq Z) &= \dfrac{1}{3}F_X(z - 1)  +
+      \dfrac{2}{3} F_X(z) \\
+      &=
+      \begin{cases}
         \dfrac{z+2}{6} & -2 < z \leq -1 \\
         \dfrac{z}{4} + \dfrac{5}{12}  & -1 < z \leq 2 \\
         \dfrac{z}{12} + \dfrac{3}{4} & 2 <  z \leq 3 \\
         0 & z \leq -2 \\
         1 & z > 3
-    \end{cases}.
+      \end{cases}.
     \end{align*}
-    Differentiable points have measure 0, so, differentiating at differentiable points yields
+    Differentiable points have measure 0, so, differentiating at
+    differentiable points yields
     $$
-    f_Z(z) = \begin{cases}
-         \dfrac{1}{6} & -2 < z < -1\\
-         \dfrac{1}{4}&  -2 < z < 2 \\
-            \dfrac{1}{12}  & 2 < z < 3 \\
-        0 & \text{otherwise}
+    f_Z(z) =
+    \begin{cases}
+      \dfrac{1}{6} & -2 < z < -1\\
+      \dfrac{1}{4}&  -2 < z < 2 \\
+      \dfrac{1}{12}  & 2 < z < 3 \\
+      0 & \text{otherwise}
     \end{cases}.
     $$
 
-    \item The change of variables satisfies map
+  \item The change of variables satisfies map
     $$
     T(x, y) = ((x-y)/ 2, y),
     $$
@@ -75,31 +85,35 @@
 
     Thus, we have Jacobian
     $$
-    J = \begin{vmatrix}
-        2 & 1 \\
-        0 & 1
+    J =
+    \begin{vmatrix}
+      2 & 1 \\
+      0 & 1
     \end{vmatrix} = 2.
     $$
-    $X, Y$ have support on $x, y > 0,$ meaning $v > 0$ and $v > - 2u$ are our only constraints. Thus, $U, V$ have joint density
+    $X, Y$ have support on $x, y > 0,$ meaning $v > 0$ and $v > - 2u$
+    are our only constraints. Thus, $U, V$ have joint density
     $$
-    f_{U, V}(u, v) = \begin{cases}
-        \dfrac{1}{2} e^{-(u + v)} & v> \max(0, -2u)  \\
-        0 & \text{otherwise}
+    f_{U, V}(u, v) =
+    \begin{cases}
+      \dfrac{1}{2} e^{-(u + v)} & v> \max(0, -2u)  \\
+      0 & \text{otherwise}
     \end{cases}.
     $$
 
-    Integrating to find the marginal of $U,$ we get 
+    Integrating to find the marginal of $U,$ we get
     $$
-        f_U(u) = \int_{\max(0, -2u)}^{\infty} \dfrac{1}{2} e^{-(u + v)} \, dv.
+    f_U(u) = \int_{\max(0, -2u)}^{\infty} \dfrac{1}{2} e^{-(u + v)} \, dv.
     $$
     Thus, if $u \geq 0,$ we have
     $$
-    f_U(u) = \dfrac{1}{2}e^{-u}\int_{0}^{\infty} e^{-v} \, dv = \dfrac{1}{2}e^{-u} = \dfrac{1}{2}e^{-|u|}.
+    f_U(u) = \dfrac{1}{2}e^{-u}\int_{0}^{\infty} e^{-v} \, dv =
+    \dfrac{1}{2}e^{-u} = \dfrac{1}{2}e^{-|u|}.
     $$
     Otherwise, if $u < 0,$ we get
     \begin{align*}
-    f_U(u) &= \dfrac{1}{2}e^{-u}\int_{-2u}^{\infty}  e^{-v} \, dv \\ 
-    &= \dfrac{1}{2}e^{-u} e^{2u} = \dfrac{1}{2} e^{u} = \dfrac{1}{2}e^{-|u|}.
+      f_U(u) &= \dfrac{1}{2}e^{-u}\int_{-2u}^{\infty}  e^{-v} \, dv \\
+      &= \dfrac{1}{2}e^{-u} e^{2u} = \dfrac{1}{2} e^{u} = \dfrac{1}{2}e^{-|u|}.
     \end{align*}
 
     Hence, regardless our marginal density for $U$ satisfies
@@ -107,96 +121,112 @@
     f_U(u) = \dfrac{1}{2}e^{-|u|}, \qquad u \in \mathbb R.
     $$
 
-    \item \begin{enumerate}
-    
-    \item We compute the marginal density:
-    \begin{align*}
-    f_X(x)= \int_{-\infty}^{\infty} f(x, y)\  dy.
-    \end{align*}
-    At $X = x,$ $Y$ is supported on the interval $[-\sqrt{1-x^2}, \sqrt{1-x^2}],$ meaning we have
-    $$
-    f_X(x) = \dfrac{2\sqrt{1-x^2}}{\pi}\, \qquad x \in [-1, 1]
-    $$
-    and $0$ elsewhere.
+  \item
+    \begin{enumerate}
 
-    \begin{figure}[h]
-  \centering
-  \begin{tikzpicture}[scale=3]
-    % axes
-    \draw[->] (-1.3,0) -- (1.3,0) node[right] {$x$};
-    \draw[->] (0,-0.1) -- (0,0.85) node[above] {$f_X(x)$};
+      \item We compute the marginal density:
+        \begin{align*}
+          f_X(x)= \int_{-\infty}^{\infty} f(x, y)\  dy.
+        \end{align*}
+        At $X = x,$ $Y$ is supported on the interval $[-\sqrt{1-x^2},
+        \sqrt{1-x^2}],$ meaning we have
+        $$
+        f_X(x) = \dfrac{2\sqrt{1-x^2}}{\pi}\, \qquad x \in [-1, 1]
+        $$
+        and $0$ elsewhere.
 
-    % tick marks
-    \foreach \x in {-1,1} {
-      \draw (\x,0.02) -- (\x,-0.02) node[below] {$\x$};
-    }
-    \draw (0.02,2/pi) -- (-0.02,2/pi) node[left] {$\tfrac{2}{\pi}$};
+        \begin{figure}[h]
+          \centering
+          \begin{tikzpicture}[scale=3]
+            % axes
+            \draw[->] (-1.3,0) -- (1.3,0) node[right] {$x$};
+            \draw[->] (0,-0.1) -- (0,0.85) node[above] {$f_X(x)$};
 
-    % density
-    \draw[thick, blue, domain=-1:1, samples=100, smooth]
-      plot (\x, {2/pi*sqrt(1-\x*\x)});
+            % tick marks
+            \foreach \x in {-1,1} {
+              \draw (\x,0.02) -- (\x,-0.02) node[below] {$\x$};
+            }
+            \draw (0.02,2/pi) -- (-0.02,2/pi) node[left] {$\tfrac{2}{\pi}$};
 
-    % zero outside the support
-    \draw[thick, blue] (-1.3,0) -- (-1,0);
-    \draw[thick, blue] (1,0) -- (1.3,0);
+            % density
+            \draw[thick, blue, domain=-1:1, samples=100, smooth]
+            plot (\x, {2/pi*sqrt(1-\x*\x)});
 
-    % label
-    \node[blue, above right] at (0.55,0.55) {$f_X(x)=\dfrac{2}{\pi}\sqrt{1-x^2}$};
-  \end{tikzpicture}
-  \caption{Marginal density of $X$ when $(X,Y)$ is uniform on the unit disc.}
-\end{figure}
+            % zero outside the support
+            \draw[thick, blue] (-1.3,0) -- (-1,0);
+            \draw[thick, blue] (1,0) -- (1.3,0);
 
-\item The friend is applying the factorization theorem. However, the factorisation theorem requires the factorization to hold over all of $\mathbb R^2,$ but the given factorization is only valid over $D.$ Hence, it can't be applied.
+            % label
+            \node[blue, above right] at (0.55,0.55)
+            {$f_X(x)=\dfrac{2}{\pi}\sqrt{1-x^2}$};
+          \end{tikzpicture}
+          \caption{Marginal density of $X$ when $(X,Y)$ is uniform on
+          the unit disc.}
+        \end{figure}
 
-\item Here, the argument would work because we can find such $g, h$ with definition
-$$
-g(x) = \mathbbm 1_{[-1/2, 1/2]}(x), \qquad \mathbbm 1_{[-1/2, 1/2]}(y)
-$$
-that factor the density.
-\end{enumerate}
+      \item The friend is applying the factorization theorem.
+        However, the factorisation theorem requires the factorization
+        to hold over all of $\mathbb R^2,$ but the given
+        factorization is only valid over $D.$ Hence, it can't be applied.
 
-\item \begin{enumerate}
-    \item We compute $\mathbb E[R]$ using the law of the unconscious statisticiain:
-    \begin{align*}
-        \mathbb E[R] = \iint_{D} \dfrac{\sqrt{x^2 + y^2}}{\pi} \, dx \, dy.
-    \end{align*}
+      \item Here, the argument would work because we can find such
+        $g, h$ with definition
+        $$
+        g(x) = \mathbbm 1_{[-1/2, 1/2]}(x), \qquad \mathbbm 1_{[-1/2, 1/2]}(y)
+        $$
+        that factor the density.
+    \end{enumerate}
 
-    Using polar coordinates, with the map $T^{-1}(r, \theta) = (r \cos \theta, r \sin \theta),$ and Jacobian
-    $$
-    J = \begin{vmatrix}
-        \cos \theta & -r \sin \theta  \\
-        \sin \theta & r \cos \theta
-    \end{vmatrix} = r,
-    $$
-    we get integral
-    $$
-    \mathbb E[R] = \dfrac{1}\pi{}\int_{0}^{2\pi} \int_{0}^{1} r^2 \, dr \, d\theta = \dfrac{1}{\pi} \int_{0}^{2\pi} \dfrac{1}{3} \, d\theta = \dfrac{2}{3}.
-    $$
-
-    \item For $\{R \leq r\},$ we have probability
-    $$
-    F_R(r) = \dfrac{\pi r^2}{\pi} = r^2,
-    $$
-    and for $\{R^2 \leq r\},$ we have probability $$
-    F_{R^2}(r) = F_{R}(\sqrt{r}) = r.
-    $$
-    on $r \in [0, 1]$ and $1$ if $r > 1,$ $0$ otherwise.
-
-    \item We compute pdfs via differentiating
-    \begin{align*}
-        f_R(r) = 2r, \qquad f_{R^2}(r) = 1.
-    \end{align*}
-
-    \item \begin{itemize}
-        \item We have \begin{align*}
-            \mathbb E[R] = \int_{0}^{1} r (2r) \, dr = \dfrac{2}{3}.
+  \item
+    \begin{enumerate}
+      \item We compute $\mathbb E[R]$ using the law of the
+        unconscious statisticiain:
+        \begin{align*}
+          \mathbb E[R] = \iint_{D} \dfrac{\sqrt{x^2 + y^2}}{\pi} \, dx \, dy.
         \end{align*}
 
-        \item Alternatively, we have
+        Using polar coordinates, with the map $T^{-1}(r, \theta) = (r
+        \cos \theta, r \sin \theta),$ and Jacobian
         $$
-        \mathbb E[R] = \int_{0}^{1} \sqrt{r} \cdot 1 \, dr = \dfrac{2}{3}.
+        J =
+        \begin{vmatrix}
+          \cos \theta & -r \sin \theta  \\
+          \sin \theta & r \cos \theta
+        \end{vmatrix} = r,
         $$
-    \end{itemize}
-\end{enumerate}
+        we get integral
+        $$
+        \mathbb E[R] = \dfrac{1}\pi{}\int_{0}^{2\pi} \int_{0}^{1} r^2
+        \, dr \, d\theta = \dfrac{1}{\pi} \int_{0}^{2\pi}
+        \dfrac{1}{3} \, d\theta = \dfrac{2}{3}.
+        $$
+
+      \item For $\{R \leq r\},$ we have probability
+        $$
+        F_R(r) = \dfrac{\pi r^2}{\pi} = r^2,
+        $$
+        and for $\{R^2 \leq r\},$ we have probability $$
+        F_{R^2}(r) = F_{R}(\sqrt{r}) = r.
+        $$
+        on $r \in [0, 1]$ and $1$ if $r > 1,$ $0$ otherwise.
+
+      \item We compute pdfs via differentiating
+        \begin{align*}
+          f_R(r) = 2r, \qquad f_{R^2}(r) = 1.
+        \end{align*}
+
+      \item
+        \begin{itemize}
+          \item We have
+            \begin{align*}
+              \mathbb E[R] = \int_{0}^{1} r (2r) \, dr = \dfrac{2}{3}.
+            \end{align*}
+
+          \item Alternatively, we have
+            $$
+            \mathbb E[R] = \int_{0}^{1} \sqrt{r} \cdot 1 \, dr = \dfrac{2}{3}.
+            $$
+        \end{itemize}
+    \end{enumerate}
 \end{enumerate}
 \end{document}

@@ -5,60 +5,80 @@
 \begin{document}
 \subsection{Green Circle}
 \begin{enumerate}
-    \item [1] We want to count the number of ordered pairs $(A, B)$ of disjoint subsets of $[n].$ Since $A, B.$ Consider any such ordered pair $(A, B).$ Define the mapping $f: D \to (0, 1, 2)^{n},$ such that
+  \item [1] We want to count the number of ordered pairs $(A, B)$ of
+    disjoint subsets of $[n].$ Since $A, B.$ Consider any such
+    ordered pair $(A, B).$ Define the mapping $f: D \to (0, 1,
+    2)^{n},$ such that
     $$
-    f(A, B)_{i} = \begin{cases}
-        0 & i \in A  \\
-        1 & i \in B \\
-        2 & \text{otherwise}
+    f(A, B)_{i} =
+    \begin{cases}
+      0 & i \in A  \\
+      1 & i \in B \\
+      2 & \text{otherwise}
     \end{cases}.
     $$
     This mapping is a bijection, and hence we can count $|(0, 1, 2)^n| = 3^n.$
 
-    \item [4] We want to determine the number of ways to partition $2n$ distinct elements into $n$ unordered pairs. 
-    
-    First, consider counting such a quantity where each pair is distinct. I.e., define buckets $1, 2, \ldots, n$ that can contain maximum $2$ elements. There are 
+  \item [4] We want to determine the number of ways to partition $2n$
+    distinct elements into $n$ unordered pairs.
+
+    First, consider counting such a quantity where each pair is
+    distinct. I.e., define buckets $1, 2, \ldots, n$ that can contain
+    maximum $2$ elements. There are
     $$
     \dfrac{(2n)!}{(2!)^{n}} = \dfrac{(2n)!}{2^n}
     $$
-    ways to perform this permutation, since each permutation of $1, \ldots, 2n$ corresponds with $2^n$ selections of unordered pairs where pairs are distinct.
+    ways to perform this permutation, since each permutation of $1,
+    \ldots, 2n$ corresponds with $2^n$ selections of unordered pairs
+    where pairs are distinct.
 
-    Then, since pairs are indistinct, there are $n!$ cases with distinct pairs that correspond to a single case with indistinct pairs (partition). Thus, the total number of ways is 
+    Then, since pairs are indistinct, there are $n!$ cases with
+    distinct pairs that correspond to a single case with indistinct
+    pairs (partition). Thus, the total number of ways is
     $$
     \dfrac{(2n)!}{n! 2^n}.
     $$
 
-    \item [5] We want a combinatorial proof for 
+  \item [5] We want a combinatorial proof for
     $$
     K :=\sum_{k =1 }^{n} k {n \choose k}^2 = n {2n - 1 \choose n - 1}.
     $$
-    when $n \geq 1.$ 
+    when $n \geq 1.$
 
-    Consider $n$ elements from group A, and $n - 1$ elements from group B, with a leader from group B. Naively, we can do this by selecting the leader in $n$ ways, selecting the remaining $n -1$ elements in ${2n -1 \choose n - 1}$ ways, yielding
+    Consider $n$ elements from group A, and $n - 1$ elements from
+    group B, with a leader from group B. Naively, we can do this by
+    selecting the leader in $n$ ways, selecting the remaining $n -1$
+    elements in ${2n -1 \choose n - 1}$ ways, yielding
     $$
     K = n {2 n -1 \choose n- 1}.
     $$
 
-    Alternatively, we can choose an arbitrary $1 \leq k \leq n$ elements from $B,$ and then choose $n - k$ elements to not be chosen from $A,$ and then choose which element is the leader from $B$ in $$
+    Alternatively, we can choose an arbitrary $1 \leq k \leq n$
+    elements from $B,$ and then choose $n - k$ elements to not be
+    chosen from $A,$ and then choose which element is the leader from $B$ in $$
     k {n \choose k}^2
     $$
     ways. Summing over all possible $k$, we therefore get
-    $$  
+    $$
     \sum_{k =1 }^{n} k {n \choose k}^2 = n {2n -1 \choose n - 1}.
     $$
 \end{enumerate}
 
 \subsection{Blue Square}
 \begin{enumerate}
-    \item [7] We want to find the probability that a permutation of $[n]$ has exactly 2 cycles. 
+  \item [7] We want to find the probability that a permutation of
+    $[n]$ has exactly 2 cycles.
 
-    Consider writing an arbitrary cyclic permutation of $[n]$ with two cycles in cyclic notation, where the length of the first cycle is $\leq$ the length of the second cycle. 
+    Consider writing an arbitrary cyclic permutation of $[n]$ with
+    two cycles in cyclic notation, where the length of the first
+    cycle is $\leq$ the length of the second cycle.
 
     For the following, assume $n$ is odd. Let $r = (n - 1)/2.$
-    
-    Then, if $n$ is odd every cycle can be written in 
+
+    Then, if $n$ is odd every cycle can be written in
     $$
-    \sum_{k = 1}^{r}{n \choose k} (k-1)! (n- k -1)! = \sum_{k =1 }^{r} \dfrac{n!}{k (n - k)}
+    \sum_{k = 1}^{r}{n \choose k} (k-1)! (n- k -1)! = \sum_{k =1
+    }^{r} \dfrac{n!}{k (n - k)}
     $$
     ways.
 
@@ -71,86 +91,129 @@
     Since $$
     \dfrac{1}{k(n-k)} = \dfrac{1}{n}\left(\dfrac{1}{k} + \dfrac{1}{n -k}\right),
     $$
-    we can write the above as 
+    we can write the above as
     \begin{align*}
-    \dfrac{1}{n}\sum_{k =1 }^{r}  \dfrac{1}{k} + \dfrac{1}{n - k} + \dfrac{1}{n} \left( \sum_{k = 1}^{r} \dfrac{1}{k}
-    + \sum_{k = \underbrace{n -r }_{r + 1}}^{n -1} \dfrac{1}{ k}
-    \right) 
-   =  \dfrac{1}{n}\left(1 + \dfrac{1}{2} + \ldots + \dfrac{1}{n-1}\right)
+      \dfrac{1}{n}\sum_{k =1 }^{r}  \dfrac{1}{k} + \dfrac{1}{n - k} +
+      \dfrac{1}{n} \left( \sum_{k = 1}^{r} \dfrac{1}{k}
+        + \sum_{k = \underbrace{n -r }_{r + 1}}^{n -1} \dfrac{1}{ k}
+      \right)
+      =  \dfrac{1}{n}\left(1 + \dfrac{1}{2} + \ldots + \dfrac{1}{n-1}\right)
     \end{align*}
 
-    In the case where $n$ is even, the $k = n/2$ case should not have a double count, meaning our sum is 
+    In the case where $n$ is even, the $k = n/2$ case should not have
+    a double count, meaning our sum is
     $$
-    \underbrace{\dfrac{1}{2}{n \choose n/2}(n/2 - 1)!^2}_{= \frac{1}{2}(\frac{n!}{n^2})}   + \sum_{k = 1}^{n /2 - 1} \dfrac{n!}{k(n-k)} = \dfrac{1}{n} \cdot \dfrac{n!}{2n} + \sum_{k =1 }^{n/2 - 1} \dfrac{n!}{k(n-k)}.
+    \underbrace{\dfrac{1}{2}{n \choose n/2}(n/2 - 1)!^2}_{=
+    \frac{1}{2}(\frac{n!}{n^2})}   + \sum_{k = 1}^{n /2 - 1}
+    \dfrac{n!}{k(n-k)} = \dfrac{1}{n} \cdot \dfrac{n!}{2n} + \sum_{k
+    =1 }^{n/2 - 1} \dfrac{n!}{k(n-k)}.
     $$
-    Hence, our probability (dividing by $n!$) is 
+    Hence, our probability (dividing by $n!$) is
     $$
-    \dfrac{1}{n}\left(\dfrac{1}{2n}\right) +\dfrac{1}n{} \sum_{k = 1}^{n/2 - 1} \dfrac{1}{k} + \dfrac{1}{n}\sum_{k = n /2  + 1}^{n-1} \dfrac{1}{k},
+    \dfrac{1}{n}\left(\dfrac{1}{2n}\right) +\dfrac{1}n{} \sum_{k =
+    1}^{n/2 - 1} \dfrac{1}{k} + \dfrac{1}{n}\sum_{k = n /2  +
+    1}^{n-1} \dfrac{1}{k},
     $$
-    which is also 
+    which is also
     $$
     \dfrac{1}{n}\left(
-    1 + \dfrac{1}{2} + \ldots + \dfrac{1}{n}
+      1 + \dfrac{1}{2} + \ldots + \dfrac{1}{n}
     \right)
     $$
     as required.
 
-    \item [9] We prove that every permutation $\sigma$ of $[n]$ can be written $\sigma = \sigma_1 \sigma_2$ where $\sigma_1, \sigma_2$ are involutions, and compositions are performed right to left.
+  \item [9] We prove that every permutation $\sigma$ of $[n]$ can be
+    written $\sigma = \sigma_1 \sigma_2$ where $\sigma_1, \sigma_2$
+    are involutions, and compositions are performed right to left.
 
-    Consider the cycle notation of an arbitrary permutation $\tau.$ For $\tau^2 = \mathds{1},$ the element following $a$ in some cycle must be also followed by $a$ (up to some permutation), or $(a)$ msut be in it's own cycle. In other words, a permutation satisfies $\tau^2 = \mathds 1$ if and only if it has cycles of at most length $2,$ i.e composed of only disjoint swaps.
+    Consider the cycle notation of an arbitrary permutation $\tau.$
+    For $\tau^2 = \mathds{1},$ the element following $a$ in some
+    cycle must be also followed by $a$ (up to some permutation), or
+    $(a)$ msut be in it's own cycle. In other words, a permutation
+    satisfies $\tau^2 = \mathds 1$ if and only if it has cycles of at
+    most length $2,$ i.e composed of only disjoint swaps.
 
-    First, we want to show that we can always write some arbitrary cycle as a product of two involutions. Consider an arbitrary cycle 
+    First, we want to show that we can always write some arbitrary
+    cycle as a product of two involutions. Consider an arbitrary cycle
     $$
     \sigma = (a_1 \ a_2 \ \ldots \ a_k),
     $$
-    for some integer $k.$ Assume we have $k \equiv 0 \pmod 2.$ Then, a cycle 
+    for some integer $k.$ Assume we have $k \equiv 0 \pmod 2.$ Then, a cycle
     $$
     (a_1 \ a_2 \ \ldots \ a_k)
     $$
     can be written as $\alpha \beta,$ where
     $$
     \beta = (a_1 \ a_k) (a_2 \ a_{k -1 }) \ldots (a_{k/2} a_{k/2 + 1})
-    $$ 
-    and 
+    $$
+    and
     $$
     \alpha = (a_k \ a_2) (a_{k - 1} a_3) \ldots (a_{k/2 + 2} \ a_{k/2}).
     $$
-    Similarly, if we have $k \equiv 1 \pmod 2,$ and $k' = (k -1)/2$ then a cycle can be decomposed as 
+    Similarly, if we have $k \equiv 1 \pmod 2,$ and $k' = (k -1)/2$
+    then a cycle can be decomposed as
     $$
-        \beta = (a_1 \ a_k) (a_2 \ a_{k-1}) \ldots (a_r \ a_{k + 1 - r}),,,,
+    \beta = (a_1 \ a_k) (a_2 \ a_{k-1}) \ldots (a_r \ a_{k + 1 - r}),,,,
     $$
-    and 
+    and
     $$
     \alpha = (a_k \ a_2) (a_{k-1} \ a_3) \ldots (a_{k + 1- r} \ a_{r + 1}).
     $$
 
-    In either case, both $\alpha^2 = \mathds 1$ and $\beta^2 = \mathds 1,$ meaning we can write an arbitrary cycle $c = c_1 c_2$ where $c_1, c_2$ involutions.
+    In either case, both $\alpha^2 = \mathds 1$ and $\beta^2 =
+    \mathds 1,$ meaning we can write an arbitrary cycle $c = c_1 c_2$
+    where $c_1, c_2$ involutions.
 
-    Then, decompose $\sigma$ into a product of arbitrary (disjoint) cycles $\sigma_j$ (if cycles aren't disjoint, combine them until they are). By the above, we can write
+    Then, decompose $\sigma$ into a product of arbitrary (disjoint)
+    cycles $\sigma_j$ (if cycles aren't disjoint, combine them until
+    they are). By the above, we can write
     $$
     \sigma = \prod_{j} \alpha_j \beta_j.
     $$
-    Since $\alpha_j, \beta_i$ for $j \neq i$ are disjoint, they commute. Thus, by iteratively commuting $\beta_i$ all the way to the right for decreasing $i,$ we can write
+    Since $\alpha_j, \beta_i$ for $j \neq i$ are disjoint, they
+    commute. Thus, by iteratively commuting $\beta_i$ all the way to
+    the right for decreasing $i,$ we can write
     $$
-    \sigma = \underbrace{\prod_{j} \alpha_j}_{\sigma_1} \times \underbrace{\prod_{j} \beta_j.}_{\sigma_2}
+    \sigma = \underbrace{\prod_{j} \alpha_j}_{\sigma_1} \times
+    \underbrace{\prod_{j} \beta_j.}_{\sigma_2}
     $$
-    Since $\beta_i, \beta_j$ are disjoint for $i \neq j,$ and so are $\alpha_i, \alpha_j,$ $\sigma$ can be written as $\sigma = \sigma_1 \sigma_2$ for involutions $\sigma_1, \sigma_2.$
+    Since $\beta_i, \beta_j$ are disjoint for $i \neq j,$ and so are
+    $\alpha_i, \alpha_j,$ $\sigma$ can be written as $\sigma =
+    \sigma_1 \sigma_2$ for involutions $\sigma_1, \sigma_2.$
 \end{enumerate}
 
 \subsection{Black Diamond}
 \begin{enumerate}
-    \item [10] We want to count the number of minimal selfish subsets of $[n].$ 
-    
-    Consider any minimal selfish subset $A \subseteq [n]$ with $|A| = k.$ Then, $k \in A$ since $A$ is selfish. Now, for the sake of contradiction assume $r \in A$ for $1 \leq r < k.$ Then, we can construct a subset $A' \subseteq A$ with $r \in A,$ and $r - 1 < k - 1$ other arbitrary elements from $A$ in $A',$ meaning $A'$ is also selfish, and hence $A$ cannot be minimal selfish. Thus, for minimal selfish $A \subseteq [n],$ we must have $a \geq |A|$ for all $a \in A.$
+  \item [10] We want to count the number of minimal selfish subsets of $[n].$
 
-    Alternatively, consider any subset $A \subseteq [n]$ with $|A| = k,$ $k \in A,$ and $r \geq k$ for all $r \in A.$ Then, any proper subset $A' \subset A$ has cardinality $|A'| < k,$ meaning no element $r \in A'$ can have $r = |A'|,$ since $r \geq k > |A'|,$ and thus $A$ is minimal selfish.
+    Consider any minimal selfish subset $A \subseteq [n]$ with $|A| =
+    k.$ Then, $k \in A$ since $A$ is selfish. Now, for the sake of
+    contradiction assume $r \in A$ for $1 \leq r < k.$ Then, we can
+    construct a subset $A' \subseteq A$ with $r \in A,$ and $r - 1 <
+    k - 1$ other arbitrary elements from $A$ in $A',$ meaning $A'$ is
+    also selfish, and hence $A$ cannot be minimal selfish. Thus, for
+    minimal selfish $A \subseteq [n],$ we must have $a \geq |A|$ for
+    all $a \in A.$
 
-    Hence, a set $A \subseteq [n]$ is minimal and selfish if and only if for all $r \in A,$ $r \geq |A|,$ and $|A| \in A.$ Then, we can count this quantity by enumerating over $|A|$:
+    Alternatively, consider any subset $A \subseteq [n]$ with $|A| =
+    k,$ $k \in A,$ and $r \geq k$ for all $r \in A.$ Then, any proper
+    subset $A' \subset A$ has cardinality $|A'| < k,$ meaning no
+    element $r \in A'$ can have $r = |A'|,$ since $r \geq k > |A'|,$
+    and thus $A$ is minimal selfish.
+
+    Hence, a set $A \subseteq [n]$ is minimal and selfish if and only
+    if for all $r \in A,$ $r \geq |A|,$ and $|A| \in A.$ Then, we can
+    count this quantity by enumerating over $|A|$:
     \begin{align*}
-        \sum_{k = 1}^{n} \underbrace{{n - k \choose k - 1}}_\text{ways to choose $k - 1$ other elements $> k$},
+      \sum_{k = 1}^{n} \underbrace{{n - k \choose k - 1}}_\text{ways
+      to choose $k - 1$ other elements $> k$},
     \end{align*}
     as required.
 \end{enumerate}
 \subsection{Reflection}
-Initially, for Blue Square (7), didn't consider the double-counting for even cases correctly, and got issues with my summation tricks. Repaired it by realizing every unordered case is counted twice (appearing in either the left cycle or the right cycle), and then appropriately dividing by 2.
+Initially, for Blue Square (7), didn't consider the double-counting
+for even cases correctly, and got issues with my summation tricks.
+Repaired it by realizing every unordered case is counted twice
+(appearing in either the left cycle or the right cycle), and then
+appropriately dividing by 2.
 \end{document}

@@ -4,94 +4,120 @@
 
 \begin{document}
 \begin{enumerate}
-\item Let us have the probability space $(\Omega, \mathcal F, \mathbb P).$ Assume we have discrete random variables $X(\omega)$ and $Y(\omega).$ Consider the map $U : \Omega \to \mathbb R$ defined by
-$$
-U(\omega) = X(\omega) + Y(\omega).
-$$
+  \item Let us have the probability space $(\Omega, \mathcal F,
+    \mathbb P).$ Assume we have discrete random variables $X(\omega)$
+    and $Y(\omega).$ Consider the map $U : \Omega \to \mathbb R$ defined by
+    $$
+    U(\omega) = X(\omega) + Y(\omega).
+    $$
 
-Then, consider the image $U(\Omega),$
-$$
-U(\Omega) = \{X(\omega) + Y(\omega) : \omega \in \Omega\}.
-$$
-Since $X(\Omega)$ and $Y(\Omega)$ are countable, $X(\Omega) \times Y(\Omega)$ is countable. Define the mapping $f: X(\Omega) \times Y(\Omega) \to X(\Omega) + Y(\Omega),$ such that
-$$
-f(a, b) = a + b,
-$$
-where $X(\Omega) + Y(\Omega) = \{x + y: x\in X(\Omega), y \in Y(\Omega)\}.$ For any $u \in X(\Omega) + Y(\Omega),$ by definition there exists $x \in X(\Omega), y \in Y(\Omega)$ such that $x + y = u,$ meaning $f(x, y) = u,$ and hence $f$ is surjective. Therefore, $X(\Omega) + Y(\Omega)$ is countable.
-Finally, $U(\Omega) \subseteq X(\Omega) + Y(\Omega),$ since $X(\omega) + Y(\omega) \in X(\Omega) + Y(\Omega)$ for all $w \in \Omega.$ Thus, $U(\Omega)$ is countable.
-Finally, consider the pre-image $U^{-1}(u)$ for any $u \in \mathbb R.$ This is the set such that
-$$
+    Then, consider the image $U(\Omega),$
+    $$
+    U(\Omega) = \{X(\omega) + Y(\omega) : \omega \in \Omega\}.
+    $$
+    Since $X(\Omega)$ and $Y(\Omega)$ are countable, $X(\Omega)
+    \times Y(\Omega)$ is countable. Define the mapping $f: X(\Omega)
+    \times Y(\Omega) \to X(\Omega) + Y(\Omega),$ such that
+    $$
+    f(a, b) = a + b,
+    $$
+    where $X(\Omega) + Y(\Omega) = \{x + y: x\in X(\Omega), y \in
+    Y(\Omega)\}.$ For any $u \in X(\Omega) + Y(\Omega),$ by
+    definition there exists $x \in X(\Omega), y \in Y(\Omega)$ such
+    that $x + y = u,$ meaning $f(x, y) = u,$ and hence $f$ is
+    surjective. Therefore, $X(\Omega) + Y(\Omega)$ is countable.
+    Finally, $U(\Omega) \subseteq X(\Omega) + Y(\Omega),$ since
+    $X(\omega) + Y(\omega) \in X(\Omega) + Y(\Omega)$ for all $w \in
+    \Omega.$ Thus, $U(\Omega)$ is countable.
+    Finally, consider the pre-image $U^{-1}(u)$ for any $u \in
+    \mathbb R.$ This is the set such that
+    $$
     U^{-1}(u) = \{\omega : X(\omega) + Y(\omega) = u \}.
-$$
-Enumerating over values of $Y(\omega),$ we have
-\begin{align*}
-U^{-1}(u) &= \bigcup_{y \in Y(\Omega)} \{\omega : X(\omega) = u - y\} \\
-&= \bigcup_{y \in Y(\Omega)} X^{-1}(u - y).
-\end{align*}
-Since $\mathcal F$ is closed under countable union, and $X^{-1}(u - y) \in \mathcal F,$ then $U^{-1}(u) \in \mathcal F.$
-Therefore, since $U(\Omega)$ is countable and the preimage $U^{-1}(u)$ is measurable for all $u \in \mathbb R,$ $U$ is a discrete random variable.
-\item \begin{enumerate}
-    \item Assume we have some discrete random variable $X \sim \text{Geometric}(p)$ for $p < 1.$ Then, $P(X = x) = p(1-p)^{x-1}$ for $x = \left\{1, 2, \ldots \right\}.$ Then, 
     $$
-    \mathbb P(X > a + b \mid X > b) = \dfrac{\mathbb P(X > a + b)}{\mathbb P(X > b)}.
-    $$
-    Finding a general formula for $P(X > x),$ we have
+    Enumerating over values of $Y(\omega),$ we have
     \begin{align*}
-    P(X > x) &= \sum_{i = x+ 1}^{\infty} p(1-p)^{i - 1} \\
-    &= p\sum_{i = x + 1}^{\infty} (1-p)^{i - 1} \\
-    &= p \sum_{i = 0}^{\infty} (1-p)^{i + x} \\
-    &= p (1 - p)^{x} \sum_{i = 0}^{\infty} (1-p)^{i} \\
-    &= p(1 - p)^{x} \cdot \dfrac{1}{p} = (1-p)^x.
+      U^{-1}(u) &= \bigcup_{y \in Y(\Omega)} \{\omega : X(\omega) = u - y\} \\
+      &= \bigcup_{y \in Y(\Omega)} X^{-1}(u - y).
     \end{align*}
-    Substituting this into our conditional probability, we get 
-    $$
-    \mathbb P(X > a + b \mid X > b) = \dfrac{(1-p)^{a + b}}{(1-p)^b} = (1- p)^a = \mathbb P(X > a).
-    $$
-    Therefore, we can conclude that if $X \sim \text{Geometric}(p),$ $X$ is memoryless.
-    \item Assume we have discrete memoryless $X$ supported on $\{1, 2, \ldots\}.$ Then, we have 
-    $$
-    \mathbb P(X > a + b \mid X > b) = \mathbb P(X > a),
-    $$
-    which occurs if and only if 
-    $$
-    \mathbb P(X > a + b) = \mathbb P(X > a) \cdot \mathbb P(X > b).
-    $$
-    Letting $G(x) = \mathbb P(X > x),$ we get the requirement 
-    $$
-    G(a + b) = G(a) \cdot G(b).
-    $$
-    Letting $b = 0$, we know $G(0) = 1.$ Letting $b = 1,$ we get
-    $$
-    G(a + 1) = G(a) \cdot G(1),
-    $$
-    which expanding the recursion, yields
-    $$
-    G(x) = G(1)^{x} = \mathbb P(X > x).
-    $$
-    Let $G(1) = 1 -p$ for some $p \in \mathbb R.$ Then, $$
-    \mathbb P(X > x) = (1-p)^x.
-    $$
-    By the definition of a probability measure, we need $0 \leq \mathbb P(X > x) \leq 1,$ meaning $0 \leq p \leq 1.$ Since
-    $$
-    \mathbb P(X>x - 1) = \sum_{i = x}^{\infty} \mathbb P(X = i) = \mathbb P(X = x) + \mathbb P(X > x),
-    $$
-    we can conclude
-    $$
-    \mathbb P(X = x) = (1-p)^{x-1} - (1-p)^x = (1-p)^{x-1} \cdot p,
-    $$
-    for some $0 \leq p \leq 1.$
-    Finally, for $\mathbb P(\Omega) = 1,$ we need $\mathbb P(X > 0) = 1,$ meaning $(1 - p)^{0} = 1,$ which is only the case when $p < 1.$
-    Thus, this forces $X \sim \text{Geometric}(p)$ for some $p < 1$ as required.
-\end{enumerate}
-    \item We look to find the pmf $p_X(x)$ that maximises 
+    Since $\mathcal F$ is closed under countable union, and $X^{-1}(u
+    - y) \in \mathcal F,$ then $U^{-1}(u) \in \mathcal F.$
+    Therefore, since $U(\Omega)$ is countable and the preimage
+    $U^{-1}(u)$ is measurable for all $u \in \mathbb R,$ $U$ is a
+    discrete random variable.
+  \item
+    \begin{enumerate}
+      \item Assume we have some discrete random variable $X \sim
+        \text{Geometric}(p)$ for $p < 1.$ Then, $P(X = x) =
+        p(1-p)^{x-1}$ for $x = \left\{1, 2, \ldots \right\}.$ Then,
+        $$
+        \mathbb P(X > a + b \mid X > b) = \dfrac{\mathbb P(X > a +
+        b)}{\mathbb P(X > b)}.
+        $$
+        Finding a general formula for $P(X > x),$ we have
+        \begin{align*}
+          P(X > x) &= \sum_{i = x+ 1}^{\infty} p(1-p)^{i - 1} \\
+          &= p\sum_{i = x + 1}^{\infty} (1-p)^{i - 1} \\
+          &= p \sum_{i = 0}^{\infty} (1-p)^{i + x} \\
+          &= p (1 - p)^{x} \sum_{i = 0}^{\infty} (1-p)^{i} \\
+          &= p(1 - p)^{x} \cdot \dfrac{1}{p} = (1-p)^x.
+        \end{align*}
+        Substituting this into our conditional probability, we get
+        $$
+        \mathbb P(X > a + b \mid X > b) = \dfrac{(1-p)^{a +
+        b}}{(1-p)^b} = (1- p)^a = \mathbb P(X > a).
+        $$
+        Therefore, we can conclude that if $X \sim
+        \text{Geometric}(p),$ $X$ is memoryless.
+      \item Assume we have discrete memoryless $X$ supported on $\{1,
+        2, \ldots\}.$ Then, we have
+        $$
+        \mathbb P(X > a + b \mid X > b) = \mathbb P(X > a),
+        $$
+        which occurs if and only if
+        $$
+        \mathbb P(X > a + b) = \mathbb P(X > a) \cdot \mathbb P(X > b).
+        $$
+        Letting $G(x) = \mathbb P(X > x),$ we get the requirement
+        $$
+        G(a + b) = G(a) \cdot G(b).
+        $$
+        Letting $b = 0$, we know $G(0) = 1.$ Letting $b = 1,$ we get
+        $$
+        G(a + 1) = G(a) \cdot G(1),
+        $$
+        which expanding the recursion, yields
+        $$
+        G(x) = G(1)^{x} = \mathbb P(X > x).
+        $$
+        Let $G(1) = 1 -p$ for some $p \in \mathbb R.$ Then, $$
+        \mathbb P(X > x) = (1-p)^x.
+        $$
+        By the definition of a probability measure, we need $0 \leq
+        \mathbb P(X > x) \leq 1,$ meaning $0 \leq p \leq 1.$ Since
+        $$
+        \mathbb P(X>x - 1) = \sum_{i = x}^{\infty} \mathbb P(X = i) =
+        \mathbb P(X = x) + \mathbb P(X > x),
+        $$
+        we can conclude
+        $$
+        \mathbb P(X = x) = (1-p)^{x-1} - (1-p)^x = (1-p)^{x-1} \cdot p,
+        $$
+        for some $0 \leq p \leq 1.$
+        Finally, for $\mathbb P(\Omega) = 1,$ we need $\mathbb P(X >
+        0) = 1,$ meaning $(1 - p)^{0} = 1,$ which is only the case when $p < 1.$
+        Thus, this forces $X \sim \text{Geometric}(p)$ for some $p <
+        1$ as required.
+    \end{enumerate}
+  \item We look to find the pmf $p_X(x)$ that maximises
     $$
     H(X) = -\sum_{s \in S} p_X(s) \log(p_X(s)).
     $$
-    Using the properties of the logarithm, we get 
+    Using the properties of the logarithm, we get
     $$
     H(X) = \sum_{s \in S} p_X(s) \log\left(\dfrac{1}{p_X(s)}\right).
     $$
-    First, notice that the random variable $X$ described by the uniform pmf $p_X(s) = 1/k$ yields
+    First, notice that the random variable $X$ described by the
+    uniform pmf $p_X(s) = 1/k$ yields
     $$
     H(X) = \sum_{s \in S} \dfrac{1}{k} \log k = \log k.
     $$
@@ -99,102 +125,133 @@ Therefore, since $U(\Omega)$ is countable and the preimage $U^{-1}(u)$ is measur
     $$
     f(X) = H(X) - \log k \leq 0.
     $$
-    Manipulating further, we get 
+    Manipulating further, we get
     \begin{align*}
-    f(X) &= H(X) - \sum_{s \in S} p_X(s) \log k \\
-    &= \sum_{s \in S} p_X(s) \left[
-    \log \left(\dfrac{1}{p_X(s)}\right) - \log k
-    \right] \\
-    &= \sum_{s \in S} p_X(s) \log \left(\dfrac{1}{kp_X(s)}\right).
+      f(X) &= H(X) - \sum_{s \in S} p_X(s) \log k \\
+      &= \sum_{s \in S} p_X(s) \left[
+        \log \left(\dfrac{1}{p_X(s)}\right) - \log k
+      \right] \\
+      &= \sum_{s \in S} p_X(s) \log \left(\dfrac{1}{kp_X(s)}\right).
     \end{align*}
     Since $\log x \leq x - 1$ for all $x \in (0, \infty),$ we can conclude
     $$
-    f(X) \leq \sum_{s \in S} p_X(s) \left(\dfrac{1}{kp_X(s)} - 1\right) = 1 - \sum_{s \in S} p_X(s) = 0.
+    f(X) \leq \sum_{s \in S} p_X(s) \left(\dfrac{1}{kp_X(s)} -
+    1\right) = 1 - \sum_{s \in S} p_X(s) = 0.
     $$
     Thus, $$
     H(x) \leq \log k,
     $$
-    and the uniform distribution $p_X(s) = 1/k$ achieves this equality, meaning $p_X(s) = 1/k$ maximises the entropy.
-    \item \begin{enumerate}
-    \item Let the $N$ balls be represented by $b_1, \ldots, b_N. $Define our sample space $\Omega$ as 
-    $$
-    \Omega = \{
-        (b_{i_1}, b_{i_2}, \ldots, b_{i_n}) : 1 \leq i_1 <i _2 < \ldots < i_n \leq N
-    \},
-    $$
-    and let $b(b_i) = 1$ if $b_i$ is black, and $0$ otherwise.
-    Then, we can define discrete random variable $B: \Omega \to \mathbb R$ such that
-    $$
-    B(\omega) = \sum_{b_i \in \omega} b(b_i).
-    $$
-    Therefore, the preimage $B^{-1}(t)$ consists of all $\omega$ such that $$
-    \sum_{b_i \in \omega} b(b_i) = t.
-    $$
-    Thus, let us count 
-    $$
-    \left|\left\{\omega : \sum_{b_i \in \omega} b(b_i) = t\right\}\right|,
-    $$
-    where we need to choose $t$ out of the $b$ black balls and then the remaining $n - t$ out of the $w$ white balls. Thus, 
-    $$
-    \left|\left\{\omega : \sum_{b_i \in \omega} b(b_i) = t\right\}\right| ={b \choose t} \cdot {w \choose n - t}.
-    $$
-    Since these outcomes are disjoint, and each outcome has probability ${N \choose n}^{-1}$
-    $$
-    \mathbb P(B = t) = \dfrac{{b \choose t} {w \choose n - t}}{{N \choose n}}.
-    $$
-    \item Let $b = pN$ and $w = (1 - p)N.$ Then, in the limit as $N \to \infty,$ we have
-    $$
-    \lim_{N \to \infty} \mathbb P(B = t) = \lim_{N \to \infty} \dfrac{{Np \choose t} {N - Np \choose n - t}}{{N \choose n}}.
-    $$
-    Rearranging the inside of the limit yields
-    $$
-    {Np \choose t} \cdot t! \cdot \dfrac{1}{(Np)^t} \cdot {N - Np \choose n - t} \cdot (n - t)! \cdot \dfrac{1}{(N - Np)^{n - t}} \cdot \dfrac{(Np)^t \cdot (N - Np)^{n - t}}{t! (n-t)!} \cdot \dfrac{1}{{N \choose n}}.
-    $$
-    Via the given identity, the limit of this term as $N \to \infty$ is equivalent to 
-    \begin{align*}
-    \lim_{N \to \infty} \dfrac{(Np)^t (N - Np)^{n-t}}{t! (n - t)! {N \choose n}} &= {n \choose t} \lim_{N \to \infty} \dfrac{N^{n}p^t(1-p)^{n-t}}{n !{N \choose n}} \\
-    &={n \choose t} \lim_{N \to \infty} p^t (1-p)^{n-t} \left(
-    \dfrac{{N \choose n}}{\frac{1}{n!}N^{n}}
-    \right)^{-1} \\
-    &= {n \choose t } p^{t}(1 - p)^{n -t} = \mathbb P(\text{Binomial}(n, p) = t),
-    \end{align*}
-    and hence 
-    $$
-    \lim_{N \to \infty} \mathbb P(B = t) = \mathbb P(\text{Binomial}(n, p) = t)
-    $$
-    as required.
+    and the uniform distribution $p_X(s) = 1/k$ achieves this
+    equality, meaning $p_X(s) = 1/k$ maximises the entropy.
+  \item
+    \begin{enumerate}
+      \item Let the $N$ balls be represented by $b_1, \ldots, b_N.
+        $Define our sample space $\Omega$ as
+        $$
+        \Omega = \{
+          (b_{i_1}, b_{i_2}, \ldots, b_{i_n}) : 1 \leq i_1 <i _2 <
+          \ldots < i_n \leq N
+        \},
+        $$
+        and let $b(b_i) = 1$ if $b_i$ is black, and $0$ otherwise.
+        Then, we can define discrete random variable $B: \Omega \to
+        \mathbb R$ such that
+        $$
+        B(\omega) = \sum_{b_i \in \omega} b(b_i).
+        $$
+        Therefore, the preimage $B^{-1}(t)$ consists of all $\omega$
+        such that $$
+        \sum_{b_i \in \omega} b(b_i) = t.
+        $$
+        Thus, let us count
+        $$
+        \left|\left\{\omega : \sum_{b_i \in \omega} b(b_i) = t\right\}\right|,
+        $$
+        where we need to choose $t$ out of the $b$ black balls and
+        then the remaining $n - t$ out of the $w$ white balls. Thus,
+        $$
+        \left|\left\{\omega : \sum_{b_i \in \omega} b(b_i) =
+        t\right\}\right| ={b \choose t} \cdot {w \choose n - t}.
+        $$
+        Since these outcomes are disjoint, and each outcome has
+        probability ${N \choose n}^{-1}$
+        $$
+        \mathbb P(B = t) = \dfrac{{b \choose t} {w \choose n - t}}{{N
+        \choose n}}.
+        $$
+      \item Let $b = pN$ and $w = (1 - p)N.$ Then, in the limit as $N
+        \to \infty,$ we have
+        $$
+        \lim_{N \to \infty} \mathbb P(B = t) = \lim_{N \to \infty}
+        \dfrac{{Np \choose t} {N - Np \choose n - t}}{{N \choose n}}.
+        $$
+        Rearranging the inside of the limit yields
+        $$
+        {Np \choose t} \cdot t! \cdot \dfrac{1}{(Np)^t} \cdot {N - Np
+        \choose n - t} \cdot (n - t)! \cdot \dfrac{1}{(N - Np)^{n -
+        t}} \cdot \dfrac{(Np)^t \cdot (N - Np)^{n - t}}{t! (n-t)!}
+        \cdot \dfrac{1}{{N \choose n}}.
+        $$
+        Via the given identity, the limit of this term as $N \to
+        \infty$ is equivalent to
+        \begin{align*}
+          \lim_{N \to \infty} \dfrac{(Np)^t (N - Np)^{n-t}}{t! (n -
+          t)! {N \choose n}} &= {n \choose t} \lim_{N \to \infty}
+          \dfrac{N^{n}p^t(1-p)^{n-t}}{n !{N \choose n}} \\
+          &={n \choose t} \lim_{N \to \infty} p^t (1-p)^{n-t} \left(
+            \dfrac{{N \choose n}}{\frac{1}{n!}N^{n}}
+          \right)^{-1} \\
+          &= {n \choose t } p^{t}(1 - p)^{n -t} = \mathbb
+          P(\text{Binomial}(n, p) = t),
+        \end{align*}
+        and hence
+        $$
+        \lim_{N \to \infty} \mathbb P(B = t) = \mathbb
+        P(\text{Binomial}(n, p) = t)
+        $$
+        as required.
     \end{enumerate}
-    \item \begin{enumerate}
-        \item Label the four vertices $a, b, c, d$ in clockwise order, starting from the top left corner. Then, we have 
+  \item
+    \begin{enumerate}
+      \item Label the four vertices $a, b, c, d$ in clockwise order,
+        starting from the top left corner. Then, we have
         \begin{align*}
-        \mathbb P(a = b = c = d = -1 \mid c = -1)
-        &= \dfrac{e^{4\beta}}{\sum_{(a,b,d) \in \{-1,1\}^3} e^{\beta(ab-b-d+ad)}} \\
-        &= \dfrac{e^{4\beta}}{\sum_{(a,b,d) \in \{-1,1\}^3} e^{\beta(b(a-1)+d(a-1))}}.
+          \mathbb P(a = b = c = d = -1 \mid c = -1)
+          &= \dfrac{e^{4\beta}}{\sum_{(a,b,d) \in \{-1,1\}^3}
+          e^{\beta(ab-b-d+ad)}} \\
+          &= \dfrac{e^{4\beta}}{\sum_{(a,b,d) \in \{-1,1\}^3}
+          e^{\beta(b(a-1)+d(a-1))}}.
         \end{align*}
-        Looking at the denominator, 
+        Looking at the denominator,
         \begin{align*}
-        \sum_{a,b,d = \pm 1}e^{\beta(b(a-1)+d(a-1))}
-        &= \sum_{a,b,d = \pm 1} e^{\beta b(a-1)} e^{\beta d(a-1)} \\
-        &= \sum_{a = \pm 1} \sum_{b = \pm 1} \sum_{d = \pm 1} e^{\beta b(a-1)} e^{\beta d(a-1)} \\
-        &= \sum_{a = \pm 1} \left( \sum_{b = \pm 1} e^{\beta b(a-1)} \right) \left(\sum_{d = \pm 1} e^{\beta d(a-1)}\right) \\
-        &= \sum_{a = \pm 1} 2\cosh (\beta (a - 1)) \cdot 2 \cosh (\beta(a - 1)) \\
-        &= \sum_{a = \pm 1} 4 \cosh (\beta(a-1))^2 \\
-        &= 4 \cosh(0)^2 + 4 \cosh(-2 \beta)^2 \\
-        &= 4 + 4 \cosh (2 \beta)^2 \\
-        &= 4(1 + \cosh^2(2 \beta)),
+          \sum_{a,b,d = \pm 1}e^{\beta(b(a-1)+d(a-1))}
+          &= \sum_{a,b,d = \pm 1} e^{\beta b(a-1)} e^{\beta d(a-1)} \\
+          &= \sum_{a = \pm 1} \sum_{b = \pm 1} \sum_{d = \pm 1}
+          e^{\beta b(a-1)} e^{\beta d(a-1)} \\
+          &= \sum_{a = \pm 1} \left( \sum_{b = \pm 1} e^{\beta
+          b(a-1)} \right) \left(\sum_{d = \pm 1} e^{\beta d(a-1)}\right) \\
+          &= \sum_{a = \pm 1} 2\cosh (\beta (a - 1)) \cdot 2 \cosh
+          (\beta(a - 1)) \\
+          &= \sum_{a = \pm 1} 4 \cosh (\beta(a-1))^2 \\
+          &= 4 \cosh(0)^2 + 4 \cosh(-2 \beta)^2 \\
+          &= 4 + 4 \cosh (2 \beta)^2 \\
+          &= 4(1 + \cosh^2(2 \beta)),
         \end{align*}
-        yielding 
+        yielding
         \begin{align*}
-        \mathbb P(a = b = c = d = - 1 \mid c= -1) &= \dfrac{e^{4\beta}}{4(1 + \cosh^2(2\beta))} \\
-        &= \dfrac{e^{4\beta}}{2(3 + \cosh(4\beta))}.
+          \mathbb P(a = b = c = d = - 1 \mid c= -1) &=
+          \dfrac{e^{4\beta}}{4(1 + \cosh^2(2\beta))} \\
+          &= \dfrac{e^{4\beta}}{2(3 + \cosh(4\beta))}.
         \end{align*}
-        \item Similarly, we have
+      \item Similarly, we have
         $$
-        \mathbb P(a = b = c = d = -1 \mid c = -1) = \dfrac{(1/2)^4}{(1/2)} = 1/8.
+        \mathbb P(a = b = c = d = -1 \mid c = -1) =
+        \dfrac{(1/2)^4}{(1/2)} = 1/8.
         $$
-        \item From part (a), we have
+      \item From part (a), we have
         \begin{align*}
-        \mathbb P(a = b = c= d = -1 \mid c = -1) &= \dfrac{e^{4\beta}}{6 + e^{4\beta} + e^{-4\beta}}.
+          \mathbb P(a = b = c= d = -1 \mid c = -1) &=
+          \dfrac{e^{4\beta}}{6 + e^{4\beta} + e^{-4\beta}}.
         \end{align*}
         As $\beta \to 0,$ this fraction approaches $
         1/8,
@@ -204,7 +261,12 @@ Therefore, since $U(\Omega)$ is countable and the preimage $U^{-1}(u)$ is measur
         p = \dfrac{1}{6e^{-4\beta} + 1 + e^{-8\beta}} \to 1
         $$
         as $\beta \to \infty.$
-        At high temperatures the distribution of colors are independently distributed and less likely to all be one uniform color, whereas at low temperature given that a single vertex is blue, the probability that the rest is blue approaches $1,$ meaning its more likely to be one uniform color (i.e., magnetized).
+        At high temperatures the distribution of colors are
+        independently distributed and less likely to all be one
+        uniform color, whereas at low temperature given that a single
+        vertex is blue, the probability that the rest is blue
+        approaches $1,$ meaning its more likely to be one uniform
+        color (i.e., magnetized).
     \end{enumerate}
 
 \end{enumerate}

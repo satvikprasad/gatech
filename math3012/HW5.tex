@@ -6,7 +6,6 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 
-
 \renewcommand{\vec}[1]{\mathbf{#1}}
 
 \title{Homework 3}
@@ -19,90 +18,149 @@
 
 \begin{document}
 \begin{enumerate}
-\item First, let us reduce this problem into the number of integer solutions for the equation $$A + B + C' = 13,$$ where $C' = C - 2.$ The number of solutions to this set of equations can be the thought of the number of solutions such that conditions $c_1,$ $c_2$ and $c_3$ are false, where \begin{align*}
-    c_1 : A \geq 7, \quad c_2 : B \geq 12, \quad c_3 : C' \geq 6.
-\end{align*}
-Using inclusion exclusion, we know \begin{align*}
-    N(\bar c_1 \bar c_2 \bar c_3) =  S_0 - S_1 + S_2 - S_3.
-\end{align*}
-In this case, $S_0$ is the number of unique non-negative integer solutions, which can be found by distributing $13$ stars over $2$ bars, meaning $$S_0 = {15 \choose 2}.$$
-Similarly, $S_1$ represents the sum of all the ways to have one of the conditions present, which can be enumerated: \begin{itemize}
-    \item If $c_1,$ then we can fix $7$ stars into bucket $A$, and distribute $6$ stars over $2$ bars, yielding ${8 \choose 2}$ ways.
-    \item If $c_2,$ in a similar fashion we fix $12$ stars into bucket $B,$ leaving $1$ star to distribute over $2$ bars, yielding ${3 \choose 1}$ ways.
-    \item If $c_3,$ then we can fix $6$ stars into bucket $C',$ distributing $7$ stars over $2$ bars, yielding ${9 \choose 2}$ ways.
-\end{itemize}
-Hence, $S_1 = {8 \choose 2} + {3 \choose 1} + {9 \choose 2}.$ 
-
-Thirdly, $S_2$ represents the sum of ways to have pairs of conditions true. If $c_1$ and $c_2,$ then $A + B \geq 19$ yielding $0$ possibilities. If $c_1$ and $c_3,$ $A + C' = 13,$ meaning $B$ must be 0, yielding $1$ possibility. Finally, if $c_2$ and $c_3$, then $B + C' \geq 18,$ yielding $0$ possibilities. Hence, $S_2 = 1.$
-
-Finally, $S_3$ represents the ways to have all three conditions true. In this case, $A \geq 7, B \geq 12, C' \geq 6$ meaning their sum is greater than or equal to 25, yielding $0$ possible solutions. Hence, \begin{align*}
-    N(\bar c_1 \bar c_2 \bar c_3) &= {15 \choose 2} - \left({8 \choose 2} + {3 \choose 1} + {9 \choose 2}\right) + 1 - 0 \\
-    &= 105 - (28 + 3 + 36) + 1 \\
-    &= 39
-\end{align*}
-possible unique integer solutions.
-
-\iffalse
-ARRANGEMENT
-
-ARNGEMT
-ARN E
-\fi
-
-\item \begin{enumerate}
-    \item The singletons in ARRANGEMENT are G, M, and T, whereas the letters that occur twice are A, R, N, and E.
-
-    Let $E_2$ represent the number of ways to have exactly two pairs of consecutive identical letters. Then, using inclusion-exclusion, we know \begin{align*}
-        E_2 = S_2 - {3 \choose 2}S_3 + {4 \choose 2}S_4.
+  \item First, let us reduce this problem into the number of integer
+    solutions for the equation $$A + B + C' = 13,$$ where $C' = C -
+    2.$ The number of solutions to this set of equations can be the
+    thought of the number of solutions such that conditions $c_1,$
+    $c_2$ and $c_3$ are false, where
+    \begin{align*}
+      c_1 : A \geq 7, \quad c_2 : B \geq 12, \quad c_3 : C' \geq 6.
     \end{align*}
+    Using inclusion exclusion, we know
+    \begin{align*}
+      N(\bar c_1 \bar c_2 \bar c_3) =  S_0 - S_1 + S_2 - S_3.
+    \end{align*}
+    In this case, $S_0$ is the number of unique non-negative integer
+    solutions, which can be found by distributing $13$ stars over $2$
+    bars, meaning $$S_0 = {15 \choose 2}.$$
+    Similarly, $S_1$ represents the sum of all the ways to have one
+    of the conditions present, which can be enumerated:
+    \begin{itemize}
+      \item If $c_1,$ then we can fix $7$ stars into bucket $A$, and
+        distribute $6$ stars over $2$ bars, yielding ${8 \choose 2}$ ways.
+      \item If $c_2,$ in a similar fashion we fix $12$ stars into
+        bucket $B,$ leaving $1$ star to distribute over $2$ bars,
+        yielding ${3 \choose 1}$ ways.
+      \item If $c_3,$ then we can fix $6$ stars into bucket $C',$
+        distributing $7$ stars over $2$ bars, yielding ${9 \choose 2}$ ways.
+    \end{itemize}
+    Hence, $S_1 = {8 \choose 2} + {3 \choose 1} + {9 \choose 2}.$
 
-    We can compute $S_2$ by choosing 2 out of the 4 letters to be adjacent, treating adjacent pairs as a single unit, and permuting, yielding \begin{align*}
-        S_2 = {4 \choose 2} \cdot \dfrac{9!}{(2!)^2}.
-    \end{align*} 
-    Similarly, we can compute $S_3$ by choosing $3$ out of the $4$ letters to come in adjacent pairs, and then permuting: \begin{align*}
-        S_3 = {4 \choose 3} \cdot \dfrac{8!}{2!}.
-    \end{align*}
-    Finally, we can compute $S_4$ by choosing all the letters to come in adjacent pairs: \begin{align*}
-        S_4 = 7!.
-    \end{align*}
-    Hence, \begin{align*}
-        E_2 &= {4 \choose 2} \dfrac{9!}{(2!)^2} - {3 \choose 2} \cdot {4 \choose 3} \cdot \dfrac{8!}{2!} + {4 \choose 2} \cdot 7! \\
-        &= 544320 - 241920 + 30240 \\
-        &= 332640
-    \end{align*}
-    ways.
+    Thirdly, $S_2$ represents the sum of ways to have pairs of
+    conditions true. If $c_1$ and $c_2,$ then $A + B \geq 19$
+    yielding $0$ possibilities. If $c_1$ and $c_3,$ $A + C' = 13,$
+    meaning $B$ must be 0, yielding $1$ possibility. Finally, if
+    $c_2$ and $c_3$, then $B + C' \geq 18,$ yielding $0$
+    possibilities. Hence, $S_2 = 1.$
 
-    \item We can use the fact that \begin{align*}
-        L_2 &= S_0 - E_1 - E_0 \\ 
-            &= S_0 - \left(S_1 - {2 \choose 1}S_2 + {3 \choose 1}S_3 - {4 \choose 1}S_4\right) \\ &- \left(S_0 - S_1 + S_2 - S_3 + S_4\right) \\
-            &= S_2 - 2S_3 + 3S_4.
+    Finally, $S_3$ represents the ways to have all three conditions
+    true. In this case, $A \geq 7, B \geq 12, C' \geq 6$ meaning
+    their sum is greater than or equal to 25, yielding $0$ possible
+    solutions. Hence,
+    \begin{align*}
+      N(\bar c_1 \bar c_2 \bar c_3) &= {15 \choose 2} - \left({8
+      \choose 2} + {3 \choose 1} + {9 \choose 2}\right) + 1 - 0 \\
+      &= 105 - (28 + 3 + 36) + 1 \\
+      &= 39
     \end{align*}
-    Using our values for $S_k$ in the previous question, we get \begin{align*}
-        L_2 &= {4 \choose 2} \cdot \dfrac{9!}{(2!)^2   } - 2\cdot {4 \choose 3} \cdot \dfrac{8!}{2!} + 3 \cdot 7! \\
-        &= 544320 - 161280 + 15120 \\
-        &= 398160
-    \end{align*}
-    total ways to have at least two pairs of consecutive identical letters.
-\end{enumerate}
+    possible unique integer solutions.
 
-\iffalse
-Determine derangement of n elements. All elements must be in different spots. Consider first element, which has $n - 1$ locations to go. So $n - 1$ ways to place it. Then, if the next number goes in the first spot, we derange the rest $D(n - 2)$ ways. Otherwise, we treat the start as the place where the chosen number cannot go, yielding $D(n - 1)$ ways.
-\fi
+    \iffalse
+    ARRANGEMENT
 
-\item \begin{enumerate}
-    \item We first determine an arrangement for the first classroom, and then a derangement for the second classroom. To arrange the first classroom, we have $12!$ ways. Then, to derange the 12 students in the second classroom, we have $$D(12) = 12! \sum_{k = 0}^{12}\dfrac{(-1)^k}{k!} = \left[\dfrac{12!}{e}\right] = 176214841.$$ Hence, we have a total of \begin{align*}
-        (12!)^2 \sum_{k = 0}^{12}\dfrac{(-1)^k}{k!} = 12! \cdot (176214841)
-    \end{align*} ways.
+    ARNGEMT
+    ARN E
+    \fi
 
-    \item We choose the $6$ students to occupy the same desks, arrange the first classroom, and then derange the other $6$ students in the second classroom, yielding \begin{align*}
-        &{12 \choose 6} \cdot 12! \cdot D(6) \\
-        &= \left(\dfrac{12!}{6!}\right)^2 6! \sum_{k = 0}^6 \dfrac{(-1)^k}{k!}. \\
-        &= \dfrac{(12!)^2}{6!} \sum_{k = 0}^{6} \dfrac{(-1)^k}{k!} \\
-        &= \dfrac{(12!)^2}{(6!)^2} \left[\dfrac{6!}{e}\right] \\
-        &= \dfrac{(12!)^2}{(6!)^2} \cdot 265
-    \end{align*}
-    ways.
-\end{enumerate}
+  \item
+    \begin{enumerate}
+      \item The singletons in ARRANGEMENT are G, M, and T, whereas
+        the letters that occur twice are A, R, N, and E.
+
+        Let $E_2$ represent the number of ways to have exactly two
+        pairs of consecutive identical letters. Then, using
+        inclusion-exclusion, we know
+        \begin{align*}
+          E_2 = S_2 - {3 \choose 2}S_3 + {4 \choose 2}S_4.
+        \end{align*}
+
+        We can compute $S_2$ by choosing 2 out of the 4 letters to be
+        adjacent, treating adjacent pairs as a single unit, and
+        permuting, yielding
+        \begin{align*}
+          S_2 = {4 \choose 2} \cdot \dfrac{9!}{(2!)^2}.
+        \end{align*}
+        Similarly, we can compute $S_3$ by choosing $3$ out of the
+        $4$ letters to come in adjacent pairs, and then permuting:
+        \begin{align*}
+          S_3 = {4 \choose 3} \cdot \dfrac{8!}{2!}.
+        \end{align*}
+        Finally, we can compute $S_4$ by choosing all the letters to
+        come in adjacent pairs:
+        \begin{align*}
+          S_4 = 7!.
+        \end{align*}
+        Hence,
+        \begin{align*}
+          E_2 &= {4 \choose 2} \dfrac{9!}{(2!)^2} - {3 \choose 2}
+          \cdot {4 \choose 3} \cdot \dfrac{8!}{2!} + {4 \choose 2} \cdot 7! \\
+          &= 544320 - 241920 + 30240 \\
+          &= 332640
+        \end{align*}
+        ways.
+
+      \item We can use the fact that
+        \begin{align*}
+          L_2 &= S_0 - E_1 - E_0 \\
+          &= S_0 - \left(S_1 - {2 \choose 1}S_2 + {3 \choose 1}S_3 -
+          {4 \choose 1}S_4\right) \\ &- \left(S_0 - S_1 + S_2 - S_3 +
+          S_4\right) \\
+          &= S_2 - 2S_3 + 3S_4.
+        \end{align*}
+        Using our values for $S_k$ in the previous question, we get
+        \begin{align*}
+          L_2 &= {4 \choose 2} \cdot \dfrac{9!}{(2!)^2   } - 2\cdot
+          {4 \choose 3} \cdot \dfrac{8!}{2!} + 3 \cdot 7! \\
+          &= 544320 - 161280 + 15120 \\
+          &= 398160
+        \end{align*}
+        total ways to have at least two pairs of consecutive identical letters.
+    \end{enumerate}
+
+    \iffalse
+    Determine derangement of n elements. All elements must be in
+    different spots. Consider first element, which has $n - 1$
+    locations to go. So $n - 1$ ways to place it. Then, if the next
+    number goes in the first spot, we derange the rest $D(n - 2)$
+    ways. Otherwise, we treat the start as the place where the chosen
+    number cannot go, yielding $D(n - 1)$ ways.
+    \fi
+
+  \item
+    \begin{enumerate}
+      \item We first determine an arrangement for the first
+        classroom, and then a derangement for the second classroom.
+        To arrange the first classroom, we have $12!$ ways. Then, to
+        derange the 12 students in the second classroom, we have
+        $$D(12) = 12! \sum_{k = 0}^{12}\dfrac{(-1)^k}{k!} =
+        \left[\dfrac{12!}{e}\right] = 176214841.$$ Hence, we have a total of
+        \begin{align*}
+          (12!)^2 \sum_{k = 0}^{12}\dfrac{(-1)^k}{k!} = 12! \cdot (176214841)
+        \end{align*} ways.
+
+      \item We choose the $6$ students to occupy the same desks,
+        arrange the first classroom, and then derange the other $6$
+        students in the second classroom, yielding
+        \begin{align*}
+          &{12 \choose 6} \cdot 12! \cdot D(6) \\
+          &= \left(\dfrac{12!}{6!}\right)^2 6! \sum_{k = 0}^6
+          \dfrac{(-1)^k}{k!}. \\
+          &= \dfrac{(12!)^2}{6!} \sum_{k = 0}^{6} \dfrac{(-1)^k}{k!} \\
+          &= \dfrac{(12!)^2}{(6!)^2} \left[\dfrac{6!}{e}\right] \\
+          &= \dfrac{(12!)^2}{(6!)^2} \cdot 265
+        \end{align*}
+        ways.
+    \end{enumerate}
 
 \end{enumerate}
 \end{document}

@@ -3,191 +3,288 @@
 
 \begin{document}
 \begin{enumerate}
-    \item The pseudocode of such an algorithm may be described as \begin{algorithm}
-    \caption{D\&C Max}
-    \begin{algorithmic}
+  \item The pseudocode of such an algorithm may be described as
+    \begin{algorithm}
+      \caption{D\&C Max}
+      \begin{algorithmic}
         \Procedure{Max}{$A[1 \ldots n]$}
-            \If{$n = 1$}
-                \State \Return $A[1]$
-            \EndIf
-        
-            \State $L \gets \text{Max}(A[1\ldots n/2])$
-            \State $R \gets \text{Max}(A[n/2 + 1 \ldots n])$
+        \If{$n = 1$}
+        \State \Return $A[1]$
+        \EndIf
 
-            \If{$L \geq R$}
-                \State \Return $L$
-            \EndIf
-            
-            \State \Return $R$
+        \State $L \gets \text{Max}(A[1\ldots n/2])$
+        \State $R \gets \text{Max}(A[n/2 + 1 \ldots n])$
+
+        \If{$L \geq R$}
+        \State \Return $L$
+        \EndIf
+
+        \State \Return $R$
         \EndProcedure
-    \end{algorithmic}
+      \end{algorithmic}
     \end{algorithm}
 
-    We prove correctness inductively. When $n = 1,$ $A[1]$ is trivially the maximum element, meaning this algorithm is correct for input size $1.$
+    We prove correctness inductively. When $n = 1,$ $A[1]$ is
+    trivially the maximum element, meaning this algorithm is correct
+    for input size $1.$
 
-    Assume this algorithm is true for all input sizes $1 \leq k \leq n - 1.$ Then, for input size $n,$ the maximum either lives in $A[1\ldots n/2]$ or $A[n/2 + 1 \ldots n].$ Let the maximum element be $m = A[i].$ By our inductive hypothesis on $k = n/2,$ $\text{Max}(A[1\ldots n/2]) = \max_{1 \leq j \leq n/2} A[j]$ and $\text{Max}(A[n/2+1\ldots n]) = \max_{n/2 < j \leq n} A[j]$
+    Assume this algorithm is true for all input sizes $1 \leq k \leq
+    n - 1.$ Then, for input size $n,$ the maximum either lives in
+    $A[1\ldots n/2]$ or $A[n/2 + 1 \ldots n].$ Let the maximum
+    element be $m = A[i].$ By our inductive hypothesis on $k = n/2,$
+    $\text{Max}(A[1\ldots n/2]) = \max_{1 \leq j \leq n/2} A[j]$ and
+    $\text{Max}(A[n/2+1\ldots n]) = \max_{n/2 < j \leq n} A[j]$
     \begin{itemize}
-        \item If $1 \leq i \leq n/2,$ then $m = \max_{1 \leq j \leq n/2}A[j] \geq \max_{n/2 <j \leq n}A[j]$, since otherwise $m$ cannot be the maximum. In this case, we have $L \geq R,$ and thus we return $L = m,$ meaning our algorithm is correct for size $n.$
+      \item If $1 \leq i \leq n/2,$ then $m = \max_{1 \leq j \leq
+        n/2}A[j] \geq \max_{n/2 <j \leq n}A[j]$, since otherwise $m$
+        cannot be the maximum. In this case, we have $L \geq R,$ and
+        thus we return $L = m,$ meaning our algorithm is correct for size $n.$
 
-        \item Alternatively, if $n/2 < i \leq n,$ then similarly $L = \max_{1 \leq j \leq n/2}A[j] \leq \max_{n/2 <j \leq n}A[j] = R = m.$ In this case, if $L = R = m$ then we take the $L \geq R$ branch and return $m.$ Otherwise, if $L < R,$ then we skip the branch and return $R = m.$ In either case, we return $m,$ meaning our algorithm is correct for size $n$.
+      \item Alternatively, if $n/2 < i \leq n,$ then similarly $L =
+        \max_{1 \leq j \leq n/2}A[j] \leq \max_{n/2 <j \leq n}A[j] =
+        R = m.$ In this case, if $L = R = m$ then we take the $L \geq
+        R$ branch and return $m.$ Otherwise, if $L < R,$ then we skip
+        the branch and return $R = m.$ In either case, we return $m,$
+        meaning our algorithm is correct for size $n$.
     \end{itemize}
 
-    $\therefore$ by strong induction, this algorithm is correct for all input sizes $n \geq 1.$
+    $\therefore$ by strong induction, this algorithm is correct for
+    all input sizes $n \geq 1.$
 
-    The recurrence of this algorithm satisfies $T(n) = 2T(n/2) + \mathcal O(1),$ and $T(1) = \mathcal O(1),$ meaning by the master theorem we have a time complexity of $\mathcal O(n).$
+    The recurrence of this algorithm satisfies $T(n) = 2T(n/2) +
+    \mathcal O(1),$ and $T(1) = \mathcal O(1),$ meaning by the master
+    theorem we have a time complexity of $\mathcal O(n).$
 
     \newpage
 
-    \item Similarly, we can write the psuedocode as 
+  \item Similarly, we can write the psuedocode as
     \begin{algorithm}
-        \caption{D\&C Prefix Sum}
-        \begin{algorithmic}
-            \Procedure{PrefixSum}{$A[1\ldots n]$}
-                \If{$n = 1$}
-                    \State \Return $A$
-                \EndIf
+      \caption{D\&C Prefix Sum}
+      \begin{algorithmic}
+        \Procedure{PrefixSum}{$A[1\ldots n]$}
+        \If{$n = 1$}
+        \State \Return $A$
+        \EndIf
 
-                \vspace{5mm} 
+        \vspace{5mm}
 
-                \State $L \gets \text{PrefixSum}(A[1 \ldots n/2])$
-                \State $R \gets \text{PrefixSum}(A[n/2 + 1 \ldots n])$
+        \State $L \gets \text{PrefixSum}(A[1 \ldots n/2])$
+        \State $R \gets \text{PrefixSum}(A[n/2 + 1 \ldots n])$
 
-                \For{$i \in n/2 + 1 \ldots n$}
-                    \State $R[i] \gets R[i] + L[n/2]$
-                \EndFor
-            \EndProcedure
-        \end{algorithmic}
+        \For{$i \in n/2 + 1 \ldots n$}
+        \State $R[i] \gets R[i] + L[n/2]$
+        \EndFor
+        \EndProcedure
+      \end{algorithmic}
     \end{algorithm}
 
-    For $n = 1,$ the prefix sum of $A$ is $A$ itself (since there is one element), meaning our algorithm is correct for input size $1.$
+    For $n = 1,$ the prefix sum of $A$ is $A$ itself (since there is
+    one element), meaning our algorithm is correct for input size $1.$
 
-    Assume our algorithm is correct for all input sizes $1 \leq k \leq n - 1.$ Then, consider input $A[1 \ldots n].$ By our inductive hypothesis, \begin{align*}
-        \text{PrefixSum}(A[1 \ldots n/2])[j] &= \sum_{i = 1}^{j} A[i], \\
-        \text{PrefixSum}(A[n/2 + 1 \ldots n])[j] &= \sum_{i = 1}^{j} A[n/2 + i], \\
+    Assume our algorithm is correct for all input sizes $1 \leq k
+    \leq n - 1.$ Then, consider input $A[1 \ldots n].$ By our
+    inductive hypothesis,
+    \begin{align*}
+      \text{PrefixSum}(A[1 \ldots n/2])[j] &= \sum_{i = 1}^{j} A[i], \\
+      \text{PrefixSum}(A[n/2 + 1 \ldots n])[j] &= \sum_{i = 1}^{j}
+      A[n/2 + i], \\
     \end{align*}
 
     Then, our algorithm returns an array that satisfies
     \begin{align*}
-        R[i] = \begin{cases}
-            \sum_{i = 1}^{j} A[i] & 1 \leq i \leq n/2 \\
-            \sum_{i =1}^{n/2} A[i] + \sum_{i = 1}^{j} A[n/2 + i] & n/2 + 1 \leq i \leq n,
-        \end{cases}
+      R[i] =
+      \begin{cases}
+        \sum_{i = 1}^{j} A[i] & 1 \leq i \leq n/2 \\
+        \sum_{i =1}^{n/2} A[i] + \sum_{i = 1}^{j} A[n/2 + i] & n/2 +
+        1 \leq i \leq n,
+      \end{cases}
     \end{align*}
-    which simplifies to 
+    which simplifies to
     \begin{align*}
-        R[i] = \begin{cases}
-            \sum_{i = 1}^{j} A[i] & 1 \leq i \leq n/2 \\
-            \sum_{i = 1}^{j} A[i] & n/2 + 1 \leq i \leq n \\
-        \end{cases}         = \sum_{i = 1}^{j} A[i],
+      R[i] =
+      \begin{cases}
+        \sum_{i = 1}^{j} A[i] & 1 \leq i \leq n/2 \\
+        \sum_{i = 1}^{j} A[i] & n/2 + 1 \leq i \leq n \\
+      \end{cases}         = \sum_{i = 1}^{j} A[i],
     \end{align*}
     meaning this algorithm returns the prefix sum of $A$ for input size $n.$
 
-    $\therefore,$ via strong induction we have proved that this algorithm is correct.
+    $\therefore,$ via strong induction we have proved that this
+    algorithm is correct.
 
-    The recurrence satisfies 
+    The recurrence satisfies
     \begin{align*}
-        T(n) = 2T(n/2) + \mathcal O(n), \qquad T(1) = \mathcal O(1), 
+      T(n) = 2T(n/2) + \mathcal O(n), \qquad T(1) = \mathcal O(1),
     \end{align*}
-    and via the Master theorem the asymptotic complexity is $\mathcal O(n \lg n).$
+    and via the Master theorem the asymptotic complexity is $\mathcal
+    O(n \lg n).$
 
-\newpage
+    \newpage
 
-\item This problem can simply be solved via a D\&C max algorithm. \begin{algorithm}
-    \caption{D\&C Peak Finding}
-    \begin{algorithmic}
-        \Procedure{PeakFinding}{$A[1 \ldots n]$} 
-            \If{$n = 1$}
-                \State \Return $A[1]$
-            \EndIf
+  \item This problem can simply be solved via a D\&C max algorithm.
+    \begin{algorithm}
+      \caption{D\&C Peak Finding}
+      \begin{algorithmic}
+        \Procedure{PeakFinding}{$A[1 \ldots n]$}
+        \If{$n = 1$}
+        \State \Return $A[1]$
+        \EndIf
 
-            \vspace{5mm}
+        \vspace{5mm}
 
-            \If{$A[n/2] < A[n/2 + 1]$}
-                \State \Return PeakFinding($A[n/2 + 1 \ldots n]$)
-            \EndIf
+        \If{$A[n/2] < A[n/2 + 1]$}
+        \State \Return PeakFinding($A[n/2 + 1 \ldots n]$)
+        \EndIf
 
-            \vspace{5mm}
-            
-            \State \Return PeakFinding($A[1 \ldots n/2]$)
+        \vspace{5mm}
+
+        \State \Return PeakFinding($A[1 \ldots n/2]$)
         \EndProcedure
-    \end{algorithmic}
-\end{algorithm}
-To prove correctness, when $n = 1$ the peak is always $A[1],$ meaning our algorithm is correct for input size $1.$
+      \end{algorithmic}
+    \end{algorithm}
+    To prove correctness, when $n = 1$ the peak is always $A[1],$
+    meaning our algorithm is correct for input size $1.$
 
-Assume the algorithm is correct for all input sizes $1 \leq r \leq n -1.$ Let the peak be at index $k.$ Then, we have two cases:
-\begin{itemize}
-    \item If $1 \leq k \leq n/2,$ then $A[i] > A[j]$ for all $j > i \geq k.$ Hence, since $n/2 + 1 > n / 2 \geq k,$ we can conclude that $A[n/2] > A[n/2 + 1],$ meaning we skip all branches and return $\text{PeakFinding}(A[1 \ldots n/2]).$ By our inductive hypothesis, $A[1 \ldots n/2]$ is in the form of a valid input with size $1 \leq n/2 \leq n - 1$, with a peak at index $k,$ meaning this will return the peak $A[k].$
+    Assume the algorithm is correct for all input sizes $1 \leq r
+    \leq n -1.$ Let the peak be at index $k.$ Then, we have two cases:
+    \begin{itemize}
+      \item If $1 \leq k \leq n/2,$ then $A[i] > A[j]$ for all $j > i
+        \geq k.$ Hence, since $n/2 + 1 > n / 2 \geq k,$ we can
+        conclude that $A[n/2] > A[n/2 + 1],$ meaning we skip all
+        branches and return $\text{PeakFinding}(A[1 \ldots n/2]).$ By
+        our inductive hypothesis, $A[1 \ldots n/2]$ is in the form of
+        a valid input with size $1 \leq n/2 \leq n - 1$, with a peak
+        at index $k,$ meaning this will return the peak $A[k].$
 
-    \item Otherwise, if $n/2 + 1 \leq k \leq n,$ then for all $i < j \leq k,$ we have $A[i] < A[j].$ As a result, we conclude that $A[n/2] < A[n/2 + 1],$ meaning we take the first branch and return PeakFinding($A[n/2 + 1\ldots n]$). Since $A[n/2 + 1 \ldots n]$ is a valid input with size $1 \leq n/2 \leq n - 1$ and peak at $k$, our inductive hypothesis means this will return $A[k].$
-\end{itemize}
+      \item Otherwise, if $n/2 + 1 \leq k \leq n,$ then for all $i <
+        j \leq k,$ we have $A[i] < A[j].$ As a result, we conclude
+        that $A[n/2] < A[n/2 + 1],$ meaning we take the first branch
+        and return PeakFinding($A[n/2 + 1\ldots n]$). Since $A[n/2 +
+        1 \ldots n]$ is a valid input with size $1 \leq n/2 \leq n -
+        1$ and peak at $k$, our inductive hypothesis means this will
+        return $A[k].$
+    \end{itemize}
 
-In either case, we return the correct peak $A[k],$ meaning our algorithm is correct for input size $n.$
+    In either case, we return the correct peak $A[k],$ meaning our
+    algorithm is correct for input size $n.$
 
-$\therefore$ by strong induction, our algorithm is correct for all input sizes $n \geq 1.$
+    $\therefore$ by strong induction, our algorithm is correct for
+    all input sizes $n \geq 1.$
 
-This satisfies recurrence $T(n) = T(n/2) + \mathcal O(1),$ meaning we have an asymptotic complexity via the Master theorem of $\mathcal O(\lg n).$
+    This satisfies recurrence $T(n) = T(n/2) + \mathcal O(1),$
+    meaning we have an asymptotic complexity via the Master theorem
+    of $\mathcal O(\lg n).$
 
-\newpage
+    \newpage
 
-\item When our divide and conquer has the maximum sum subarray straddled between two subproblems, we would like to find the maximum suffix sum of the left subarray, and the maximum prefix sum of the right subarray. Hence, let us write an algorithm that computes the max subarray sum, the max prefix sum, and the max suffix sum.
+  \item When our divide and conquer has the maximum sum subarray
+    straddled between two subproblems, we would like to find the
+    maximum suffix sum of the left subarray, and the maximum prefix
+    sum of the right subarray. Hence, let us write an algorithm that
+    computes the max subarray sum, the max prefix sum, and the max suffix sum.
 
-\begin{algorithm}
-    \caption{Max Sum} 
-    \begin{algorithmic}
+    \begin{algorithm}
+      \caption{Max Sum}
+      \begin{algorithmic}
         \Procedure{m}{$A[1 \ldots n]$}
-            \If{$n = 1$}
-                \State \Return $A[1], A[1], A[1], A[1]$
-            \EndIf
+        \If{$n = 1$}
+        \State \Return $A[1], A[1], A[1], A[1]$
+        \EndIf
 
-            \State $L, L_p, L_s, L_\sigma \gets \text{m}(A[1 \ldots n/2])$ 
-            \State $R, R_p, R_s, R_\sigma \gets \text{m}(A[ n/2 + 1 \ldots n])$ 
+        \State $L, L_p, L_s, L_\sigma \gets \text{m}(A[1 \ldots n/2])$
+        \State $R, R_p, R_s, R_\sigma \gets \text{m}(A[ n/2 + 1 \ldots n])$
 
-            \vspace{5mm}
-             
-            \State $K \gets \max\{L, R, L_s + R_p\}$
-            \State $P \gets \max\{L_p, L_\sigma + R_p\}$
-            \State $S \gets \max\{R_s, R_\sigma + L_s\}$
+        \vspace{5mm}
 
-            \vspace{5mm}
+        \State $K \gets \max\{L, R, L_s + R_p\}$
+        \State $P \gets \max\{L_p, L_\sigma + R_p\}$
+        \State $S \gets \max\{R_s, R_\sigma + L_s\}$
 
-            \State \Return $K, P, S, L_\sigma + R_\sigma.$
+        \vspace{5mm}
+
+        \State \Return $K, P, S, L_\sigma + R_\sigma.$
         \EndProcedure
-    \end{algorithmic}
-    
-    \begin{algorithmic}
+      \end{algorithmic}
+
+      \begin{algorithmic}
         \Procedure{MaxSum}{$A[1 \ldots n]$}
-            \State \Return $\text{m}(A[1 \ldots n])[0]$
+        \State \Return $\text{m}(A[1 \ldots n])[0]$
         \EndProcedure
-    \end{algorithmic}
-\end{algorithm}
+      \end{algorithmic}
+    \end{algorithm}
 
-First, let us prove that m is a correct algorithm, i.e m returns the max subarray sum, the max prefix sum, the max suffix sum, and the total sum.
+    First, let us prove that m is a correct algorithm, i.e m returns
+    the max subarray sum, the max prefix sum, the max suffix sum, and
+    the total sum.
 
-For $n = 1,$ all quantities are $A[1],$ meaning m is correct for input size $1.$ Now, let us assume m is correct for some input size $1 \leq k \leq  n - 1.$ Then:
-\begin{itemize}
-    \item The max subarray can either be a subarray of $A[1 \ldots n/2],$ a subarray of $A[n/2 + 1 \ldots n],$ or straddled in between. 
-    
-    In the first two cases, by our inductive hypothesis, $L$ or $R$ will be the max subarray sum, and since this is the maximum subarray sum of $A,$ it will exceed $L_s + R_p,$ meaning we will correctly return the maximum subarray sum.
+    For $n = 1,$ all quantities are $A[1],$ meaning m is correct for
+    input size $1.$ Now, let us assume m is correct for some input
+    size $1 \leq k \leq  n - 1.$ Then:
+    \begin{itemize}
+      \item The max subarray can either be a subarray of $A[1 \ldots
+        n/2],$ a subarray of $A[n/2 + 1 \ldots n],$ or straddled in between.
 
-    In the third case, the subarray with the maximum sum will be composed of some suffix of $A[1 \ldots n/2],$ and some prefix of $A[n/2 + 1 \ldots n].$ Let us assume that this suffix and prefix that compose the maximum subarray isn't maximal. Then, we can construct a new subarray of $A$ with the respective maximal suffixes and prefixes replacing the chosen suffix and prefix that has a larger sum, contradicting the maximality of the subarray.
+        In the first two cases, by our inductive hypothesis, $L$ or
+        $R$ will be the max subarray sum, and since this is the
+        maximum subarray sum of $A,$ it will exceed $L_s + R_p,$
+        meaning we will correctly return the maximum subarray sum.
 
-    Thus, the maximal subarray must be composed of the maximal suffix of $A[1 \ldots n/2],$ and the maximal prefix of $A[n/2 + 1 \ldots n].$ By our inductive hypothesis, $L_s$ is this maximal suffix, and $R_p$ is this maximal prefix, meaning we correctly return $K = L_s + R_p$ in this case.
+        In the third case, the subarray with the maximum sum will be
+        composed of some suffix of $A[1 \ldots n/2],$ and some prefix
+        of $A[n/2 + 1 \ldots n].$ Let us assume that this suffix and
+        prefix that compose the maximum subarray isn't maximal. Then,
+        we can construct a new subarray of $A$ with the respective
+        maximal suffixes and prefixes replacing the chosen suffix and
+        prefix that has a larger sum, contradicting the maximality of
+        the subarray.
 
-    Thus, we know for input size $n,$ we correctly return the maximal subarray.
+        Thus, the maximal subarray must be composed of the maximal
+        suffix of $A[1 \ldots n/2],$ and the maximal prefix of $A[n/2
+        + 1 \ldots n].$ By our inductive hypothesis, $L_s$ is this
+        maximal suffix, and $R_p$ is this maximal prefix, meaning we
+        correctly return $K = L_s + R_p$ in this case.
 
-    \item The maximal prefix of $A[1 \ldots n]$ can either extend up till index $n/2$, or extend further than this. In the first case, since by our inductive hypothesis $L_p$ is this maximal prefix sum, $L_\sigma$ is the sum of the left array, and $L_p$ must exceed the other prefix $L_\sigma + R_p,$ we correctly return the maximal prefix sum.
+        Thus, we know for input size $n,$ we correctly return the
+        maximal subarray.
 
-    In the second case, there is no prefix of the left array that is maximal. Thus, the prefix must extend past index $n / 2,$ meaning it must contain the entirety of the left array. Then, assume it does not consist of the maximal right prefix. Then, we can replace whatever prefix it does consist of with the maximal right prefix, yielding a larger prefix sum, contradicting it's maximality. Hence, the maximal prefix sum of $A[1 \ldots n]$ must consist of the entirety of the left array, and the maximal prefix sum of the right array. By our inductive hypothesis, $L_\sigma$ is the left array's sum, and $R_p$ is the maximal prefix of the right subarray. Since $L_\sigma + R_p$ is guaranteed to be at least as large as any prefix of the left array, we return the correct maximal prefix sum of $A[1 \ldots n]$ in the second case too.
+      \item The maximal prefix of $A[1 \ldots n]$ can either extend
+        up till index $n/2$, or extend further than this. In the
+        first case, since by our inductive hypothesis $L_p$ is this
+        maximal prefix sum, $L_\sigma$ is the sum of the left array,
+        and $L_p$ must exceed the other prefix $L_\sigma + R_p,$ we
+        correctly return the maximal prefix sum.
 
-    In both cases, input size $n$ returns the correct maximal prefix of $A[1 \ldots n].$
+        In the second case, there is no prefix of the left array that
+        is maximal. Thus, the prefix must extend past index $n / 2,$
+        meaning it must contain the entirety of the left array. Then,
+        assume it does not consist of the maximal right prefix. Then,
+        we can replace whatever prefix it does consist of with the
+        maximal right prefix, yielding a larger prefix sum,
+        contradicting it's maximality. Hence, the maximal prefix sum
+        of $A[1 \ldots n]$ must consist of the entirety of the left
+        array, and the maximal prefix sum of the right array. By our
+        inductive hypothesis, $L_\sigma$ is the left array's sum, and
+        $R_p$ is the maximal prefix of the right subarray. Since
+        $L_\sigma + R_p$ is guaranteed to be at least as large as any
+        prefix of the left array, we return the correct maximal
+        prefix sum of $A[1 \ldots n]$ in the second case too.
 
-    \item WLOG, we can make the same argument for the maximal suffix sum.
+        In both cases, input size $n$ returns the correct maximal
+        prefix of $A[1 \ldots n].$
 
-    \item Since the sum of $A[1 \ldots n]$ is composed of the sum of the left array and the sum of the right array (which are $L_\sigma$ and $R_\sigma$ by our inductive hypothesis), for input size $n,$ m correctly returns the sum of $A[1 \ldots n].$
-\end{itemize}
+      \item WLOG, we can make the same argument for the maximal suffix sum.
 
-$\therefore$, by strong induction m correctly returns all four statistics. Thus, since MaxSum($A[1 \ldots n]$) returns m$(A[1 \ldots n])[0],$ MaxSum is also correct.
+      \item Since the sum of $A[1 \ldots n]$ is composed of the sum
+        of the left array and the sum of the right array (which are
+        $L_\sigma$ and $R_\sigma$ by our inductive hypothesis), for
+        input size $n,$ m correctly returns the sum of $A[1 \ldots n].$
+    \end{itemize}
 
-The recurrence of this algorithm satisfies $T(n) = 2T(n/2) + \mathcal O(1),$ meaning it's asymptotic complexity is $\mathcal O(n).$
+    $\therefore$, by strong induction m correctly returns all four
+    statistics. Thus, since MaxSum($A[1 \ldots n]$) returns m$(A[1
+    \ldots n])[0],$ MaxSum is also correct.
+
+    The recurrence of this algorithm satisfies $T(n) = 2T(n/2) +
+    \mathcal O(1),$ meaning it's asymptotic complexity is $\mathcal O(n).$
 \end{enumerate}
 \end{document}

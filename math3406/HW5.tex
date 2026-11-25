@@ -5,72 +5,106 @@
 \begin{document}
 \subsection{Writing Proofs}
 \begin{enumerate}
-    \item Assume we have finite dimensional $V,$ and a subspace $U$ of $V.$ Then, consider an arbitrary linear map $T \in \mathcal L(U, W)$ to a vector space $W.$ 
+  \item Assume we have finite dimensional $V,$ and a subspace $U$ of
+    $V.$ Then, consider an arbitrary linear map $T \in \mathcal L(U,
+    W)$ to a vector space $W.$
 
-    Let $\beta_U = \{u_1, u_2, \ldots,u_m\}$ be a basis for $u$. Extend this basis to a basis for $V,$ $\{u_1, \ldots, u_n\}$ where $n \geq m.$ Then, define the linear map $S \in \mathcal L(V, W)$ such that
+    Let $\beta_U = \{u_1, u_2, \ldots,u_m\}$ be a basis for $u$.
+    Extend this basis to a basis for $V,$ $\{u_1, \ldots, u_n\}$
+    where $n \geq m.$ Then, define the linear map $S \in \mathcal
+    L(V, W)$ such that
     $$
-    Su_k = \begin{cases}
-    Tu_k & 0 \leq k \leq m \\
-    0_W & m < k \leq n
+    Su_k =
+    \begin{cases}
+      Tu_k & 0 \leq k \leq m \\
+      0_W & m < k \leq n
     \end{cases}.
     $$
 
-    Then, since $\beta_U$ is a basis, any $u \in U$ can be written as 
+    Then, since $\beta_U$ is a basis, any $u \in U$ can be written as
     $$
     \mu_1u_1 + \ldots + \mu_m u_m,
     $$
-    meaning \begin{align*}
-        S u = \sum_{k = 1}^{m}\mu_k S u_k &= \sum_{k = 1}^{m} \mu_k Tu_k \\
-        &= T\sum_{k = 1}^{m} \mu_ku_k = Tu \\
+    meaning
+    \begin{align*}
+      S u = \sum_{k = 1}^{m}\mu_k S u_k &= \sum_{k = 1}^{m} \mu_k Tu_k \\
+      &= T\sum_{k = 1}^{m} \mu_ku_k = Tu \\
     \end{align*}
     by the linearity of $S, T.$ \qed
 
-    \item Assume there is some $T \in \mathcal L(\mathbb R^5)$ such that $\text{null}(T) = \text{range}(T).$ Then, by the fundamental theorem of linear maps,
+  \item Assume there is some $T \in \mathcal L(\mathbb R^5)$ such
+    that $\text{null}(T) = \text{range}(T).$ Then, by the fundamental
+    theorem of linear maps,
     $$
-        \dim \mathbb R^5 = \dim \text{null}(T) + \dim \text{range}(T),
+    \dim \mathbb R^5 = \dim \text{null}(T) + \dim \text{range}(T),
     $$
-    or equivalently, 
+    or equivalently,
     $$
     5 = 2\dim \text{null}(T),
     $$
-    meaning $5$ is even. However, this is a contradiction, and hence $\null(T) \neq \text{range}(T)$ for all linear maps $T \in \mathcal L(\mathbb R^5).$ \qed
+    meaning $5$ is even. However, this is a contradiction, and hence
+    $\null(T) \neq \text{range}(T)$ for all linear maps $T \in
+    \mathcal L(\mathbb R^5).$ \qed
 
-    \item Consider an arbitrary polynomial $p \in \mathcal P(\mathbb R).$ Such a polynomial will have finite degree $n,$ meaning $p \in \mathcal P_n(\mathbb R).$ Then, consider the map $T \in \mathcal L(\mathcal P_{n + 1}(\mathbb R), \mathcal P_{n}(\mathbb R))$ defined such that
+  \item Consider an arbitrary polynomial $p \in \mathcal P(\mathbb
+    R).$ Such a polynomial will have finite degree $n,$ meaning $p
+    \in \mathcal P_n(\mathbb R).$ Then, consider the map $T \in
+    \mathcal L(\mathcal P_{n + 1}(\mathbb R), \mathcal P_{n}(\mathbb
+    R))$ defined such that
     $$
     Tq = 5q'' + 3q'.
     $$
-    Consider the null-space of $T.$ Since $q$ is a degree-$n + 1$ polynomial, we have
+    Consider the null-space of $T.$ Since $q$ is a degree-$n + 1$
+    polynomial, we have
     $$
-    q = \sum_{k = 0}^{n + 1} q_k x^k, 
+    q = \sum_{k = 0}^{n + 1} q_k x^k,
     $$
-    meaning 
+    meaning
     $$
-    5q'' = \sum_{k = 0}^{n - 1} 5(k+2)(k + 1)q_{k + 2} x^{k}, \ 3q' = \sum_{k = 0}^{n} 3(k+1)q_{k + 1} x^{k}.
+    5q'' = \sum_{k = 0}^{n - 1} 5(k+2)(k + 1)q_{k + 2} x^{k}, \ 3q' =
+    \sum_{k = 0}^{n} 3(k+1)q_{k + 1} x^{k}.
     $$
     Thus, for $Tq = 0,$ we need
     $$
-    3(n + 1)q_{n + 1}x^{n} + \sum_{k = 0}^{n-1} [5(k+2)(k+1)q_{k + 2} - 3(k + 1)q_{k + 1}]  x^k = 0.
+    3(n + 1)q_{n + 1}x^{n} + \sum_{k = 0}^{n-1} [5(k+2)(k+1)q_{k + 2}
+    - 3(k + 1)q_{k + 1}]  x^k = 0.
     $$
-    Since $\mathcal P_{n}(\mathbb R)$ has a unique $0,$ we know 
+    Since $\mathcal P_{n}(\mathbb R)$ has a unique $0,$ we know
     $$
-        q_{n + 1} = 0,
+    q_{n + 1} = 0,
     $$
-    and back-substituting yields $q_k = 0$ for all $1 \leq k \leq n,$ meaning $\text{null}\ T = \{p: p = \mu, \mu \in \mathbb R\},$ with dimension $0.$ Hence, by the fundamental theorem of linear maps, 
+    and back-substituting yields $q_k = 0$ for all $1 \leq k \leq n,$
+    meaning $\text{null}\ T = \{p: p = \mu, \mu \in \mathbb R\},$
+    with dimension $0.$ Hence, by the fundamental theorem of linear maps,
     $$
     n + 2=\dim \mathcal P_{n + 1}(\mathbb R) = 1 + \dim\text{range}(T),
     $$
     meaning $$
     \dim \text{range}(T) = n + 1 = \dim \mathbb P_n(\mathbb R).
     $$
-    Since the dimension of the range of $T$ is equal to its codomain, $T$ must be surjective. Thus, for all $p \in \mathcal P_{n}(\mathbb R),$ there is a $q \in \mathcal P_{n + 1}(\mathbb R) \subset \mathcal P(\mathbb R)$ such that $5q'' + 3q' = p.$ Since any $p$ has some finite degree $m,$ any polynomial $p \in \mathcal P(\mathbb R)$ has some $q \in \mathcal P(\mathbb R)$ such that $5q'' + 3q' = p.$  \qed
+    Since the dimension of the range of $T$ is equal to its codomain,
+    $T$ must be surjective. Thus, for all $p \in \mathcal
+    P_{n}(\mathbb R),$ there is a $q \in \mathcal P_{n + 1}(\mathbb
+    R) \subset \mathcal P(\mathbb R)$ such that $5q'' + 3q' = p.$
+    Since any $p$ has some finite degree $m,$ any polynomial $p \in
+    \mathcal P(\mathbb R)$ has some $q \in \mathcal P(\mathbb R)$
+    such that $5q'' + 3q' = p.$  \qed
 
-    \item Assume that we have $T \in \mathcal L(V, W)$ for finite dimensional vector spaces $V, W$ and that for some choice of basis for $V, W,$ the matrix $\mathcal M(T)$ has less than $\dim \text{range}(T)$ non-zero entries. 
-    
-    Then, $\mathcal M(T)$ must have less than $\dim \text{range}(T)$ non-zero columns, meaning the dimension of $\dim \text{col}(\mathcal M(T)) < \dim \text{range}(T),$ since none of the bases can be $0.$
+  \item Assume that we have $T \in \mathcal L(V, W)$ for finite
+    dimensional vector spaces $V, W$ and that for some choice of
+    basis for $V, W,$ the matrix $\mathcal M(T)$ has less than $\dim
+    \text{range}(T)$ non-zero entries.
 
-    However, since $\dim \text{range}(T) = \dim \text{col}(\mathcal M(T)),$ this is a contradiction. \qed
+    Then, $\mathcal M(T)$ must have less than $\dim \text{range}(T)$
+    non-zero columns, meaning the dimension of $\dim
+    \text{col}(\mathcal M(T)) < \dim \text{range}(T),$ since none of
+    the bases can be $0.$
 
-    \item Assume we have some finite dimensional vector space $V,$ with some $T \in \mathcal L(V).$ Additionally, we have $$
+    However, since $\dim \text{range}(T) = \dim \text{col}(\mathcal
+    M(T)),$ this is a contradiction. \qed
+
+  \item Assume we have some finite dimensional vector space $V,$ with
+    some $T \in \mathcal L(V).$ Additionally, we have $$
     B = \mathcal M(T, (v_1, \ldots, v_n), (v_1, \ldots, v_n))
     $$
     and $C = \mathcal M(I, (u_1, \ldots, u_n), (v_1, \ldots, v_n)).$
@@ -80,29 +114,35 @@
     $$
 
     By definition of the identity matrix, we know $$
-        u_j = \sum_{i = 1}^{n} C_{ij} v_i.
+    u_j = \sum_{i = 1}^{n} C_{ij} v_i.
     $$
 
-    Let us consider what the matrices $CA$ and $BC$ do to $e_k.$  By definition, also know
+    Let us consider what the matrices $CA$ and $BC$ do to $e_k.$  By
+    definition, also know
     $$
-    T(v_j) = \sum_{i = 1}^{n} B_{i j}v_i, \qquad T(u_j) = \sum_{i = 1}^{n} A_{ij} u_i.
+    T(v_j) = \sum_{i = 1}^{n} B_{i j}v_i, \qquad T(u_j) = \sum_{i =
+    1}^{n} A_{ij} u_i.
     $$
 
     Thus, using our expression for $u_j,$ we get
     \begin{align*}
-    T\left(\sum_{i = 1}^{n} C_{ij}v_i\right) &= \sum_{i = 1}^{n} \sum_{k = 1}^{n} A_{ij} C_{ki} v_{k} \\
-    &= \sum_{i = 1}^{n}\sum_{k = 1}^{n} C_{ij}  B_{ki} v_k.
+      T\left(\sum_{i = 1}^{n} C_{ij}v_i\right) &= \sum_{i = 1}^{n}
+      \sum_{k = 1}^{n} A_{ij} C_{ki} v_{k} \\
+      &= \sum_{i = 1}^{n}\sum_{k = 1}^{n} C_{ij}  B_{ki} v_k.
     \end{align*}
     Since $v_1, \ldots, v_n$ is a basis, we can equate coefficients, yielding
     $$
     \sum_{i = 1}^{n} A_{ij} C_{ki} = \sum_{i = 1}^{n} C_{ij} B_{ki}
     $$
-    for all $k, j.$ Notice that the left hand side is exactly $C_{k \cdot}A_{\cdot j},$ and the right hand side is $B_{k \cdot } C_{\cdot j},$
+    for all $k, j.$ Notice that the left hand side is exactly $C_{k
+    \cdot}A_{\cdot j},$ and the right hand side is $B_{k \cdot } C_{\cdot j},$
     meaning
     $$
-    (CA)_{kj} = C_{k \cdot } A_{ \cdot j} = B_{k \cdot } C_{ \cdot j} = (BC)_{kj}
+    (CA)_{kj} = C_{k \cdot } A_{ \cdot j} = B_{k \cdot } C_{ \cdot j}
+    = (BC)_{kj}
     $$
-    for all $k, j.$ Equivalently, the matrices $CA$ and $BC$ are identical. Since $C$ is invertible (identity map), we get
+    for all $k, j.$ Equivalently, the matrices $CA$ and $BC$ are
+    identical. Since $C$ is invertible (identity map), we get
     $$
     CA = BC \Rightarrow A = C^{-1} BC
     $$
@@ -110,10 +150,13 @@
 \end{enumerate}
 
 \subsection{Evaluating Proofs}
-This proof is incorrect as stated, since to construct $T_i$ we need $u \neq 0$ otherwise no such $T_i$ exists, and $u \neq 0$ exists only if $V \neq \{0\}.$
+This proof is incorrect as stated, since to construct $T_i$ we need
+$u \neq 0$ otherwise no such $T_i$ exists, and $u \neq 0$ exists only
+if $V \neq \{0\}.$
 
 \subsection{Using Computers}
 \begin{center}
-    \includegraphics[width=0.9\linewidth]{Screenshot 2026-10-09 at 12.16.39 pm.png}
+  \includegraphics[width=0.9\linewidth]{Screenshot 2026-10-09 at
+  12.16.39 pm.png}
 \end{center}
 \end{document}

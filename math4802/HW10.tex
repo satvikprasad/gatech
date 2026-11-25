@@ -5,23 +5,29 @@
 \begin{document}
 \subsection{Green Circle}
 \begin{enumerate}
-    \item[1] We want to find a formula for $$
-    \sum_{S \subseteq \{1, \ldots, n\}, S \neq \emptyset} \prod_{s \in S} \dfrac{1}{s}.
+  \item[1] We want to find a formula for $$
+    \sum_{S \subseteq \{1, \ldots, n\}, S \neq \emptyset} \prod_{s
+    \in S} \dfrac{1}{s}.
     $$
 
     In the expansion of $$
     \prod_{s = 1}^{n}\left(1 + \dfrac{1}{s}\right),
     $$
-    every term chooses a subset $S \subseteq \{1, \ldots, n\}$ to take the reciprocal terms, and then multiplies with the remaining 1s. If we take the empty subset, we get $1.$ Therefore, we know
+    every term chooses a subset $S \subseteq \{1, \ldots, n\}$ to
+    take the reciprocal terms, and then multiplies with the remaining
+    1s. If we take the empty subset, we get $1.$ Therefore, we know
     \begin{align*}
-    \sum_{S \subseteq \{1, \ldots, n\}, S \neq \emptyset} \prod_{s \in S} \dfrac{1}{s} &= 
-    \prod_{s = 1}^{n}\left(1 + \dfrac{1}{s}\right) - 1 \\
-    &= \prod_{s = 1}^{n} \dfrac{s + 1}{s} - 1 \\
-    &= \dfrac{n + 1}{1} -1 = n
+      \sum_{S \subseteq \{1, \ldots, n\}, S \neq \emptyset} \prod_{s
+      \in S} \dfrac{1}{s} &=
+      \prod_{s = 1}^{n}\left(1 + \dfrac{1}{s}\right) - 1 \\
+      &= \prod_{s = 1}^{n} \dfrac{s + 1}{s} - 1 \\
+      &= \dfrac{n + 1}{1} -1 = n
     \end{align*}
     as required. \qed
 
-    \item[4] By the division algorithm, we have $x^{2026} + x^{2025} + 1 = q(x)(x^2 - 1) + r(x)$ for some polynomial $r \in \mathbb C[x]$ with degree $1.$ Plugging in $x = 1,$ we get $$
+  \item[4] By the division algorithm, we have $x^{2026} + x^{2025} +
+    1 = q(x)(x^2 - 1) + r(x)$ for some polynomial $r \in \mathbb
+    C[x]$ with degree $1.$ Plugging in $x = 1,$ we get $$
     3 = r(1).
     $$
 
@@ -29,29 +35,42 @@
     1 = r(-1).
     $$
 
-    Since all degree one polynomials over $\mathbb C$ can be written in the form $ax + b$ for some $a, b \in \mathbb C,$ we conclude that $$
+    Since all degree one polynomials over $\mathbb C$ can be written
+    in the form $ax + b$ for some $a, b \in \mathbb C,$ we conclude that $$
     a = 1, \ b = 2,
     $$
     meaning $r(x) = x + 2$ is the remainder. \qed
 
-    \item[5] Assume we have some non-constant polynomial $p \in  \mathbb Z[x]$ that takes a positive prime value at every positive integer, i.e for all $x \in \mathbb Z$ with $x > 0,$ $p(x)$ is prime.
+  \item[5] Assume we have some non-constant polynomial $p \in
+    \mathbb Z[x]$ that takes a positive prime value at every positive
+    integer, i.e for all $x \in \mathbb Z$ with $x > 0,$ $p(x)$ is prime.
 
-    Then, for some positive integer $k$ we have $p(k) = q,$ for a prime $q > 0.$ Consider $p(k + mq),$ for some $m \in \mathbb Z,$ $m \geq 0$ $$
+    Then, for some positive integer $k$ we have $p(k) = q,$ for a
+    prime $q > 0.$ Consider $p(k + mq),$ for some $m \in \mathbb Z,$
+    $m \geq 0$ $$
     p(k + mq ) = \sum_{r = 0 } ^{\deg p} p_r (k + mq)^{r}.
     $$
 
-    Taking this modulo $q,$ we get 
+    Taking this modulo $q,$ we get
     $$
-    p(k + mq ) \equiv \sum_{r = 0}^{\deg p} p_rk^r \equiv p(k) \equiv 0  \pmod{q},
+    p(k + mq ) \equiv \sum_{r = 0}^{\deg p} p_rk^r \equiv p(k) \equiv
+    0  \pmod{q},
     $$
-    meaning $q \mid p(k + mq).$ Since $k + mq $ is a positive integer, we need $p(k + mq ) = q$ for all $k + mq,$ since $q$ is the only prime number that is divided by $q.$
+    meaning $q \mid p(k + mq).$ Since $k + mq $ is a positive
+    integer, we need $p(k + mq ) = q$ for all $k + mq,$ since $q$ is
+    the only prime number that is divided by $q.$
 
-    Therefore, the polynomial $p(x) - q$ of degree $\deg p$ must have infinite roots, which is a contradiction. I.e., no such polynomial $p$ can exist, as required. \qed
+    Therefore, the polynomial $p(x) - q$ of degree $\deg p$ must have
+    infinite roots, which is a contradiction. I.e., no such
+    polynomial $p$ can exist, as required. \qed
 \end{enumerate}
 
 \subsection{Blue Square}
 \begin{enumerate}
-    \item[6] We want to prove that for all $f \in \mathbb R[x]$ of degree $n,$ we can construct such a $g.$ Apply the divisibility algorithm to each term of $g$ separately. For any integer $k,$ there exist polynomials $q$ and $r$ such that
+  \item[6] We want to prove that for all $f \in \mathbb R[x]$ of
+    degree $n,$ we can construct such a $g.$ Apply the divisibility
+    algorithm to each term of $g$ separately. For any integer $k,$
+    there exist polynomials $q$ and $r$ such that
     $$
     a_kx^{2^k} = f(x) q_k(x) + r_k(x),
     $$
@@ -62,95 +81,143 @@
 
     For $f \mid g, $ we need $$\sum_{k = 0}^{n} r_k(x) = 0.$$
 
-    Define the map $T_k: \mathbb R  \to \{p : p \in \mathbb R[x], \ \deg p < n\}$ such that 
+    Define the map $T_k: \mathbb R  \to \{p : p \in \mathbb R[x],
+    \ \deg p < n\}$ such that
     $$
-    T(a) = r, 
+    T(a) = r,
     $$
-    where $r$ is the unique polynomial with $a x^{2^k} = f(x) q(x) + r(x)$ (by the divisibility algorithm). We prove that $T$ is linear.
+    where $r$ is the unique polynomial with $a x^{2^k} = f(x) q(x) +
+    r(x)$ (by the divisibility algorithm). We prove that $T$ is linear.
 
-    We know that $ax^{2^k} = f(x) q_1(x) + T(a),$ and $bx^{2^k} = f(x) q_2(x) + T(b),$ meaning $$
+    We know that $ax^{2^k} = f(x) q_1(x) + T(a),$ and $bx^{2^k} =
+    f(x) q_2(x) + T(b),$ meaning $$
     (a+b)x^{2^k} = f(x)(q_1 + q_2)(x) + T(a) + T(b),
     $$
     and hence by definition, $T(a) + T(b) = T(a + b).$ Similarly, $$
     \lambda ax^{2^k} = f(x) (\lambda q_1)(x) + \lambda T(a),
     $$
-    meaning $T(\lambda a) = \lambda T(a).$ Therefore, $T$ is a linear map from $\mathbb R$ to the set of degree $n - 1$ polynomials over $\mathbb R.$
+    meaning $T(\lambda a) = \lambda T(a).$ Therefore, $T$ is a linear
+    map from $\mathbb R$ to the set of degree $n - 1$ polynomials
+    over $\mathbb R.$
 
-    Additionally, we know 
+    Additionally, we know
     $$
     \sum_{k = 0}^{n} r_k(x) = \sum_{k = 0}^{n}T_k(a_k)(x).
     $$
 
-    Define the map $T \in \mathcal L(\mathbb R^{n + 1}, \mathbb R[x])$ such that $$
+    Define the map $T \in \mathcal L(\mathbb R^{n + 1}, \mathbb
+    R[x])$ such that $$
     T(a_0,a_1, \ldots, a_{n}) = \sum_{k = 0}^{n} T_k(a_k).
     $$
 
-    We know the dimension $\dim \text{range}\, T \leq n$ since every single output is a degree $n$ polynomial in $\mathbb R[x].$ Thus, by rank-nullity $\ker T \geq 1,$ meaning there is some non-zero $(a_0, \ldots, a_n)$ that $T$ sends to zero.
+    We know the dimension $\dim \text{range}\, T \leq n$ since every
+    single output is a degree $n$ polynomial in $\mathbb R[x].$ Thus,
+    by rank-nullity $\ker T \geq 1,$ meaning there is some non-zero
+    $(a_0, \ldots, a_n)$ that $T$ sends to zero.
 
     Therefore, there exist non-trivial $a_0, \ldots,a_n$ such that $$
     \sum_{k = 0}^{n}r_k(x) = T(a_0, \ldots, a_n)(x) = 0(x) = 0,
     $$
     and hence we can pick such a $g$ with $f \mid g$ as required. \qed
 
-    \item[9] We want to determine all polynomials $P \in \mathbb C[x]$ satisfying $P(x^2) = P(x)^2.$ Then, since $P(x^2)$ and $P(x)^2$ are identical, they have the same roots $\{\alpha_k\}_{k = 1}^{2m}$ where $m = \deg P.$
+  \item[9] We want to determine all polynomials $P \in \mathbb C[x]$
+    satisfying $P(x^2) = P(x)^2.$ Then, since $P(x^2)$ and $P(x)^2$
+    are identical, they have the same roots $\{\alpha_k\}_{k =
+    1}^{2m}$ where $m = \deg P.$
 
-    Let the roots of $P$ be $\{\beta_k\}_{k = 1}^{m},$ meaning we can write $P$ as 
+    Let the roots of $P$ be $\{\beta_k\}_{k = 1}^{m},$ meaning we can
+    write $P$ as
     $$
     P(x) = c \prod_{k = 1}^{m} (x - \beta_k), \ c \in \mathbb C.
     $$
     Therefore, $$
-    P(x^2) = c \prod_{k = 1}^{m} (x^2 - \beta_k) = c^2 \prod_{k = 1}^{m}(x - \beta_k)^2.
+    P(x^2) = c \prod_{k = 1}^{m} (x^2 - \beta_k) = c^2 \prod_{k =
+    1}^{m}(x - \beta_k)^2.
     $$
-    Comparing coefficients of $x^{2m}$ implies either $c = 0$, in which case $P = 0,$ or $c = 1,$ in which case we have 
+    Comparing coefficients of $x^{2m}$ implies either $c = 0$, in
+    which case $P = 0,$ or $c = 1,$ in which case we have
     $$
-    \prod_{k = 1}^{m}\left(x - \sqrt{\beta_k})(x + \sqrt{\beta _k}\right) = \prod_{k = 1}^{m} (x - \beta_k)^2
+    \prod_{k = 1}^{m}\left(x - \sqrt{\beta_k})(x + \sqrt{\beta
+    _k}\right) = \prod_{k = 1}^{m} (x - \beta_k)^2
     $$
-    for all $x \in \mathbb C.$ Clearly, if $\beta_k$ is a root of the RHS, then $\sqrt{\beta_k}$ is a root of the LHS, and thus a root of the RHS. We can continue this process indefinitely, and thus to guarantee that this finite degree polynomial has finite roots we need the set
+    for all $x \in \mathbb C.$ Clearly, if $\beta_k$ is a root of the
+    RHS, then $\sqrt{\beta_k}$ is a root of the LHS, and thus a root
+    of the RHS. We can continue this process indefinitely, and thus
+    to guarantee that this finite degree polynomial has finite roots
+    we need the set
     $$
     B = \{\beta^{1/2^k}\}_{k = 0}^{\infty}
     $$
     to have finite elements.
 
-    Parameterize an arbitrary root of $P$ as $\beta = r e^{i \theta},$ where $r \geq 0,$ and $\theta \in (-\pi, \pi].$ Then, $\sqrt \beta = \sqrt{r} e^{i \theta/2 }.$ If $0 < r < 1,$ then $\sqrt{r} > r,$ meaning no two elements in $B$ will be the same (monovariant), and $B$ will be infinite. Similarly, if $r > 1,$  then $\sqrt r < r,$ and the same contradiction holds.
+    Parameterize an arbitrary root of $P$ as $\beta = r e^{i
+    \theta},$ where $r \geq 0,$ and $\theta \in (-\pi, \pi].$ Then,
+    $\sqrt \beta = \sqrt{r} e^{i \theta/2 }.$ If $0 < r < 1,$ then
+    $\sqrt{r} > r,$ meaning no two elements in $B$ will be the same
+    (monovariant), and $B$ will be infinite. Similarly, if $r > 1,$
+    then $\sqrt r < r,$ and the same contradiction holds.
 
-    Thus, we can parameterize any root $\beta$ as $e^{i \theta}.$ If $\pi \geq \theta> 0,$ then $0 < \theta/2 < \theta   \leq \pi,$ and by a similar argument $B$ is infinite. Conversely, if $-\pi < \theta < 0,$ then $0 > \theta / 2 > \theta > -\pi,$ and $B$ is infinite. Thus, we must have $\theta = 0,$ meaning the only possible values of $(r, \theta)$ are 
+    Thus, we can parameterize any root $\beta$ as $e^{i \theta}.$ If
+    $\pi \geq \theta> 0,$ then $0 < \theta/2 < \theta   \leq \pi,$
+    and by a similar argument $B$ is infinite. Conversely, if $-\pi <
+    \theta < 0,$ then $0 > \theta / 2 > \theta > -\pi,$ and $B$ is
+    infinite. Thus, we must have $\theta = 0,$ meaning the only
+    possible values of $(r, \theta)$ are
     $$
     (r, \theta) \in \{0, 1\} \times \{0\},
     $$
     i.e, every single root is either $1$ or $0.$
 
-    However, if $1$ is a root then $-1$ is a root, meaning $i$ is a root, which is a contradiction. Therefore, the only possible root of $P$ is 0, or $P = 0.$
+    However, if $1$ is a root then $-1$ is a root, meaning $i$ is a
+    root, which is a contradiction. Therefore, the only possible root
+    of $P$ is 0, or $P = 0.$
 
-    Therefore, $P$ must be in the form $P(x) = x^j$ for some integer $j \geq 0,$ or $P = 0.$ This is also sufficient, since $P(x^2) = (x^2)^j = x^{2j} = (x^j)^2 = P(x)^2.$ Hence, $P(x^2) = P(x)^2$ if and only if $P(x) = x^j$ for some integer $j \geq 0,$ as required. \qed
+    Therefore, $P$ must be in the form $P(x) = x^j$ for some integer
+    $j \geq 0,$ or $P = 0.$ This is also sufficient, since $P(x^2) =
+    (x^2)^j = x^{2j} = (x^j)^2 = P(x)^2.$ Hence, $P(x^2) = P(x)^2$ if
+    and only if $P(x) = x^j$ for some integer $j \geq 0,$ as required. \qed
 \end{enumerate}
 
 \subsection{Black Diamond}
 \begin{enumerate}
-    \item[11] Let $n = \deg P.$ Consider some polynomial $Q^\star \in \mathbb C[x]$ with the reciprocal roots of $Q,$ defined by 
+  \item[11] Let $n = \deg P.$ Consider some polynomial $Q^\star \in
+    \mathbb C[x]$ with the reciprocal roots of $Q,$ defined by
     $$
-    Q^\star(x) = x^{n + 3}Q\left(\dfrac{1}{x}\right)= x^{n + 3} + x^{n + 2}+ x^{n + 1} + x^n P\left(\dfrac{1}{x}\right).
+    Q^\star(x) = x^{n + 3}Q\left(\dfrac{1}{x}\right)= x^{n + 3} +
+    x^{n + 2}+ x^{n + 1} + x^n P\left(\dfrac{1}{x}\right).
     $$
 
-    Let the roots of $Q$ be $\{\alpha_i\}_{i = 1}^{n + 3}.$ Then, by Vieta's formulae on $Q^\star,$ we know \begin{align*}
-    \dfrac{1}{\alpha_1} + \ldots + \dfrac{1}{\alpha_{n + 3}} = -1,
+    Let the roots of $Q$ be $\{\alpha_i\}_{i = 1}^{n + 3}.$ Then, by
+    Vieta's formulae on $Q^\star,$ we know
+    \begin{align*}
+      \dfrac{1}{\alpha_1} + \ldots + \dfrac{1}{\alpha_{n + 3}} = -1,
     \end{align*}
     and $$
-    \sum_{i = 1}^{n + 3} \sum_{j = i + 1}^{n + 3} \dfrac{1}{\alpha_i \alpha_j} = 1.
+    \sum_{i = 1}^{n + 3} \sum_{j = i + 1}^{n + 3} \dfrac{1}{\alpha_i
+    \alpha_j} = 1.
     $$
-    Therefore, we have 
+    Therefore, we have
     $$
-    \left(\sum_{i = 1}^{n + 3}\alpha_i^{-1}\right)^2 = \sum_{i = 1}^{n + 3} \alpha_i^{-2} + 2\left(
-        \sum_{i = 1}^{n + 3} \sum_{j \geq i} \dfrac{1}{\alpha_i \alpha_j}
+    \left(\sum_{i = 1}^{n + 3}\alpha_i^{-1}\right)^2 = \sum_{i =
+    1}^{n + 3} \alpha_i^{-2} + 2\left(
+      \sum_{i = 1}^{n + 3} \sum_{j \geq i} \dfrac{1}{\alpha_i \alpha_j}
     \right),
     $$
     meaning
     $$
-    1 = \sum_{i = 1}^{n + 3} \alpha_i^{-2} + 2 \Rightarrow \sum_{i = 1}^{n + 3} \dfrac{1}{\alpha_i^2} = -1.
+    1 = \sum_{i = 1}^{n + 3} \alpha_i^{-2} + 2 \Rightarrow \sum_{i =
+    1}^{n + 3} \dfrac{1}{\alpha_i^2} = -1.
     $$
 
-    If all of $\alpha_i$ were real, then the sum of the reciprocals of their squares would be $\geq 0,$ which contradicts the above. Therefore, at least one root must be complex.
-\end{enumerate} 
+    If all of $\alpha_i$ were real, then the sum of the reciprocals
+    of their squares would be $\geq 0,$ which contradicts the above.
+    Therefore, at least one root must be complex.
+\end{enumerate}
 
 \subsection{Reflection}
-For 9), tried to initially just brute force with coefficients of the polynomial but that was very gruelling and not very elegant. Realised that we could look at the roots of $P,$ and see that if $\alpha$ is a root of $P$ then $\sqrt{\alpha}$ must be a root of $P,$ and use finite-ness of roots to eliminate large possible cases for the roots.
+For 9), tried to initially just brute force with coefficients of the
+polynomial but that was very gruelling and not very elegant. Realised
+that we could look at the roots of $P,$ and see that if $\alpha$ is a
+root of $P$ then $\sqrt{\alpha}$ must be a root of $P,$ and use
+finite-ness of roots to eliminate large possible cases for the roots.
 \end{document}

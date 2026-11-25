@@ -2,156 +2,195 @@
 \input{header}
 \begin{document}
 \begin{enumerate}
-    \item \begin{enumerate}
-    \item Assume we have some uniform random variable $U \sim \text{Uniform}(0, 1),$ and some CDF $F$ such that $X = F^{-1}(U)$ is a RV.
+  \item
+    \begin{enumerate}
+      \item Assume we have some uniform random variable $U \sim
+        \text{Uniform}(0, 1),$ and some CDF $F$ such that $X =
+        F^{-1}(U)$ is a RV.
 
-    Then, 
-    $$
-    F_X(k) = \mathbb P(X \leq k) = \mathbb P(F^{-1}(U) \leq k).
-    $$
-    Since $F^{-1}$ is invertible and monotonically increasing, 
-    $$
-    \{F^{-1}(U) \leq k\} = \{U \leq F(k)\},
-    $$
-    meaning we have
-    $$
-    F_X(k) = F(k),
-    $$
-    since $F(k) \in [0, 1].$
+        Then,
+        $$
+        F_X(k) = \mathbb P(X \leq k) = \mathbb P(F^{-1}(U) \leq k).
+        $$
+        Since $F^{-1}$ is invertible and monotonically increasing,
+        $$
+        \{F^{-1}(U) \leq k\} = \{U \leq F(k)\},
+        $$
+        meaning we have
+        $$
+        F_X(k) = F(k),
+        $$
+        since $F(k) \in [0, 1].$
 
-    \item Assume we have random variable $X$ with CDF $F.$ Then, $Y = F(X)$ has CDF
-    $$
-    F_y(t) = \mathbb P(F(X) \leq t) = \mathbb P(X \leq F^{-1}(t)) = F(F^{-1}(t)) = t
-    $$
-    when $0 \leq t \leq 1,$ and $1$ if $t > 1$, and $0$ otherwise.
-\end{enumerate}
-\item \begin{enumerate}
-        \item Assume we have $X \sim \mathcal N(0, 1).$ Let $Y = \sigma X + \mu.$ Then, our CDF satisfies
+      \item Assume we have random variable $X$ with CDF $F.$ Then, $Y
+        = F(X)$ has CDF
         $$
-        F_Y(x) = \mathbb P(\sigma X+ \mu \leq x) = \mathbb P\left(X \leq \dfrac{x-\mu}{\sigma}\right).
+        F_y(t) = \mathbb P(F(X) \leq t) = \mathbb P(X \leq F^{-1}(t))
+        = F(F^{-1}(t)) = t
         $$
-        Thus, $F_Y(x) = F_X\left(\dfrac{x-\mu}{\sigma}\right),$ and differentiating yields
+        when $0 \leq t \leq 1,$ and $1$ if $t > 1$, and $0$ otherwise.
+    \end{enumerate}
+  \item
+    \begin{enumerate}
+      \item Assume we have $X \sim \mathcal N(0, 1).$ Let $Y = \sigma
+        X + \mu.$ Then, our CDF satisfies
         $$
-        f_Y(x) = \dfrac{1}{\sigma} f_X((x - \mu)/\sigma) = \dfrac{1}{\sigma \sqrt{2\pi}} e^{-\left(\frac{x - \mu}{\sigma}\right)^2},
+        F_Y(x) = \mathbb P(\sigma X+ \mu \leq x) = \mathbb P\left(X
+        \leq \dfrac{x-\mu}{\sigma}\right).
         $$
-        meaning $\sigma X + \mu \sim \mathcal N(\mu, \sigma).$ 
+        Thus, $F_Y(x) = F_X\left(\dfrac{x-\mu}{\sigma}\right),$ and
+        differentiating yields
+        $$
+        f_Y(x) = \dfrac{1}{\sigma} f_X((x - \mu)/\sigma) =
+        \dfrac{1}{\sigma \sqrt{2\pi}} e^{-\left(\frac{x -
+        \mu}{\sigma}\right)^2},
+        $$
+        meaning $\sigma X + \mu \sim \mathcal N(\mu, \sigma).$
 
-        Similarly, assume we have $Y \sim \mathcal N(\mu, \sigma^2),$ and $X = \dfrac{Y-\mu}{\sigma}.$ Then, the CDF satisfies
+        Similarly, assume we have $Y \sim \mathcal N(\mu, \sigma^2),$
+        and $X = \dfrac{Y-\mu}{\sigma}.$ Then, the CDF satisfies
         $$
-        F_X(x) = \mathbb P\left(\dfrac{Y-\mu}{\sigma} \leq x\right) = \mathbb P(Y \leq \sigma x+ \mu) = F_Y(\sigma x + \mu).
+        F_X(x) = \mathbb P\left(\dfrac{Y-\mu}{\sigma} \leq x\right) =
+        \mathbb P(Y \leq \sigma x+ \mu) = F_Y(\sigma x + \mu).
         $$
-        Differentiating, we get 
+        Differentiating, we get
         $$
-            f_X(x)= \sigma \dfrac{1}{\sigma \sqrt{2\pi}} e^{-x^2} = \dfrac{1}{\sqrt{2\pi}} e^{-x^2},
+        f_X(x)= \sigma \dfrac{1}{\sigma \sqrt{2\pi}} e^{-x^2} =
+        \dfrac{1}{\sqrt{2\pi}} e^{-x^2},
         $$
         meaning $X \sim \mathcal N(0, 1)$ as required.
 
-        \item Assume we have $X \sim \text{Exp}(1),$ and $Y = X/\lambda$ for $\lambda > 0.$ Then, we get
+      \item Assume we have $X \sim \text{Exp}(1),$ and $Y =
+        X/\lambda$ for $\lambda > 0.$ Then, we get
         $$
-        F_Y(x) = \mathbb P(X \leq \lambda x) = F_X(\lambda x) = 1-e^{-\lambda x},
+        F_Y(x) = \mathbb P(X \leq \lambda x) = F_X(\lambda x) =
+        1-e^{-\lambda x},
         $$
-        meaning $f_Y(x) = \lambda e^{-\lambda x},$ i.e., $Y \sim \text{Exp}(\lambda).$
+        meaning $f_Y(x) = \lambda e^{-\lambda x},$ i.e., $Y \sim
+        \text{Exp}(\lambda).$
 
-        \item Consider $Y = (a-b)U + b.$ Then, $$
+      \item Consider $Y = (a-b)U + b.$ Then, $$
         F_Y(x) = F_{U}((b - x) / (a - b)),$$
         for all $a \leq x \leq b,$
         and differentiating yields $$
-        f_Y(x)  = \dfrac{1}{a - b}f_U((b - x)/ (a-b)) = \begin{cases}
-            \dfrac{1}{a-b} & a \leq x \leq b \\
-            0  & \text{otherwise},
+        f_Y(x)  = \dfrac{1}{a - b}f_U((b - x)/ (a-b)) =
+        \begin{cases}
+          \dfrac{1}{a-b} & a \leq x \leq b \\
+          0  & \text{otherwise},
         \end{cases}
         $$
         meaning $Y \sim \text{Uniform}(a, b).$
     \end{enumerate}
 
-    \item \begin{enumerate}
-        \item We have $$\mathbb P(A \leq x) = \mathbb P\left(X \leq \dfrac{x-5}{2}\right),$$
+  \item
+    \begin{enumerate}
+      \item We have $$\mathbb P(A \leq x) = \mathbb P\left(X \leq
+        \dfrac{x-5}{2}\right),$$
         meaning
         $$
         F_A(x) = 1-e^{-\lambda(x-5)/2},
         $$
-        and thus 
+        and thus
         $$
         f_A(x) = \frac{\lambda}{2} e^{-\lambda(x-5)/2}
         $$
-        for $(x - 5)/ 2 \geq 0,$ i.e., $x \geq 5.$ Otherwise, the density is $0.$
+        for $(x - 5)/ 2 \geq 0,$ i.e., $x \geq 5.$ Otherwise, the
+        density is $0.$
 
-        \item We have $$\mathbb P(B \leq x) = \mathbb P(X \leq \ln x)$$ since $e^x$ is monotonically increasing, yielding
+      \item We have $$\mathbb P(B \leq x) = \mathbb P(X \leq \ln x)$$
+        since $e^x$ is monotonically increasing, yielding
         $$
         F_B(x) = 1- e^{-\lambda \ln x} = 1-x^{-\lambda}.
         $$
         Thus, we have density
         $$
         f_B(x) = \lambda x^{-(\lambda + 1)} = \dfrac{\lambda}{x^{\lambda + 1}}
-        $$ whenever $\ln x \geq 0,$ or $x \geq 1.$ On $(-\infty, 1],$ the density is $0.$
+        $$ whenever $\ln x \geq 0,$ or $x \geq 1.$ On $(-\infty, 1],$
+        the density is $0.$
 
-        \item We have $$\mathbb P(C \leq x) = \mathbb P\left(1 + X \geq \dfrac{1}x\right) = \mathbb P\left(X \geq \dfrac{1}{x} - 1\right),$$ 
+      \item We have $$\mathbb P(C \leq x) = \mathbb P\left(1 + X \geq
+        \dfrac{1}x\right) = \mathbb P\left(X \geq \dfrac{1}{x} - 1\right),$$
         meaning
         \begin{align*}
-        F_C(x) &= 1 - F_X(1/x - 1) = 1 - (1 - e^{-\lambda(1/x - 1)}) \\
-            &= e^{\lambda -\lambda/x } ,
+          F_C(x) &= 1 - F_X(1/x - 1) = 1 - (1 - e^{-\lambda(1/x - 1)}) \\
+          &= e^{\lambda -\lambda/x } ,
         \end{align*}
         yielding density
         $$
-            f_C(x) = \dfrac{\lambda}{x^2} e^{\lambda(1- 1/x)}
+        f_C(x) = \dfrac{\lambda}{x^2} e^{\lambda(1- 1/x)}
         $$
         when $0 < x \leq 1.$ Outside this domain, density is $0.$
 
-        \item Since $X \geq 0,$ $0 < (1 + X)^{-2} \leq 1.$ We have
+      \item Since $X \geq 0,$ $0 < (1 + X)^{-2} \leq 1.$ We have
         $$
-        \mathbb P((1+X)^{-2} \leq x) = \mathbb P\left((1+ X)^2 \geq \dfrac{1}{x}\right).
+        \mathbb P((1+X)^{-2} \leq x) = \mathbb P\left((1+ X)^2 \geq
+        \dfrac{1}{x}\right).
         $$
         Since $1 + X \geq 0,$ we have
         \begin{align*}
-        \mathbb P((1+X)^2 \geq 1/x) &= \mathbb P\left(X \geq \dfrac{1}{\sqrt{x}} - 1\right) = 1 - F_X\left(\dfrac{1}{\sqrt x} - 1\right) \\
-        &= e^{-\lambda(1/\sqrt x - 1)}
+          \mathbb P((1+X)^2 \geq 1/x) &= \mathbb P\left(X \geq
+          \dfrac{1}{\sqrt{x}} - 1\right) = 1 -
+          F_X\left(\dfrac{1}{\sqrt x} - 1\right) \\
+          &= e^{-\lambda(1/\sqrt x - 1)}
         \end{align*}
         on $(0, 1].$ Hence, we have density
         $$
-            f_D(x) = \dfrac{\lambda}{2x\sqrt{x}} e^{-\lambda(1/\sqrt x -1 )}
+        f_D(x) = \dfrac{\lambda}{2x\sqrt{x}} e^{-\lambda(1/\sqrt x -1 )}
         $$
         on $(0, 1]$ and $0$ elsewhere.
     \end{enumerate}
 
-    \item For $X,Y, Z$ independent, we need $f(x, y, z) = f_X(x) f_Y(y) f_Z(z).$ Let us compute marginals. For $X,$
+  \item For $X,Y, Z$ independent, we need $f(x, y, z) = f_X(x) f_Y(y)
+    f_Z(z).$ Let us compute marginals. For $X,$
     \begin{align*}
-    f_X(x) = \int_{0}^{1} \int_{0}^{1} f(x, y, z) \, dy dz &=  \int_{0}^{1} \int_{0}^{1} 8xyz \, dy \, dz \\
-    &= x \int_{0}^{1} 4y \, dz \\
-    &= 2x .
+      f_X(x) = \int_{0}^{1} \int_{0}^{1} f(x, y, z) \, dy dz &=
+      \int_{0}^{1} \int_{0}^{1} 8xyz \, dy \, dz \\
+      &= x \int_{0}^{1} 4y \, dz \\
+      &= 2x .
     \end{align*}
-    By symmetry, $f_Y(y) = 2y, $ and $f_Z(z) = 2z.$ Hence, 
+    By symmetry, $f_Y(y) = 2y, $ and $f_Z(z) = 2z.$ Hence,
     $$
     f_X(x) f_Y(y) f_Z(z) = 8xyz = f(x, y, z),
     $$
     meaning $X, Y, Z$ are independent.
 
-    \item $X, Y$ are independent, meaning they have joint density $f(x, y ) = f_X(x) f_Y(y).$ We want to find the density of $U = XY,$ so consider the change of variables for $U = XY, V = X$:
+  \item $X, Y$ are independent, meaning they have joint density $f(x,
+    y ) = f_X(x) f_Y(y).$ We want to find the density of $U = XY,$ so
+    consider the change of variables for $U = XY, V = X$:
     $$
     u(x, y) = xy, \quad v(x, y) =x .
     $$
-    Then, we have change of variables map $T : \mathbb R^{2} \to \mathbb R^{2}$ defined by $T(x, y) = (xy, x),$ which is injective when $x \neq  0.$ Hence, we have the inverse
-    $T^{-1}: \mathbb R^2 \setminus \{(u, v) : v = 0\} \to \mathbb R^2 \setminus \{(x, y) : x = 0\}$
+    Then, we have change of variables map $T : \mathbb R^{2} \to
+    \mathbb R^{2}$ defined by $T(x, y) = (xy, x),$ which is injective
+    when $x \neq  0.$ Hence, we have the inverse
+    $T^{-1}: \mathbb R^2 \setminus \{(u, v) : v = 0\} \to \mathbb R^2
+    \setminus \{(x, y) : x = 0\}$
     $$
-        T^{-1}(u, v) = ( v, u / v),
+    T^{-1}(u, v) = ( v, u / v),
     $$
     with Jacobian
     $$
-    J = \left|\dfrac{\partial (x, y)}{\partial (u, v)}\right| = \begin{vmatrix}
-    0 & 1 \\
-    \dfrac{1}{v} & -\dfrac{u}{v^2}
+    J = \left|\dfrac{\partial (x, y)}{\partial (u, v)}\right| =
+    \begin{vmatrix}
+      0 & 1 \\
+      \dfrac{1}{v} & -\dfrac{u}{v^2}
     \end{vmatrix}.
     $$
     This means we have joint density
     $$
     g(u, v) = \dfrac{f(v, u/v)}{|v|}
     $$
-    when $v \neq 0,$ (which has measure $0$). Computing marginal for $U$ yields $$
-        f_U(u) = \int_{-\infty}^{\infty} f(x, u/x) \dfrac{1}{|x|} \, dx = \int_{-\infty}^{\infty} f_X(x) f_Y\left(\dfrac{u}{x}\right) \dfrac{1}{|x|} \, dx
+    when $v \neq 0,$ (which has measure $0$). Computing marginal for
+    $U$ yields $$
+    f_U(u) = \int_{-\infty}^{\infty} f(x, u/x) \dfrac{1}{|x|} \, dx =
+    \int_{-\infty}^{\infty} f_X(x) f_Y\left(\dfrac{u}{x}\right)
+    \dfrac{1}{|x|} \, dx
     $$
     as required.
 
     Similarly, for $V = X/Y$ let us construct the change of variables
-    $U = X, V = X/ Y,$ with map $T: \mathbb R^2 \setminus \{(x, y) : y  = 0\} \to \mathbb R^{2} \setminus \{(x, y) : y = 0\}$ defined by 
+    $U = X, V = X/ Y,$ with map $T: \mathbb R^2 \setminus \{(x, y) :
+    y  = 0\} \to \mathbb R^{2} \setminus \{(x, y) : y = 0\}$ defined by
     $$
     T(x, y) = (x, x/y),
     $$
@@ -159,18 +198,19 @@
     $$
     T^{-1}(u, v) = (u, u/v),
     $$
-    where $D = \mathbb R^{2} \setminus \{(x,y) : y \neq 0\}.$ This has Jacobian 
+    where $D = \mathbb R^{2} \setminus \{(x,y) : y \neq 0\}.$ This has Jacobian
     $$
-        J = \begin{vmatrix}
-            1 & 0 \\
-            \dfrac{1}{v} & -\dfrac{u}{v^2}
-        \end{vmatrix}  = -u/v^2.
+    J =
+    \begin{vmatrix}
+      1 & 0 \\
+      \dfrac{1}{v} & -\dfrac{u}{v^2}
+    \end{vmatrix}  = -u/v^2.
     $$
     Hence, $U, V$ have joint density
     $$
     g(u, v) =  \dfrac{f(u, u/v) |u|}{v^2},
     $$
-    allowing us to compute the marginal 
+    allowing us to compute the marginal
     as
     $$
     f_V(v) = \int_{-\infty}^{\infty} \dfrac{f_X(x) f_Y(x/v) |x|}{v^2} \, dx.
@@ -178,14 +218,15 @@
     Letting $x = vy,$ we get $\,dx = v \, dy,$
     meaning
     \begin{align*}
-    f_V(v) &= \dfrac{v}{|v|}\int_{-\infty}^{\infty} f_X(vy) f_Y(y) |vy| \dfrac{ v }{v^2}\, dy \\
-    &=  \int_{-\infty}^{\infty} f_X(vy) f_Y(y) |y| \, dy
+      f_V(v) &= \dfrac{v}{|v|}\int_{-\infty}^{\infty} f_X(vy) f_Y(y)
+      |vy| \dfrac{ v }{v^2}\, dy \\
+      &=  \int_{-\infty}^{\infty} f_X(vy) f_Y(y) |y| \, dy
     \end{align*}
     as required.
 
-    \item Notice that the event $\{\min\{X, Y\} \leq x\}$ decomposes into 
+  \item Notice that the event $\{\min\{X, Y\} \leq x\}$ decomposes into
     $$
-        \{X \leq x \cup Y \leq x\}.
+    \{X \leq x \cup Y \leq x\}.
     $$
     To make these events disjoint, take
     $$
@@ -195,12 +236,14 @@
     $$
     \mathbb P(\min\{X, Y\} \leq x) = \mathbb P(X \leq x \cap Y > x) + F_Y(x).
     $$
-    Since $(\{X \leq x\}\cap \{Y > x\}) \cup (\{X \leq x\} \cap \{Y \leq x\}) = \{X \leq x\},$ we know
+    Since $(\{X \leq x\}\cap \{Y > x\}) \cup (\{X \leq x\} \cap \{Y
+    \leq x\}) = \{X \leq x\},$ we know
     $$
-    \mathbb P(\{X \leq x\} \cap \{Y > x\}) = F_X(x) - \mathbb P(\{X \leq x\} \cap \{Y \leq x\}).
+    \mathbb P(\{X \leq x\} \cap \{Y > x\}) = F_X(x) - \mathbb P(\{X
+    \leq x\} \cap \{Y \leq x\}).
     $$
 
-    Since we have $X, Y$ independent, 
+    Since we have $X, Y$ independent,
     $$
     \mathbb P(\{X \leq x\} \cap \{Y > x\}) = F_X(x) -F_X(x) F_Y(y),
     $$
@@ -216,6 +259,7 @@
     $$
     f(x) = (\lambda + \mu) e^{-(\lambda + \mu)x}
     $$
-    for $x \geq 0,$ and $0$ otherwise, meaning $\min\{X, Y\} \sim \text{Exp}(\lambda + \mu)$ as required.
+    for $x \geq 0,$ and $0$ otherwise, meaning $\min\{X, Y\} \sim
+    \text{Exp}(\lambda + \mu)$ as required.
 \end{enumerate}
 \end{document}

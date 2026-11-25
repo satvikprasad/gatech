@@ -4,91 +4,149 @@
 \begin{document}
 \subsection{Writing Proofs}
 \begin{enumerate}
-    \item We prove that $\mathbb F^{\infty}$ is infinite dimensional by proving that any basis of $\mathbb F^{\infty}$ cannot have a finite number of elements. Note that the $0$ vector of $\mathbb F^{\infty}$ is the sequence consisting of all zeroes (zero of $\mathbb F$), since by our definition of addition, $0 + a = a$ for any sequence $a,$ and a sequence $0$ satisfying $(0)_i = 0 \in \mathbb F.$
+  \item We prove that $\mathbb F^{\infty}$ is infinite dimensional by
+    proving that any basis of $\mathbb F^{\infty}$ cannot have a
+    finite number of elements. Note that the $0$ vector of $\mathbb
+    F^{\infty}$ is the sequence consisting of all zeroes (zero of
+    $\mathbb F$), since by our definition of addition, $0 + a = a$
+    for any sequence $a,$ and a sequence $0$ satisfying $(0)_i = 0
+    \in \mathbb F.$
 
-    For the sake of contradiction, assume we have some basis of $\mathbb F^{\infty}$ with length $n$, $b_1, b_2, \ldots, b_n \in \mathbb F^{\infty}.$
-    
-    Consider the $n + 1$ sequences $a_1, \ldots, a_{n + 1}$ defined by 
+    For the sake of contradiction, assume we have some basis of
+    $\mathbb F^{\infty}$ with length $n$, $b_1, b_2, \ldots, b_n \in
+    \mathbb F^{\infty}.$
+
+    Consider the $n + 1$ sequences $a_1, \ldots, a_{n + 1}$ defined by
     $$
-    (a_{i})_j = \begin{cases}
-    0 & i \neq j,  \\
-    1  & i = j
+    (a_{i})_j =
+    \begin{cases}
+      0 & i \neq j,  \\
+      1  & i = j
     \end{cases}
     $$
     for $1 \leq i \leq n + 1,$ $j \geq 1.$
 
-    Assume for the sake of contradiction that this set of vectors is linearly dependent. Therefore, we can conclude there exist $\mu_1, \ldots, \mu_{n+1} \in \mathbb F$ such that
+    Assume for the sake of contradiction that this set of vectors is
+    linearly dependent. Therefore, we can conclude there exist
+    $\mu_1, \ldots, \mu_{n+1} \in \mathbb F$ such that
     $$
-    \mu_1 a_1 + \mu_2 a_2 + \ldots + \mu_{n+1} a_{n+1} = (\mu_1, \mu_2, \ldots, \mu_{n + 1}, 0, 0 \ldots) = \vec 0,
+    \mu_1 a_1 + \mu_2 a_2 + \ldots + \mu_{n+1} a_{n+1} = (\mu_1,
+    \mu_2, \ldots, \mu_{n + 1}, 0, 0 \ldots) = \vec 0,
     $$
     and $(\mu_1, \ldots, \mu_{n + 1}) \neq 0 \in \mathbb F^{n + 1}.$
 
-    Since $\mathbb F^{\infty}$ is a vector space, it has a unique zero vector. Thus, $(\mu_1, \ldots, \mu_{n + 1}, 0, \ldots)$ is composed of only $0$ entries, meaning $(\mu_1, \ldots, \mu_{n + 1}) = 0 \in \mathbb F^{n + 1},$ which is a contradiction. Hence, $a_1, \ldots, a_{n + 1}$ are linearly independent. 
+    Since $\mathbb F^{\infty}$ is a vector space, it has a unique
+    zero vector. Thus, $(\mu_1, \ldots, \mu_{n + 1}, 0, \ldots)$ is
+    composed of only $0$ entries, meaning $(\mu_1, \ldots, \mu_{n +
+    1}) = 0 \in \mathbb F^{n + 1},$ which is a contradiction. Hence,
+    $a_1, \ldots, a_{n + 1}$ are linearly independent.
 
-    However, the length of a linearly independent list is at most the length of a spanning list. Since $b_1, \ldots, b_{n}$ are spanning, $a_1, \ldots, a_{n + 1}$ cannot be linearly independent, deriving a contradiction.
+    However, the length of a linearly independent list is at most the
+    length of a spanning list. Since $b_1, \ldots, b_{n}$ are
+    spanning, $a_1, \ldots, a_{n + 1}$ cannot be linearly
+    independent, deriving a contradiction.
 
-    Hence, we cannot have a basis of length $n$ for any integer $n,$ meaning $F^{\infty}$ is infinite dimensional.
+    Hence, we cannot have a basis of length $n$ for any integer $n,$
+    meaning $F^{\infty}$ is infinite dimensional.
 
-    \item Construct the map $T: \mathcal P_m(\mathbb F) \to \mathbb F$ defined by 
+  \item Construct the map $T: \mathcal P_m(\mathbb F) \to \mathbb F$ defined by
     $$
     Tp = p(1).
     $$
 
-    Note that $T(p + q) = (p + q)(1) = p(1) + q(1) = Tp + Tq,$ $T(\lambda p) = (\lambda p)(1) = \lambda p(1) = \lambda T(p)$ and $Tc = c$ for $c \in \mathbb F,$ meaning $T$ is a surjective linear map, mapping from a space with dimension $m + 1$ to a space with dimension $1.$ 
-    
-    Hence, the null space of $T$ has dimension $m$ by the rank-nullity theorem. The null space consists of all $p \in \mathcal P_m(\mathbb F)$ such that $p(1) = 0.$ Thus, the $m + 1$ vectors $p_0, \ldots, p_m$ reside in a space of dimension $m,$ and thus they must be linearly dependent, as required.
+    Note that $T(p + q) = (p + q)(1) = p(1) + q(1) = Tp + Tq,$
+    $T(\lambda p) = (\lambda p)(1) = \lambda p(1) = \lambda T(p)$ and
+    $Tc = c$ for $c \in \mathbb F,$ meaning $T$ is a surjective
+    linear map, mapping from a space with dimension $m + 1$ to a
+    space with dimension $1.$
 
-    \item First, we prove that the vector space $V = \{\vec 0\},$ i.e consisting of only the zero vector, has a single basis. First, $\{\}$ is a basis for $V,$ since $\text{span}(\emptyset) = \{0\} = V,$ and $\emptyset$ is a linearly independent set. 
-    
-    Assume $V$ has some other basis $B.$ Since $\vec 0$ is the only element in $V,$ this basis $B$ must contain $\vec 0$ at least once, i.e., $B_i = \vec 0.$ However, then a non-zero linear combination of the basis $B$ with the coefficients $\lambda_j = \delta_{ij}$ will produce the zero vector, meaning $B$ cannot be a basis. 
+    Hence, the null space of $T$ has dimension $m$ by the
+    rank-nullity theorem. The null space consists of all $p \in
+    \mathcal P_m(\mathbb F)$ such that $p(1) = 0.$ Thus, the $m + 1$
+    vectors $p_0, \ldots, p_m$ reside in a space of dimension $m,$
+    and thus they must be linearly dependent, as required.
 
-    Hence, $V$'s only basis is $\emptyset,$ meaning $\{\vec 0\}$ is a vector space with a single basis.
+  \item First, we prove that the vector space $V = \{\vec 0\},$ i.e
+    consisting of only the zero vector, has a single basis. First,
+    $\{\}$ is a basis for $V,$ since $\text{span}(\emptyset) = \{0\}
+    = V,$ and $\emptyset$ is a linearly independent set.
 
-    Then, assume we have any other vector space $U \neq \{\vec 0\}$ over the field $\mathbb R$ with a single basis $B.$ Since $\text{span}(\emptyset) = \{\vec 0\} \neq U,$ we have $B \neq \emptyset.$ By definition, 
+    Assume $V$ has some other basis $B.$ Since $\vec 0$ is the only
+    element in $V,$ this basis $B$ must contain $\vec 0$ at least
+    once, i.e., $B_i = \vec 0.$ However, then a non-zero linear
+    combination of the basis $B$ with the coefficients $\lambda_j =
+    \delta_{ij}$ will produce the zero vector, meaning $B$ cannot be a basis.
+
+    Hence, $V$'s only basis is $\emptyset,$ meaning $\{\vec 0\}$ is a
+    vector space with a single basis.
+
+    Then, assume we have any other vector space $U \neq \{\vec 0\}$
+    over the field $\mathbb R$ with a single basis $B.$ Since
+    $\text{span}(\emptyset) = \{\vec 0\} \neq U,$ we have $B \neq
+    \emptyset.$ By definition,
     $$
-    \text{span}(B) = U, 
+    \text{span}(B) = U,
     $$
-    and $B$ is linearly independent. Then, consider the set $B' = \{2b : b \in B\}.$ Note that $B \neq \emptyset,$ and $\vec 0 \not \in B.$
+    and $B$ is linearly independent. Then, consider the set $B' =
+    \{2b : b \in B\}.$ Note that $B \neq \emptyset,$ and $\vec 0 \not \in B.$
 
-    Let $u \in U.$ Since $B$ spans $U,$ there exist $b_1, \ldots, b_k \in B$ and $\lambda_1, \ldots, \lambda_k \in \mathbb R$ such that
+    Let $u \in U.$ Since $B$ spans $U,$ there exist $b_1, \ldots, b_k
+    \in B$ and $\lambda_1, \ldots, \lambda_k \in \mathbb R$ such that
     $$
-    u = \sum_{i=1}^{k} \lambda_i b_i = \sum_{i=1}^{k} \frac{\lambda_i}{2}(2b_i) \in \text{span}(B'),
+    u = \sum_{i=1}^{k} \lambda_i b_i = \sum_{i=1}^{k}
+    \frac{\lambda_i}{2}(2b_i) \in \text{span}(B'),
     $$
-    so $U \subseteq \text{span}(B').$ Additionally, since $B' \subseteq U$ and $U$ is closed under linear combinations, $\text{span}(B') \subseteq U,$ meaning $\text{span}(B') = U.$
+    so $U \subseteq \text{span}(B').$ Additionally, since $B'
+    \subseteq U$ and $U$ is closed under linear combinations,
+    $\text{span}(B') \subseteq U,$ meaning $\text{span}(B') = U.$
 
-    Additionally, because $B$ is linearly independent, 
+    Additionally, because $B$ is linearly independent,
     $$
     \lambda_1 b_1 + \lambda_2 b_2 + \ldots = \vec 0
     $$
-    has a single solution, which is the trivial solution. Assume that $B'$ is linearly dependent. Then, 
+    has a single solution, which is the trivial solution. Assume that
+    $B'$ is linearly dependent. Then,
     $$
-\lambda_1 (2b_1) + \lambda_2 (2b_2) + \ldots =   2(\lambda_1 b_1 + \lambda_2 b_2 + \ldots) = \vec 0
+    \lambda_1 (2b_1) + \lambda_2 (2b_2) + \ldots =   2(\lambda_1 b_1
+    + \lambda_2 b_2 + \ldots) = \vec 0
     $$
-    has a non-trivial solution, meaning 
+    has a non-trivial solution, meaning
     $$
     \lambda_1 b_1 + \lambda_2 b_2 + \ldots = \vec 0
     $$
-    has a non-trivial solution, which is a contradiction. Thus, $B'$ is linearly independent.
+    has a non-trivial solution, which is a contradiction. Thus, $B'$
+    is linearly independent.
 
-    Therefore, we can conclude $B'$ is also a basis, meaning $B' = B.$ Therefore, for all $b_i,$ there exists some $b_j$ such that
+    Therefore, we can conclude $B'$ is also a basis, meaning $B' =
+    B.$ Therefore, for all $b_i,$ there exists some $b_j$ such that
     $$
     2b_i = b_j \Rightarrow 2b_i - b_j = 0.
     $$
     \begin{itemize}
-        \item If $i = j,$ we must have $2b_i = b_i,$ which is a contradiction since $b_i \neq 0$ for all indices $i.$
+      \item If $i = j,$ we must have $2b_i = b_i,$ which is a
+        contradiction since $b_i \neq 0$ for all indices $i.$
 
-        \item Otherwise, consider a single such $(i, j)$ pair where $i \neq j$. Then the non-trivial linear combination on $B$ with coefficients
-    $$
-    \lambda_i = 2, \lambda_j = -1, \lambda_{k\neq i, j} = 0
-    $$
-    produces the zero vector, which is a contradiction. 
+      \item Otherwise, consider a single such $(i, j)$ pair where $i
+        \neq j$. Then the non-trivial linear combination on $B$ with
+        coefficients
+        $$
+        \lambda_i = 2, \lambda_j = -1, \lambda_{k\neq i, j} = 0
+        $$
+        produces the zero vector, which is a contradiction.
     \end{itemize}
-    
-    Thus, $B' \neq B,$ and there are $\geq 2$ basis sets on $U,$ deriving a contradiction. Thus, for $U$ to have a single basis, it's basis set must be $\emptyset.$
 
-    \item Suppose that $V$ is finite dimensional, and we have subspaces $U, W$ such that $U + W = V.$ Consider a basis of $U$, $B_U = \{u_1, \ldots, u_m\}$, and a basis of $W$, $B_W = \{w_1, \ldots, w_n\}.$
-    
-    Since we have $U + W = V$, for any $v \in V$, there exist $u \in U$ and $w \in W$ such that $u + w = v.$ Then, by the definition of a basis, there exist coefficients $\lambda_1, \ldots, \lambda_m$ and $\mu_1, \ldots, \mu_n$ such that
+    Thus, $B' \neq B,$ and there are $\geq 2$ basis sets on $U,$
+    deriving a contradiction. Thus, for $U$ to have a single basis,
+    it's basis set must be $\emptyset.$
+
+  \item Suppose that $V$ is finite dimensional, and we have subspaces
+    $U, W$ such that $U + W = V.$ Consider a basis of $U$, $B_U =
+    \{u_1, \ldots, u_m\}$, and a basis of $W$, $B_W = \{w_1, \ldots, w_n\}.$
+
+    Since we have $U + W = V$, for any $v \in V$, there exist $u \in
+    U$ and $w \in W$ such that $u + w = v.$ Then, by the definition
+    of a basis, there exist coefficients $\lambda_1, \ldots,
+    \lambda_m$ and $\mu_1, \ldots, \mu_n$ such that
     $$
     \lambda_1 u_1 + \ldots + \lambda_m u_m + \mu_1 w_1 + \ldots + \mu_n w_n = v,
     $$
@@ -97,7 +155,7 @@
     B' = \{u_1, \ldots, u_m, w_1, \ldots, w_n\}
     $$
     has $\operatorname{span}(B') = V.$
-    
+
     Now, consider
     $$
     B = \{B'_i : B'_i \notin \operatorname{span}(B'_1, \ldots, B'_{i-1})\}.
@@ -106,7 +164,8 @@
     $$
     \sum_{j=1}^{r} \lambda_j B'_{i_j} = 0
     $$
-    for indices $i_1 < \cdots < i_r$ such that $B'_{i_j} \in B.$ Consider the largest $k$ such that $\lambda_k \neq 0.$ Then, we can write
+    for indices $i_1 < \cdots < i_r$ such that $B'_{i_j} \in B.$
+    Consider the largest $k$ such that $\lambda_k \neq 0.$ Then, we can write
     $$
     \sum_{j=1}^{k} \lambda_j B'_{i_j} = 0
     \Rightarrow
@@ -124,17 +183,22 @@
     \subseteq
     \operatorname{span}(B'_1, \ldots, B'_{i_k-1}),
     $$
-    which is a contradiction of the definition of $B.$ Thus, $B$ is linearly independent.
-    
-    It remains to show that $\operatorname{span}(B) = V.$ We show that every $B'_i \in B'$ lies in $\operatorname{span}(B)$ by induction on $i.$ Suppose that
+    which is a contradiction of the definition of $B.$ Thus, $B$ is
+    linearly independent.
+
+    It remains to show that $\operatorname{span}(B) = V.$ We show
+    that every $B'_i \in B'$ lies in $\operatorname{span}(B)$ by
+    induction on $i.$ Suppose that
     $$
     B'_1, \ldots, B'_{i-1} \in \operatorname{span}(B).
     $$
-    If $B'_i \in B$, then clearly $B'_i \in \operatorname{span}(B).$ Otherwise, by the definition of $B$,
+    If $B'_i \in B$, then clearly $B'_i \in \operatorname{span}(B).$
+    Otherwise, by the definition of $B$,
     $$
     B'_i \in \operatorname{span}(B'_1, \ldots, B'_{i-1}).
     $$
-    By the induction hypothesis, each $B'_1, \ldots, B'_{i-1}$ lies in $\operatorname{span}(B)$, and therefore
+    By the induction hypothesis, each $B'_1, \ldots, B'_{i-1}$ lies
+    in $\operatorname{span}(B)$, and therefore
     $$
     B'_i \in \operatorname{span}(B).
     $$
@@ -156,25 +220,43 @@
     $$
     every element of $B$ lies in $U \cup W.$
 
-    \item Counterexample: $V = \mathbb R^{4},$ $v_1 = e_1, v_2 = e_2, v_3 = e_3, v_4 = e_4,$ $U = \text{span}(e_1, e_2, e_3 + e_4).$ Clearly $e_1, e_2 \in U.$
+  \item Counterexample: $V = \mathbb R^{4},$ $v_1 = e_1, v_2 = e_2,
+    v_3 = e_3, v_4 = e_4,$ $U = \text{span}(e_1, e_2, e_3 + e_4).$
+    Clearly $e_1, e_2 \in U.$
 
-    We show $e_3 \notin U.$ Suppose $e_3 = a e_1 + b e_2 + c(e_3 + e_4)$ for some $a, b, c \in \mathbb R.$ Comparing the third coordinate gives $c = 1,$ while comparing the fourth coordinate gives $c = 0,$ a contradiction. Similarly, $e_4 \notin U.$
+    We show $e_3 \notin U.$ Suppose $e_3 = a e_1 + b e_2 + c(e_3 +
+    e_4)$ for some $a, b, c \in \mathbb R.$ Comparing the third
+    coordinate gives $c = 1,$ while comparing the fourth coordinate
+    gives $c = 0,$ a contradiction. Similarly, $e_4 \notin U.$
 
-    Since $e_1, e_2, e_3, e_4$ are linearly independent, $e_1, e_2$ cannot be a basis for $U,$ since $e_3 + e_4 \in U,$ and $e_3 + e_4 \in \text{span}(e_1, e_2)$ would require
+    Since $e_1, e_2, e_3, e_4$ are linearly independent, $e_1, e_2$
+    cannot be a basis for $U,$ since $e_3 + e_4 \in U,$ and $e_3 +
+    e_4 \in \text{span}(e_1, e_2)$ would require
     $$
     \lambda_1 e_1 + \lambda_2 e_2 - e_3 - e_4 = \vec 0
     $$
-    for some $\lambda_1, \lambda_2 \in \mathbb R,$ which is a non-trivial linear combination of $e_1, e_2, e_3, e_4$ equal to $\vec 0,$ contradicting their linear independence. Hence $v_1, v_2$ is not a basis of $U,$ so the statement is false.
+    for some $\lambda_1, \lambda_2 \in \mathbb R,$ which is a
+    non-trivial linear combination of $e_1, e_2, e_3, e_4$ equal to
+    $\vec 0,$ contradicting their linear independence. Hence $v_1,
+    v_2$ is not a basis of $U,$ so the statement is false.
 \end{enumerate}
 
 \subsection{Evaluating Proofs}
-This proof is logically correct, since $V \oplus U$ is a direct sum only if for all $v \in V$ and $u \in U,$  $v + u = 0$ requires $v = 0$ and $u = 0.$
+This proof is logically correct, since $V \oplus U$ is a direct sum
+only if for all $v \in V$ and $u \in U,$  $v + u = 0$ requires $v =
+0$ and $u = 0.$
 
 \subsection{Using Computers}
 \begin{center}
-    \includegraphics[width=0.9\linewidth]{Screenshot 2026-09-15 at 7.52.27 pm.png}
+  \includegraphics[width=0.9\linewidth]{Screenshot 2026-09-15 at 7.52.27 pm.png}
 \end{center}
 
-This statement is true. The transformation from basis $v_1, \ldots, v_m$  to $w_1, \ldots, w_m$ is the matrix $P$ with $1$'s only in the lower triangular entries, and $0$'s everywhere else. Since this has a non-zero determinant and $v_1, \ldots, v_m$ are linearly independent, it follows that $w_1, \ldots, w_m$ are also linearly independent. Since we know the dimension of $V$ must be $m,$ then $w_1, \ldots, w_m$ must also be a basis.
+This statement is true. The transformation from basis $v_1, \ldots,
+v_m$  to $w_1, \ldots, w_m$ is the matrix $P$ with $1$'s only in the
+lower triangular entries, and $0$'s everywhere else. Since this has a
+non-zero determinant and $v_1, \ldots, v_m$ are linearly independent,
+it follows that $w_1, \ldots, w_m$ are also linearly independent.
+Since we know the dimension of $V$ must be $m,$ then $w_1, \ldots,
+w_m$ must also be a basis.
 
 \end{document}

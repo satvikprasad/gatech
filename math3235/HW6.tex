@@ -4,184 +4,240 @@
 
 \begin{document}
 \begin{enumerate}
-    \item First consider the case where $X$ is discrete.
-    
-    By the definition of the CDF, 
+  \item First consider the case where $X$ is discrete.
+
+    By the definition of the CDF,
     $$
     F_X(s) = \sum_{k \leq s} P(X = k),
     $$
-    and $$\lim_{\epsilon \downarrow 0}F_X(s - \epsilon) = \lim_{\epsilon \downarrow 0} \sum_{k \leq s - \epsilon} \mathbb P(X = k).$$
+    and $$\lim_{\epsilon \downarrow 0}F_X(s - \epsilon) =
+    \lim_{\epsilon \downarrow 0} \sum_{k \leq s - \epsilon} \mathbb P(X = k).$$
 
-    Since for all $\epsilon > 0,$ $ s - \epsilon < s,$ $F_X(s)$ is not a part of the sum. Let $a$ be the largest real number satisfying $a < s$ and $a \in \text{range} \ X.$ Then, with $\epsilon = s - a,$ we have
+    Since for all $\epsilon > 0,$ $ s - \epsilon < s,$ $F_X(s)$ is
+    not a part of the sum. Let $a$ be the largest real number
+    satisfying $a < s$ and $a \in \text{range} \ X.$ Then, with
+    $\epsilon = s - a,$ we have
     $$
-        \sum_{k \leq s - \epsilon} \mathbb P(X = k) = \sum_{k \leq a} \mathbb P(X = k).
+    \sum_{k \leq s - \epsilon} \mathbb P(X = k) = \sum_{k \leq a}
+    \mathbb P(X = k).
     $$
-    For all $\epsilon < s- a,$ since $a$ is maximal, there is no $a < b < s$ such that $b \in \text{range}\ X,$ and thus $\sum_{k \leq s - \epsilon} \mathbb P(X = k) = \sum_{k \leq a} \mathbb P(X = k)$ for all $\epsilon < s - a.$ Therefore, by the definition of the limit, this limit $L$ is exactly defined by  
+    For all $\epsilon < s- a,$ since $a$ is maximal, there is no $a <
+    b < s$ such that $b \in \text{range}\ X,$ and thus $\sum_{k \leq
+    s - \epsilon} \mathbb P(X = k) = \sum_{k \leq a} \mathbb P(X =
+    k)$ for all $\epsilon < s - a.$ Therefore, by the definition of
+    the limit, this limit $L$ is exactly defined by
     $$
-        L = \sum_{k \leq a } \mathbb P(X = k).
+    L = \sum_{k \leq a } \mathbb P(X = k).
     $$
 
-    Thus, $$F_X(s) - \lim_{e \downarrow } F_{X}(s -\epsilon) = \mathbb P(X = s)$$ for discrete $X.$
+    Thus, $$F_X(s) - \lim_{e \downarrow } F_{X}(s -\epsilon) =
+    \mathbb P(X = s)$$ for discrete $X.$
 
-    Otherwise, we have $X$ continuous. Then, $\mathbb P(X = s) = 0,$ meaning we need to show that
+    Otherwise, we have $X$ continuous. Then, $\mathbb P(X = s) = 0,$
+    meaning we need to show that
     $$
-        \lim_{\epsilon\downarrow 0} F_X(s - \epsilon ) = F_X(s).
+    \lim_{\epsilon\downarrow 0} F_X(s - \epsilon ) = F_X(s).
     $$
-    By the definition of a continuous random variable, $F_X$ is continuous, and thus left continuous, meaning this is trivially true. Hence, for continuous $X,$ this statement holds too.
+    By the definition of a continuous random variable, $F_X$ is
+    continuous, and thus left continuous, meaning this is trivially
+    true. Hence, for continuous $X,$ this statement holds too.
 
-    Finally, since $F_X(s)  = \lim_{\epsilon \downarrow 0}F_X(s + \epsilon),$ we have
+    Finally, since $F_X(s)  = \lim_{\epsilon \downarrow 0}F_X(s +
+    \epsilon),$ we have
     $$
-        \mathbb P(X =s ) = F_X(s) - \lim_{\epsilon \downarrow 0} F_X(s -\epsilon) = \lim_{\epsilon \downarrow 0} F_X(s + \epsilon) + \lim_{\epsilon \downarrow 0} F_X(s - \epsilon)
+    \mathbb P(X =s ) = F_X(s) - \lim_{\epsilon \downarrow 0} F_X(s
+    -\epsilon) = \lim_{\epsilon \downarrow 0} F_X(s + \epsilon) +
+    \lim_{\epsilon \downarrow 0} F_X(s - \epsilon)
     $$
     for all random variables $X$ as required. \qed
 
-    \item We know $X$ has density function $f: \mathbb R \to \mathbb 
-R$ defined by 
+  \item We know $X$ has density function $f: \mathbb R \to \mathbb
+    R$ defined by
     $$
     f(x) = \dfrac{1}{2} e^{-|x|}.
     $$
-    Then, $F_X(s)$ is defined by 
+    Then, $F_X(s)$ is defined by
     $$
     F_X(s) = \dfrac{1}{2}\int_{-\infty}^{s} e^{-|x|} \, dx.
     $$
 
-    When $x \leq 0,$ $f(x) = \frac{1}{2}e^{x},$ and $\frac{1}{2}e^{-x}$ otherwise. Hence, when $s \leq 0,$ we have
+    When $x \leq 0,$ $f(x) = \frac{1}{2}e^{x},$ and
+    $\frac{1}{2}e^{-x}$ otherwise. Hence, when $s \leq 0,$ we have
     $$
-        F_X(s) = \dfrac{1}{2}\int_{-\infty}^{s} e^{x} \, dx = \dfrac{e^{s}}{2}.
+    F_X(s) = \dfrac{1}{2}\int_{-\infty}^{s} e^{x} \, dx = \dfrac{e^{s}}{2}.
     $$
 
     Otherwise, when $s > 0,$ we have
     \begin{align*}
-    F_X(s) &= F_X(0) + \dfrac{1}{2}\int_{0}^{s} e^{-x} \, dx \\
-    &= \dfrac{1}{2} + \dfrac{1 - e^{-s}}{2} = 1 - \dfrac{e^{-s}}{2}.
+      F_X(s) &= F_X(0) + \dfrac{1}{2}\int_{0}^{s} e^{-x} \, dx \\
+      &= \dfrac{1}{2} + \dfrac{1 - e^{-s}}{2} = 1 - \dfrac{e^{-s}}{2}.
     \end{align*}
 
     Therefore, the distribution function is $F_X : \mathbb R \to [0, 1]$
     $$
-        F_X(s) = \begin{cases}
-            \dfrac{e^s}{2}  & s \leq 0 \\
-            1 - \dfrac{e^{-s}}{2} & s > 0
-        \end{cases} .
+    F_X(s) =
+    \begin{cases}
+      \dfrac{e^s}{2}  & s \leq 0 \\
+      1 - \dfrac{e^{-s}}{2} & s > 0
+    \end{cases} .
     $$
-    \qed 
-    
-    \item We first find the distribution function $F_Y(s).$ We know
+    \qed
+
+  \item We first find the distribution function $F_Y(s).$ We know
     $$
     \mathbb P(Y < s) = \mathbb P(|X| < s) = \mathbb P(-s < X < s),
     $$
-    or equivalently, 
+    or equivalently,
     $$
     \mathbb P(\{X < s\} \setminus \{X \leq -s\}) = F_X(s) - F_X(-s).
     $$
     Therefore, $f_Y(s)$ satisfies
     $$
-        f_Y(s) = F'_Y(s) = f_x(s) + f_X(-s) = \dfrac{2}{\sqrt{2\pi}} e^{-s^2/2}.
+    f_Y(s) = F'_Y(s) = f_x(s) + f_X(-s) = \dfrac{2}{\sqrt{2\pi}} e^{-s^2/2}.
     $$
     when $s \geq 0,$ and $0$ otherwise.
 
     Thus, the mean satisfies
     \begin{align*}
-    \mu &= -\dfrac{2}{\sqrt{2\pi}}\int_{0}^{\infty}(-x)  e^{-x^2/2} \, dx \\
-    &= - \dfrac{2}{\sqrt{2\pi}} [0 - 1] = \sqrt{\dfrac{2}{\pi}}
+      \mu &= -\dfrac{2}{\sqrt{2\pi}}\int_{0}^{\infty}(-x)  e^{-x^2/2} \, dx \\
+      &= - \dfrac{2}{\sqrt{2\pi}} [0 - 1] = \sqrt{\dfrac{2}{\pi}}
     \end{align*}
 
     For the variance, we compute
     $$
-        E[Y^2] = \mathbb E[|X|^2] = \mathbb E[X^2] = \text{Var}[X] + \mathbb E[X]^2 = 1.
+    E[Y^2] = \mathbb E[|X|^2] = \mathbb E[X^2] = \text{Var}[X] +
+    \mathbb E[X]^2 = 1.
     $$
     Thus,
     $$
     \text{Var}[Y] = \mathbb E[Y^2] - \mu^2=  1- \dfrac{2}{\pi}.
     $$
 
-    \item \begin{enumerate}
-        \item Assume we have some $X \sim \text{Exp}(\lambda).$ Then, 
+  \item
+    \begin{enumerate}
+      \item Assume we have some $X \sim \text{Exp}(\lambda).$ Then,
         $$
-        F_X(s) = \begin{cases}
-            1 - e^{-\lambda s} & s \geq 0, \\
-            0 & \text{otherwise}
+        F_X(s) =
+        \begin{cases}
+          1 - e^{-\lambda s} & s \geq 0, \\
+          0 & \text{otherwise}
         \end{cases}.
         $$
 
         Then, for $s, t \geq 0,$ $$
-        \mathbb P(X \geq s + t \mid X \geq s) = \dfrac{\mathbb P(X \geq s + t)}{\mathbb P(X \geq s)}.
+        \mathbb P(X \geq s + t \mid X \geq s) = \dfrac{\mathbb P(X
+        \geq s + t)}{\mathbb P(X \geq s)}.
         $$
 
-        Hence, this is equal to 
+        Hence, this is equal to
         $$
-            \dfrac{1 - F_X(s + t)}{1 - F_X(s)}  = \dfrac{e^{-\lambda(s + t)}}{e^{-\lambda(s)}} = e^{-\lambda t} = 1- (1 - e^{-\lambda t}) = \mathbb P(X \geq t)
+        \dfrac{1 - F_X(s + t)}{1 - F_X(s)}  = \dfrac{e^{-\lambda(s +
+        t)}}{e^{-\lambda(s)}} = e^{-\lambda t} = 1- (1 - e^{-\lambda
+        t}) = \mathbb P(X \geq t)
         $$
         as required. \qed
 
-        \item \begin{enumerate}
-            \item Assume we have some continuous memoryless $X.$ Then, by definition, $$
-                \mathbb P(X \geq s + t) = \mathbb P(X \geq t) \mathbb P(X \geq s).
+      \item
+        \begin{enumerate}
+          \item Assume we have some continuous memoryless $X.$ Then,
+            by definition, $$
+            \mathbb P(X \geq s + t) = \mathbb P(X \geq t) \mathbb P(X \geq s).
             $$
-            Since $mt = \underbrace{t + t + \ldots + t}_{\times m},$we can recurse $m$ times, yielding
+            Since $mt = \underbrace{t + t + \ldots + t}_{\times
+            m},$we can recurse $m$ times, yielding
             $$
             \mathbb P(X \geq mt) = \mathbb P(X \geq t)^{m}.
             $$
 
-            \item Alternatively, consider $$
-            \mathbb P(X \geq t/n)^{n} = \mathbb P(X \geq \underbrace{t/n + t/n + \ldots + t/n}_{t}) = \mathbb P(X \geq t),
+          \item Alternatively, consider $$
+            \mathbb P(X \geq t/n)^{n} = \mathbb P(X \geq
+            \underbrace{t/n + t/n + \ldots + t/n}_{t}) = \mathbb P(X \geq t),
             $$
             meaning
             $$
             \mathbb P(X \geq t/ n) = \mathbb P(X \geq t)^{1/n}.
             $$
 
-            \item Then, assume we have some rational $q > 0.$ Hence, $q$ can be expressed as a ratio of $a, b > 0 \in \mathbb Z$ with $\gcd(a, b) = 1$. Thus, 
+          \item Then, assume we have some rational $q > 0.$ Hence,
+            $q$ can be expressed as a ratio of $a, b > 0 \in \mathbb
+            Z$ with $\gcd(a, b) = 1$. Thus,
             $$
-            \mathbb P(X \geq qt) = \mathbb P(X \geq at/b) = \mathbb P(X \geq at)^{1/b} = \mathbb P(X \geq t)^{a/b} = \mathbb P(X \geq t)^{q}
+            \mathbb P(X \geq qt) = \mathbb P(X \geq at/b) = \mathbb
+            P(X \geq at)^{1/b} = \mathbb P(X \geq t)^{a/b} = \mathbb
+            P(X \geq t)^{q}
             $$
             as required.
 
-            \item N.A.
+          \item N.A.
 
-            \item Thus, for every $s > 0,$ we can write
+          \item Thus, for every $s > 0,$ we can write
             $$
-                \mathbb P(X \geq s) = \mathbb P(X \geq s(1)) = \mathbb P(X \geq 1)^{s}.
+            \mathbb P(X \geq s) = \mathbb P(X \geq s(1)) = \mathbb
+            P(X \geq 1)^{s}.
             $$
-            Since $X$ is supported on $[0, \infty),$ $F_X(0) = 0.$ Using this result, we also know
+            Since $X$ is supported on $[0, \infty),$ $F_X(0) = 0.$
+            Using this result, we also know
             $$
             F_X(s) = 1- \mathbb P(X \geq s) = 1 - \mathbb P(X \geq 1)^{s}
             $$
-            whenever $s > 0.$ Letting $\lambda = -\ln \mathbb P(X \geq 1),$ we get
+            whenever $s > 0.$ Letting $\lambda = -\ln \mathbb P(X
+            \geq 1),$ we get
             $$
-            F_X(s) = \begin{cases}
-                0 & s = 0 \\
-                1 - e^{-\lambda s} & s > 0
+            F_X(s) =
+            \begin{cases}
+              0 & s = 0 \\
+              1 - e^{-\lambda s} & s > 0
             \end{cases} = 1-e^{-\lambda s}
             $$
-            on $[0, \infty)$ as required. This is the distribution for $\text{Exp}(\lambda),$ meaning $X$ memoryless and continuous forces $X \sim \text{Exp}(\lambda)$ for some $\lambda = - \ln \mathbb P(X \geq 1).$
+            on $[0, \infty)$ as required. This is the distribution
+            for $\text{Exp}(\lambda),$ meaning $X$ memoryless and
+            continuous forces $X \sim \text{Exp}(\lambda)$ for some
+            $\lambda = - \ln \mathbb P(X \geq 1).$
         \end{enumerate}
     \end{enumerate}
 
-        \item \begin{enumerate}
-        \item Let $X \sim \mathcal N(\mu, \sigma^2)$ and fix some $k > 0.$ Then, $X$ has density
+  \item
+    \begin{enumerate}
+      \item Let $X \sim \mathcal N(\mu, \sigma^2)$ and fix some $k >
+        0.$ Then, $X$ has density
         $$
         f_X(x) = \dfrac{1}{\sigma\sqrt{2\pi}} e^{-(x - \mu)^2/(2\sigma^2)},
         $$
         meaning
         $$
-        \mathbb P(\mu - k\sigma \leq X \leq \mu + k\sigma) = \int_{\mu - k\sigma}^{\mu + k\sigma} \dfrac{1}{\sigma\sqrt{2\pi}} e^{-(x - \mu)^2/(2\sigma^2)} \, dx.
+        \mathbb P(\mu - k\sigma \leq X \leq \mu + k\sigma) =
+        \int_{\mu - k\sigma}^{\mu + k\sigma}
+        \dfrac{1}{\sigma\sqrt{2\pi}} e^{-(x - \mu)^2/(2\sigma^2)} \, dx.
         $$
-        Substituting $z = (x - \mu)/\sigma,$ we have $dx = \sigma \, dz,$ and the bounds $x = \mu \pm k\sigma$ become $z = \pm k.$ Hence,
+        Substituting $z = (x - \mu)/\sigma,$ we have $dx = \sigma \,
+        dz,$ and the bounds $x = \mu \pm k\sigma$ become $z = \pm k.$ Hence,
         \begin{align*}
-        \mathbb P(\mu - k\sigma \leq X \leq \mu + k\sigma) &= \int_{-k}^{k} \dfrac{1}{\sigma\sqrt{2\pi}} e^{-z^2/2} \, \sigma \, dz \\
-        &= \int_{-k}^{k} \dfrac{1}{\sqrt{2\pi}} e^{-z^2/2} \, dz = \mathbb P(-k \leq \mathcal N(0, 1) \leq k),
+          \mathbb P(\mu - k\sigma \leq X \leq \mu + k\sigma) &=
+          \int_{-k}^{k} \dfrac{1}{\sigma\sqrt{2\pi}} e^{-z^2/2} \,
+          \sigma \, dz \\
+          &= \int_{-k}^{k} \dfrac{1}{\sqrt{2\pi}} e^{-z^2/2} \, dz =
+          \mathbb P(-k \leq \mathcal N(0, 1) \leq k),
         \end{align*}
-        which does not depend on $\mu$ or $\sigma.$ Evaluating these integrals numerically for $k = 1, 2, 3$ gives
+        which does not depend on $\mu$ or $\sigma.$ Evaluating these
+        integrals numerically for $k = 1, 2, 3$ gives
         \begin{align*}
-        \mathbb P(-1 \leq \mathcal N(0, 1) \leq 1) &\approx 0.6827 \approx 68\%, \\
-        \mathbb P(-2 \leq \mathcal N(0, 1) \leq 2) &\approx 0.9545 \approx 95\%, \\
-        \mathbb P(-3 \leq \mathcal N(0, 1) \leq 3) &\approx 0.9973 \approx 99.7\%
+          \mathbb P(-1 \leq \mathcal N(0, 1) \leq 1) &\approx 0.6827
+          \approx 68\%, \\
+          \mathbb P(-2 \leq \mathcal N(0, 1) \leq 2) &\approx 0.9545
+          \approx 95\%, \\
+          \mathbb P(-3 \leq \mathcal N(0, 1) \leq 3) &\approx 0.9973
+          \approx 99.7\%
         \end{align*}
         as required. \qed
 
-        \item Assume $X \sim \text{Exp}(1).$ From the previous question, $\mathbb E[X] = 1/\lambda = 1$ and $\text{Var}[X] = 1/\lambda^2 = 1,$ so $\mu = \sigma = 1.$ Since $X$ is supported on $[0, \infty),$ and $\mu - k\sigma = 1 - k \leq 0$ for $k \geq 1,$ we have
+      \item Assume $X \sim \text{Exp}(1).$ From the previous
+        question, $\mathbb E[X] = 1/\lambda = 1$ and $\text{Var}[X] =
+        1/\lambda^2 = 1,$ so $\mu = \sigma = 1.$ Since $X$ is
+        supported on $[0, \infty),$ and $\mu - k\sigma = 1 - k \leq
+        0$ for $k \geq 1,$ we have
         $$
-        \mathbb P(\mu - k\sigma \leq X \leq \mu + k\sigma) = \mathbb P(0 \leq X \leq 1 + k) = \int_{0}^{1 + k} e^{-x} \, dx.
+        \mathbb P(\mu - k\sigma \leq X \leq \mu + k\sigma) = \mathbb
+        P(0 \leq X \leq 1 + k) = \int_{0}^{1 + k} e^{-x} \, dx.
         $$
         Computing these numerically with
 \begin{verbatim}
@@ -197,29 +253,41 @@ for k in (1, 2, 3):
 \end{verbatim}
         gives
         \begin{align*}
-        \mathbb P(0 \leq X \leq 2) &\approx 0.8647 \approx 86\%, \\
-        \mathbb P(0 \leq X \leq 3) &\approx 0.9502 \approx 95\%, \\
-        \mathbb P(0 \leq X \leq 4) &\approx 0.9817 \approx 98\%.
+          \mathbb P(0 \leq X \leq 2) &\approx 0.8647 \approx 86\%, \\
+          \mathbb P(0 \leq X \leq 3) &\approx 0.9502 \approx 95\%, \\
+          \mathbb P(0 \leq X \leq 4) &\approx 0.9817 \approx 98\%.
         \end{align*}
 
-        \item Assume $X \sim \text{Exp}(2).$ Then, $\mu = \sigma = 1/2,$ and again $\mu - k\sigma \leq 0$ for $k \geq 1,$ so the intervals are $[0, 1], [0, 3/2], [0, 2].$ Setting \texttt{lam = 2} in the code above gives
+      \item Assume $X \sim \text{Exp}(2).$ Then, $\mu = \sigma =
+        1/2,$ and again $\mu - k\sigma \leq 0$ for $k \geq 1,$ so the
+        intervals are $[0, 1], [0, 3/2], [0, 2].$ Setting \texttt{lam
+        = 2} in the code above gives
         \begin{align*}
-        \mathbb P(0 \leq X \leq 1) &= \int_0^1 2e^{-2x} \, dx \approx 0.8647 \approx 86\%, \\
-        \mathbb P(0 \leq X \leq 3/2) &= \int_0^{3/2} 2e^{-2x} \, dx \approx 0.9502 \approx 95\%, \\
-        \mathbb P(0 \leq X \leq 2) &= \int_0^2 2e^{-2x} \, dx \approx 0.9817 \approx 98\%,
+          \mathbb P(0 \leq X \leq 1) &= \int_0^1 2e^{-2x} \, dx
+          \approx 0.8647 \approx 86\%, \\
+          \mathbb P(0 \leq X \leq 3/2) &= \int_0^{3/2} 2e^{-2x} \, dx
+          \approx 0.9502 \approx 95\%, \\
+          \mathbb P(0 \leq X \leq 2) &= \int_0^2 2e^{-2x} \, dx
+          \approx 0.9817 \approx 98\%,
         \end{align*}
         which are the same values as for $\text{Exp}(1).$
 
-        \item There is a single rule. Assume $X \sim \text{Exp}(\lambda)$ for any $\lambda > 0.$ Then, $\mu = \sigma = 1/\lambda,$ and for $k \geq 1,$ $\mu - k\sigma = (1 - k)/\lambda \leq 0.$ Hence,
+      \item There is a single rule. Assume $X \sim
+        \text{Exp}(\lambda)$ for any $\lambda > 0.$ Then, $\mu =
+        \sigma = 1/\lambda,$ and for $k \geq 1,$ $\mu - k\sigma = (1
+        - k)/\lambda \leq 0.$ Hence,
         \begin{align*}
-        \mathbb P(\mu - k\sigma \leq X \leq \mu + k\sigma) &= \mathbb P\left(0 \leq X \leq \dfrac{1 + k}{\lambda}\right) \\
-        &= F_X\left(\dfrac{1 + k}{\lambda}\right) = 1 - e^{-\lambda (1 + k)/\lambda} = 1 - e^{-(1 + k)},
+          \mathbb P(\mu - k\sigma \leq X \leq \mu + k\sigma) &=
+          \mathbb P\left(0 \leq X \leq \dfrac{1 + k}{\lambda}\right) \\
+          &= F_X\left(\dfrac{1 + k}{\lambda}\right) = 1 - e^{-\lambda
+          (1 + k)/\lambda} = 1 - e^{-(1 + k)},
         \end{align*}
         which does not depend on $\lambda.$
 
         For $k = 1, 2, 3,$ this gives
         $$
-        1 - e^{-2} \approx 86.5\%, \quad 1 - e^{-3} \approx 95.0\%, \quad 1 - e^{-4} \approx 98.2\%,
+        1 - e^{-2} \approx 86.5\%, \quad 1 - e^{-3} \approx 95.0\%,
+        \quad 1 - e^{-4} \approx 98.2\%,
         $$
         so it should be called something like the 86--95--98 rule.
     \end{enumerate}

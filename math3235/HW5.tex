@@ -4,35 +4,39 @@
 
 \begin{document}
 \begin{enumerate}
-    \item $X \sim \text{Binomial}(N, p)$ is a sum of $N$ Bernoulli trials with probability $p$ of success, yielding generating function
+  \item $X \sim \text{Binomial}(N, p)$ is a sum of $N$ Bernoulli
+    trials with probability $p$ of success, yielding generating function
     $$
     G_X(s) = (1-p + ps)^N.
     $$
 
     \begin{enumerate}
-        \item Since $\mathbb E[X] = G_X'(1),$ we get 
+      \item Since $\mathbb E[X] = G_X'(1),$ we get
         $$
         G_X'(s) = Np(1-p + ps)^{N-1} \Rightarrow \mathbb E[X] = Np.
         $$
         Similarly, since $\mathbb E[X^2] - \mathbb E[X] = G_X''(1),$ we get
         $$
-        N(N-1) p^2 = \mathbb E[X^2] - Np \Rightarrow \mathbb E[X^2] = N^2p^2 - Np^2 + Np,
+        N(N-1) p^2 = \mathbb E[X^2] - Np \Rightarrow \mathbb E[X^2] =
+        N^2p^2 - Np^2 + Np,
         $$
         and $\text{Var}\,X = N^2p^2 - Np^2 + Np - N^2p^2 = Np(1-p)$ as required.
 
-        \item The probability that $X$ is even can be computed from 
+      \item The probability that $X$ is even can be computed from
         $$
         \frac{G_X(1) + G_X(-1)}{2},
         $$
-        since odd exponents cancel out. Thus, 
+        since odd exponents cancel out. Thus,
         $$
-        \mathbb P(X \equiv 0 \pmod 2) = \dfrac{1^N + (1-2p)^N}{2} = \dfrac{1 + (1-2p)^N}{2}.
+        \mathbb P(X \equiv 0 \pmod 2) = \dfrac{1^N + (1-2p)^N}{2} =
+        \dfrac{1 + (1-2p)^N}{2}.
         $$
 
-        \item Use roots of unity such that $\omega^2 + \omega + 1 = 0.$
+      \item Use roots of unity such that $\omega^2 + \omega + 1 = 0.$
     \end{enumerate}
 
-    \item We have random variable $X$ with generating function $G_X(s).$ Consider $Y = kX$ for some positive integer $k.$ Then,
+  \item We have random variable $X$ with generating function
+    $G_X(s).$ Consider $Y = kX$ for some positive integer $k.$ Then,
     $$
     G_{Y}(s) = \mathbb E[s^{kX}] = \mathbb E[(s^k)^X] = G_X(s^k).
     $$
@@ -42,97 +46,114 @@
     $$
     as required. \qed
 
-    \item The generating function for $u_n$ is given by 
+  \item The generating function for $u_n$ is given by
     \begin{align*}
-        U(s) = \sum_{k = 0}^{\infty} \mathbb P(X > n) s^k &= \sum_{k = 0}^{\infty} \sum_{j = k + 1}^{\infty} \mathbb P(X = j) s^k \\
-        &=\sum_{j = 1}^{\infty} \mathbb P(X = j) \sum_{k = 0}^{j - 1} s^k \\
-        &= \sum_{j =1 }^\infty{} \mathbb P(X = j) \dfrac{s^{j} - 1}{s - 1} \\
-        &= \dfrac{1}{s-1} \sum_{j = 1}^{\infty} \mathbb P(X =j) s^j - \dfrac{1}{s-1} \mathbb P(X > 0) \\
-        &= \dfrac{1}{s-1} (G_X(s) - \mathbb P(X = 0)) - \dfrac{1}{s-1} \mathbb P(X > 0) \\
-        &= \dfrac{1}{s-1} G_X(s) - \dfrac{1}{s-1},
+      U(s) = \sum_{k = 0}^{\infty} \mathbb P(X > n) s^k &= \sum_{k =
+      0}^{\infty} \sum_{j = k + 1}^{\infty} \mathbb P(X = j) s^k \\
+      &=\sum_{j = 1}^{\infty} \mathbb P(X = j) \sum_{k = 0}^{j - 1} s^k \\
+      &= \sum_{j =1 }^\infty{} \mathbb P(X = j) \dfrac{s^{j} - 1}{s - 1} \\
+      &= \dfrac{1}{s-1} \sum_{j = 1}^{\infty} \mathbb P(X =j) s^j -
+      \dfrac{1}{s-1} \mathbb P(X > 0) \\
+      &= \dfrac{1}{s-1} (G_X(s) - \mathbb P(X = 0)) - \dfrac{1}{s-1}
+      \mathbb P(X > 0) \\
+      &= \dfrac{1}{s-1} G_X(s) - \dfrac{1}{s-1},
     \end{align*}
     or equivalently, $$
     (1-s) U(s) = 1 - G_X(s).
     $$ \qed
 
-    \item Let $X$ be the random variable that describes the total number of successes in $N$ turns. Hence, $X$ will be the sum of $N$ random variables describing the total number of successes in 1 turn. Let this random variable be $Y.$ Then,
+  \item Let $X$ be the random variable that describes the total
+    number of successes in $N$ turns. Hence, $X$ will be the sum of
+    $N$ random variables describing the total number of successes in
+    1 turn. Let this random variable be $Y.$ Then,
     $$
     G_Y(s) = \sum_{k = 0}^{\infty} p^{k} (1-p) s^{k} = \dfrac{1-p}{1-ps}.
     $$
     Thus, $$G_X(s) = \dfrac{(1-p)^N}{(1-sp)^N}.$$
 
-    To find the mean, we get 
+    To find the mean, we get
     \begin{align*}
-        G'_X(s) = \dfrac{pN(1-p)^{N}}{(1-sp)^{N + 1}} \Rightarrow \mathbb E[X] = \dfrac{Np}{1-p}
+      G'_X(s) = \dfrac{pN(1-p)^{N}}{(1-sp)^{N + 1}} \Rightarrow
+      \mathbb E[X] = \dfrac{Np}{1-p}
     \end{align*}
-    as required. 
+    as required.
 
-    Differentiating a second time, we get 
+    Differentiating a second time, we get
     $$
-    G_X''(s) = \dfrac{p^2N(N+1)(1-p)^{N}}{(1-sp)^{N+2}} \Rightarrow \mathbb E[X^2] - \mathbb E[X] =  p^2 N(N+1) (1-p)^{-2},
+    G_X''(s) = \dfrac{p^2N(N+1)(1-p)^{N}}{(1-sp)^{N+2}} \Rightarrow
+    \mathbb E[X^2] - \mathbb E[X] =  p^2 N(N+1) (1-p)^{-2},
     $$
-    meaning 
+    meaning
     $$
-        \mathbb E[X^2] = p^2N(N+1) (1-p)^{-2} + Np(1-p)^{-1},
+    \mathbb E[X^2] = p^2N(N+1) (1-p)^{-2} + Np(1-p)^{-1},
     $$
-    i.e., 
+    i.e.,
     \begin{align*}
-    \text{Var}\, X &= p^2N(N+1)(1-p)^{-2} + Np(1-p)^{-1} - N^2p^2(1-p)^{-2} \\
-    &= p^2N(1-p)^{-2} + Np(1-p)^{-1} \\
-    &= \dfrac{Np}{(1-p)^2}
+      \text{Var}\, X &= p^2N(N+1)(1-p)^{-2} + Np(1-p)^{-1} - N^2p^2(1-p)^{-2} \\
+      &= p^2N(1-p)^{-2} + Np(1-p)^{-1} \\
+      &= \dfrac{Np}{(1-p)^2}
     \end{align*}
     as required. \qed
 
-    \item \begin{enumerate}
-        \item From 1a), the answer is $\mathbb E[X] = np$ and $\text{Var}\, X = np(1-p).$
-        \item From 1b), the answer is 
-        $$
-        \dfrac{1 + (1-2p)^{n}}{2}.
-        $$
-        \item Consider
-        $$
-        \dfrac{G_X(1) + G_X(\omega) + G_X(\omega^2)}{3}
-        $$
-        where $\omega^3 = 1, \omega \in \mathbb C \setminus \{1\}.$ Since $\omega^2 + \omega + 1 = 0,$ only terms where $k \equiv 0 \pmod 3$ survive, meaning the above is $\mathbb P(3 \mid X).$
+  \item
+    \begin{enumerate}
+    \item From 1a), the answer is $\mathbb E[X] = np$ and
+      $\text{Var}\, X = np(1-p).$
+  \item From 1b), the answer is
+    $$
+    \dfrac{1 + (1-2p)^{n}}{2}.
+    $$
+  \item Consider
+    $$
+    \dfrac{G_X(1) + G_X(\omega) + G_X(\omega^2)}{3}
+    $$
+    where $\omega^3 = 1, \omega \in \mathbb C \setminus \{1\}.$ Since
+    $\omega^2 + \omega + 1 = 0,$ only terms where $k \equiv 0 \pmod
+    3$ survive, meaning the above is $\mathbb P(3 \mid X).$
 
-        Substituting, we get
-        $$
-        \mathbb P(3 \mid X) = \dfrac{1 + (1 -p + p\omega)^{n} + (1-p + p\omega^2)^n}{3}.
-        $$
-        Since
-        $$
-        \omega^2 = \bar \omega,
-        $$
-        we get
-        \begin{align*}
-        (1 - p + p\omega)^n + (1- p + p \omega^2)^n &= (1- p + p\omega)^n + (1 - p + p \bar\omega)^n \\
-        &=2 \Re (q  + p\omega)^n.
-        \end{align*}
-        Taking $\omega = (-1 + \sqrt3 i)/2,$ we get 
-        $$
-        1 - p + p\omega = 1 - \dfrac{3p}{2} + \dfrac{p\sqrt{3}}{2} i.
-        $$
-        Hence,
-        $$
-        |1 - p + p \omega| = \sqrt{\left(1 - \dfrac{3p}{2}\right)^2 + \dfrac{3p^2}{4}} = \sqrt{1 - 3p + 3p^2}.
-        $$
-        Let
-        $$
-        \theta = \arg\left(1 - \dfrac{3p}{2} + \dfrac{p\sqrt3}{2} i\right),
-        $$
-        so that $1 - p + p\omega = \sqrt{1 - 3p + 3p^2}\, e^{i\theta}$ and, by De Moivre's theorem,
-        $$
-        (1 - p + p\omega)^n = \left(1 - 3p + 3p^2\right)^{n/2} e^{in\theta}.
-        $$
-        Taking real parts,
-        $$
-        \Re (1 - p + p\omega)^n = \left(1 - 3p + 3p^2\right)^{n/2} \cos(n\theta).
-        $$
-        Therefore,
-        $$
-        \mathbb P(3 \mid X) = \dfrac{1 + 2\left(1 - 3p + 3p^2\right)^{n/2} \cos(n\theta)}{3}.
-        $$    
-        \qed
-        \end{enumerate}
+    Substituting, we get
+    $$
+    \mathbb P(3 \mid X) = \dfrac{1 + (1 -p + p\omega)^{n} + (1-p +
+    p\omega^2)^n}{3}.
+    $$
+    Since
+    $$
+    \omega^2 = \bar \omega,
+    $$
+    we get
+    \begin{align*}
+      (1 - p + p\omega)^n + (1- p + p \omega^2)^n &= (1- p +
+      p\omega)^n + (1 - p + p \bar\omega)^n \\
+      &=2 \Re (q  + p\omega)^n.
+    \end{align*}
+    Taking $\omega = (-1 + \sqrt3 i)/2,$ we get
+    $$
+    1 - p + p\omega = 1 - \dfrac{3p}{2} + \dfrac{p\sqrt{3}}{2} i.
+    $$
+    Hence,
+    $$
+    |1 - p + p \omega| = \sqrt{\left(1 - \dfrac{3p}{2}\right)^2 +
+    \dfrac{3p^2}{4}} = \sqrt{1 - 3p + 3p^2}.
+    $$
+    Let
+    $$
+    \theta = \arg\left(1 - \dfrac{3p}{2} + \dfrac{p\sqrt3}{2} i\right),
+    $$
+    so that $1 - p + p\omega = \sqrt{1 - 3p + 3p^2}\, e^{i\theta}$
+    and, by De Moivre's theorem,
+    $$
+    (1 - p + p\omega)^n = \left(1 - 3p + 3p^2\right)^{n/2} e^{in\theta}.
+    $$
+    Taking real parts,
+    $$
+    \Re (1 - p + p\omega)^n = \left(1 - 3p + 3p^2\right)^{n/2} \cos(n\theta).
+    $$
+    Therefore,
+    $$
+    \mathbb P(3 \mid X) = \dfrac{1 + 2\left(1 - 3p +
+    3p^2\right)^{n/2} \cos(n\theta)}{3}.
+    $$
+    \qed
+\end{enumerate}
 \end{enumerate}
 \end{document}
