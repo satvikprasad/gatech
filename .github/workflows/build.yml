@@ -1,0 +1,61 @@
+name: Build PDFs
+
+on:
+  push:
+    branches: [master]
+    paths: ["**.tex", ".github/workflows/build.yml"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: texlive/texlive:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile every document
+        shell: bash
+        run: |
+          mkdir -p pdfs
+          failed=()
+          # Every file with \documentclass is a standalone document.
+          while IFS= read -r f; do
+            dir=$(dirname "$f"); name=$(basename "$f" .tex)
+            # "..:" puts the repo root on the search path so \input{header} resolves.
+            if (cd "$dir" && TEXINPUTS="..:" latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build "$name.tex" > /dev/null); then
+              prefix=$([ "$dir" = "." ] && echo "" || echo "${dir#./}-")
+              cp "$dir/build/$name.pdf" "pdfs/${prefix}${name}.pdf"
+              echo "built  $f"
+            else
+              failed+=("$f")
+              echo "::warning file=$f::Failed to compile $f"
+            fi
+          done < <(grep -rl --include='*.tex' '\\documentclass' . | sort)
+          echo "Built $(ls pdfs | wc -l) PDFs, ${#failed[@]} failed: ${failed[*]}"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pdfs
+          path: pdfs/
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: pdfs
+          path: pdfs
+
+      - name: Replace the "latest" release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release delete latest --cleanup-tag --yes || true
+          gh release create latest pdfs/*.pdf \
+            --target "${{ github.sha }}" \
+            --title "Latest PDFs" \
+            --notes "Built automatically from ${{ github.sha }}."
