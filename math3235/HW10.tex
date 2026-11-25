@@ -56,6 +56,79 @@
         \lim_{n \to \infty} |\mathbb E[X_n] - \mathbb E[X]| = 0 \Rightarrow \mathbb \lim_{n \to \infty} E[X_n] = \mathbb E[X]
         $$
         as required.
+
+      \item If $X_n \to X$ in probability, we know for every $\epsilon > 0,$ $$
+        \lim_{n \to \infty} \mathbb P(|X_n - X| \geq \epsilon) = 0.
+        $$
+
+        Take counterexample $X_n = n$ with probability $1/n,$ and $0$ otherwise. Then, $\mathbb E[X_n] = 1,$ but $X_n$ converges to $0$ in probability.
     \end{enumerate}
+
+  \item Let $X_1, X_2, \ldots$ be independent random variables, each having the uniform distribution on the interval $(0, a),$ and let $Z_n = \max\{X_1, X_2, \ldots, X_n\}.$
+
+    \begin{enumerate}
+      \item Finding the CDF for $Z_n,$ we know $$
+        \mathbb P(Z_n \leq z) = \mathbb P(\max\{X_1, X_2, \ldots, X_{n}\} \leq z).
+        $$
+        Conditioning on $X_n,$ we have
+        $$
+        \mathbb P(Z_n \leq z) =  \dfrac{1}{a}\int_{0}^{a}\mathbb P(\max\{X_1, X_2, \ldots, X_{n-1}, t \}\leq z)\, dt.
+        $$
+
+        Then, partioning on $Z_{n -1} \leq t,$ we have
+        $$
+        \mathbb P(Z_n \leq z) = \dfrac{1}{a} \int_{0}^{a} \ind{t \leq z} \mathbb P(Z_{n-1} \leq t) + \mathbb P(t \leq Z_{n - 1} \leq z) \, dt.
+        $$
+
+        Letting $F_n(z) = \mathbb P(Z_n \leq z),$ we get
+        \begin{align*}
+          F_n(z) &= \dfrac{1}{a} \int_{0}^{z} F_{n - 1}(t) + F_{n - 1}(z) - F_{n-1}(t) \, dt \\
+          &= \dfrac{z}{a} F_{n-1}(z)
+        \end{align*}
+        for $n \geq 2.$ When $n = 1$, $F_{1}(z) = \dfrac{z}{a}$ for $0 \leq z \leq a,$ $1$ above, and $0$ below. Therefore, we have $$
+        F_n(z) =
+        \begin{cases}
+          \dfrac{z^n}{a^n} & 0 \leq z \leq a \\
+          0 & z < 0 \\
+          1 & z \geq a
+        \end{cases} \Rightarrow f_{Z_n}(z) =
+        \begin{cases}
+          \dfrac{n}{a^n}z^{n-1} & 0 \leq z \leq a \\
+          0 & \text{otherwise}
+        \end{cases}.
+        $$
+
+        Hence, for $a \geq \epsilon > 0,$ we know
+        \begin{align*}
+          \mathbb P(|Z_n - a| \geq \epsilon) &= \mathbb P(\{Z_n \geq a + \epsilon\} \cup \{Z_n \leq a - \epsilon \})  \\
+          &= 0 + \mathbb P(Z_n \leq a - \epsilon) \\
+          &= \int_{0}^{a - \epsilon} \dfrac{n}{a^{n}} z^{n-1} \, dz \\
+          &= \dfrac{(a - \epsilon)^n}{a^n} \\
+          &= \left(1 - \dfrac{\epsilon}{a}\right)^n.
+        \end{align*}
+
+        Taking the limit as $n \to \infty$ yields
+        \begin{align*}
+          \lim_{n \to \infty} \mathbb P(|Z_n - a| \geq \epsilon) = \lim_{n \to \infty} \left(1 - \dfrac{\epsilon}{a}\right)^n  = 0
+        \end{align*}
+        whenever $\epsilon > 0,$ since $1 - \epsilon / a < 1.$ When $\epsilon > a,$ probability is always $0$ (trivial).
+
+        Therefore, $Z_n \to a$ in probability as $n \to \infty.$
+
+      \item Similarly for positive $0 < \epsilon \leq \sqrt{a}$ we know
+        \begin{align*}
+          \mathbb P(|\sqrt{Z_n} - \sqrt{a}| \geq \epsilon) &= \mathbb P(\sqrt{Z_n} \geq \sqrt{a} + \epsilon) + \mathbb P(\sqrt{Z_n} \leq \sqrt{a} - \epsilon) \\
+          &= F_n((\sqrt{a} - \epsilon)^2) \\
+          &= \dfrac{(\sqrt{a} - \epsilon)^{2n}}{a^n} \\
+          &= \left (1 - \dfrac{\epsilon}{\sqrt{a}}\right)^{2n}.
+        \end{align*}
+
+        For $0 < \epsilon \leq \sqrt{a},$ the inside term is bounded between 0 (inclusive) and 1 (exclusive), meaning in the limit we have
+        \begin{align*}
+          \lim_{n \to \infty} \mathbb P(|\sqrt{Z_n} - \sqrt{a}| \geq \epsilon) = 0
+        \end{align*}
+        for all $\epsilon > 0.$ Hence, $\sqrt{Z_n} \to \sqrt{a}$ in probability as $n \to \infty.$
+    \end{enumerate}
+
 \end{enumerate}
 \end{document}
