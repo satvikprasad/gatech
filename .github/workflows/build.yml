@@ -16,27 +16,29 @@ jobs:
       - name: Compile every document
         shell: bash
         run: |
-          mkdir -p pdfs
+          # PDFs are collected into out/build/<course>/<name>.pdf, mirroring the repo layout.
+          mkdir -p out/build
           failed=()
           # Every file with \documentclass is a standalone document.
           while IFS= read -r f; do
             dir=$(dirname "$f"); name=$(basename "$f" .tex)
             # "..:" puts the repo root on the search path so \input{header} resolves.
             if (cd "$dir" && TEXINPUTS="..:" latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build "$name.tex" > /dev/null); then
-              prefix=$([ "$dir" = "." ] && echo "" || echo "${dir#./}-")
-              cp "$dir/build/$name.pdf" "pdfs/${prefix}${name}.pdf"
+              dest="out/build/${dir#./}"
+              mkdir -p "$dest"
+              cp "$dir/build/$name.pdf" "$dest/$name.pdf"
               echo "built  $f"
             else
               failed+=("$f")
               echo "::warning file=$f::Failed to compile $f"
             fi
           done < <(grep -rl --include='*.tex' '\\documentclass' . | sort)
-          echo "Built $(ls pdfs | wc -l) PDFs, ${#failed[@]} failed: ${failed[*]}"
+          echo "Built $(find out/build -name '*.pdf' | wc -l) PDFs, ${#failed[@]} failed: ${failed[*]}"
 
       - uses: actions/upload-artifact@v4
         with:
-          name: pdfs
-          path: pdfs/
+          name: build
+          path: out/
 
   release:
     needs: build
@@ -46,8 +48,11 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: pdfs
-          path: pdfs
+          name: build
+          path: out
+
+      - name: Zip the build directory
+        run: cd out && zip -rq ../build.zip build
 
       - name: Replace the "latest" release
         env:
@@ -55,7 +60,7 @@ jobs:
           GH_REPO: ${{ github.repository }}
         run: |
           gh release delete latest --cleanup-tag --yes || true
-          gh release create latest pdfs/*.pdf \
+          gh release create latest build.zip \
             --target "${{ github.sha }}" \
             --title "Latest PDFs" \
             --notes "Built automatically from ${{ github.sha }}."
