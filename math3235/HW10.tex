@@ -3,7 +3,7 @@
 
 \begin{document}
 \begin{enumerate}
-  \item A fair dice is thrown 12000 times, and let $S$ denote the number of sixes thrown. Define sample space $\Omega = \{1, 2, \ldots, 6\}^{12000}.$ For $1 \leq i \leq 12000,$ let $X_i : \Omega \to \mathbb R$ be defined such that
+  \item A fair die is thrown 12000 times, and let $S$ denote the number of sixes thrown. Define sample space $\Omega = \{1, 2, \ldots, 6\}^{12000}.$ For $1 \leq i \leq 12000,$ let $X_i : \Omega \to \mathbb R$ be defined such that
     \begin{align*}
       X_i(\omega)  =
       \begin{cases}
@@ -28,11 +28,11 @@
     \begin{align*}
       \mathbb P(1900 < S < 2200) \approx \mathbb P\left(-\sqrt{6} < Z < 2 \sqrt{6}\right) = \int_{-\sqrt{6}}^{2 \sqrt{6}} \dfrac{1}{\sqrt{2\pi}} e^{- \frac{1}{2}x^2} \, dx
     \end{align*}
-    as required.
+    as required. \qed
 
   \item
     \begin{enumerate}
-      \item Suppose $X_N \to X$ in $L^2$, meaning we have some RV $X$ such that
+      \item Suppose $X_n \to X$ in $L^2$, meaning we have some RV $X$ such that
         \begin{align*}
           \lim_{n \to \infty} \mathbb E[(X_n - X)^2] = 0.
         \end{align*}
@@ -53,15 +53,15 @@
         $$
         and by the squeeze theorem again,
         $$
-        \lim_{n \to \infty} |\mathbb E[X_n] - \mathbb E[X]| = 0 \Rightarrow \mathbb \lim_{n \to \infty} E[X_n] = \mathbb E[X]
+        \lim_{n \to \infty} |\mathbb E[X_n] - \mathbb E[X]| = 0 \Rightarrow \lim_{n \to \infty} \mathbb E[X_n] = \mathbb E[X]
         $$
-        as required.
+        as required. \qed
 
       \item If $X_n \to X$ in probability, we know for every $\epsilon > 0,$ $$
         \lim_{n \to \infty} \mathbb P(|X_n - X| \geq \epsilon) = 0.
         $$
 
-        Take counterexample $X_n = n$ with probability $1/n,$ and $0$ otherwise. Then, $\mathbb E[X_n] = 1,$ but $X_n$ converges to $0$ in probability.
+        Take counterexample $X_n = n$ with probability $1/n,$ and $0$ otherwise. Then, $\mathbb E[X_n] = 1,$ but $X_n$ converges to $0$ in probability. \qed
     \end{enumerate}
 
   \item Let $X_1, X_2, \ldots$ be independent random variables, each having the uniform distribution on the interval $(0, a),$ and let $Z_n = \max\{X_1, X_2, \ldots, X_n\}.$
@@ -75,7 +75,7 @@
         \mathbb P(Z_n \leq z) =  \dfrac{1}{a}\int_{0}^{a}\mathbb P(\max\{X_1, X_2, \ldots, X_{n-1}, t \}\leq z)\, dt.
         $$
 
-        Then, partioning on $Z_{n -1} \leq t,$ we have
+        Then, partitioning on $Z_{n -1} \leq t,$ we have
         $$
         \mathbb P(Z_n \leq z) = \dfrac{1}{a} \int_{0}^{a} \ind{t \leq z} \mathbb P(Z_{n-1} \leq t) + \mathbb P(t \leq Z_{n - 1} \leq z) \, dt.
         $$
@@ -113,7 +113,7 @@
         \end{align*}
         whenever $\epsilon > 0,$ since $1 - \epsilon / a < 1.$ When $\epsilon > a,$ probability is always $0$ (trivial).
 
-        Therefore, $Z_n \to a$ in probability as $n \to \infty.$
+        Therefore, $Z_n \to a$ in probability as $n \to \infty.$ \qed
 
       \item Similarly for positive $0 < \epsilon \leq \sqrt{a}$ we know
         \begin{align*}
@@ -127,8 +127,80 @@
         \begin{align*}
           \lim_{n \to \infty} \mathbb P(|\sqrt{Z_n} - \sqrt{a}| \geq \epsilon) = 0
         \end{align*}
-        for all $\epsilon > 0.$ Hence, $\sqrt{Z_n} \to \sqrt{a}$ in probability as $n \to \infty.$
+        for all $\epsilon > 0.$ Hence, $\sqrt{Z_n} \to \sqrt{a}$ in probability as $n \to \infty.$ \qed
+
+      \item Let $U_n = n(1 - Z_n)$ and $a = 1.$ Then, we have
+        \begin{align*}
+          \mathbb P(U_n \leq x) &= \mathbb P\left(1 - Z_n \leq \dfrac{x}{n}\right) = \mathbb P\left(Z_n \geq 1 - \dfrac{x}{n}\right) \\
+          &= 1- \mathbb P\left(Z_n < 1 - \dfrac{x}{n}\right) \\
+          &= 1 - F_n\left(1 - \dfrac{x}{n}\right) \\
+          &= 1-\left(1 - \dfrac{x}{n}\right)^{n}.
+        \end{align*}
+
+        Since $$e^{x} = \lim_{n \to \infty} \left(1 + \dfrac{x}{n}\right)^{n},$$ we conclude that in the limit,
+        $$
+        \lim_{n \to \infty} \mathbb P(U_n \leq x) = 1- e^{-x}
+        $$
+        as required. \qed
     \end{enumerate}
 
+  \item Remember that if $X \sim \text{Poisson}(\lambda),$ then $\mathbb P(X = k) = e^{-\lambda}\lambda^{k}/k!.$
+
+    Then, let $X_1, X_2, \ldots, X_n$ be i.i.d. RVs such that $X_j \sim \text{Poisson}(\lambda).$ Let $S_n = X_1 + \ldots + X_n.$ Then, by the CLT
+    \begin{align*}
+      \dfrac{S_n - n\lambda}{\sqrt{n\lambda}} \convd \mathcal N(0, 1).
+    \end{align*}
+
+    Then, since we converge in distribution, we know
+    \begin{align*}
+      \lim_{n \to \infty} \mathbb P(S_n \leq n \lambda ) = \mathbb P(Z \leq 0) = \dfrac{1}{2}.
+    \end{align*}
+
+    Then, we seek to find $$
+    F_n= \mathbb P(S_n \leq n \lambda) = \mathbb P(X_1 + X_2 + \ldots + X_n \leq n \lambda).
+    $$
+
+    The PGF of $X \sim \text{Poisson}(\lambda)$ satisfies
+    \begin{align*}
+      F(s) =e^{-\lambda}\sum_{k = 0}^{\infty} s^k \lambda^k / k! = e^{(s - 1)\lambda},
+    \end{align*}
+    meaning the PGF of $S_n$ satisfies $F_{S_n}(s) = e^{(s-1)n\lambda},$ i.e., $$
+    S_n \sim \text{Poisson}(n\lambda).
+    $$
+    since the PGF uniquely determines all distributions. Therefore,
+    \begin{align*}
+      \mathbb P(S_n \leq n\lambda) = \sum_{0 \leq k \leq n\lambda} e^{-n\lambda} \dfrac{(n\lambda)^k}{k!}.
+    \end{align*}
+    Letting $\lambda = 1$ finally yields $$
+    \mathbb P(S_n \leq n) = e^{-n} \left(1 + n + \dfrac{n^2}{2!} + \ldots + \dfrac{n^n}{n!}\right),
+    $$
+    and taking limits and using the convergence in distribution allows us to conclude $$
+    \lim_{n \to \infty} e^{-n} \left(1 + n + \dfrac{n^2}{2!} + \ldots + \dfrac{n^n}{n!}\right) = \lim_{n \to \infty} \mathbb P(S_n \leq n) = \dfrac{1}{2}
+    $$
+    as required. \qed
+
+  \item Assume that $X_n \to X$ in $L^2$ and $Y_n \to Y$ in $L^2.$ Then, let us look at $$
+    \mathbb E[|X_n + Y_n - (X + Y)|^2] = \mathbb E[|(X_n - X) + (Y_n - Y)|^2]
+    $$
+    for an arbitrary $n.$
+
+    Apply Cauchy--Schwarz to $|(X_n  -X) + (Y_n - Y)|,$ yielding
+    $$
+    |(X_n - X) + (Y_n - Y)| \leq \sqrt{2} \cdot \sqrt{|X_n - X|^2 + |Y_n - Y|^2},
+    $$
+    or equivalently, $$
+    |(X_n - X) + (Y_n - Y)|^2 \leq 2(|X_n - X|^2 + |Y_n - Y|^2).
+    $$
+    Therefore,
+    \begin{align*}
+      0 \leq \mathbb E[|X_n - X + Y_n - Y|^2] \leq 2 \mathbb E[|X_n - X|^2] + 2 \mathbb E[|Y_n - Y|^2],
+    \end{align*}
+    meaning by the squeeze theorem, we get
+    \begin{align*}
+      \lim_{n \to \infty} \mathbb E[|X_n + Y_n - (X + Y)|^2] = 0,
+    \end{align*}
+    and hence $X_n + Y_n \to X + Y$ in mean square, as required. \qed
+
+  \item
 \end{enumerate}
 \end{document}
