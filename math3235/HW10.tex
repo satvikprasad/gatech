@@ -201,6 +201,39 @@
     \end{align*}
     and hence $X_n + Y_n \to X + Y$ in mean square, as required. \qed
 
-  \item
+  \item Assume $X_n \to X$ and $Y_n \to Y$ in probability. Then, for an $\epsilon > 0,$ let us look at
+    \begin{align*}
+      p(\epsilon) = \mathbb P(|X_n + Y_n - (X + Y)| \geq \epsilon).
+    \end{align*}
+
+    We want to show this expression goes to $0$ in the limit. Rearranging, we get
+    \begin{align*}
+      p(\epsilon) = \mathbb P(|X_n - X + Y_n - Y| \geq \epsilon).
+    \end{align*}
+    By the triangle inequality, we know $$|X_n - X + Y_n - Y| \leq |X_n - X| + |Y_n - Y|,$$ allowing us to partition on $|X_n -X + Y_n - Y|,$ yielding
+    \begin{align*}
+      \mathbb P(|X_n - X| + |Y_n - Y| \geq \epsilon) &= \underbrace{\mathbb P(\{|X_n - X| + |Y_n - Y| \geq \epsilon \} \cap \{|X_n - X + Y_n - Y| < \epsilon\})}_{\geq 0} \\
+      &+ \mathbb P(|X_n - X + Y_n - Y| \geq \epsilon).
+    \end{align*}
+
+    Thus, clearly we can conclude that
+    \begin{align*}
+      \mathbb P(|X_n - X| + |Y_n - Y| \geq \epsilon) \geq \mathbb P(|X_n - X + Y_n - Y| \geq \epsilon) \geq 0.
+    \end{align*}
+
+    If $|X_n - X| + |Y_n - Y| \geq \epsilon,$ then we need $|X_n - X| \geq \epsilon /2 ,$ or $|Y_n - Y| \geq \epsilon / 2.$ Therefore, $$
+    \{|X_n - X| + |Y_n - Y| \geq \epsilon \} \subseteq \{|X_n - X| \geq \epsilon /2\} \cup \{ |Y_n - Y| \geq \epsilon /2\},
+    $$
+    and thus by the definition of a probability measure, we have
+    \begin{align*}
+      0 \leq \mathbb P(|X_n - X| + |Y_n - Y| \geq \epsilon) &\leq \mathbb P(\{|X_n - X| \geq \epsilon / 2\} \cup \{|Y_n - Y| \geq \epsilon / 2\}) \\
+      &\leq \mathbb P(|X_n - X| \geq \epsilon / 2) + \mathbb P(|Y_n - Y| \geq \epsilon /2).
+    \end{align*}
+
+    Both terms on the right tend to $0$ since $X_n \to X$ and $Y_n \to Y$ in probability, so by the squeeze theorem,
+    $$
+    0 \leq \lim_{n \to \infty} p(\epsilon) \leq \lim_{n \to \infty} \mathbb P(|X_n - X| + |Y_n - Y| \geq \epsilon) = 0.
+    $$
+    As $\epsilon > 0$ was arbitrary, $X_n + Y_n \to X + Y$ in probability. \qed
 \end{enumerate}
 \end{document}
